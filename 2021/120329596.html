@@ -4,11 +4,18 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="逆向中的一些基础, wwqstudy">
-    <meta name="description" content="#函数  
+    <meta name="keywords" content="逆向常见壳, wwqstudy">
+    <meta name="description" content="#逆向常见壳  
 
-strcmp()函数  
-strcmp()函数采用两个char数组或字符串参数格式：int strcmp (const char* str1, const char* str2)：第一个字符串或char数组，将与第二个字符串或">
+加壳目的  
+隐藏文件作者的个人信息或者相关不应该暴露的信息  
+压缩文件，加壳之后文件的体积会变小  
+有些黑客会使用壳来防止自己在文件中加入的病毒等东西被杀毒软件找到杀掉  
+
+
+常见壳的类型  
+压缩壳  
+保护壳">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +27,7 @@ strcmp()函数采用两个char数组或字符串参数格式：int strcmp (const
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>逆向中的一些基础 | wwqstudy</title>
+    <title>逆向常见壳 | wwqstudy</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -312,12 +319,12 @@ strcmp()函数采用两个char数组或字符串参数格式：int strcmp (const
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">逆向中的一些基础</h1>
+                    <h1 class="description center-align post-title">逆向常见壳</h1>
                 </div>
             </div>
         </div>
@@ -445,7 +452,7 @@ strcmp()函数采用两个char数组或字符串参数格式：int strcmp (const
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-11-28
+                    2021-12-03
                 </div>
                 
 
@@ -454,14 +461,14 @@ strcmp()函数采用两个char数组或字符串参数格式：int strcmp (const
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    260
+                    815
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -484,26 +491,91 @@ strcmp()函数采用两个char数组或字符串参数格式：int strcmp (const
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>#函数  </p>
+                <p>#逆向常见壳  </p>
 <ol>
-<li>strcmp()函数  <ul>
-<li>strcmp()函数采用两个char数组或字符串参数<br>格式：int strcmp (const char* str1, const char* str2)：第一个字符串或char数组，将与第二个字符串或char数组进行比较。 const主要用于防止更改给定的char数组指针。</li>
-<li>返回值：str1&gt;str2–&gt;正整数;str1 &lt; str2 –&gt;负整数;str1 = str2 –&gt;0 </li>
-<li>例如  </li>
+<li>加壳目的  <ul>
+<li>隐藏文件作者的个人信息或者相关不应该暴露的信息  </li>
+<li>压缩文件，加壳之后文件的体积会变小  </li>
+<li>有些黑客会使用壳来防止自己在文件中加入的病毒等东西被杀毒软件找到杀掉  </li>
 </ul>
 </li>
-<li>char str1[] = “abcd”, str2[] = “aBcd”：第一个字符串较大，并返回一个正整数，该整数是字符的值;第二个字符串较大，并返回一个负整数，该整数是字符的值；相同则会返回0。  </li>
-<li>!strcmp(s, enflag)：比较s和enflag的字符串，相同就符合条件。</li>
-<li>chr()函数  <ul>
-<li>chr()函数从指定ASCII码返回字符  </li>
-<li>ASCII值可以为十进制值,八进制值(前置加0),十六进制值(前置加0x)。  </li>
+<li>常见壳的类型  <ul>
+<li>压缩壳  </li>
+<li>保护壳  </li>
+<li>捆绑壳  </li>
 </ul>
 </li>
-<li>strlen函数  <ul>
-<li>格式：size_t strlen( const char *string )  </li>
-<li>返回值是类型是size_t类型(长度)，strlen是不会计算\0的长度的，strlen函数遇到\0就会停止下来。</li>
+<li>压缩壳  <ul>
+<li>upx加壳或脱壳  <ul>
+<li>加壳原理: 首先将程序压缩。所谓的压缩包括两方面，一方面在程序的开头或者其他合适的地方 插入一段代码，另一方面是将程序的其他地方做压缩。压缩也可以叫做加密，因为压缩后的程序比较难看懂，主要是 和原来的代码有很大的不同。最大的表现也就是他的主要作用就是程序本身变小了。变小之后的程序在传输方面有很 大的优势。其次就是在程序执行时，实时的对程序解压缩  </li>
+<li>加壳格式:<br>最初代码的形式就应该是:7==&gt;8==&gt;9==&gt;5==&gt;6<br>用upx压缩之后形式为：1==&gt;2==&gt;3==&gt;4==&gt;5==&gt;6<br>执行时的形式变为：1==&gt;7==&gt;8==&gt;9==&gt;5==&gt;6(其中1是upx插入的代码，2,3,4是文件代码,5,6随意)  </li>
+<li>加壳解壳工具:<br>加壳：upx shell，也可以下载upx，在命令行中该目录下使用命令:upx 文件名 进行加壳操作<br>解壳：upx unpacker，也可以也可以下载upx，在命令行中该目录下使用命令:upx -d 文件名 进行解壳操作(我常用方式)，也可以进行手动解壳(太难，不建议使用，如果是大佬请忽略)  </li>
+<li>示例：<br>upx加壳操作<br><img src="/2021/120329596/%E9%80%86%E5%90%91%E5%B8%B8%E8%A7%81%E5%A3%B3%5C1.jpg" alt="upx解壳操作"><br>upx解壳操作<br><img src="/2021/120329596/%E9%80%86%E5%90%91%E5%B8%B8%E8%A7%81%E5%A3%B3%5C2.jpg"><br>手动解壳(待补充!!!)<br><a target="_blank" rel="noopener" href="https://upx.github.io/">upx下载地址</a>  </li>
 </ul>
 </li>
+<li>ASPack壳  <ul>
+<li>ASPack壳也是压缩壳，加壳原理与upx相同  </li>
+<li>加壳解壳工具:<br>加壳:ASPack<br>解壳:ASPack UnPacker  </li>
+<li>示例:(未遇到，待补充)  </li>
+</ul>
+</li>
+<li>PECompact壳  <ul>
+<li>PECompact壳也是压缩壳，加壳原理与upx相同  </li>
+<li>加壳解壳工具:<br>加壳:PECompact_v3.02.2_Final.7z<br>解壳:Unpacker_PECompact.7z  </li>
+<li>示例:(未遇到，待补充)  </li>
+</ul>
+</li>
+<li>RLPack壳  <ul>
+<li>RLPack壳也是压缩壳，加壳原理与upx相同  </li>
+<li>加壳解壳工具:<br>加壳:()<br>解壳:Rlpack 1.2x_Unpacker_V0.3_Final.rar  </li>
+<li>示例:(未遇到，待补充)  </li>
+</ul>
+</li>
+<li>NsPack壳  <ul>
+<li>NsPack壳也是压缩壳，加壳原理与upx相同  </li>
+<li>加壳解壳工具:<br>加壳:NsPack<br>解壳:NsPack strripter 3.x  </li>
+<li>示例:(未遇到，待补充)  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>保护壳  <ul>
+<li>ASProtect壳    <ul>
+<li>加壳解壳工具:<br>加壳:ASProtect.SKE.v2.51.build.09.22.beta-RES-incl-kg.7z<br>解壳:ASProtect Unpacker.rar  </li>
+<li>示例:(未遇到，待补充)  </li>
+</ul>
+</li>
+<li>Armadillo壳    <ul>
+<li>加壳解壳工具:<br>加壳:<br>解壳:  </li>
+<li>示例:(未遇到，待补充)  </li>
+</ul>
+</li>
+<li>EXECryptor壳    <ul>
+<li>加壳解壳工具:<br>加壳:()<br>解壳:Unpacker ExeCryptor 2.x.x v1.0 RC2.zip  </li>
+<li>示例:(未遇到，待补充)  </li>
+</ul>
+</li>
+<li>Themida壳    <ul>
+<li>加壳解壳工具:<br>加壳:Themida_x32_x64_v3.0.4.0_Repacked.rar<br>解壳:Themida&amp;winlicense UnPacKer v2.0.rar  </li>
+<li>示例:(未遇到，待补充)   </li>
+</ul>
+</li>
+<li>VMProtect壳    <ul>
+<li>加壳解壳工具:<br>VMProtect_Professional_v2.13.8.rar  </li>
+<li>示例:(未遇到，待补充)   </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>捆绑壳  <ul>
+<li>MoleBox壳  <ul>
+<li>加壳解壳工具:<br>加壳:<br>解壳: Molebox_Virtualization_Studio_unpacker </li>
+<li>示例:(未遇到，待补充)   </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>补充说明:<br> <a target="_blank" rel="noopener" href="https://www.52pojie.cn/">以上部分加壳解壳工具下载地址</a></li>
 </ol>
 
                 
@@ -531,7 +603,7 @@ strcmp()函数采用两个char数组或字符串参数格式：int strcmp (const
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://wwqstudy.github.io/2021/112836631.html">http://wwqstudy.github.io/2021/112836631.html</a>
+                    <a href="http://wwqstudy.github.io/2021/120329596.html">http://wwqstudy.github.io/2021/120329596.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -612,9 +684,10 @@ strcmp()函数采用两个char数组或字符串参数格式：int strcmp (const
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/120329596.html">
                     <div class="card-image">
@@ -632,9 +705,9 @@ strcmp()函数采用两个char数组或字符串参数格式：int strcmp (const
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-12-03
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-03
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -643,6 +716,7 @@ strcmp()函数采用两个char数组或字符串参数格式：int strcmp (const
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -653,13 +727,13 @@ strcmp()函数采用两个char数组或字符串参数格式：int strcmp (const
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/112316107.html">
+                <a href="/2021/112836631.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="逆向中的一些基础">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">逆向中的一些基础</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -670,7 +744,7 @@ strcmp()函数采用两个char数组或字符串参数格式：int strcmp (const
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-23
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-28
                             </span>
                         <span class="publish-author">
                             
