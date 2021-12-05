@@ -4,18 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="逆向常见壳, wwqstudy">
-    <meta name="description" content="#逆向常见壳  
+    <meta name="keywords" content="密码类型及加密解密算法, wwqstudy">
+    <meta name="description" content="现代密码
+对称加密算法  
 
-加壳目的  
-隐藏文件作者的个人信息或者相关不应该暴露的信息  
-压缩文件，加壳之后文件的体积会变小  
-有些黑客会使用壳来防止自己在文件中加入的病毒等东西被杀毒软件找到杀掉  
+对称加密算法，也就是说使用的密钥为单钥（或称为私钥）。就是明文加密和密文解密用的是同一种秘钥例如:(1). rc4加密算法  
 
-
-常见壳的类型  
-压缩壳  
-保护壳">
+说明：rc4加密是字节流的方式依次加密明文中的每一个字节，解密的时候也是依次对密">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -27,7 +22,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>逆向常见壳 | wwqstudy</title>
+    <title>密码类型及加密解密算法 | wwqstudy</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -319,12 +314,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">逆向常见壳</h1>
+                    <h1 class="description center-align post-title">密码类型及加密解密算法</h1>
                 </div>
             </div>
         </div>
@@ -452,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-12-03
+                    2021-12-05
                 </div>
                 
 
@@ -461,14 +456,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    815
+                    2.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    10 分
                 </div>
                 
 
@@ -491,91 +486,99 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>#逆向常见壳  </p>
-<ol>
-<li>加壳目的  <ul>
-<li>隐藏文件作者的个人信息或者相关不应该暴露的信息  </li>
-<li>压缩文件，加壳之后文件的体积会变小  </li>
-<li>有些黑客会使用壳来防止自己在文件中加入的病毒等东西被杀毒软件找到杀掉  </li>
+                <h1 id="现代密码"><a href="#现代密码" class="headerlink" title="现代密码"></a>现代密码</h1><ol>
+<li><p>对称加密算法  </p>
+<ul>
+<li><p>对称加密算法，也就是说使用的密钥为单钥（或称为私钥）。就是明文加密和密文解密用的是同一种秘钥<br>例如:<br>(1). rc4加密算法  </p>
+<ul>
+<li><p>说明：rc4加密是字节流的方式依次加密明文中的每一个字节，解密的时候也是依次对密文中的每一个字节进行解密，同时密钥的长度是可以变的，对于现在仍然有很强的保护性  </p>
+</li>
+<li><p>原理：根据明文和密钥生成相应的密钥流，密钥流的长度和明文的长度是对应的，也就是说明文的长度是500字节，那么密钥流也是500字节。当然，加密生成的密文也是500字节，因为密文第i字节=明文第i字节^密钥流第i字节。而生成密钥流需要用到状态向量（S），临时向量（T），密钥（K）即：  </p>
+<ul>
+<li>状态向量S：长度为256，S[0],S[1]…..S[255]。每个单元都是一个字节，算法运行的任何时候，S都包括0-255的8比特数的排列组合，只不过值的位置发生了变换  </li>
+<li>临时向量T：长度也为256，每个单元也是一个字节。如果密钥的长度是256字节，就直接把密钥的值赋给T，否则，轮转地将密钥的每个字节赋给T  </li>
+<li>密钥K：长度为1-256字节，注意密钥的长度keylen与明文长度、密钥流的长度没有必然关系，通常密钥的长度趣味16字节（128比特）  </li>
+<li>初始化S和T<br>for i in range(256) :<br>s[i] = i<br>T[i]=K[i%len(key)]  </li>
+<li>初始排列S<br>j = 0<br>for i in range(256) :<br>j = (j + s[i] + T[i]]) % 256<br>s[i], s[j] = s[j], s[i]  </li>
+<li>产生密钥流K<br>i = 0<br>j = 0<br>for r in range(len(key)) :<br>i = (i + 1) % 256<br>j = (j + s[i]) % 256<br>s[i], s[j] = s[j], s[i]<br>t = (S[i] + S[j]) % 256<br>K[t] = S[t]  </li>
 </ul>
 </li>
-<li>常见壳的类型  <ul>
-<li>压缩壳  </li>
-<li>保护壳  </li>
-<li>捆绑壳  </li>
-</ul>
-</li>
-<li>压缩壳  <ul>
-<li>upx加壳或脱壳  <ul>
-<li>加壳原理: 首先将程序压缩。所谓的压缩包括两方面，一方面在程序的开头或者其他合适的地方 插入一段代码，另一方面是将程序的其他地方做压缩。压缩也可以叫做加密，因为压缩后的程序比较难看懂，主要是 和原来的代码有很大的不同。最大的表现也就是他的主要作用就是程序本身变小了。变小之后的程序在传输方面有很 大的优势。其次就是在程序执行时，实时的对程序解压缩  </li>
-<li>加壳格式:<br>最初代码的形式就应该是:7==&gt;8==&gt;9==&gt;5==&gt;6<br>用upx压缩之后形式为：1==&gt;2==&gt;3==&gt;4==&gt;5==&gt;6<br>执行时的形式变为：1==&gt;7==&gt;8==&gt;9==&gt;5==&gt;6(其中1是upx插入的代码，2,3,4是文件代码,5,6随意)  </li>
-<li>加壳解壳工具:<br>加壳：upx shell，也可以下载upx，在命令行中该目录下使用命令:upx 文件名 进行加壳操作<br>解壳：upx unpacker，也可以也可以下载upx，在命令行中该目录下使用命令:upx -d 文件名 进行解壳操作(我常用方式)，也可以进行手动解壳(太难，不建议使用，如果是大佬请忽略)  </li>
-<li>示例：<br>upx加壳操作<br><img src="/2021/120329596/1.png"><br>upx解壳操作<br><img src="/2021/120329596/2.png"><br>手动解壳(待补充!!!)<br><a target="_blank" rel="noopener" href="https://upx.github.io/">upx下载地址</a>  </li>
-</ul>
-</li>
-<li>ASPack壳  <ul>
-<li>ASPack壳也是压缩壳，加壳原理与upx相同  </li>
-<li>加壳解壳工具:<br>加壳:ASPack<br>解壳:ASPack UnPacker  </li>
-<li>示例:(未遇到，待补充)  </li>
-</ul>
-</li>
-<li>PECompact壳  <ul>
-<li>PECompact壳也是压缩壳，加壳原理与upx相同  </li>
-<li>加壳解壳工具:<br>加壳:PECompact_v3.02.2_Final.7z<br>解壳:Unpacker_PECompact.7z  </li>
-<li>示例:(未遇到，待补充)  </li>
-</ul>
-</li>
-<li>RLPack壳  <ul>
-<li>RLPack壳也是压缩壳，加壳原理与upx相同  </li>
-<li>加壳解壳工具:<br>加壳:()<br>解壳:Rlpack 1.2x_Unpacker_V0.3_Final.rar  </li>
-<li>示例:(未遇到，待补充)  </li>
-</ul>
-</li>
-<li>NsPack壳  <ul>
-<li>NsPack壳也是压缩壳，加壳原理与upx相同  </li>
-<li>加壳解壳工具:<br>加壳:NsPack<br>解壳:NsPack strripter 3.x  </li>
-<li>示例:(未遇到，待补充)  </li>
-</ul>
-</li>
-</ul>
-</li>
-<li>保护壳  <ul>
-<li>ASProtect壳    <ul>
-<li>加壳解壳工具:<br>加壳:ASProtect.SKE.v2.51.build.09.22.beta-RES-incl-kg.7z<br>解壳:ASProtect Unpacker.rar  </li>
-<li>示例:(未遇到，待补充)  </li>
-</ul>
-</li>
-<li>Armadillo壳    <ul>
-<li>加壳解壳工具:<br>加壳:<br>解壳:  </li>
-<li>示例:(未遇到，待补充)  </li>
-</ul>
-</li>
-<li>EXECryptor壳    <ul>
-<li>加壳解壳工具:<br>加壳:()<br>解壳:Unpacker ExeCryptor 2.x.x v1.0 RC2.zip  </li>
-<li>示例:(未遇到，待补充)  </li>
-</ul>
-</li>
-<li>Themida壳    <ul>
-<li>加壳解壳工具:<br>加壳:Themida_x32_x64_v3.0.4.0_Repacked.rar<br>解壳:Themida&amp;winlicense UnPacKer v2.0.rar  </li>
-<li>示例:(未遇到，待补充)   </li>
-</ul>
-</li>
-<li>VMProtect壳    <ul>
-<li>加壳解壳工具:<br>VMProtect_Professional_v2.13.8.rar  </li>
-<li>示例:(未遇到，待补充)   </li>
-</ul>
-</li>
-</ul>
-</li>
-<li>捆绑壳  <ul>
-<li>MoleBox壳  <ul>
-<li>加壳解壳工具:<br>加壳:<br>解壳: Molebox_Virtualization_Studio_unpacker </li>
-<li>示例:(未遇到，待补充)   </li>
-</ul>
+<li><p>脚本： </p>
+  <pre class="line-numbers language-none"><code class="language-none">    def encrypt(tmp, message):  
+        tmp &#x3D; list(map(lambda x: ord(x), tmp))  
+        message &#x3D; list(map(lambda x: ord(x), message))   
+        S &#x3D; list(range(0, 256))  
+        key &#x3D; []  # 存储秘钥流  
+        T &#x3D; []  # 临时向量T   
+        while len(T) &lt; 256:  
+            T.extend(tmp)  
+        while len(T) !&#x3D; 256:  
+            T.pop()   
+        j &#x3D; 0  
+        for i in range(0, 256):  
+            j &#x3D; (j + S[i] + T[i]) % 256  
+            S[i], S[j] &#x3D; S[j], S[i]   
+        i, j &#x3D; 0, 0  
+        for i in range(len(message)):  
+            i &#x3D; (i + 1) % 256  
+            j &#x3D; (j + S[i]) % 256  
+            S[i], S[j] &#x3D; S[j], S[i]  
+            t &#x3D; (S[i] + S[j]) % 256  
+            key.append(S[t])   
+        secretary &#x3D; list(map(lambda x, y: chr(x ^ y), message, key))  
+        return secretary, key  
+    def decrypt(secretary, key):  
+        message &#x3D; list(map(lambda x, y: chr((ord(x)) ^ y), secretary, key))  
+        return &#39;&#39;.join(message)  
+    if __name__ &#x3D;&#x3D; &#39;__main__&#39;:  
+        t &#x3D; list(input(&quot;请输入初始秘钥：&quot;))  
+        m &#x3D; list(input(&quot;请输入需要加密的明文：&quot;))  
+        s, k &#x3D; encrypt(t, m)  
+        print(encrypt(t, m)) # t即为所求 
+        print(&#39;经过加密解密后得到的明文：&#39;, decrypt(s, k))  
+    &#96;&#96;&#96;  
+(2).AES加密算法  
+- AES为分组密码，分组密码也就是把明文分成一组一组的，每组长度相等，每次加密一组数据，直到加密完整个明文。在AES标准规范中，分组长度只能是128位，也就是说，每个分组为16个字节（每个字节8位）。密钥的长度可以使用128位、192位或256位。密钥的长度不同，推荐加密轮数也不同，如下表所示：  
+![](密码类型及加密解密算法\1.png)  
+轮数在下面介绍，这里实现的是AES-128，也就是密钥的长度为128位，加密轮数为10轮。上面说到，AES的加密公式为C &#x3D; E(K,P)，在加密函数E中，会执行一个轮函数，并且执行10次这个轮函数，这个轮函数的前9次执行的操作是一样的，只有第10次有所不同。也就是说，一个明文分组会被加密10轮。AES的核心就是实现一轮中的所有操作。  
+AES的处理单位是字节，128位的输入明文分组P和输入密钥K都被分成16个字节，分别记为P &#x3D; P0 P1 … P15 和 K &#x3D; K0 K1 … K15。如，明文分组为P &#x3D; abcdefghijklmnop,其中的字符a对应P0，p对应P15。一般地，明文分组用字节为单位的正方形矩阵描述，称为状态矩阵。在算法的每一轮中，状态矩阵的内容不断发生变化，最后的结果作为密文输出。该矩阵中字节的排列顺序为从上到下、从左至右依次排列，如下图所示：  
+![](密码类型及加密解密算法\2.png)  
+其主要加密如下(10次加密图)：  
+![](密码类型及加密解密算法\3.png)  
+其中:  
+- K &#x3D; “abcdefghijklmnop”，则K0 &#x3D; a, K15 &#x3D; p, W[0] &#x3D; K0 K1 K2 K3 &#x3D; “abcd”。AES的整体结构如下图所示，其中的W[0,3]是指W[0]、W[1]、W[2]和W[3]串联组成的128位密钥。加密的第1轮到第9轮的轮函数一样，包括4个操作：字节代换、行位移、列混合和轮密钥加。最后一轮迭代不执行列混合。另外，在第一轮迭代之前，先将明文和原始密钥进行一次异或加密操作。  
+- 字节代换：  
+AES的字节代换其实就是一个简单的查表操作。AES定义了一个S盒和一个逆S盒。
+AES的S盒：  
+![](密码类型及加密解密算法\4.png)  
+状态矩阵中的元素按照下面的方式映射为一个新的字节：把该字节的高4位作为行值，低4位作为列值，取出S盒或者逆S盒中对应的行的元素作为输出。例如，加密时，输出的字节S1为0x12,则查S盒的第0x01行和0x02列，得到值0xc9,然后替换S1原有的0x12为0xc9。  
+逆字节代换也就是查逆S盒来变换，逆S盒如下：  
+![](密码类型及加密解密算法\5.png)  
+- 行移位  
+行移位是一个简单的左循环移位操作。当密钥长度为128比特时，状态矩阵的第0行左移0字节，第1行左移1字节，第2行左移2字节，第3行左移3字节  
+行移位的逆变换是将状态矩阵中的每一行执行相反的移位操作，例如AES-128中，状态矩阵的第0行右移0字节，第1行右移1字节，第2行右移2字节，第3行右移3字节  
+- 列混合  
+列混合变换是通过矩阵相乘来实现的，经行移位后的状态矩阵与固定的矩阵相乘，得到混淆后的状态矩阵，如下图的公式所示：  
+![](密码类型及加密解密算法\6.png)  
+状态矩阵中的第j列(0 ≤j≤3)的列混合可以表示为下图所示：  
+![](密码类型及加密解密算法\7.png)  
+其中，矩阵元素的乘法和加法都是定义在基于GF(2^8)上的二元运算,并不是通常意义上的乘法和加法。  
+逆向列混合变换可由下图的矩阵乘法定义：  
+![](密码类型及加密解密算法\8.png)
+- 轮密钥加  
+轮密钥加是将128位轮密钥Ki同状态矩阵中的数据进行逐位异或操作，如下图所示。其中，密钥Ki中每个字W[4i],W[4i+1],W[4i+2],W[4i+3]为32位比特字，包含4个字节，他们的生成算法下面在下面介绍。轮密钥加过程可以看成是字逐位异或的结果，也可以看成字节级别或者位级别的操作。也就是说，可以看成S0 S1 S2 S3 组成的32位字与W[4i]的异或运算；轮密钥加的逆运算同正向的轮密钥加运算完全一致，这是因为异或的逆操作是其自身。轮密钥加非常简单，但却能够影响S数组中的每一位。  
+- 密钥扩展  
+AES首先将初始密钥输入到一个44的状态矩阵中，如下图所示。  
+![](密码类型及加密解密算法\9.png)  
+这个44矩阵的每一列的4个字节组成一个字，矩阵4列的4个字依次命名为W[0]、W[1]、W[2]和W[3]，它们构成一个以字为单位的数组W。例如，设密钥K为&quot;abcdefghijklmnop&quot;,则K0 &#x3D; ‘a’,K1 &#x3D; ‘b’, K2 &#x3D; ‘c’,K3 &#x3D; ‘d’,W[0] &#x3D; “abcd”。接着，对W数组扩充40个新列，构成总共44列的扩展密钥数组。新列以如下的递归方式产生：1.如果i不是4的倍数，那么第i列由如下等式确定：W[i]&#x3D;W[i-4]⨁W[i-1]2.如果i是4的倍数，那么第i列由如下等式确定：W[i]&#x3D;W[i-4]⨁T(W[i-1])其中，T是一个有点复杂的函数。函数T由3部分组成：字循环、字节代换和轮常量异或，这3部分的作用分别如下。a.字循环：将1个字中的4个字节循环左移1个字节。即将输入字[b0, b1, b2, b3]变换成[b1,b2,b3,b0]。b.字节代换：对字循环的结果使用S盒进行字节代换。c.轮常量异或：将前两步的结果同轮常量Rcon[j]进行异或，其中j表示轮数。轮常量Rcon[j]是一个字，其值见下表。  
+![](密码类型及加密解密算法\10.png)  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  下面举个例子：<br>  设初始的128位密钥为：<br>  3C A1 0B 21 57 F0 19 16 90 2E 13 80 AC C1 07 BD<br>  那么4个初始值为：<br>  W[0] = 3C A1 0B 21<br>  W[1] = 57 F0 19 16<br>  W[2] = 90 2E 13 80<br>  W[3] = AC C1 07 BD<br>  下面求扩展的第1轮的子密钥(W[4],W[5],W[6],W[7])。<br>  由于4是4的倍数，所以：<br>  W[4] = W[0] ⨁ T(W[3])<br>  T(W[3])的计算步骤如下：</p>
+<p>  循环地将W[3]的元素移位：AC C1 07 BD变成C1 07 BD AC;<br>  将 C1 07 BD AC 作为S盒的输入，输出为78 C5 7A 91;<br>  将78 C5 7A 91与第一轮轮常量Rcon[1]进行异或运算，将得到79 C5 7A 91，因此，T(W[3])=79 C5 7A 91，故<br>  W[4] = 3C A1 0B 21 ⨁ 79 C5 7A 91 = 45 64 71 B0<br>  其余的3个子密钥段的计算如下：<br>  W[5] = W[1] ⨁ W[4] = 57 F0 19 16 ⨁ 45 64 71 B0 = 12 94 68 A6<br>  W[6] = W[2] ⨁ W[5] =90 2E 13 80 ⨁ 12 94 68 A6 = 82 BA 7B 26<br>  W[7] = W[3] ⨁ W[6] = AC C1 07 BD ⨁ 82 BA 7B 26 = 2E 7B 7C 9B<br>  所以，第一轮的密钥为 45 64 71 B0 12 94 68 A6 82 BA 7B 26 2E 7B 7C 9B<br>  ```</p>
 </li>
 </ul>
 </li>
-<li>补充说明:<br> <a target="_blank" rel="noopener" href="https://www.52pojie.cn/">以上部分加壳解壳工具下载地址</a></li>
+</ul>
+</li>
 </ol>
 
                 
@@ -603,7 +606,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://wwqstudy.github.io/2021/120329596.html">http://wwqstudy.github.io/2021/120329596.html</a>
+                    <a href="http://wwqstudy.github.io/2021/120547052.html">http://wwqstudy.github.io/2021/120547052.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -684,9 +687,48 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2021/120547052.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="密码类型及加密解密算法">
+                        
+                        <span class="card-title">密码类型及加密解密算法</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-05
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            wwq
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2021/120454815.html">
                     <div class="card-image">
@@ -704,45 +746,8 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-12-04
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            wwq
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/112836631.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="逆向中的一些基础">
-                        
-                        <span class="card-title">逆向中的一些基础</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-28
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-04
                             </span>
                         <span class="publish-author">
                             
