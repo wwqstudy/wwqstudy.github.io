@@ -494,9 +494,9 @@ rc4加密算法
 <li>状态向量S：长度为256，S[0],S[1]…..S[255]。每个单元都是一个字节，算法运行的任何时候，S都包括0-255的8比特数的排列组合，只不过值的位置发生了变换  </li>
 <li>临时向量T：长度也为256，每个单元也是一个字节。如果密钥的长度是256字节，就直接把密钥的值赋给T，否则，轮转地将密钥的每个字节赋给T  </li>
 <li>密钥K：长度为1-256字节，注意密钥的长度keylen与明文长度、密钥流的长度没有必然关系，通常密钥的长度趣味16字节（128比特）  </li>
-<li>初始化S和T<br>  for i in range(256) :<br>  s[i] = i<br>  T[i]=K[i%len(key)]  <ul>
+<li>初始化S和T<br>  for i in range(256) :<br>  s[i] = i<br>  T[i]=Key<a href="key%E6%98%AF%E5%AF%86%E9%92%A5">i%len(key)</a>  <ul>
 <li>初始排列S<br>j = 0<br>for i in range(256) :<br>j = (j + s[i] + T[i]]) % 256<br>s[i], s[j] = s[j], s[i]  </li>
-<li>产生密钥流K<br>i = 0<br>j = 0<br>for r in range(len(key)) :<br>i = (i + 1) % 256<br>j = (j + s[i]) % 256<br>s[i], s[j] = s[j], s[i]<br>t = (S[i] + S[j]) % 256<br>K[t] = S[t]  </li>
+<li>产生密钥流K<br>i = 0<br>j = 0<br>for r in range(len(message)) :<br>i = (i + 1) % 256<br>j = (j + s[i]) % 256<br>s[i], s[j] = s[j], s[i]<br>t = (S[i] + S[j]) % 256<br>K[t] = S<a href="K%E5%8D%B3%E6%98%AF%E5%AF%86%E9%92%A5%E6%B5%81">t</a>  </li>
 </ul>
 </li>
 <li>脚本：  </li>
