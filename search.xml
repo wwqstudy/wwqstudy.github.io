@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>od使用</title>
+      <link href="/2022/011152450.html"/>
+      <url>/2022/011152450.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="od部分原理"><a href="#od部分原理" class="headerlink" title="od部分原理"></a>od部分原理</h2><h3 id="常见断点之INT3断点原理"><a href="#常见断点之INT3断点原理" class="headerlink" title="常见断点之INT3断点原理"></a>常见断点之INT3断点原理</h3><ol><li>原理<br>F2断点又叫做CC断点（INT3）断点。<br>01 替换指令，也就是替换int3指令<br>02 od检测到int3指令之后会产生一个异常处理并捕获它，这时候程序就会中断<br>03 od删除int3指令，还原之前代码  </li><li>优点<br>可以无限下int3断点  </li><li>缺点<br>太容易被检测到  </li></ol><h3 id="INT3断点的反调试与反反调试"><a href="#INT3断点的反调试与反反调试" class="headerlink" title="INT3断点的反调试与反反调试"></a>INT3断点的反调试与反反调试</h3><ol><li><p>知识点<br>01 FARPROC结构体<br>02 GetprocAddress()函数:检索指定的动态链接库(DLL)中的输出库函数地址。<br>03 LoadLibrary()函数:将指定的模块加载到调用进程的地址空间中。指定的模块可能会导致其他模块被加载。对于其他加载选项，请使用 LoadLibraryEx函数。  </p></li><li><p>函数原型<br>GetprocAddress()函数原型：</p><pre><code class="c"> FARPROC GetProcAddress(       HMODULE   hModule,    // DLL模块句柄       LPCSTR       lpProcName   // 函数名   );  </code></pre></li><li><p>代码  </p><pre><code class="c"> #include &lt;iostream&gt; #include &lt;Windows.h&gt; int main() &#123;     FARPROC addr = GetProcAddress(LoadLibrary(L&quot;user32.dll&quot;), &quot;MessageBoxA&quot;);     byte byteAdder = *(byte*)addr;     ::MessageBoxA(NULL, &quot;内容&quot;, &quot;标题&quot;, MB_OK);//调用MessageBoxA()     if (byteAdder == 0xCC) &#123;         printf(&quot;检测到非法调试&quot;);     &#125;     else &#123;         printf(&quot;程序正常运行&quot;);     &#125;     getchar(); &#125;  </code></pre></li><li><p>反调试<br>未进行调试时:<br><img src="/2022/011152450/1.png" alt=" "><br>对MessageBoxA()进行下断点:<br><img src="/2022/011152450/2.png" alt=" ">  </p></li><li><p>反反调试<br>在MessageBoxA()下面一行代码下INT3断点<br><img src="/2022/011152450/3.png" alt=" "><br><img src="/2022/011152450/1.png" alt=" ">  </p></li></ol>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>密码类型及加密解密算法</title>
       <link href="/2021/120547052.html"/>
       <url>/2021/120547052.html</url>
