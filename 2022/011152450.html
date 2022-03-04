@@ -520,33 +520,32 @@
 <li><p>反调试<br>未进行调试时:<br><img src="/2022/011152450/1.png" alt=" "><br>对MessageBoxA()进行下断点:<br><img src="/2022/011152450/2.png" alt=" ">  </p>
 </li>
 <li><p>反反调试<br>在MessageBoxA()下面一行代码下INT3断点<br><img src="/2022/011152450/3.png" alt=" "><br><img src="/2022/011152450/1.png" alt=" ">  </p>
-<h3 id="常用断点之硬件断点"><a href="#常用断点之硬件断点" class="headerlink" title="常用断点之硬件断点"></a>常用断点之硬件断点</h3></li>
-<li><p>调试寄存器<br>DR0–DR7<br>DR0–DR3 :保存断点地址 ;DR4–DR5 ;DR6 :状态寄存器 ;DR7 :控制寄存器  </p>
 </li>
-<li><p>原理<br>DR0–DR3 :保存下硬件断点的地址<br>DR7 :设置相对应的控制位<br>当运行到此位置是会发送一个异常信息，导致程序中断，等待用户操作  </p>
-</li>
-<li><p>优点 ：不易被检测，速度快<br>缺点 : 只能下四个断点  </p>
-<h3 id="常用断点之内存断点"><a href="#常用断点之内存断点" class="headerlink" title="常用断点之内存断点"></a>常用断点之内存断点</h3></li>
-<li><p>原理<br>在该位置下内存断点，导致该位置赋予不可读、不可写、不可执行的属性，从而运行到此处时发送异常，导致程序中断。  </p>
-</li>
-<li><p>优点：不改变汇编代码<br>缺点：无  </p>
-<h3 id="常见断点之消息断点"><a href="#常见断点之消息断点" class="headerlink" title="常见断点之消息断点"></a>常见断点之消息断点</h3></li>
-<li><p>原理<br>当点击或者处理一个事件时，会形成消息，想内核发送，内核进行识别并做出相应的处理  </p>
-<h3 id="常见断点之条件断点"><a href="#常见断点之条件断点" class="headerlink" title="常见断点之条件断点"></a>常见断点之条件断点</h3></li>
-<li><p>触发：shirt+F2  </p>
-</li>
-<li><p>类似int3断点，只是要加条件断  </p>
-</li>
-<li><p>多条件用&amp;&amp;，|| 连接符  </p>
-<h3 id="内存一次性断点和条件记录断点"><a href="#内存一次性断点和条件记录断点" class="headerlink" title="内存一次性断点和条件记录断点"></a>内存一次性断点和条件记录断点</h3></li>
-<li><p>内存一次性断点：alt+m，断点原理是int3断点原理，但是只能用一次  </p>
-</li>
-<li><p>条件记录断点：shirt+F4，类似条件断点，但是alt+l可以查看断点位置特定寄存器等的值  </p>
-<h3 id="hit-trace-和-run-trace"><a href="#hit-trace-和-run-trace" class="headerlink" title="hit trace 和 run trace"></a>hit trace 和 run trace</h3></li>
-<li><p>原理 int3断点原理  </p>
-</li>
-<li><p>run trace 记录数据</p>
-</li>
+</ol>
+<h3 id="常用断点之硬件断点"><a href="#常用断点之硬件断点" class="headerlink" title="常用断点之硬件断点"></a>常用断点之硬件断点</h3><ol>
+<li>调试寄存器<br>DR0–DR7<br>DR0–DR3 :保存断点地址 ;DR4–DR5 ;DR6 :状态寄存器 ;DR7 :控制寄存器  </li>
+<li>原理<br>DR0–DR3 :保存下硬件断点的地址<br>DR7 :设置相对应的控制位<br>当运行到此位置是会发送一个异常信息，导致程序中断，等待用户操作  </li>
+<li>优点 ：不易被检测，速度快<br>缺点 : 只能下四个断点  </li>
+</ol>
+<h3 id="常用断点之内存断点"><a href="#常用断点之内存断点" class="headerlink" title="常用断点之内存断点"></a>常用断点之内存断点</h3><ol>
+<li>原理<br>在该位置下内存断点，导致该位置赋予不可读、不可写、不可执行的属性，从而运行到此处时发送异常，导致程序中断。  </li>
+<li>优点：不改变汇编代码<br>缺点：无  </li>
+</ol>
+<h3 id="常见断点之消息断点"><a href="#常见断点之消息断点" class="headerlink" title="常见断点之消息断点"></a>常见断点之消息断点</h3><ol>
+<li>原理<br>当点击或者处理一个事件时，会形成消息，想内核发送，内核进行识别并做出相应的处理  </li>
+</ol>
+<h3 id="常见断点之条件断点"><a href="#常见断点之条件断点" class="headerlink" title="常见断点之条件断点"></a>常见断点之条件断点</h3><ol>
+<li>触发：shirt+F2  </li>
+<li>类似int3断点，只是要加条件断  </li>
+<li>多条件用&amp;&amp;，|| 连接符  </li>
+</ol>
+<h3 id="内存一次性断点和条件记录断点"><a href="#内存一次性断点和条件记录断点" class="headerlink" title="内存一次性断点和条件记录断点"></a>内存一次性断点和条件记录断点</h3><ol>
+<li>内存一次性断点：alt+m，断点原理是int3断点原理，但是只能用一次  </li>
+<li>条件记录断点：shirt+F4，类似条件断点，但是alt+l可以查看断点位置特定寄存器等的值  </li>
+</ol>
+<h3 id="hit-trace-和-run-trace"><a href="#hit-trace-和-run-trace" class="headerlink" title="hit trace 和 run trace"></a>hit trace 和 run trace</h3><ol>
+<li>原理 int3断点原理  </li>
+<li>run trace 记录数据</li>
 </ol>
 
                 
