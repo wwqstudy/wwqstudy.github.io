@@ -4,6 +4,32 @@
   
     
     <entry>
+      <title>python逆向</title>
+      <link href="/2022/030533794.html"/>
+      <url>/2022/030533794.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="python逆向"><a href="#python逆向" class="headerlink" title="python逆向"></a>python逆向</h1><h2 id="附件为py文件"><a href="#附件为py文件" class="headerlink" title="附件为py文件"></a>附件为py文件</h2><p>直接看源代码分析</p><h2 id="附件为pyc文件"><a href="#附件为pyc文件" class="headerlink" title="附件为pyc文件"></a>附件为pyc文件</h2><ul><li>在线网址反编译：<a href="https://tool.lu/pyc/">python反编译 - 在线工具 (tool.lu)</a></li><li>使用uncompyle6<ul><li>安装：pip install uncompyle6</li><li>使用：uncompyle6 -o test.py test.pyc</li></ul></li></ul><h2 id="附件为打包的exe文件"><a href="#附件为打包的exe文件" class="headerlink" title="附件为打包的exe文件"></a>附件为打包的exe文件</h2><ul><li>使用Pyinstaller打包<ul><li>安装：<a href="https://sourceforge.net/projects/pyinstallerextractor/">PyInstaller Extractor download | SourceForge.net</a></li><li>使用：python pyinstxtractor.py test.exe</li></ul></li><li>使用py2exe打包<ul><li>安装unpy2exe：pip install unpy2exe</li><li>使用：unpy2exe.py -o test test.exe</li></ul></li></ul><h2 id="python字节码"><a href="#python字节码" class="headerlink" title="python字节码"></a>python字节码</h2><p>根据官方文档慢慢翻译</p><p><a href="https://docs.python.org/zh-cn/3/library/dis.html?highlight=dis">dis — Python 字节码反汇编器 — Python 3.10.1 文档</a>  </p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>花指令及迷宫问题</title>
+      <link href="/2022/03051961.html"/>
+      <url>/2022/03051961.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="花指令"><a href="#花指令" class="headerlink" title="花指令"></a>花指令</h1><h2 id="什么是花指令"><a href="#什么是花指令" class="headerlink" title="什么是花指令"></a>什么是花指令</h2><p>​花指令实质就是一串垃圾指令，它与程序本身的功能无关，并不影响程序本身的逻辑。在软件保护中，花指令被作为一种手段来增加静态分析的难度，花指令也可以被用在病毒或木马上，通过加入花指令改变程序的特征码，躲避杀软的扫描，从而达到免杀的目的，本文将介绍一些常见的花指令的形式，花指令一般被分为两类，被执行的和不会被执行的。</p><p>​花指令是企图隐藏掉不想被逆向工程的代码块 (或其它功能) 的一种方法, 在真实代码中插入一些垃圾代码的同时还保证原有程序的正确执行, 而程序无法很好地反编译, 难以理解程序内容, 达到混淆视听的效果.</p><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>产生花指令的根本原因是x86指令集由不定长指令构成<br>当通过跳转使执行流命中到另一条指令的中间时就会造成静态反汇编的解析错误</p><p>现代反汇编器有两种思路：</p><p>线性扫描<br>从开头到结尾依次读取机器码并进行反汇编<br>递归下降<br>从程序入口向后反汇编，遇到条件跳转则分别从分支的地方继续反汇编，无条件跳转则尝试从目的指令继续反汇编<br>线性扫描显然很容易制造花指令，只要在跳转和目标之间插入长度较长的指令开头（例如E8，后接4个字节）即可使之后的所有指令解析错误。OllyDbg和windbg就是使用的线性扫描法</p><p>而递归下降则可以避开这种简单的花指令，跳过中间的脏字节。但对于一些针对性的花指令–例如jz+jnz+脏字节，则会由于上下文无关的算法而对脏字节进行解析</p><p>除此以外还有把call当jmp使用的手段，由于在编译器中call只会用来作为子程序/函数跳转的指令，因此IDA往往会将call的地址视作一个函数的起始地址，进而破坏整个函数的完整性</p><h2 id="常见花指令"><a href="#常见花指令" class="headerlink" title="常见花指令"></a>常见花指令</h2><ol><li><p>jx+jnx</p></li><li><p>call+pop/add esp/add [esp] + retn</p></li><li><p>stx/jx</p></li><li><p>循环跳转花指令  </p></li></ol><h2 id="如何去除花指令"><a href="#如何去除花指令" class="headerlink" title="如何去除花指令"></a>如何去除花指令</h2><p>   根据程序需要修改或者nop掉，具体问题具体分析  </p><h1 id="迷宫问题"><a href="#迷宫问题" class="headerlink" title="迷宫问题"></a>迷宫问题</h1><p>迷宫问题有以下特点:</p><ul><li>在内存中布置一张 “地图”</li><li>将用户输入限制在少数几个字符范围内.</li><li>一般只有一个迷宫入口和一个迷宫出口</li></ul><p>​布置的地图可以由可显字符 (比如<code>#</code>和<code>*</code>)组合而成 (这非常明显, 查看字符串基本就知道这是个迷宫题了.), 也可以单纯用不可显的十六进制值进行表示. 可以将地图直接组成一条非常长的字符串, 或是一行一行分开布置. 如果是一行一行分开布置的话, 因为迷宫一般都会比较大, 所以用于按行(注意, 布置并非按顺序布置, 每行都对应一个具体的行号, 你需要确定行号才能还原迷宫地图) 布置迷宫的函数会明显重复多次.</p><p>​而被限制的字符通常会是一些方便记忆的组合 (不是也没办法), 比如<code>w/s/a/d</code>, <code>h/j/k/l</code>, <code>l/r/u/d</code>这样的类似组合. 当然各个键具体的操作需要经过分析判断 (像那种只用一条字符串表示迷宫的, 就可以用<code>t</code>键表示向右移动<code>12</code>个字符这样). 对于二维的地图, 一般作者都会设置一个<code>X坐标</code>和一个<code>Y坐标</code>用于保存当前位置. 我们也可以根据这个特点来入手分析.</p><p>​一般情况下, 迷宫是只有 1 个入口和 1 个出口, 像入口在最左上角<code>(0, 0)</code>位置, 而出口在最右下角<code>(max_X, max_Y)</code>处. 但也有可能是出口在迷宫的正中心, 用一个<code>Y</code>字符表示等等. 解答迷宫题的条件也是需要根据具体情况判断的.</p><p>​当然迷宫的走法可能不止 1 条, 也有情况是有多条走法, 但是要求某一个走法比如说代价最小. 那么这就可以变相为一个算法问题.</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>od使用</title>
       <link href="/2022/011152450.html"/>
       <url>/2022/011152450.html</url>
