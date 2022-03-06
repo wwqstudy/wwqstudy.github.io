@@ -453,7 +453,7 @@ rc4加密算法
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.7k
+                    4.8k
                 </div>
                 
 
@@ -572,185 +572,185 @@ W[7] &#x3D; W[3] ⨁ W[6] &#x3D; AC C1 07 BD ⨁ 82 BA 7B 26 &#x3D; 2E 7B 7C 9B
 <li>原理<br>TEA（Tiny Encryption Algorithm）是一种分组加密算法，它的实现非常简单，通常只需要很精短的几行代码。TEA算法使用64位的明文分组和128位的密钥，它使用Feistel分组加密框架，需要进行 64 轮迭代，尽管作者认为 32 轮已经足够了。该算法使用了一个神秘常数δ作为倍数，它来源于黄金比率，以保证每一轮加密都不相同。但δ的精确值似乎并不重要，这里 TEA 把它定义为 δ=「(√5 - 1)231」（也就是程序中的 0×9E3779B9）  </li>
 <li>代码实现  </li>
 </ol>
-<pre><code class="c">    #include &lt;stdio.h&gt;
-    #include &lt;stdlib.h&gt;
-    #include &lt;Windows.h&gt;
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;Windows.h&gt;
 
-    void Encrypt(long* EntryData, long* Key)
+void Encrypt(long* EntryData, long* Key)
+&#123;
+    &#x2F;&#x2F;分别加密数组中的前四个字节与后4个字节,4个字节为一组每次加密两组
+    unsigned long x &#x3D; EntryData[0];
+    unsigned long y &#x3D; EntryData[1];
+
+    unsigned long sum &#x3D; 0;
+    unsigned long delta &#x3D; 0x9E3779B9;
+    &#x2F;&#x2F;总共加密32轮
+    for (int i &#x3D; 0; i &lt; 32; i++)
     &#123;
-        //分别加密数组中的前四个字节与后4个字节,4个字节为一组每次加密两组
-        unsigned long x = EntryData[0];
-        unsigned long y = EntryData[1];
-
-        unsigned long sum = 0;
-        unsigned long delta = 0x9E3779B9;
-        //总共加密32轮
-        for (int i = 0; i &lt; 32; i++)
-        &#123;
-            sum += delta;
-            x += ((y &lt;&lt; 4) + Key[0]) ^ (y + sum) ^ ((y &gt;&gt; 5) + Key[1]);
-            y += ((x &lt;&lt; 4) + Key[2]) ^ (x + sum) ^ ((x &gt;&gt; 5) + Key[3]);
-        &#125;
-        //最后加密的结果重新写入到数组中
-        EntryData[0] = x;
-        EntryData[1] = y;
+        sum +&#x3D; delta;
+        x +&#x3D; ((y &lt;&lt; 4) + Key[0]) ^ (y + sum) ^ ((y &gt;&gt; 5) + Key[1]);
+        y +&#x3D; ((x &lt;&lt; 4) + Key[2]) ^ (x + sum) ^ ((x &gt;&gt; 5) + Key[3]);
     &#125;
+    &#x2F;&#x2F;最后加密的结果重新写入到数组中
+    EntryData[0] &#x3D; x;
+    EntryData[1] &#x3D; y;
+&#125;
 
-    void Decrypt(long* EntryData, long* Key)
+void Decrypt(long* EntryData, long* Key)
+&#123;
+    &#x2F;&#x2F;分别加密数组中的前四个字节与后4个字节,4个字节为一组每次加密两组
+    unsigned long x &#x3D; EntryData[0];
+    unsigned long y &#x3D; EntryData[1];
+
+    unsigned long sum &#x3D; 0;
+    unsigned long delta &#x3D; 0x9E3779B9;
+    sum &#x3D; delta &lt;&lt; 5;   &#x2F;&#x2F;注意这里,sum &#x3D; 32轮之后的黄金分割值. 因为我们要反序解密.
+    &#x2F;&#x2F;总共加密32轮 那么反序也解密32轮
+    for (int i &#x3D; 0; i &lt; 32; i++)
     &#123;
-        //分别加密数组中的前四个字节与后4个字节,4个字节为一组每次加密两组
-        unsigned long x = EntryData[0];
-        unsigned long y = EntryData[1];
 
-        unsigned long sum = 0;
-        unsigned long delta = 0x9E3779B9;
-        sum = delta &lt;&lt; 5;   //注意这里,sum = 32轮之后的黄金分割值. 因为我们要反序解密.
-        //总共加密32轮 那么反序也解密32轮
-        for (int i = 0; i &lt; 32; i++)
-        &#123;
-
-            // 先将y解开 然后参与运算在解x
-            y -= ((x &lt;&lt; 4) + Key[2]) ^ (x + sum) ^ ((x &gt;&gt; 5) + Key[3]);
-            x -= ((y &lt;&lt; 4) + Key[0]) ^ (y + sum) ^ ((y &gt;&gt; 5) + Key[1]);
-            sum -= delta;
-        &#125;
-        //最后加密的结果重新写入到数组中
-        EntryData[0] = x;
-        EntryData[1] = y;
+        &#x2F;&#x2F; 先将y解开 然后参与运算在解x
+        y -&#x3D; ((x &lt;&lt; 4) + Key[2]) ^ (x + sum) ^ ((x &gt;&gt; 5) + Key[3]);
+        x -&#x3D; ((y &lt;&lt; 4) + Key[0]) ^ (y + sum) ^ ((y &gt;&gt; 5) + Key[1]);
+        sum -&#x3D; delta;
     &#125;
+    &#x2F;&#x2F;最后加密的结果重新写入到数组中
+    EntryData[0] &#x3D; x;
+    EntryData[1] &#x3D; y;
+&#125;
 
-    int main()
-    &#123;
+int main()
+&#123;
 
 
 
-        long Data[3] = &#123; 0x44434241,0x48474645,0x0 &#125;;
-        printf(&quot;待加密的数值 = %s\r\n&quot;, (char*)Data);
+    long Data[3] &#x3D; &#123; 0x44434241,0x48474645,0x0 &#125;;
+    printf(&quot;待加密的数值 &#x3D; %s\r\n&quot;, (char*)Data);
 
-        long key[4] = &#123; 0x11223344,0x55667788,0x99AABBCC,0xDDEEFF11 &#125;;
+    long key[4] &#x3D; &#123; 0x11223344,0x55667788,0x99AABBCC,0xDDEEFF11 &#125;;
 
-        //Encrypt每次只是加密4字节数组中的两组(也就是每次加密8个字节) 如果你数据多.可以来个for循环来循环加密,但是Entrypt内部还有32次循环,所以速度上还是会有点影响.
-        Encrypt(Data, key);
-        printf(&quot;加密后的数值 = %s\r\n&quot;, (char*)Data);
-        Decrypt(Data, key);
-        printf(&quot;解密后的数值 = %s\r\n&quot;, (char*)Data);
-        system(&quot;pause&quot;);
-    &#125;  
-</code></pre>
+    &#x2F;&#x2F;Encrypt每次只是加密4字节数组中的两组(也就是每次加密8个字节) 如果你数据多.可以来个for循环来循环加密,但是Entrypt内部还有32次循环,所以速度上还是会有点影响.
+    Encrypt(Data, key);
+    printf(&quot;加密后的数值 &#x3D; %s\r\n&quot;, (char*)Data);
+    Decrypt(Data, key);
+    printf(&quot;解密后的数值 &#x3D; %s\r\n&quot;, (char*)Data);
+    system(&quot;pause&quot;);
+&#125;  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h4 id="XTEA机密算法"><a href="#XTEA机密算法" class="headerlink" title="XTEA机密算法"></a>XTEA机密算法</h4><ol>
 <li>原理<br>与TEA加密算法类似，只是增加了更多的密钥表，移位和异或操作等等。  </li>
 <li>代码实现  </li>
 </ol>
-<pre><code class="c">    #include &lt;stdio.h&gt;  
-    #include &lt;stdint.h&gt;  
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">#include &lt;stdio.h&gt;  
+#include &lt;stdint.h&gt;  
 
-    void encipher(unsigned int num_rounds, uint32_t v[2], uint32_t const key[4]) &#123;  
-        unsigned int i;  
-        uint32_t v0=v[0], v1=v[1], sum=0, delta=0x9E3779B9;  
-        for (i=0; i &lt; num_rounds; i++) &#123;  
-            v0 += (((v1 &lt;&lt; 4) ^ (v1 &gt;&gt; 5)) + v1) ^ (sum + key[sum &amp; 3]);  
-            sum += delta;  
-            v1 += (((v0 &lt;&lt; 4) ^ (v0 &gt;&gt; 5)) + v0) ^ (sum + key[(sum&gt;&gt;11) &amp; 3]);  
-        &#125;  
-        v[0]=v0; v[1]=v1;  
+void encipher(unsigned int num_rounds, uint32_t v[2], uint32_t const key[4]) &#123;  
+    unsigned int i;  
+    uint32_t v0&#x3D;v[0], v1&#x3D;v[1], sum&#x3D;0, delta&#x3D;0x9E3779B9;  
+    for (i&#x3D;0; i &lt; num_rounds; i++) &#123;  
+        v0 +&#x3D; (((v1 &lt;&lt; 4) ^ (v1 &gt;&gt; 5)) + v1) ^ (sum + key[sum &amp; 3]);  
+        sum +&#x3D; delta;  
+        v1 +&#x3D; (((v0 &lt;&lt; 4) ^ (v0 &gt;&gt; 5)) + v0) ^ (sum + key[(sum&gt;&gt;11) &amp; 3]);  
     &#125;  
-    
-    void decipher(unsigned int num_rounds, uint32_t v[2], uint32_t const key[4]) &#123;  
-        unsigned int i;  
-        uint32_t v0=v[0], v1=v[1], delta=0x9E3779B9, sum=delta*num_rounds;  
-        for (i=0; i &lt; num_rounds; i++) &#123;  
-            v1 -= (((v0 &lt;&lt; 4) ^ (v0 &gt;&gt; 5)) + v0) ^ (sum + key[(sum&gt;&gt;11) &amp; 3]);  
-            sum -= delta;  
-            v0 -= (((v1 &lt;&lt; 4) ^ (v1 &gt;&gt; 5)) + v1) ^ (sum + key[sum &amp; 3]);  
-        &#125;  
-        v[0]=v0; v[1]=v1;  
+    v[0]&#x3D;v0; v[1]&#x3D;v1;  
+&#125;  
+
+void decipher(unsigned int num_rounds, uint32_t v[2], uint32_t const key[4]) &#123;  
+    unsigned int i;  
+    uint32_t v0&#x3D;v[0], v1&#x3D;v[1], delta&#x3D;0x9E3779B9, sum&#x3D;delta*num_rounds;  
+    for (i&#x3D;0; i &lt; num_rounds; i++) &#123;  
+        v1 -&#x3D; (((v0 &lt;&lt; 4) ^ (v0 &gt;&gt; 5)) + v0) ^ (sum + key[(sum&gt;&gt;11) &amp; 3]);  
+        sum -&#x3D; delta;  
+        v0 -&#x3D; (((v1 &lt;&lt; 4) ^ (v1 &gt;&gt; 5)) + v1) ^ (sum + key[sum &amp; 3]);  
     &#125;  
-    
-    int main()  
-    &#123;  
-        uint32_t v[2]=&#123;1,2&#125;;  
-        uint32_t const k[4]=&#123;2,2,3,4&#125;;  
-        unsigned int r=32;//num_rounds建议取值为32  
-        // v为要加密的数据是两个32位无符号整数  
-        // k为加密解密密钥，为4个32位无符号整数，即密钥长度为128位  
-        printf(&quot;加密前原始数据：%u %u\n&quot;,v[0],v[1]);  
-        encipher(r, v, k);  
-        printf(&quot;加密后的数据：%u %u\n&quot;,v[0],v[1]);  
-        decipher(r, v, k);  
-        printf(&quot;解密后的数据：%u %u\n&quot;,v[0],v[1]);  
-        return 0;  
-    &#125;  
-</code></pre>
+    v[0]&#x3D;v0; v[1]&#x3D;v1;  
+&#125;  
+
+int main()  
+&#123;  
+    uint32_t v[2]&#x3D;&#123;1,2&#125;;  
+    uint32_t const k[4]&#x3D;&#123;2,2,3,4&#125;;  
+    unsigned int r&#x3D;32;&#x2F;&#x2F;num_rounds建议取值为32  
+    &#x2F;&#x2F; v为要加密的数据是两个32位无符号整数  
+    &#x2F;&#x2F; k为加密解密密钥，为4个32位无符号整数，即密钥长度为128位  
+    printf(&quot;加密前原始数据：%u %u\n&quot;,v[0],v[1]);  
+    encipher(r, v, k);  
+    printf(&quot;加密后的数据：%u %u\n&quot;,v[0],v[1]);  
+    decipher(r, v, k);  
+    printf(&quot;解密后的数据：%u %u\n&quot;,v[0],v[1]);  
+    return 0;  
+&#125;  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h4 id="XXTEA加密算法"><a href="#XXTEA加密算法" class="headerlink" title="XXTEA加密算法"></a>XXTEA加密算法</h4><ol>
 <li>原理<br><img src="/2021/120547052/13.png" alt=" ">  </li>
 <li>代码实现  </li>
 </ol>
-<pre><code class="c">    #include &lt;stdio.h&gt;  
-    #include &lt;stdint.h&gt;  
-    #define DELTA 0x9e3779b9  
-    #define MX (((z&gt;&gt;5^y&lt;&lt;2) + (y&gt;&gt;3^z&lt;&lt;4)) ^ ((sum^y) + (key[(p&amp;3)^e] ^ z)))  
-    
-    void btea(uint32_t *v, int n, uint32_t const key[4])  
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">#include &lt;stdio.h&gt;  
+#include &lt;stdint.h&gt;  
+#define DELTA 0x9e3779b9  
+#define MX (((z&gt;&gt;5^y&lt;&lt;2) + (y&gt;&gt;3^z&lt;&lt;4)) ^ ((sum^y) + (key[(p&amp;3)^e] ^ z)))  
+
+void btea(uint32_t *v, int n, uint32_t const key[4])  
+&#123;  
+    uint32_t y, z, sum;  
+    unsigned p, rounds, e;  
+    if (n &gt; 1)            &#x2F;* Coding Part *&#x2F;  
     &#123;  
-        uint32_t y, z, sum;  
-        unsigned p, rounds, e;  
-        if (n &gt; 1)            /* Coding Part */  
+        rounds &#x3D; 6 + 52&#x2F;n;  
+        sum &#x3D; 0;  
+        z &#x3D; v[n-1];  
+        do  
         &#123;  
-            rounds = 6 + 52/n;  
-            sum = 0;  
-            z = v[n-1];  
-            do  
+            sum +&#x3D; DELTA;  
+            e &#x3D; (sum &gt;&gt; 2) &amp; 3;  
+            for (p&#x3D;0; p&lt;n-1; p++)  
             &#123;  
-                sum += DELTA;  
-                e = (sum &gt;&gt; 2) &amp; 3;  
-                for (p=0; p&lt;n-1; p++)  
-                &#123;  
-                    y = v[p+1];  
-                    z = v[p] += MX;  
-                &#125;  
-                y = v[0];  
-                z = v[n-1] += MX;  
+                y &#x3D; v[p+1];  
+                z &#x3D; v[p] +&#x3D; MX;  
             &#125;  
-            while (--rounds);  
+            y &#x3D; v[0];  
+            z &#x3D; v[n-1] +&#x3D; MX;  
         &#125;  
-        else if (n &lt; -1)      /* Decoding Part */  
-        &#123;  
-            n = -n;  
-            rounds = 6 + 52/n;  
-            sum = rounds*DELTA;  
-            y = v[0];  
-            do  
-            &#123;  
-                e = (sum &gt;&gt; 2) &amp; 3;  
-                for (p=n-1; p&gt;0; p--)  
-                &#123;  
-                    z = v[p-1];  
-                    y = v[p] -= MX;  
-                &#125;  
-                z = v[n-1];  
-                y = v[0] -= MX;  
-                sum -= DELTA;  
-            &#125;  
-            while (--rounds);  
-        &#125;  
+        while (--rounds);  
     &#125;  
-    
-    
-    int main()  
+    else if (n &lt; -1)      &#x2F;* Decoding Part *&#x2F;  
     &#123;  
-        uint32_t v[2]= &#123;1,2&#125;;  
-        uint32_t const k[4]= &#123;2,2,3,4&#125;;  
-        int n= 2; //n的绝对值表示v的长度，取正表示加密，取负表示解密  
-        // v为要加密的数据是两个32位无符号整数  
-        // k为加密解密密钥，为4个32位无符号整数，即密钥长度为128位  
-        printf(&quot;加密前原始数据：%u %u\n&quot;,v[0],v[1]);  
-        btea(v, n, k);  
-        printf(&quot;加密后的数据：%u %u\n&quot;,v[0],v[1]);  
-        btea(v, -n, k);  
-        printf(&quot;解密后的数据：%u %u\n&quot;,v[0],v[1]);  
-        return 0;  
+        n &#x3D; -n;  
+        rounds &#x3D; 6 + 52&#x2F;n;  
+        sum &#x3D; rounds*DELTA;  
+        y &#x3D; v[0];  
+        do  
+        &#123;  
+            e &#x3D; (sum &gt;&gt; 2) &amp; 3;  
+            for (p&#x3D;n-1; p&gt;0; p--)  
+            &#123;  
+                z &#x3D; v[p-1];  
+                y &#x3D; v[p] -&#x3D; MX;  
+            &#125;  
+            z &#x3D; v[n-1];  
+            y &#x3D; v[0] -&#x3D; MX;  
+            sum -&#x3D; DELTA;  
+        &#125;  
+        while (--rounds);  
     &#125;  
-</code></pre>
+&#125;  
+
+
+int main()  
+&#123;  
+    uint32_t v[2]&#x3D; &#123;1,2&#125;;  
+    uint32_t const k[4]&#x3D; &#123;2,2,3,4&#125;;  
+    int n&#x3D; 2; &#x2F;&#x2F;n的绝对值表示v的长度，取正表示加密，取负表示解密  
+    &#x2F;&#x2F; v为要加密的数据是两个32位无符号整数  
+    &#x2F;&#x2F; k为加密解密密钥，为4个32位无符号整数，即密钥长度为128位  
+    printf(&quot;加密前原始数据：%u %u\n&quot;,v[0],v[1]);  
+    btea(v, n, k);  
+    printf(&quot;加密后的数据：%u %u\n&quot;,v[0],v[1]);  
+    btea(v, -n, k);  
+    printf(&quot;解密后的数据：%u %u\n&quot;,v[0],v[1]);  
+    return 0;  
+&#125;  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="其他密码学"><a href="#其他密码学" class="headerlink" title="其他密码学"></a>其他密码学</h2><h3 id="base加密"><a href="#base加密" class="headerlink" title="base加密"></a>base加密</h3><ol>
 <li><p>原理<br>a. 将三个八位的字节转化为四个六位的字节，不足补零。它是用64个可打印字符表示二进制所有数据方法。由于2的6次方等于64，所以可以用每6个位元为一个单元，对应某个可打印字符。我们知道三个字节有24个位元，就可以刚好对应于4个Base64单元，即3个字节需要用4个Base64的可打印字符来表示。在Base64中的可打印字符包括字母A-Z、a-z、数字0-9 ，这样共有62个字符，此外两个可打印符号在不同的系统中一般有所不同。但是，我们经常所说的Base64另外2个字符是：“+/”。这64个字符，所对应的索引表如下(索引号不是对应的ascii值)：<br><img src="/2021/120547052/11.png" alt=" "><br>b. 转换的时候，将三个byte的数据，先后放入一个24bit的缓冲区中，先来的byte占高位。数据不足3byte的话，于缓冲区中剩下的bit用0补足。然后，每次取出6个bit，按照其值选择<code>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/</code>中的字符作为编码后的输出。不断进行，直到全部输入数据转换完成。所以加密后的数据量是原来的4/3。<br>c. 但转换的字节数不一定就是24的整数倍，会出现有多余不足六位的情况，在base64中处理的方法是加零凑够六位，但是这样一来在解码的时候就会出现多余的位，这该怎么办呢？ 不用担心，base64想到了一个很好的解决办法。<br>​d. 这个办法就是在base64凑零的同时，还要满足凑出来的位数是8的倍数，不然就加一个或者两个特殊的六位=符号。为什么是一个或者两个=符号呢？因为多个8位转为6位 只会出现剩余2位、4位的情况，剩余2位时只需要一个表示六位的=便可变为8的整数；而剩余4位 需要两个表示6位的=便可以变为8的整数。然后在解密的时候不解析=即可。<br>​之所以位的总数需要凑成8的倍数，是因为base64主要用于加密后的数据传送，而在传送机制中都认为传送的最小单位是按照字节算的，所以不能出现不是位总数不是8的倍数的情况，在接收到数据后，按顺序将6位的base64直接按照顺序解密成字节就完成解密了。<br><img src="/2021/120547052/12.png" alt=" ">  </p>
 </li>
