@@ -455,14 +455,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    795
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    4 分
                 </div>
                 
 
@@ -485,12 +485,12 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="逆向题"><a href="#逆向题" class="headerlink" title="逆向题"></a>逆向题</h1><h2 id="招新时期的题-haha-exe"><a href="#招新时期的题-haha-exe" class="headerlink" title="招新时期的题:haha.exe"></a>招新时期的题:haha.exe</h2><ol>
+                <h2 id="逆向题"><a href="#逆向题" class="headerlink" title="逆向题"></a>逆向题</h2><h3 id="招新时期的题-haha-exe"><a href="#招新时期的题-haha-exe" class="headerlink" title="招新时期的题:haha.exe"></a>招新时期的题:haha.exe</h3><ol>
 <li>首先，这道题放入Exeinfo PE中查看这道题的简单情况如下:  </li>
 </ol>
 <p><img src="/2021/120454815/1.png" alt=" "></p>
 <p>在这几个界面，首先 1 的位置显示的是文件的名称；2 的位置显示的是文件信息，如果加壳会显示是什么壳；3 的位置显示的文件是32位还是64位，便于分析；4 的位置显示的是编写这个文件使用的哪种语言；5 中最开始显示是否带壳；之后提示打开文件可以运用的文件<br>2. 其次，haha.exe这个文件是一个可运行的程序，但是当你打开输入信息的时候会自动闪退，放入32位ida的时候可以看到该main()函数的地址一致会变化，这也是程序打开闪退的原因，针对这个问题，可以使用 studyPE 这个软件来固定基址，从而解决闪退的问题。<br>3. 再一，文件打开之后，F5显示伪代码(语法神似c语言)，这时候根据之前文件的正常运行，会将含有flag信息的代码信息直接跳过，例如:<br><img src="/2021/120454815/2.png" alt=" ">类似上图一样，涵盖flag的信息全没有<br>4. 再二，返回初始界面，根据流程图进行分析<br><img src="/2021/120454815/3.png" alt=" "><br>分析可以知道在004012F4位置原来有一个跳转，上面那个语法会满足跳转条件，从而让我们想要的信息被跳过，所以这时候我们需要将它nop掉来阻止跳转，结果如图<br>5. 再三，在进行上述操作之后，可以再次找到main(),F5显示伪代码，这个时候就可以分析了，看下图<br><img src="/2021/120454815/4.png" alt=" "><br>在这个图里分析可以看到，输入 1 会得到一个flag.doc文件，2走迷宫，3退出，同时分析知flag.doc打开之后要密码，即我们要走迷宫，然后分析到sub_401120()这里，点开如下<br><img src="/2021/120454815/6.png" alt=" "><br>在这里可以看到用wasd走迷宫，同时分析知迷宫格式在V5=dword_403300[v4 + v2]这里，之后走迷宫即可，之后得到的字符串需要在LABEL_15地址进行异或操作，得到真正的密码字符串<br>6. 最后，如下图<br><img src="/2021/120454815/7.png" alt=" "><br>最后flag改为henu，同时注意最好以命令行的形式打开.exe文件，不然还是会出现闪退的问题(这个应该不是基址的问题了)<br>7. 总结：<br>关键点:固定基址，除掉跳转(nop),程序打开方式  </p>
-<h2 id="BUUCTF-reverse3"><a href="#BUUCTF-reverse3" class="headerlink" title="BUUCTF-reverse3"></a>BUUCTF-reverse3</h2><ol>
+<h3 id="BUUCTF-reverse3-含base64加密"><a href="#BUUCTF-reverse3-含base64加密" class="headerlink" title="BUUCTF-reverse3(含base64加密)"></a>BUUCTF-reverse3(含base64加密)</h3><ol>
 <li>用exeinfope.exe程序查看题的情况<br><img src="/2021/120454815/8.png" alt=" ">  </li>
 <li>用32为ida打开文件，之后再边框下拉到最下面找到main函数入口，之后F5打开反汇编窗口。<br><img src="/2021/120454815/9.png" alt=" "><br><img src="/2021/120454815/10.png" alt=" ">  </li>
 <li>之后可以看到如上诉照片的情况，依次分析  <ul>
@@ -513,6 +513,34 @@ for i in range(0,len(s)):
 
 print(base64.b64decode(x))  
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="buuctf-SimpleRev-字符串的组合，输入判断"><a href="#buuctf-SimpleRev-字符串的组合，输入判断" class="headerlink" title="buuctf SimpleRev(字符串的组合，输入判断)"></a>buuctf SimpleRev(字符串的组合，输入判断)</h3><ol>
+<li>用exeinfope.exe程序查看题的情况<br><img src="/2021/120454815/14.png" alt=" ">  </li>
+<li>之后用64位IDA打开文件，找到对应的main函数之后F5打开反汇编窗口<br><img src="/2021/120454815/15.png" alt=" "><br>可以看到一个关键(Decry()),之后双击点开<br><img src="/2021/120454815/16.png" alt=" "><br><img src="/2021/120454815/17.png" alt=" ">  </li>
+<li>1处：我们首先将*src,v9的16进制数据转换成字符串形式<br>2处：进行了三次组合:text = key3+v9,key = key +key1,key=key+src,三个依次进行，同时key1和key3可以直接双击点开查看<br>3处：进行变换，将key字符串中的大写字母变换成小写字母<br>4处：输入v1，同时知道输入字符之间有空格<br>5处：算法进行求str2<br>6处：test与str2进行比较，相同即满足条件  </li>
+<li>脚本  </li>
+</ol>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">
+src &#x3D; &#39;NDCLS&#39;
+v9 &#x3D; &#39;hadow&#39;
+key1 &#x3D; &#39;ADSFK&#39;
+key3 &#x3D; &#39;kills&#39;
+
+text1 &#x3D; key3 + v9       # 这里的text1相当于 text &#x3D; key3 + v9
+text2 &#x3D; key1 + src      # 这里的text2相当于 key &#x3D; key1 + src
+text2 &#x3D; text2.lower()   # 需要把大学字母变为小写字母
+
+flag &#x3D; &quot;&quot;
+for i in range(0,len(text1)):
+    for x in range(0,128):      # 这里用暴力求解
+        if chr(x).isalpha():    # 这里要加上判断x是否是字符串
+            temp &#x3D; (x - 39 - ord(text2[i]) + 97) % 26 + 97
+            if text1[i] &#x3D;&#x3D; chr(temp):   
+                flag &#x3D; flag + chr(x)
+                break
+
+print(&quot;flag&#123;&quot;+flag+&quot;&#125;&quot;)  
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>

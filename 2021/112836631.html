@@ -5,10 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="逆向中的一些基础, wwqstudy">
-    <meta name="description" content="#函数  
-
-strcmp()函数  
-strcmp()函数采用两个char数组或字符串参数格式：int strcmp (const char* str1, const char* str2)：第一个字符串或char数组，将与第二个字符串或">
+    <meta name="description" content="函数strcmp()函数
+strcmp()函数采用两个char数组或字符串参数格式：int strcmp (const char* str1, const char* str2)：第一个字符串或char数组，将与第二个字符串或char数组进">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -454,7 +452,7 @@ strcmp()函数采用两个char数组或字符串参数格式：int strcmp (const
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    294
+                    377
                 </div>
                 
 
@@ -484,26 +482,24 @@ strcmp()函数采用两个char数组或字符串参数格式：int strcmp (const
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>#函数  </p>
-<ol>
-<li>strcmp()函数  <ul>
-<li>strcmp()函数采用两个char数组或字符串参数<br>格式：int strcmp (const char* str1, const char* str2)：第一个字符串或char数组，将与第二个字符串或char数组进行比较。 const主要用于防止更改给定的char数组指针。</li>
-<li>返回值：str1&gt;str2–&gt;正整数;str1 &lt; str2 –&gt;负整数;str1 = str2 –&gt;0 </li>
+                <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="strcmp-函数"><a href="#strcmp-函数" class="headerlink" title="strcmp()函数"></a>strcmp()函数</h3><ol>
+<li>strcmp()函数采用两个char数组或字符串参数<br>格式：int strcmp (const char* str1, const char* str2)：第一个字符串或char数组，将与第二个字符串或char数组进行比较。 const主要用于防止更改给定的char数组指针。<br>返回值：str1&gt;str2–&gt;正整数;str1 &lt; str2 –&gt;负整数;str1 = str2 –&gt;0  </li>
 <li>例如  </li>
-</ul>
-</li>
 <li>char str1[] = “abcd”, str2[] = “aBcd”：第一个字符串较大，并返回一个正整数，该整数是字符的值;第二个字符串较大，并返回一个负整数，该整数是字符的值；相同则会返回0。  </li>
-<li>!strcmp(s, enflag)：比较s和enflag的字符串，相同就符合条件。（！后面跟着的数，不论正负，只要！过后就是0，而如果！后面的值是0的话，那么！0就是1了。）</li>
-<li>chr()函数  <ul>
+<li>!strcmp(s, enflag)：比较s和enflag的字符串，相同就符合条件。（！后面跟着的数，不论正负，只要！过后就是0，而如果！后面的值是0的话，那么！0就是1了。）  </li>
+</ol>
+<h3 id="chr-函数"><a href="#chr-函数" class="headerlink" title="chr()函数"></a>chr()函数</h3><ol>
 <li>chr()函数从指定ASCII码返回字符  </li>
 <li>ASCII值可以为十进制值,八进制值(前置加0),十六进制值(前置加0x)。  </li>
-</ul>
-</li>
-<li>strlen函数  <ul>
+</ol>
+<h3 id="strlen函数"><a href="#strlen函数" class="headerlink" title="strlen函数"></a>strlen函数</h3><ol>
 <li>格式：size_t strlen( const char *string )  </li>
-<li>返回值是类型是size_t类型(长度)，strlen是不会计算\0的长度的，strlen函数遇到\0就会停止下来。</li>
-</ul>
-</li>
+<li>返回值是类型是size_t类型(长度)，strlen是不会计算\0的长度的，strlen函数遇到\0就会停止下来。  </li>
+</ol>
+<h3 id="isalpha-函数"><a href="#isalpha-函数" class="headerlink" title="isalpha()函数"></a>isalpha()函数</h3><ol>
+<li>isalpha(ch):判断 字符ch是否为英文字母，当ch为英文字母a-z或A-Z时，在标准c中相当于使用“ isupper(ch)||islower(ch)”做测试，返回非零值(不一定是1)，否则返回零  </li>
+<li>使用:chr(x).isalpha():python中用于判断  </li>
+<li>islower（测试 字符是否为小写字母）  </li>
 </ol>
 
                 
