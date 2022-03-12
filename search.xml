@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>LLVM-Clang编译器安装和使用</title>
+      <link href="/2022/031262045.html"/>
+      <url>/2022/031262045.html</url>
+      
+        <content type="html"><![CDATA[<article class="post-content" id="article-container"><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><blockquote><ol><li>apt-get install clang</li></ol></blockquote><blockquote><ol start="2"><li>apt-get install llvm</li></ol></blockquote><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="LLVM-IR文件"><a href="#LLVM-IR文件" class="headerlink" title="LLVM IR文件"></a>LLVM IR文件</h2><ol><li><p>使用clang将C源码转换为LLVM IR(文本形式)：</p><blockquote><p>clang -emit-llvm -S test.c -o test.ll / clang -O3 -emit-llvm test.c -S -o test.ll</p></blockquote></li><li><p>使用clang将C源码转换为LLVM IR(二进制形式)：</p><blockquote><p>clang -emit-llvm test.c -c -o test.bc / clang -O3 -emit-llvm test.c -c -o test.bc</p></blockquote></li><li><p>LLVM IR文件格式转换(.bc和.ll文件的转换)</p><blockquote><p>llvm-as test.ll -o test.bc     //llvm .ll -&gt; .bc assembler<br>llvm-dis test.bc -o test.ll  //llvm .bc -&gt; .ll disassembler</p></blockquote></li><li><p>将LLVM字节码转换为机器汇编码</p><blockquote><p>llc test.bc -o test.s</p></blockquote></li><li><p>由LLVM IR生成对应的可执行文件</p><blockquote><p>llc -filetype=obj test.ll -o test.o<br>gcc test.o<br>或者<br>llc -filetype=obj test.bc -o test.o<br>gcc test.o</p></blockquote></li></ol><p>注：生成可执行文件时，若出现如下或类似的报错</p><figure class="highlight bash"><div class="highlight-tools "><i class="fas fa-angle-down expand "></i><div class="code-lang">bash</div><div class="copy-notice"></div><i class="fas fa-paste copy-button"></i></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ld: test.o: relocation R_X86_64_32 against symbol `what<span class="string">' can not be used when making a PIE object; recompile with -fPIE</span></span><br><span class="line"><span class="string">collect2: error: ld returned 1 exit status</span></span><br></pre></td></tr></tbody></table></figure><p>使用</p><blockquote><p>clang++  test.o -o test</p></blockquote></article>  转载来源：<http: 2021 example.com 05 llvm-clang%e7%bc%96%e8%af%91%e5%99%a8%e5%ae%89%e8%a3%85%e5%92%8c%e4%bd%bf%e7%94%a8></http:>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>python逆向</title>
       <link href="/2022/030533794.html"/>
       <url>/2022/030533794.html</url>
