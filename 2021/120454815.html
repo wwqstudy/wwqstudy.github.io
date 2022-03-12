@@ -455,14 +455,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    7 分
                 </div>
                 
 
@@ -541,6 +541,45 @@ for i in range(0,len(text1)):
 
 print(&quot;flag&#123;&quot;+flag+&quot;&#125;&quot;)  
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="BUUCTF-ACTF新生赛2020-easyre"><a href="#BUUCTF-ACTF新生赛2020-easyre" class="headerlink" title="BUUCTF [ACTF新生赛2020]easyre"></a>BUUCTF [ACTF新生赛2020]easyre</h3><ol>
+<li>先查看文件信息，发现含有upx壳，之后用解壳工具upx或者od手动脱壳，之后拖入32位ida，找到main函数–&gt;F5<br><img src="/2021/120454815/18.png" alt=" "></li>
+<li>1处：将字符串*F’&quot;N,&quot;(I?+@复制给V4<br>2处：R字符串转换可以看出与flag有关，且结合第三处可以知道，flag有12位<br>3处：进行查询变换，点开3处的_data_start__(),可以看到以下情况<br><img src="/2021/120454815/19.png" alt=" "><br>再结合三处情况可以知道，<em>data_start</em>_()里的字符串[i]-1，如果与v4[i]相等，则该字符串[i]即为flag里的一个字符串  </li>
+<li>脚本  </li>
+</ol>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">flag1 &#x3D; &quot;*F&#39;\&quot;N,\&quot;(I?+@&quot;
+
+s &#x3D; list(flag1)
+flag&#x3D;&quot;&quot;
+string &#x3D; chr(0x7E)+&quot;&#125;|&#123;zyxwvutsrqponmlkjihgfedcba&#96;_^]\[ZYXWVUTSRQPONMLKJIHGFEDCBA@?&gt;&#x3D;&lt;;:9876543210&#x2F;.-,+*)(&quot; + chr(0x27) + &#39;&amp;%$# !&quot;&#39;
+for i in flag1:
+    for j in range(1,len(string)):
+        if ord(i) &#x3D;&#x3D; ord(string[j]):
+            flag+&#x3D;chr(j+1)
+print (&quot;flag&#123;&quot;+flag+&quot;&#125;&quot;)  
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="BUUCTF-2019红帽杯-easyRE"><a href="#BUUCTF-2019红帽杯-easyRE" class="headerlink" title="BUUCTF [2019红帽杯]easyRE"></a>BUUCTF [2019红帽杯]easyRE</h3><ol>
+<li>查看文件情况，无壳，64位，之后ida打开，发现没有main函数，之后shirt+F12，看到字符串You found me!!!双击，之后根据旁边找到它的地址在他地址进行反汇编<br><img src="/2021/120454815/20.png" alt=" "><br><img src="/2021/120454815/21.png" alt=" ">  </li>
+<li>1、2、3处：将字符串分别复制给v12、v13、v14、同时v12[12] = 127 v13[3] = 127<br>4处：我们可以知道所求的字符串的长度是36<br>5处：进行了一个36位长度的异或操作，同时猜想可以知道此时的v12就是上述v12、v13、v14<br>之后疑惑可以指的，含有flag字符串，但不是我们想要的<br><img src="/2021/120454815/22.png" alt=" ">  </li>
+<li>之后我们向下分析，可以看到这个图片里的东西，之后点开可以发现一串字符串，且编码形式是base64，我们将其解密到最后会发现最后给的是一个地址，不是flag<br><img src="/2021/120454815/23.png" alt=" ">  </li>
+<li>继续向下分析，可以看到这里调用了off_6CC090，点开可以看到下面情况<br><img src="/2021/120454815/24.png" alt=" ">  </li>
+<li>6处：我们之后会用到<br>7处：我们点击，之后跳到对应位置F5<br><img src="/2021/120454815/25.png" alt=" ">  </li>
+<li>这才是flag的藏身之地，由上面那个箭头，我们可以猜出v1==v4==flag<br>之后我们用下面那个箭头所指结合6处和v4求出flag  </li>
+<li>脚本  </li>
+</ol>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">v5 &#x3D; &#39;&#39;
+enc1 &#x3D; &#39;flag&#39;
+v2 &#x3D; &#39;&#39;
+enc &#x3D; [0x40,0x35,0x20,0x56,0x5D,0x18,0x22,0x45,0x17,0x2F,0x24,0x6E,0x62,0x3C,0x27,0x54,0x48,0x6C,0x24,0x6E,0x72,0x3C,0x32,0x45,0x5B]
+for i in range(4):
+    v5 +&#x3D; chr(enc[i] ^ ord(enc1[i]))
+print (v5)
+
+for i in range(len(enc)):
+    v2 +&#x3D; chr(enc[i] ^ ord(v5[i%4]))
+print(v2)  
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
