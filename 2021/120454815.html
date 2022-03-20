@@ -455,14 +455,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.8k
+                    3.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    14 分
                 </div>
                 
 
@@ -650,6 +650,33 @@ int main()
     return 0;
 &#125;  
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="BUUCTF-CrackRTF-拓宽思路"><a href="#BUUCTF-CrackRTF-拓宽思路" class="headerlink" title="BUUCTF CrackRTF(拓宽思路)"></a>BUUCTF CrackRTF(拓宽思路)</h3><ol>
+<li>查看文件情况，无壳，32位，之后ida打开，发现main函数，在main函数位置进行反汇编<br><img src="/2021/120454815/36.png" alt=" "><br><img src="/2021/120454815/37.png" alt=" ">  </li>
+<li>1处：先是对Destination、String1进行初始化，之后对Destination进行赋值，然后进行判断其长度是否等于6，等于6就符合要求<br>2处：显示将字符串Destination转换成（int）整形并赋值给v7，之后判断，如果v7&lt;100000，就不符合条件，所以我们知道v7&gt;100000<br>3处：将@DBApp子符串附加给Destination<br>4处：进行一个操作，具体情况如下图<br><img src="/2021/120454815/38.png" alt=" "><br>在这里我们可以看出该加密算法是哈希算法加密，并且由标识符0x8004u这里分析处使用的是SHA-1加密形式<br><a target="_blank" rel="noopener" href="https://my.oschina.net/kivensoft/blog/549369">了解该形式加密解密算法请点击此处</a><br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/seccrypto/alg-id">标识符的官方文档请点击此处</a><br>5处：可以知道String1 == 6E32D0943418C2C33385BC35A1470250DD8923A9  </li>
+<li>由五处我们就可以先接触flag的前六个字符串了  </li>
+</ol>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">import hashlib
+string&#x3D;&#39;@DBApp&#39;
+for i in range(100000,999999):
+    flag&#x3D;str(i)+string
+    x &#x3D; hashlib.sha1(flag.encode(&quot;utf8&quot;))
+    y &#x3D; x.hexdigest()
+    if &quot;6e32d0943418c2c33385bc35a1470250dd8923a9&quot; &#x3D;&#x3D; y:
+            print(flag)
+            break  
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>因为长度有限直接暴力破解(看到别人的不会暴力破解，学习，学习)<br>04. 6处：我们同样要输入长度是6的串<br>7处：同样进行4处的操作<br>8处：可以知道这次String1 == 27019e688a4e62a649fd99cadaafdb4e<br>但是无法爆破了，不知到怎么办，不会，向下看<br>05. 9处也是一个函数，双击进去看看<br><img src="/2021/120454815/39.png" alt=" "><br>06. 对于上面这张图我们从上往下看<br>首先是一个FindResourceA()函数，这个我们查过之后可以知道是找句柄的，并且是从AAA资源中找句柄的<br>再者这个是如果知道到了所要的资源就将其大小(长度)记录下来<br>然后这个是如果知道到了所要的资源就将其值赋给lpBuffer<br>最后一个函数操作并生成一个.rtf文件，函数操作如下<br><img src="/2021/120454815/40.png" alt=" "><br>同时分析知在该函数中其实就是资源的每一位和密码的每一位循环异或<br>异或结束之后，生成一个rtf文件<br>同时知道<br>我们的密码一共是6+12=18位<br>我们现在想要的是前六位的密码，循环异或的话，那么也就是说，资源的前六位与密码的前六位异或的结果就是rtf文件的前六位<br>07. 我们找来一个rtf文件，看看它的标志位<br><img src="/2021/120454815/41.png" alt=" "><br>前六位是{\rtfl<br>08. AAA资源的前六位是<br><img src="/2021/120454815/42.png" alt=" "><br>09. 脚本  </p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">rtf &#x3D; &#39;&#123;\\rtf1&#39; \\需要注意，\r需要转义，变成\\r
+A &#x3D; [0x05, 0x7D, 0x41, 0x15, 0x26, 0x01]
+password&#x3D;&#39;&#39;
+for i in range(len(rtf)):
+    x &#x3D; ord(rtf[i]) ^ A[i]
+    password+&#x3D;chr(x)
+print(password)  
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>之后我们将程序运行将密码输入即可，两端密码输入完后，就会在程序所在文件夹中生成一个带有flag的rtf文件，打开就能得到flag  </p>
 
                 
             </div>

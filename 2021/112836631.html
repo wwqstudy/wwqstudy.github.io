@@ -452,14 +452,14 @@ strcmp()函数采用两个char数组或字符串参数格式：int strcmp (const
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    764
+                    996
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
 
@@ -501,6 +501,18 @@ strcmp()函数采用两个char数组或字符串参数格式：int strcmp (const
 <li>使用:chr(x).isalpha():python中用于判断  </li>
 <li>islower（测试 字符是否为小写字母）  </li>
 </ol>
+<h3 id="strcat-函数"><a href="#strcat-函数" class="headerlink" title="strcat()函数"></a>strcat()函数</h3><p>strcat(a,”b”):将b处所代表的字符串附加到a里面  </p>
+<h3 id="atoi-函数"><a href="#atoi-函数" class="headerlink" title="atoi()函数"></a>atoi()函数</h3><p>C 库函数 int atoi(const char *str) 把参数 str 所指向的字符串转换为一个整数（类型为 int 型）  </p>
+<h3 id="FindResource-函数"><a href="#FindResource-函数" class="headerlink" title="FindResource()函数"></a>FindResource()函数</h3><ol>
+<li>格式<br>HRSRC FindResource（HMODULE hModule，LPCTSTR lpName，LPCTSTR lpType）  </li>
+<li>参数说明  </li>
+</ol>
+<ul>
+<li>hModule：处理包含资源的可执行文件的模块。NULL值则指定模块句柄指向操作系统通常情况下创建最近过程的相关位图文件。  </li>
+<li>lpName：指定资源名称。  </li>
+<li>lpType：指定资源类型。作为标准资源类型。这个参数的含义同EnumResLangProclpType。  </li>
+<li>返回值：如果函数运行成功，那么返回值为指向被指定资源信息块的句柄。为了获得这些资源，将这个句柄传递给LoadResource函数。如果函数运行失败，则返回值为NULL。若想获得更多错误信息，请调用GetLastError函数。  </li>
+</ul>
 <h2 id="IDA反汇编失败–call-analysis-failed"><a href="#IDA反汇编失败–call-analysis-failed" class="headerlink" title="IDA反汇编失败–call analysis failed"></a>IDA反汇编失败–call analysis failed</h2><h3 id="原因-可能是"><a href="#原因-可能是" class="headerlink" title="原因(可能是)"></a>原因(可能是)</h3><ul>
 <li>IDA无法识别出正确的调用约定(calling convention)  </li>
 <li>IDA无法识别出正确的参数个数  </li>
