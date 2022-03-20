@@ -452,14 +452,14 @@ strcmp()函数采用两个char数组或字符串参数格式：int strcmp (const
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    377
+                    764
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -500,6 +500,21 @@ strcmp()函数采用两个char数组或字符串参数格式：int strcmp (const
 <li>isalpha(ch):判断 字符ch是否为英文字母，当ch为英文字母a-z或A-Z时，在标准c中相当于使用“ isupper(ch)||islower(ch)”做测试，返回非零值(不一定是1)，否则返回零  </li>
 <li>使用:chr(x).isalpha():python中用于判断  </li>
 <li>islower（测试 字符是否为小写字母）  </li>
+</ol>
+<h2 id="IDA反汇编失败–call-analysis-failed"><a href="#IDA反汇编失败–call-analysis-failed" class="headerlink" title="IDA反汇编失败–call analysis failed"></a>IDA反汇编失败–call analysis failed</h2><h3 id="原因-可能是"><a href="#原因-可能是" class="headerlink" title="原因(可能是)"></a>原因(可能是)</h3><ul>
+<li>IDA无法识别出正确的调用约定(calling convention)  </li>
+<li>IDA无法识别出正确的参数个数  </li>
+</ul>
+<h3 id="IDA无法识别出正确的调用约定-calling-convention"><a href="#IDA无法识别出正确的调用约定-calling-convention" class="headerlink" title="IDA无法识别出正确的调用约定(calling convention)"></a>IDA无法识别出正确的调用约定(calling convention)</h3><p><img src="/2021/112836631/1.png" alt=" "><br>这个时候我们只要去出错位置分析就好了，看看是什么问题导致的<br><img src="/2021/112836631/2.png" alt=" "><br>在该位置可以判断参数参数正确，那就是ida无法识别正确的调用约定，这时候我们只要双击进入该函数，进行一下反汇编，之后在对main进行反汇编就可以了  </p>
+<h3 id="IDA无法识别出正确的参数个数"><a href="#IDA无法识别出正确的参数个数" class="headerlink" title="IDA无法识别出正确的参数个数"></a>IDA无法识别出正确的参数个数</h3><p><img src="/2021/112836631/3.png" alt=" "><br>这个时候我们只要去出错位置分析就好了，看看是什么问题导致的<br><img src="/2021/112836631/4.png" alt=" "><br><img src="/2021/112836631/5.png" alt=" "><br>经分析可以知道该函数在该位置仅仅调用了两个函数，虽然0x50bf81这个地址ida反汇编中有9个，但是明显不符合要求<br><img src="/2021/112836631/6.png" alt=" "><br>这时候我们只要对该函数按’y’键，将其参数修改为两个，即可正常反编译  </p>
+<h2 id="宏定义"><a href="#宏定义" class="headerlink" title="宏定义"></a>宏定义</h2><h3 id="LOWORD"><a href="#LOWORD" class="headerlink" title="LOWORD"></a>LOWORD</h3><ol>
+<li>格式<br>#define LOWORD(l) ((WORD)((DWORD_PTR)(l) &amp; 0xffff))  </li>
+<li>含义<br>取低16位的宏LOWORD使用按位与操作符与数字0xffff运算，而数字0xffff是一个低16位全为1的数字，那么对其位与操作可以得到参数的低16位  </li>
+</ol>
+<h3 id="HIWORD"><a href="#HIWORD" class="headerlink" title="HIWORD"></a>HIWORD</h3><ol>
+<li>格式<br>#define HIWORD(l) ((WORD)((DWORD_PTR)(l) &gt;&gt; 16))  </li>
+<li>含义<br>取高16位的宏HIWORD，只需将参数右移16位，剩下的就是原高16位的值  </li>
+<li>总结<br>二者都是windef.h头文件中的定义</li>
 </ol>
 
                 

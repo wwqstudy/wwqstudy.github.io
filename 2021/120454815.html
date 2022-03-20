@@ -455,14 +455,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
+                    2.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    11 分
                 </div>
                 
 
@@ -580,6 +580,76 @@ for i in range(len(enc)):
     v2 +&#x3D; chr(enc[i] ^ ord(v5[i%4]))
 print(v2)  
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="BUUCTF-MRCTF2020-Xor-扩展思维"><a href="#BUUCTF-MRCTF2020-Xor-扩展思维" class="headerlink" title="BUUCTF [MRCTF2020]Xor(扩展思维)"></a>BUUCTF [MRCTF2020]Xor(扩展思维)</h3><ol>
+<li>查看文件情况，无壳，32位，之后ida打开，发现main函数，在main函数位置进行反汇编，发现如下情况<br><img src="/2021/120454815/26.png" alt=" ">  </li>
+<li>之后到对应位置<br><img src="/2021/120454815/27.png" alt=" "><br>分析发现是无法正确识别调用问题的原因(call analysis failed问题总结于逆向中的一些基础中)  </li>
+<li>之后在该位置进行双击进入该函数，并反汇编，然后在对main函数进行反汇编就行了<br><img src="/2021/120454815/28.png" alt=" ">  </li>
+<li>该题脚本  </li>
+</ol>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">flag &#x3D;chr(77)+&#39;SAWB~FXZ:J:&#96;tQJ&quot;N@ bpdd&#125;8g&#39;
+s &#x3D; list(flag)
+for i in range(len(flag)):
+    s[i] &#x3D; chr(ord(s[i])^i)
+flag &#x3D; &quot;&quot;.join(s)
+print(flag)  
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="BUUCTF-WUSTCTF2020-level1-文件读写"><a href="#BUUCTF-WUSTCTF2020-level1-文件读写" class="headerlink" title="BUUCTF [WUSTCTF2020]level1(文件读写)"></a>BUUCTF [WUSTCTF2020]level1(文件读写)</h3><ol>
+<li>查看文件情况，无壳，64位，之后ida打开，发现main函数，在main函数位置进行反汇编<br><img src="/2021/120454815/29.png" alt=" ">  </li>
+<li>1处：对文件flag进行读操作，可以猜想其实就是将flag读过来<br>2处：将读入的flag赋值给ptr<br>3处：关闭原文件<br>4处：对得到的flag进行一个简单的算法操作  </li>
+<li>首先如果我们如果双击flag，我们会很“巧合”的发现下方正好有一个好像符合长度的一串16禁止数据，如下图<br><img src="/2021/120454815/30.png" alt=" "><br>之后我们对其进行编写脚本，发现这并不是我们想要的flag  </li>
+<li>之后我们考虑、刚开始我们解压缩的时候还得到了一个.txt文件，总所周知，大部分情况有读就要有写吧，然后我们去打开那个.txt文件，发现一串数据，正好19个<br><img src="/2021/120454815/31.png" alt=" "><br>之后我们对这一串数据进行脚本，发现最后正好得到flag，大功告成  </li>
+<li>脚本  </li>
+</ol>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">ptr &#x3D; [198,232,816,200,1536,300,6144,984,51200,570,92160,1200,565248,756,1474560,800,6291456,1782,65536000]
+
+for i in range(19):
+    if (i+1) &amp; 1 !&#x3D; 0:
+        print(chr(ptr[i] &gt;&gt; (i+1)),end&#x3D;&quot;&quot;)
+    else:
+        print (chr(ptr[i] &#x2F;&#x2F; (i+1)),end&#x3D;&quot;&quot;)  
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="BUUCTF-GWCTF-2019-xxor-类似tea加密"><a href="#BUUCTF-GWCTF-2019-xxor-类似tea加密" class="headerlink" title="BUUCTF [GWCTF 2019]xxor(类似tea加密)"></a>BUUCTF [GWCTF 2019]xxor(类似tea加密)</h3><ol>
+<li>查看文件情况，无壳，64位，之后ida打开，发现main函数，在main函数位置进行反汇编<br><img src="/2021/120454815/32.png" alt=" ">  </li>
+<li>1处：我们可以看出其实我们输入的应该是v6，最后进行求a2，我们猜想下a2可能是我们要的flag，但是下面第三部却对a2进行了赋值，这就导致猜错了，不过不慌，继续向下看<br>2处：进行循环 3次循环（关键点别忘了）<br>3处：对a2进行赋值，如下图<br><img src="/2021/120454815/33.png" alt=" "><br>4处：是对a1的6个数值进行的类似tea加密的操作，但不是严格tea加密形式，并且每次操作a1的两位数据<br><img src="/2021/120454815/34.png" alt=" "><br>5处：是对a1的6位数值的计算位置，在这个位置可以得出a1的6个值<br>6处：对于得到的16进制数值要转化为字符串(自己写的python代码没转化成，就去网上扣了一个c++的脚本)  </li>
+<li>整体看完之后，我们可以直观的分析到我们其实要的就是最初的a1的那6个数值，所以在这里我们首先要求出a1的最终数值，之后从下到上反向的操作，求最初的数据<br>在5处，我们可以先求出a1的最终数据，因为这里只是简单的赋值，减法操作，其实我们可以很简单就写出来，就不附加上脚本了，之后我们在4处进行逆运算求最初的a1的6个数值即可  </li>
+<li>脚本  </li>
+</ol>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+
+#pragma warning(disable:4996)
+using namespace std;
+
+int main()
+&#123;
+    __int64 a[6] &#x3D; &#123; 3746099070, 550153460, 3774025685, 1548802262, 2652626477, 2230518816 &#125;;
+    unsigned int a2[4] &#x3D; &#123; 2,2,3,4 &#125;;
+    unsigned int v3, v4;
+    int v5;
+    for (int j &#x3D; 0; j &lt;&#x3D; 4; j +&#x3D; 2) &#123;
+        v3 &#x3D; a[j];
+        v4 &#x3D; a[j + 1];
+        v5 &#x3D; 1166789954*0x40;
+        for (int i &#x3D; 0; i &lt;&#x3D; 0x3F; ++i) &#123;
+            v4 -&#x3D; (v3 + v5 + 20) ^ ((v3 &lt;&lt; 6) + a2[2]) ^ ((v3 &gt;&gt; 9) + a2[3]) ^ 0x10;
+            v3 -&#x3D; (v4 + v5 + 11) ^ ((v4 &lt;&lt; 6) + *a2) ^ ((v4 &gt;&gt; 9) + a2[1]) ^ 0x20;
+            v5 -&#x3D; 1166789954;
+        &#125;
+        a[j] &#x3D; v3;
+        a[j + 1] &#x3D; v4;
+    &#125;
+
+    &#x2F;*将整型数组作为字符输出，注意计算机小端排序*&#x2F;
+    for (int i &#x3D; 0; i &lt; 6; ++i) &#123;
+        cout &lt;&lt; *((char*)&amp;a[i] + 2) &lt;&lt; *((char*)&amp;a[i] + 1) &lt;&lt;  * ((char*)&amp;a[i]);
+    &#125;
+
+    system(&quot;PAUSE&quot;);
+    return 0;
+&#125;  
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
