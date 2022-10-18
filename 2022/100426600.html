@@ -4,22 +4,14 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="LLVM-Clang编译器安装和使用, wwqstudy">
-    <meta name="description" content="转载于：L1uis1’sblog
-安装
+    <meta name="keywords" content="网安学习小知识, wwqstudy">
+    <meta name="description" content="mysql命令行查看mysql账号密码mysql -u root -p
+show databases:
+use dvwa
+select * from users;sd
 
-apt-get install clang
-
-
-
-
-apt-get install llvm
-
-
-使用LLVM IR文件
-使用clang将C源码转换为LLVM IR(文本形式)：
-
-clang -e">
+mysql远程连接mysql -u root -p(登录mysql)
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -31,7 +23,7 @@ clang -e">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>LLVM-Clang编译器安装和使用 | wwqstudy</title>
+    <title>网安学习小知识 | wwqstudy</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -323,12 +315,12 @@ clang -e">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">LLVM-Clang编译器安装和使用</h1>
+                    <h1 class="description center-align post-title">网安学习小知识</h1>
                 </div>
             </div>
         </div>
@@ -456,7 +448,7 @@ clang -e">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-03-12
+                    2022-10-04
                 </div>
                 
 
@@ -465,7 +457,7 @@ clang -e">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    236
+                    173
                 </div>
                 
 
@@ -495,51 +487,33 @@ clang -e">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>转载于：<a href="L1uis1'sblog">L1uis1’sblog</a></p>
-<article class="post-content" id="article-container"><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><blockquote>
-<ol>
-<li>apt-get install clang</li>
-</ol>
-</blockquote>
-<blockquote>
-<ol start="2">
-<li>apt-get install llvm</li>
-</ol>
-</blockquote>
-<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="LLVM-IR文件"><a href="#LLVM-IR文件" class="headerlink" title="LLVM IR文件"></a>LLVM IR文件</h2><ol>
-<li><p>使用clang将C源码转换为LLVM IR(文本形式)：</p>
-<blockquote>
-<p>clang -emit-llvm -S test.c -o test.ll / clang -O3 -emit-llvm test.c -S -o test.ll</p>
-</blockquote>
-</li>
-<li><p>使用clang将C源码转换为LLVM IR(二进制形式)：</p>
-<blockquote>
-<p>clang -emit-llvm test.c -c -o test.bc / clang -O3 -emit-llvm test.c -c -o test.bc</p>
-</blockquote>
-</li>
-<li><p>LLVM IR文件格式转换(.bc和.ll文件的转换)</p>
-<blockquote>
-<p>llvm-as test.ll -o test.bc     //llvm .ll -&gt; .bc assembler<br>llvm-dis test.bc -o test.ll  //llvm .bc -&gt; .ll disassembler</p>
-</blockquote>
-</li>
-<li><p>将LLVM字节码转换为机器汇编码</p>
-<blockquote>
-<p>llc test.bc -o test.s</p>
-</blockquote>
-</li>
-<li><p>由LLVM IR生成对应的可执行文件</p>
-<blockquote>
-<p>llc -filetype=obj test.ll -o test.o<br>gcc test.o<br>或者<br>llc -filetype=obj test.bc -o test.o<br>gcc test.o</p>
-</blockquote>
-</li>
-</ol>
-<p>注：生成可执行文件时，若出现如下或类似的报错</p>
-<figure class="highlight bash"><div class="highlight-tools "><i class="fas fa-angle-down expand "></i><div class="code-lang">bash</div><div class="copy-notice"></div><i class="fas fa-paste copy-button"></i></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ld: test.o: relocation R_X86_64_32 against symbol `what<span class="string">' can not be used when making a PIE object; recompile with -fPIE</span></span><br><span class="line"><span class="string">collect2: error: ld returned 1 exit status</span></span><br></pre></td></tr></tbody></table></figure>
-<p>使用</p>
-<blockquote>
-<p>clang++  test.o -o test</p>
-</blockquote>
-</article>  
+                <h2 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a><strong>mysql</strong></h2><h3 id="命令行查看mysql账号密码"><a href="#命令行查看mysql账号密码" class="headerlink" title="命令行查看mysql账号密码"></a>命令行查看mysql账号密码</h3><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">mysql -u root -p
+show databases:
+use dvwa
+select * from users;sd<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="mysql远程连接"><a href="#mysql远程连接" class="headerlink" title="mysql远程连接"></a>mysql远程连接</h3><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">mysql -u root -p(登录mysql)
+use &#96;mysql&#96;;
+grant all privileges on *.* to &#39;root&#39;@&#39;%&#39; identified by &#39;root&#39; WITH GRANT OPTION;
+(
+GRANT ALL PRIVILEGES ON *.* TO &#39;myuser&#39;@&#39;your ip&#39; IDENTIFIED BY &#39;mypassword&#39; WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+)
+flush privileges;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h2><h3 id="windows开启rdp远程桌面服务"><a href="#windows开启rdp远程桌面服务" class="headerlink" title="windows开启rdp远程桌面服务"></a>windows开启rdp远程桌面服务</h3><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">查看远程端口或者使用注册表
+REG query HKLM\SYSTEM\CurrentControlSet\Control\Terminal&quot; 
+&quot;Server\WinStations\RDP-Tcp &#x2F;v PortNumber
+再
+set &#x2F;a a&#x3D;0xd3d
+当远程桌面服务被关闭时，可以用注册表命令开启
+REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal&quot; &quot;Server &#x2F;v 
+fDenyTSConnections &#x2F;t REG_DWORD &#x2F;d 0 &#x2F;f<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">win+R（调出命令行）
+mstsc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
                 
             </div>
             <hr/>
@@ -565,7 +539,7 @@ clang -e">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://wwqstudy.github.io/2022/031262045.html">http://wwqstudy.github.io/2022/031262045.html</a>
+                    <a href="http://wwqstudy.github.io/2022/100426600.html">http://wwqstudy.github.io/2022/100426600.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -646,9 +620,48 @@ clang -e">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2022/100426600.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="网安学习小知识">
+                        
+                        <span class="card-title">网安学习小知识</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-04
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            wwq
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2022/09062913.html">
                     <div class="card-image">
@@ -666,45 +679,8 @@ clang -e">
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-06
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            wwq
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/030533794.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="python逆向">
-                        
-                        <span class="card-title">python逆向</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-06
                             </span>
                         <span class="publish-author">
                             

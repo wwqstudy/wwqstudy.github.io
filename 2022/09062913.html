@@ -4,22 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="LLVM-Clang编译器安装和使用, wwqstudy">
-    <meta name="description" content="转载于：L1uis1’sblog
-安装
-
-apt-get install clang
-
-
-
-
-apt-get install llvm
-
-
-使用LLVM IR文件
-使用clang将C源码转换为LLVM IR(文本形式)：
-
-clang -e">
+    <meta name="keywords" content="大三上课程, wwqstudy">
+    <meta name="description" content="大三上课程信息隐藏2.1-2：基本知识​        信息隐藏技术的原理是在载体中隐藏隐秘信息，并通过钥匙提取隐秘信息，载体通常为图像、文本、视频、音频等。信息隐藏技术可以保证别有用心的人很难发现或者提取隐秘信息。当载体通过信道传输到接收">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -31,7 +17,7 @@ clang -e">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>LLVM-Clang编译器安装和使用 | wwqstudy</title>
+    <title>大三上课程 | wwqstudy</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -323,12 +309,12 @@ clang -e">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">LLVM-Clang编译器安装和使用</h1>
+                    <h1 class="description center-align post-title">大三上课程</h1>
                 </div>
             </div>
         </div>
@@ -456,7 +442,7 @@ clang -e">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-03-12
+                    2022-09-06
                 </div>
                 
 
@@ -465,14 +451,14 @@ clang -e">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    236
+                    4.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    16 分
                 </div>
                 
 
@@ -495,51 +481,246 @@ clang -e">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>转载于：<a href="L1uis1'sblog">L1uis1’sblog</a></p>
-<article class="post-content" id="article-container"><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><blockquote>
-<ol>
-<li>apt-get install clang</li>
+                <h1 id="大三上课程"><a href="#大三上课程" class="headerlink" title="大三上课程"></a>大三上课程</h1><h2 id="信息隐藏"><a href="#信息隐藏" class="headerlink" title="信息隐藏"></a>信息隐藏</h2><h3 id="2-1-2：基本知识"><a href="#2-1-2：基本知识" class="headerlink" title="2.1-2：基本知识"></a>2.1-2：基本知识</h3><p>​        信息隐藏技术的原理是在载体中隐藏隐秘信息，并通过钥匙提取隐秘信息，载体通常为图像、文本、视频、音频等。信息隐藏技术可以保证别有用心的人很难发现或者提取隐秘信息。当载体通过信道传输到接收器之后，接收器使用密钥恢复隐藏的机密信息。图1为信息隐藏系统模型，由4个主要部分组成：嵌入信息、提取信息、生成密钥和隐藏分析。</p>
+<p><img src="/2022/09062913/BLOG/hexoblog\source_posts\大三上课程\信息隐藏-1.png" alt="1"></p>
+<h4 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h4><ol>
+<li><strong>隐蔽性</strong></li>
 </ol>
-</blockquote>
-<blockquote>
+<p>​        隐藏性是信息隐藏的基本要求，有两个方面：一是对人体感觉系统的不可感知性，通过在信息隐藏过程之后不会显著更改或降解载体，影响对载体信息的理解或引起视觉和听觉方面的明显变化，避免通过人类的感觉检测到。二是计算机之类的分析系统的不可预测性，还存在暴露的风险，因为信息被隐藏而未被人类识别，这并不意味着分析系统无法检测到该信息，这要求操作员在嵌入信息之前和之后尽量保持相同的特性，并且在计算机分析中不能确认信息是否被隐藏。</p>
 <ol start="2">
-<li>apt-get install llvm</li>
+<li><strong>安全性</strong></li>
 </ol>
-</blockquote>
-<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="LLVM-IR文件"><a href="#LLVM-IR文件" class="headerlink" title="LLVM IR文件"></a>LLVM IR文件</h2><ol>
-<li><p>使用clang将C源码转换为LLVM IR(文本形式)：</p>
-<blockquote>
-<p>clang -emit-llvm -S test.c -o test.ll / clang -O3 -emit-llvm test.c -S -o test.ll</p>
-</blockquote>
-</li>
-<li><p>使用clang将C源码转换为LLVM IR(二进制形式)：</p>
-<blockquote>
-<p>clang -emit-llvm test.c -c -o test.bc / clang -O3 -emit-llvm test.c -c -o test.bc</p>
-</blockquote>
-</li>
-<li><p>LLVM IR文件格式转换(.bc和.ll文件的转换)</p>
-<blockquote>
-<p>llvm-as test.ll -o test.bc     //llvm .ll -&gt; .bc assembler<br>llvm-dis test.bc -o test.ll  //llvm .bc -&gt; .ll disassembler</p>
-</blockquote>
-</li>
-<li><p>将LLVM字节码转换为机器汇编码</p>
-<blockquote>
-<p>llc test.bc -o test.s</p>
-</blockquote>
-</li>
-<li><p>由LLVM IR生成对应的可执行文件</p>
-<blockquote>
-<p>llc -filetype=obj test.ll -o test.o<br>gcc test.o<br>或者<br>llc -filetype=obj test.bc -o test.o<br>gcc test.o</p>
-</blockquote>
+<p>​        隐藏信息的内容是安全的，并且必须在加密后隐藏，即使第三方发现存在隐藏信息，没有钥匙也无法解密该信息。</p>
+<ol start="3">
+<li><strong>鲁棒性</strong></li>
+</ol>
+<p>​        鲁棒性是指经过一系列处理或干扰后，载体中隐藏的信息不会被破坏，可以从中提取出完整的信息。这些处理和干扰包括重采样、有损压缩、模/数转换、滤波、信道噪声以及破坏信息的人为攻击。</p>
+<ol start="4">
+<li><strong>自恢复性</strong></li>
+</ol>
+<p>​        即使在销毁数据之后，也需要能够基于其余数据独立于原始数据来还原原始隐藏数据。恢复损坏的数据非常重要，因为数据在传输、处理和转换后将不可避免地被破坏。</p>
+<ol start="5">
+<li><strong>信息容量</strong></li>
+</ol>
+<p>​        信息容量指运营商必须具有一定数量的能力来保存机密信息。这与载体本身的特性、信息隐藏算法有关，并且取决于对机密信息的隐藏和鲁棒性的要求。随着机密信息量的增加，对运营商自身信息的影响和损害不可避免地增加，这增加了暴露的风险，同时降低了隐藏信息的鲁棒性。因此，在实际应用中，应该合理地选取隐蔽性、鲁棒性和信息容量。</p>
+<h4 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h4><ul>
+<li><strong>数字水印</strong></li>
+</ul>
+<p>​        数字水印是信息隐藏常用到的技术之一，可以在不影响载体的价值的条件下，将隐秘信息嵌入载体中。其优点之一就是不易被人类感知系统察觉到。数字水印主要有两种：空间数字水印和频率数字水印。空间数字水印的原理是通过改变表示数字图像颜色和调整数字图像的视觉上无关紧要的像素来实现水印信息的表示。频率数字水印的原理是根据时间频率分析和扩散频谱的特征选择数字图像频率区域中视觉最敏感的部分，以使修改后的系数包含数字水印信息。</p>
+<p>​        <strong>替换、变换、扩频技术</strong></p>
+<ul>
+<li><strong>可视密码技术</strong></li>
+</ul>
+<p>​        1994年，Naor和Shamar提出了可视密码技术。可视密码技术的优势在于提取隐秘图像时不需要复杂的密码计算，可以根据人的视觉来区分。该方法制作n张无意义的胶卷，重叠其中的t张胶卷，能够恢复其中隐藏的机密信息。此后，人们对这种加密技术进行了改进，主要的改进方法如下：这使得制作的n张胶片具有特定的含义并且具有迷惑性。</p>
+<ul>
+<li><strong>潜信道</strong></li>
+</ul>
+<p>​        1978年，Gustavus J Simmons提出了潜信道的概念，随后进行了许多研究，其中潜信道是用于实现在公开信道中建立的秘密通信的信道。大多数数字签名方案包括潜信道通信，最大特征是潜信道包含在数字签名中，但是不影响数字签名过程。</p>
+<ul>
+<li><strong>隐匿协议</strong></li>
+</ul>
+<p>​        隐匿协议的原理是通过分析一方的业务量来识别另一方，可以确保通信信道不被他人窃听。隐秘通信通过在路由中使用多个加密层，保证路由的每一层处理不同的数据，可以使数据传输的路径很难被察觉到。隐秘通信的应用领域比较广泛，例如可以用于电子选举和电子现金的解决方案，防止选民或者购买者的身份暴露。</p>
+<h4 id="应用领域"><a href="#应用领域" class="headerlink" title="应用领域"></a>应用领域</h4><ol>
+<li><strong>隐秘信道</strong></li>
+</ol>
+<p>​        信息隐藏技术可以用于隐秘通信，将机密数据隐藏到多媒体信息中，通过网络进行发送，由于网络数据比较庞大，因此机密信息很难被检测到。信息隐藏技术与加密技术结合可以保证机密数据发送的安全性。第一，窃听者不清楚机密信息的通信过程，不能在大量的多媒体信息中找到隐藏的数据；第二，数据嵌入进行加密，确保数据安全性。</p>
+<ol start="2">
+<li><strong>数字作品的版权保护</strong></li>
+</ol>
+<p>​        随着互联网技术的发展，数字作品的形式各种各样，包括数字图书馆、数字书籍出版、数字电视和数字新闻等。数字作品最重要的问题就是版权问题，数字水印技术可以很好地解决版权问题。数字水印以隐藏代码的形式添加到数字作品中，数字水印可以通过代码跟踪非法传播者。鉴于网络普遍存在的易于修改和易于复制的数字媒体的特点，信息隐藏技术可以将水印嵌入数字媒体中以保护版权。例如，为了追踪非法源，保护所有者权益，可以使用数字水印控制复印件，防止无限复制和盗版。</p>
+<ol start="3">
+<li><strong>保护数据的完整性和真实性</strong></li>
+</ol>
+<p>​        在法律、医学、新闻和商业中应用数字媒体时，使用嵌入的水印来确定信息是否已被更改、伪造或经过特殊处理，以确定其完整性和真实性。例如，新闻采访中拍摄的照片应加水印以免被更改；司法机构使用的数字媒体还可以提取水印，以识别真伪并确定其法律效力。</p>
+<ol start="4">
+<li><strong>广播监视</strong></li>
+</ol>
+<p>​        数字水印可以用于广播监视，将未压缩的视频进行MPEG-2压缩，使用安全密钥嵌入水印。嵌入的水印可以识别原始广播者和检测非法复制的内容。韩国广播公司技术研究所开发的水印系统可以保护数字电视内容的版权，其服务对象包括标清视频（SMPTE 259M）、高清视频（SMPTE 292 M）、DVD等媒体。标清视频嵌入的水印是64位版权标识符，高清视频嵌入的水印是128版权标识符，广播监视要求数字水印要有较高的不可见性和较好的鲁棒性，但是较高的不可察觉性要求水印强度低，较好的鲁棒性要求水印强度高，因此同时保证不可察觉性和鲁棒性，需要对水印强度进行折中考虑。</p>
+<h4 id="图像文件的格式"><a href="#图像文件的格式" class="headerlink" title="图像文件的格式"></a>图像文件的格式</h4><ul>
+<li>常见的存储的格式有 bmp，jpg，png，tif，gif，pcx，tga，exif，fpx，svg，psd，cdr，pcd，dxf，ufo，eps，ai，raw，WMF，webp，avif，apng 等。</li>
+</ul>
+<h4 id="音频文件的格式"><a href="#音频文件的格式" class="headerlink" title="音频文件的格式"></a>音频文件的格式</h4><ul>
+<li>音频文件格式专指存放音频数据的文件的格式。</li>
+<li>无损格式</li>
+</ul>
+<p>​        <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/WAV?fromModule=lemma_inlink">WAV</a>，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/FLAC?fromModule=lemma_inlink">FLAC</a>，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/APE?fromModule=lemma_inlink">APE</a>，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/ALAC?fromModule=lemma_inlink">ALAC</a>，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/WavPack?fromModule=lemma_inlink">WavPack</a>(WV)</p>
+<ul>
+<li>有损格式</li>
+</ul>
+<p>​        <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/MP3?fromModule=lemma_inlink">MP3</a>，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/AAC?fromModule=lemma_inlink">AAC</a>，[Ogg Vorbis](<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Ogg">https://baike.baidu.com/item/Ogg</a> Vorbis?fromModule=lemma_inlink)，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Opus?fromModule=lemma_inlink">Opus</a></p>
+<h4 id="视频文件的格式"><a href="#视频文件的格式" class="headerlink" title="视频文件的格式"></a>视频文件的格式</h4><ul>
+<li>视频文件格式是指视频保存的一种格式，视频是电脑中<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%A4%9A%E5%AA%92%E4%BD%93%E7%B3%BB%E7%BB%9F/700469?fromModule=lemma_inlink">多媒体系统</a>中的重要一环。为了适应储存视频的需要，人们设定了不同的视频文件格式来把视频和音频放在一个文件中，以方便同时回放。</li>
+<li>微软视频</li>
+</ul>
+<p>​        <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/wmv?fromModule=lemma_inlink">wmv</a>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/asf?fromModule=lemma_inlink">asf</a>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/asx?fromModule=lemma_inlink">asx</a></p>
+<ul>
+<li>Real Player</li>
+</ul>
+<p>​        rm、 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/rmvb?fromModule=lemma_inlink">rmvb</a></p>
+<ul>
+<li>MPEG视频</li>
+</ul>
+<p>​        <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/mp4?fromModule=lemma_inlink">mp4</a></p>
+<ul>
+<li>手机视频</li>
+</ul>
+<p>​        <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/3gp?fromModule=lemma_inlink">3gp</a></p>
+<ul>
+<li>Apple视频</li>
+</ul>
+<p>​        mov、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/m4v?fromModule=lemma_inlink">m4v</a></p>
+<ul>
+<li>其他</li>
+</ul>
+<p>​        <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/avi?fromModule=lemma_inlink">avi</a>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/dat?fromModule=lemma_inlink">dat</a>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/mkv?fromModule=lemma_inlink">mkv</a>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/flv?fromModule=lemma_inlink">flv</a>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/vob?fromModule=lemma_inlink">vob</a>等</p>
+<h4 id="图像信息隐藏的基本知识"><a href="#图像信息隐藏的基本知识" class="headerlink" title="图像信息隐藏的基本知识"></a>图像信息隐藏的基本知识</h4><ol>
+<li>图像加密算法</li>
+<li>图像信息隐藏技术的一些算法</li>
+<li>实现嵌入提取</li>
+</ol>
+<h4 id="音频信息隐藏的基本知识"><a href="#音频信息隐藏的基本知识" class="headerlink" title="音频信息隐藏的基本知识"></a>音频信息隐藏的基本知识</h4><ol>
+<li>如下图；音频信息隐藏系统通用系统模型分为三个部分：左边是发送端，即完成信息嵌入的过程；中间是信道传输，其包括嵌入信息后的音频信号经历噪音环境或数字攻击等过程；右边是接收端，经过同步后可以确定带噪音频信号嵌有隐藏信息的位置，从而解出隐蔽信息。</li>
+</ol>
+<p><img src="/2022/09062913/BLOG/hexoblog\source_posts\大三上课程\信息隐藏-2.png" alt="2"></p>
+<h4 id="信息隐藏常用攻击方法"><a href="#信息隐藏常用攻击方法" class="headerlink" title="信息隐藏常用攻击方法"></a>信息隐藏常用攻击方法</h4><ol>
+<li><p>隐密分析</p>
+<pre><code> * **感官攻击**
+</code></pre>
 </li>
 </ol>
-<p>注：生成可执行文件时，若出现如下或类似的报错</p>
-<figure class="highlight bash"><div class="highlight-tools "><i class="fas fa-angle-down expand "></i><div class="code-lang">bash</div><div class="copy-notice"></div><i class="fas fa-paste copy-button"></i></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ld: test.o: relocation R_X86_64_32 against symbol `what<span class="string">' can not be used when making a PIE object; recompile with -fPIE</span></span><br><span class="line"><span class="string">collect2: error: ld returned 1 exit status</span></span><br></pre></td></tr></tbody></table></figure>
-<p>使用</p>
-<blockquote>
-<p>clang++  test.o -o test</p>
-</blockquote>
-</article>  
+<p>　　感官攻击包括视觉攻击和听觉攻击。是指利用人类感官对媒体模式失真和噪声的辨识能力来判断是否含有隐密信息的一类方法。虽然隐密算法的首要任务就是要使得载体在隐藏信息前后不能被人类的感官察觉，但是由于隐密信息与隐密区域的统计特性不一致，往往会使载体与隐密载体之间产生较大的感官差异，如图像的色彩变化、噪声强度变化等。</p>
+<ul>
+<li><strong>结构攻击</strong></li>
+</ul>
+<p>　　结构攻击是指利用由于信息的隐藏而造成载体原有结构的破坏或特殊结构的引入来判断是否含有隐密信息。比如正常的图像调色板结构中没有或很少有颜色的聚集，但有些隐密算法为了避免视觉攻击，隐藏信息时对调色板进行了缩减、排序等调整，使得调色板中产生大量颜色聚集。</p>
+<ul>
+<li><strong>统计攻击</strong></li>
+</ul>
+<p>　　统计攻击是指利用特征样本分布和理论期望分布的差异性，从而给出含有隐密信息概率的一种分析方法。由于隐密信息的统计特性往往与隐密区。</p>
+<ol start="2">
+<li>水印攻击</li>
+</ol>
+<ul>
+<li><strong>稳健性攻击</strong></li>
+</ul>
+<p>　　稳健性攻击也称去除攻击，这是最常用的攻击方法。它主要攻击健壮性的数字水印。目的在于除去数据中的水印而不影响图像的使用，比如对图像的一些常用的无恶意的处理方法，如压缩、滤波、缩放、打印和扫描等。常见的健壮性攻击可以分为几方面：有损压缩、信号处理技术。</p>
+<ul>
+<li><strong>表达攻击</strong></li>
+</ul>
+<p>​        表达攻击并不需要除去数字产品中的水印，它是通过操纵内容从而使水印检测器无法检测到水印的存在。这类攻击的一个特点是水印实际上还存在于图像中，但水印检测器已不能提取水印或不能检测水印的存在。几何变换在数字水印攻击中扮演了重要的角色，而且许多数字水印算法都无法抵抗某些重要的几何攻击。常见的几何变换有：水平翻转、剪切、旋转、缩放、行／列删除、变通几何变换、打印一扫描处理和随机几何变形。</p>
+<ul>
+<li><strong>解释攻击</strong></li>
+</ul>
+<p>　　解释攻击既不试图擦除水印，也不试图使水印检测无效，而是试图对水印的所有权产生争议，比如一个攻击者试图在一个嵌入了水印的图像中再次嵌入另一个水印，所以导致了所有权的争议。</p>
+<ul>
+<li><strong>合法攻击</strong></li>
+</ul>
+<p>　　合法攻击也称法律攻击。它与前三种攻击不同，前三种攻击可以称为技术性攻击，而合法攻击可能包括现有的及将来的有关版权和有关数字信息所有权的法案，因为在不同的司法权限中，这些法律可能有不同的解释。如攻击者希望在法庭上利用此类攻击，它们的攻击是在水印方案所提供的技术或科学证据之外而进行的。</p>
+<h3 id="2-3：手工演练基于-BMP-图像的信息隐藏与提取过程任务"><a href="#2-3：手工演练基于-BMP-图像的信息隐藏与提取过程任务" class="headerlink" title="2.3：手工演练基于 BMP 图像的信息隐藏与提取过程任务"></a>2.3：手工演练基于 BMP 图像的信息隐藏与提取过程任务</h3><p>[(50条消息) BMP 图像信息隐藏及检测_苏浅时的博客-CSDN博客_bmp图像信息隐藏](<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44558065/article/details/112556436?ops_request_misc=%7B%22request_id%22:%22166547262916782391845752%22,%22scm%22:%2220140713.130102334.pc_all.%22%7D&amp;request_id=166547262916782391845752&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-1-112556436-null-null.142%5Ev52%5Ejs_top,201%5Ev3%5Eadd_ask&amp;utm_term=BMP">https://blog.csdn.net/weixin_44558065/article/details/112556436?ops_request_misc=%7B%22request%5Fid%22%3A%22166547262916782391845752%22%2C%22scm%22%3A%2220140713.130102334.pc%5Fall.%22%7D&amp;request_id=166547262916782391845752&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-1-112556436-null-null.142^v52^js_top,201^v3^add_ask&amp;utm_term=BMP</a> 图像的信息隐藏与提取&amp;spm=1018.2226.3001.4187)</p>
+<h3 id="2-4-5：BMP-图像文件的读取任务"><a href="#2-4-5：BMP-图像文件的读取任务" class="headerlink" title="2.4-5：BMP 图像文件的读取任务"></a>2.4-5：BMP 图像文件的读取任务</h3><h4 id="BMP图像的基本知识"><a href="#BMP图像的基本知识" class="headerlink" title="BMP图像的基本知识"></a>BMP图像的基本知识</h4><ol>
+<li><strong>BMP概念</strong></li>
+</ol>
+<p>​        BMP是英文Bitmap（位图）的简写，它是Windows操作系统中的标准图像文件格式，能够被多种Windows应用程序所支持。优点是：包含的图像信息较丰富，几乎不进行压缩，缺点是：占用磁盘空间较大，在单机上比较流行。</p>
+<p>​        BMP位图文件默认的<strong>文件扩展名</strong>是BMP或者bmp（有时它也会以.DIB或.RLE作扩展名）</p>
+<ol start="2">
+<li><p><strong>BMP格式结构(从文件头开始)</strong></p>
+<ul>
+<li>**位图文件头(bmp file header)**：提供文件的格式、大小等信息</li>
+<li>**位图信息头(bitmap information)**：提供图像数据的尺寸、位平面数、压缩方式、颜色索引等信息</li>
+<li>**调色板(color palette)**：可选，如使用索引来表示图像，调色板就是索引与其对应的颜色的映射表</li>
+<li>**位图数据(bitmap data)**：图像数据区</li>
+</ul>
+<p><strong>BMP图片文件数据表如下</strong>：</p>
+<p><img src="/2022/09062913/BLOG/hexoblog\source_posts\大三上课程\信息隐藏-3.png" alt="信息隐藏-3"></p>
+</li>
+<li><p><strong>BMP文件头结构体定义</strong>：</p>
+</li>
+</ol>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">typedef struct tagBITMAPFILEHEADER
+
+&#123; 
+
+UINT16 bfType;        &#x2F;&#x2F;2Bytes，必须为&quot;BM&quot;，即0x424D 才是Windows位图文件
+
+DWORD bfSize;         &#x2F;&#x2F;4Bytes，整个BMP文件的大小
+
+UINT16 bfReserved1;  &#x2F;&#x2F;2Bytes，保留，为0
+
+UINT16 bfReserved2;  &#x2F;&#x2F;2Bytes，保留，为0
+
+DWORD bfOffBits;     &#x2F;&#x2F;4Bytes，文件起始位置到图像像素数据的字节偏移量
+
+&#125; BITMAPFILEHEADER;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>​        <strong>BMP文件头数据表如下</strong>：</p>
+<p>​        <img src="/2022/09062913/BLOG/hexoblog\source_posts\大三上课程\4.png" alt="4"></p>
+<p><img src="/2022/09062913/BLOG/hexoblog\source_posts\大三上课程\5.png" alt="5"></p>
+<p><img src="/2022/09062913/BLOG/hexoblog\source_posts\大三上课程\6.png" alt="6"></p>
+<p><img src="/2022/09062913/BLOG/hexoblog\source_posts\大三上课程\7.png" alt="7"></p>
+<ol start="4">
+<li><strong>BMP信息头结构体定义如下</strong>：</li>
+</ol>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">typedef struct _tagBMP_INFOHEADER
+ 
+&#123;
+ 
+DWORD  biSize;    &#x2F;&#x2F;4Bytes，INFOHEADER结构体大小，存在其他版本I NFOHEADER，用作区分
+ 
+LONG   biWidth;    &#x2F;&#x2F;4Bytes，图像宽度（以像素为单位）
+ 
+LONG   biHeight;    &#x2F;&#x2F;4Bytes，图像高度，+：图像存储顺序为Bottom2Top，-：Top2Bottom
+ 
+WORD   biPlanes;    &#x2F;&#x2F;2Bytes，图像数据平面，BMP存储RGB数据，因此总为1
+ 
+WORD   biBitCount;         &#x2F;&#x2F;2Bytes，图像像素位数
+ 
+DWORD  biCompression;     &#x2F;&#x2F;4Bytes，0：不压缩，1：RLE8，2：RLE4
+ 
+DWORD  biSizeImage;       &#x2F;&#x2F;4Bytes，4字节对齐的图像数据大小
+ 
+LONG   biXPelsPerMeter;   &#x2F;&#x2F;4 Bytes，用象素&#x2F;米表示的水平分辨率
+ 
+LONG   biYPelsPerMeter;   &#x2F;&#x2F;4 Bytes，用象素&#x2F;米表示的垂直分辨率
+ 
+DWORD  biClrUsed;          &#x2F;&#x2F;4 Bytes，实际使用的调色板索引数，0：使用所有的调色板索引
+ 
+DWORD biClrImportant;     &#x2F;&#x2F;4 Bytes，重要的调色板索引数，0：所有的调色板索引都重要
+ 
+&#125;BMP_INFOHEADER;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>BMP信息头数据表如下</strong>：</p>
+<p><img src="/2022/09062913/BLOG/hexoblog\source_posts\大三上课程\8.png" alt="8"></p>
+<ol start="5">
+<li><strong>BMP调色板结构体定义如下</strong>：</li>
+</ol>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">typedef struct _tagRGBQUAD
+&#123;
+    BYTE  rgbBlue;       &#x2F;&#x2F;指定蓝色强度
+    BYTE  rgbGreen;      &#x2F;&#x2F;指定绿色强度
+    BYTE  rgbRed;        &#x2F;&#x2F;指定红色强度
+    BYTE  rgbReserved;  &#x2F;&#x2F;保留，设置为0
+&#125; RGBQUAD;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>​        1，4，8位图像才会使用调色板数据，16,24,32位图像不需要调色板数据，即调色板最多只需要256项（索引0 - 255）。</p>
+<p>​        颜色表的大小根据所使用的颜色模式而定：2色图像为8字节；16色图像位64字节；256色图像为1024字节。其中，每4字节表示一种颜色，并以B（蓝色）、G（绿色）、R（红色）、alpha（32位位图的透明度值，一般不需要）。即首先4字节表示颜色号1的颜色，接下来表示颜色号2的颜色，依此类推。</p>
+<p>​        颜色表中RGBQUAD结构数据的个数有biBitCount来确定，当biBitCount=1,4,8时，分别有2,16,256个表项。</p>
+<p>​        当biBitCount=1时，为2色图像，BMP位图中有2个数据结构RGBQUAD，一个调色板占用4字节数据，所以2色图像的调色板长度为2*4为8字节。</p>
+<p>​        当biBitCount=4时，为16色图像，BMP位图中有16个数据结构RGBQUAD，一个调色板占用4字节数据，所以16像的调色板长度为16*4为64字节。</p>
+<p>​        当biBitCount=8时，为256色图像，BMP位图中有256个数据结构RGBQUAD，一个调色板占用4字节数据，所以256色图像的调色板长度为256*4为1024字节。</p>
+<p>​        当biBitCount=16，24或32时，没有颜色表。</p>
+<p><strong>BMP图像数据区</strong>:</p>
+<p>​        位图数据记录了位图的每一个像素值，记录顺序是在扫描行内是从左到右,扫描行之间是从下到上。位图的一个像素值所占的字节数:</p>
+<p>​        当biBitCount=1时，8个像素占1个字节;</p>
+<p>​        当biBitCount=4时，2个像素占1个字节;</p>
+<p>​        当biBitCount=8时，1个像素占1个字节;</p>
+<p>​        当biBitCount=24时,1个像素占3个字节;</p>
+<p>​        Windows规定一个扫描行所占的字节数必须是4的倍数(即以long为单位),不足的以0填充，</p>
+<p>一个扫描行所占的字节数计算方法:</p>
+<p>​        DataSizePerLine= (biWidth* biBitCount+31)/8;// 一个扫描行所占的字节数</p>
+<p>​        DataSizePerLine= DataSizePerLine/4*4; // 字节数必须是4的倍数位图数据的大小(不压缩情况下):</p>
+<p>​        DataSize= DataSizePerLine* biHeight;</p>
+<p>​        颜色表接下来位为位图文件的图像数据区，在此部分记录着每点像素对应的颜色号，其记录方式也随颜色模式而定，既2色图像每点占1位（8位为1字节）；16色图像每点占4位（半字节）；256色图像每点占8位（1字节）；真彩色图像每点占24位（3字节）。所以，整个数据区的大小也会随之变化。究其规律而言，可的出如下计算公式：图像数据信息大小=（图像宽度<em>图像高度</em>记录像素的位数）/8</p>
+
                 
             </div>
             <hr/>
@@ -565,7 +746,7 @@ clang -e">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://wwqstudy.github.io/2022/031262045.html">http://wwqstudy.github.io/2022/031262045.html</a>
+                    <a href="http://wwqstudy.github.io/2022/09062913.html">http://wwqstudy.github.io/2022/09062913.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -650,13 +831,13 @@ clang -e">
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/09062913.html">
+                <a href="/2022/100426600.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="大三上课程">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="网安学习小知识">
                         
-                        <span class="card-title">大三上课程</span>
+                        <span class="card-title">网安学习小知识</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -667,7 +848,7 @@ clang -e">
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-06
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-04
                         </span>
                         <span class="publish-author">
                             
@@ -687,13 +868,13 @@ clang -e">
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/030533794.html">
+                <a href="/2022/031262045.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="python逆向">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="LLVM-Clang编译器安装和使用">
                         
-                        <span class="card-title">python逆向</span>
+                        <span class="card-title">LLVM-Clang编译器安装和使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -704,7 +885,7 @@ clang -e">
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-12
                             </span>
                         <span class="publish-author">
                             
