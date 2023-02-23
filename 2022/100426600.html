@@ -6,12 +6,12 @@
     <meta charset="utf-8">
     <meta name="keywords" content="网安学习小知识, wwqstudy">
     <meta name="description" content="mysql命令行查看mysql账号密码mysql -u root -p
-show databases:
-use dvwa
+show databases;
+use 数据库名;
 select * from users;sd
+exit #退出数据库
 
-mysql远程连接mysql -u root -p(登录mysql)
-">
+mysql远程连接mysql -u root">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -457,14 +457,14 @@ mysql远程连接mysql -u root -p(登录mysql)
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    173
+                    542
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -488,9 +488,10 @@ mysql远程连接mysql -u root -p(登录mysql)
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a><strong>mysql</strong></h2><h3 id="命令行查看mysql账号密码"><a href="#命令行查看mysql账号密码" class="headerlink" title="命令行查看mysql账号密码"></a>命令行查看mysql账号密码</h3><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">mysql -u root -p
-show databases:
-use dvwa
-select * from users;sd<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+show databases;
+use 数据库名;
+select * from users;sd
+exit #退出数据库<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="mysql远程连接"><a href="#mysql远程连接" class="headerlink" title="mysql远程连接"></a>mysql远程连接</h3><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">mysql -u root -p(登录mysql)
 use &#96;mysql&#96;;
@@ -500,6 +501,46 @@ GRANT ALL PRIVILEGES ON *.* TO &#39;myuser&#39;@&#39;your ip&#39; IDENTIFIED BY 
 FLUSH PRIVILEGES;
 )
 flush privileges;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="mysql建表查表操作"><a href="#mysql建表查表操作" class="headerlink" title="mysql建表查表操作"></a>mysql建表查表操作</h3><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">&#x2F;&#x2F;查看当前数据库的所有表名
+show tables;
+show tables from 数据库名;
+&#x2F;&#x2F;在当前数据库中添加表
+create table 表名(
+&#x2F;&#x2F;列名 字符格式 约束&#x2F;&#x2F;注意末尾加逗号，最后一列末尾除外
+uid int(32) primary,
+uname varchar(32) ,
+upassword varchar(32)
+);
+&#x2F;&#x2F;查看表的结构
+desc 表名;
+&#x2F;&#x2F;添加表列
+&#x2F;&#x2F;alter table 表名 add 字段 字符格式 约束
+alter table user add unifo varchar(32) not null;
+&#x2F;&#x2F;修改表列
+alter table 表名 modify 列名 字符格式 约束
+&#x2F;&#x2F;修改表名
+alter table 表名  change 旧列名 新列名 新字符格式 新约束
+&#x2F;&#x2F;重命名
+rename table 旧表名 to 新表名
+&#x2F;&#x2F;插入单行数据
+insert into 表名 VALUES(&#39;1&#39;,&#39;java&#39;,&#39;34.4&#39;,&#39;7&#39;,&#39;张三&#39;);
+&#x2F;&#x2F;插入多行数据
+insert into book(列名) VALUES(&#39;1&#39;,&#39;java&#39;,&#39;34.4&#39;,&#39;7&#39;,&#39;张三&#39;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="mysql查看端口是否被占用"><a href="#mysql查看端口是否被占用" class="headerlink" title="mysql查看端口是否被占用"></a>mysql查看端口是否被占用</h3><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">netstat -a -n  显示各个端口占用
+netstat -ano   显示各个端口占用和进程PID
+netstat -aon|findstr &quot;3306&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="mysql服务的停止和启用"><a href="#mysql服务的停止和启用" class="headerlink" title="mysql服务的停止和启用"></a>mysql服务的停止和启用</h3><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">net stop mysql 暂停mysql
+net start mysql 启用mysql<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="mysql导出查询"><a href="#mysql导出查询" class="headerlink" title="mysql导出查询"></a>mysql导出查询</h3><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">&#x2F;&#x2F;导出目录查询
+select @@basedir;
+&#x2F;&#x2F;导出数据查询
+select @@datadir;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
 
 <h2 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h2><h3 id="windows开启rdp远程桌面服务"><a href="#windows开启rdp远程桌面服务" class="headerlink" title="windows开启rdp远程桌面服务"></a>windows开启rdp远程桌面服务</h3><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">查看远程端口或者使用注册表
 REG query HKLM\SYSTEM\CurrentControlSet\Control\Terminal&quot; 
@@ -512,6 +553,12 @@ fDenyTSConnections &#x2F;t REG_DWORD &#x2F;d 0 &#x2F;f<span aria-hidden="true" c
 
 <pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">win+R（调出命令行）
 mstsc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="windows常用命令"><a href="#windows常用命令" class="headerlink" title="windows常用命令"></a>windows常用命令</h3><pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;命令调出计算机管理
+win+R
+compmgmt.msc
+&#x2F;&#x2F;打开管理员命令行
+win+X<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
                 
@@ -880,7 +927,7 @@ mstsc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2019-2022</span>
+                <span id="year">2019-2023</span>
             
             <a href="/about" target="_blank">wwq</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
