@@ -500,7 +500,7 @@
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ping secdriver.com  # ping DNS解析
 nslookup secdriver.com  # nslookup DNS解析<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p><img src="/2023/012220963/Web%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C1.PNG" alt=" "></p>
+<p><img src="/2023/012220963/1.PNG" alt=" "></p>
 <h4 id="域名级别"><a href="#域名级别" class="headerlink" title="域名级别"></a><strong>域名级别</strong></h4><p>域名可分为不同级别，包括顶级域名、二级域名等</p>
 <h5 id="顶级域名"><a href="#顶级域名" class="headerlink" title="顶级域名"></a><strong>顶级域名</strong></h5><p><strong>国家顶级域名</strong>（national top-level domainnames，简称nTLDs），200多个国家都按照ISO3166国家代码分配了顶级域名，例如中国是 .cn，美国是 .us，日本是 .jp 等</p>
 <p><strong>国际顶级域名</strong>（international top-level domain names，简称iTDs），例如表示工商企业的 .com，表示网络提供商的 .net，表示顶级标杆、个人的 .top，表示非盈利组织的.org等</p>
@@ -540,14 +540,14 @@ ctf.secdriver.com
 <h5 id="网站查询子域名"><a href="#网站查询子域名" class="headerlink" title="网站查询子域名"></a><strong>网站查询子域名</strong></h5><p>VirusTotal <a target="_blank" rel="noopener" href="https://www.virustotal.com/gui/home/search">https://www.virustotal.com/gui/home/search</a></p>
 <p>fofa <a target="_blank" rel="noopener" href="https://fofa.info/">https://fofa.info/</a></p>
 <h5 id="工具扫描"><a href="#工具扫描" class="headerlink" title="工具扫描"></a><strong>工具扫描</strong></h5><p>Layer子域名挖掘机</p>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C4.PNG" alt="4"></p>
+<p><img src="/2023/012220963/4.PNG" alt="4"></p>
 <h3 id="2-端口信息"><a href="#2-端口信息" class="headerlink" title="2.端口信息"></a><strong>2.端口信息</strong></h3><p>计算机“端口”是英文port的义译，可以认为是计算机与外界通讯交流的出口，计算机有0~65535，共计65536个端口。</p>
 <p>端口作为服务器和客户端交互的接口，起着非常重要的作用。一些常见的端口标识出服务器开启了什么服务，比如3389端口开启，可以认为服务器系统为windows并且开启了远程服务的功能。所以，端口扫描在渗透测试中是非常重要的。</p>
-<h4 id="插件探测"><a href="#插件探测" class="headerlink" title="插件探测"></a><strong>插件探测</strong></h4><h5 id="Fofa-Pro-view"><a href="#Fofa-Pro-view" class="headerlink" title="Fofa Pro view"></a><strong>Fofa Pro view</strong></h5><p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C5.png" alt="5"></p>
-<h5 id="shodan"><a href="#shodan" class="headerlink" title="shodan"></a><strong>shodan</strong></h5><p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C6.png" alt="6"></p>
+<h4 id="插件探测"><a href="#插件探测" class="headerlink" title="插件探测"></a><strong>插件探测</strong></h4><h5 id="Fofa-Pro-view"><a href="#Fofa-Pro-view" class="headerlink" title="Fofa Pro view"></a><strong>Fofa Pro view</strong></h5><p><img src="/2023/012220963/5.png" alt="5"></p>
+<h5 id="shodan"><a href="#shodan" class="headerlink" title="shodan"></a><strong>shodan</strong></h5><p><img src="/2023/012220963/6.png" alt="6"></p>
 <h4 id="工具扫描-1"><a href="#工具扫描-1" class="headerlink" title="工具扫描"></a><strong>工具扫描</strong></h4><h5 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a><strong>nmap</strong></h5><p>nmap 是一款开源免费的针对大型网络的端口扫描工具，nmap可以检测目标主机是否在线、主机端口开放情况、检测主机运行的服务类型及版本信息、检测操作系统与设备类型等信息</p>
 <p>nmap常用参数</p>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C2.PNG" alt="2"></p>
+<p><img src="/2023/012220963/2.PNG" alt="2"></p>
 <h6 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a><strong>基本使用</strong></h6><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">nmap 192.168.23.1  # Nmap 默认发送⼀个arp的ping数据包，来探测⽬标主机在1-10000范围内所开放的端⼝<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
@@ -580,7 +580,7 @@ firefox mysite.html<span aria-hidden="true" class="line-numbers-rows"><span></sp
 
 <h5 id="masscan"><a href="#masscan" class="headerlink" title="masscan"></a><strong>masscan</strong></h5><p>masscan 是 Kali 下集成的高效扫描器 , 速度非常快</p>
 <p>masscan 常用参数</p>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C3.PNG" alt="3"></p>
+<p><img src="/2023/012220963/3.PNG" alt="3"></p>
 <h6 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a><strong>基本用法</strong></h6><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">masscan 192.168.23.1 -p 1-3000<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h6 id="枚举C段"><a href="#枚举C段" class="headerlink" title="枚举C段"></a><strong>枚举C段</strong></h6><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">-sL 参数可以枚举网段
@@ -618,9 +618,9 @@ masscan 192.168.23.1&#x2F;24 -p
 <li><p>发现敏感文件，后台文件，数据库文件，和信息泄漏文件等等</p>
 </li>
 </ul>
-<h4 id="常见的后台管理页面："><a href="#常见的后台管理页面：" class="headerlink" title="常见的后台管理页面："></a>常见的后台管理页面：</h4><p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C7.PNG" alt="7"></p>
+<h4 id="常见的后台管理页面："><a href="#常见的后台管理页面：" class="headerlink" title="常见的后台管理页面："></a>常见的后台管理页面：</h4><p><img src="/2023/012220963/7.PNG" alt="7"></p>
 <h4 id="robots-txt"><a href="#robots-txt" class="headerlink" title="robots.txt"></a>robots.txt</h4><p>Robots协议(Robots Exclusion Protocol)“网络爬虫排除标准”，网站通过Robots协议告诉搜索引擎哪些页面可以抓取，哪些页面不能抓取，同时也记录网站所具有基本的目录</p>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C8.PNG" alt="8"></p>
+<p><img src="/2023/012220963/8.PNG" alt="8"></p>
 <h3 id="目录扫描工具"><a href="#目录扫描工具" class="headerlink" title="目录扫描工具"></a>目录扫描工具</h3><h5 id="dirsearch"><a href="#dirsearch" class="headerlink" title="dirsearch"></a>dirsearch</h5><p>dirsearch是一个基于python3的命令行工具，旨在暴力扫描页面结构，包括网页中的目录和文件</p>
 <p>依赖安装： pip install -r requirements.txt</p>
 <p>简单使用：python dirsearch.py -u 目标地址</p>
@@ -684,11 +684,11 @@ masscan 192.168.23.1&#x2F;24 -p
 <h4 id="在线指纹识别："><a href="#在线指纹识别：" class="headerlink" title="在线指纹识别："></a>在线指纹识别：</h4><p><a target="_blank" rel="noopener" href="http://whatweb.bugscaner.com/">http://whatweb.bugscaner.com/</a></p>
 <p><a target="_blank" rel="noopener" href="http://pentest.gdpcisa.org/whatcms">http://pentest.gdpcisa.org/whatcms</a></p>
 <h5 id="指纹探测插件：Wapplyzer"><a href="#指纹探测插件：Wapplyzer" class="headerlink" title="指纹探测插件：Wapplyzer"></a>指纹探测插件：Wapplyzer</h5><h4 id="CDN识别"><a href="#CDN识别" class="headerlink" title="CDN识别"></a>CDN识别</h4><h5 id="认识CDN"><a href="#认识CDN" class="headerlink" title="认识CDN"></a>认识CDN</h5><p>CDN是指内容分发网络。CDN是构建在现有网络基础之上的智能虚拟网络，依靠部署在各地的边缘服务器。</p>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C9.PNG" alt="9"></p>
+<p><img src="/2023/012220963/9.PNG" alt="9"></p>
 <p>通过中心平台的负载均衡内容分发，调度等功能模块，使用户就近获取所需内容，降低网络拥塞，提高用户访问响应速度和命中率。</p>
 <p>CDN的基本原理是广泛采用各种缓存服务器，将这些缓存服务器分布到用户访问相对集中的地区或网络内。</p>
 <p>在用户访问网站时，利用全局负载技术将用户的访问<strong>指向距离最近的工作正常的缓存服务器上</strong>，由缓存服务器直接响应用户请求。</p>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C10.PNG" alt="10"></p>
+<p><img src="/2023/012220963/10.PNG" alt="10"></p>
 <h5 id="识别CDN"><a href="#识别CDN" class="headerlink" title="识别CDN"></a>识别CDN</h5><p>nslookup</p>
 <p>多地ping网站：<a target="_blank" rel="noopener" href="https://ping.chinaz.com/">https://ping.chinaz.com/</a> <a target="_blank" rel="noopener" href="https://tools.ipip.net/ping.php">https://tools.ipip.net/ping.php</a></p>
 <p>在线识别：<a target="_blank" rel="noopener" href="https://www.cdnplanet.com/tools/cdnfinder">https://www.cdnplanet.com/tools/cdnfinder</a></p>
@@ -718,28 +718,28 @@ region&#x3D;&quot;Henan&quot;   # 搜索指定行政区的资产<span aria-hidd
 <h4 id="google语法"><a href="#google语法" class="headerlink" title="google语法"></a>google语法</h4><p>基本语法</p>
 <p><strong>AND：缺一不可</strong></p>
 <p>谷歌的默认搜索是and逻辑，意思就是，我们在输入关键字后进行搜索时，如输入：“program google”后，会搜出包含“program”和“google”的文件内容，如图</p>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C11.PNG" alt="11"></p>
+<p><img src="/2023/012220963/11.PNG" alt="11"></p>
 <p>基础布尔逻辑</p>
 <p>对于一个搜索引擎来说，进行搜索的时候是要搜索到匹配到所有关键词的页面，还是包含关键词中的任意关键词就可以，取决于一个搜索引擎的一些特别算法，称之为搜索引擎的布尔逻辑默认值。</p>
 <p><strong>OR：两者皆可</strong></p>
 <p>而google就是用and作为默认逻辑（搜索到所有的关键词），当然这个前提是我们没有输入一些特殊的命令。如果你不确定你要搜索的内容，或者你想搜索两个中的任意一个，那么就要使用关键词“OR”。注意：OR是大写的，小写是不起作用的，而且，每一个关键词与“OR”之间是有一个空格的，我们来看一下搜索结果。</p>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C12.PNG" alt="12"></p>
+<p><img src="/2023/012220963/12.PNG" alt="12"></p>
 <p>当然，可以预想的是，google的结果要比program多得多，所以结果第一页全是有关google的内容。此外，还可以借助计算机体系语言中的“|”来代替“OR”，效果是一样的。</p>
 <p><strong>“”</strong> <strong>：一刻都不能分割</strong></p>
 <p>当然，如果你希望搜索“programgoogle”的内容，而不希望这两个单词之间有任何其他的内容，那么就要使用双引号把搜索的内容组成一个词组”programgoogle”来达到目的。如图所示。</p>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C13.PNG" alt="13"></p>
+<p><img src="/2023/012220963/13.PNG" alt="13"></p>
 <p>如上图所示，结果中的programgoogle都是在一起的，没有分割。当然这样的结果比较少，只有2740个，但是看图1，结果却有7亿多个。而且，大部分搜索引擎都有智能断句的功能，如果没有特殊的命令，搜索引擎会一定量的根据大众的语言使用习惯来判断你要搜索什么，而这样的做法，不仅仅没有使搜索引擎显得不听话，反而对大众来讲搜索引擎变得十分智能和高效！</p>
 <p><strong>-</strong> <strong>：不想看到你</strong></p>
 <p>但是如果我们只想看到“program”的内容，而不希望看到“google”的内容，就可以把“-”（减号或者破折号）应用到搜索当中去，语法为“program -google”，注意，“-”之前是有一个空格的，而其后却是和下一个关键词是紧紧相连的！搜索的结果如下图4所示。可以看得到结果中都会包含program，而不包含google</p>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C14.PNG" alt="14"></p>
+<p><img src="/2023/012220963/14.PNG" alt="14"></p>
 <p><strong>+</strong> <strong>：就想看到你</strong></p>
 <p>说到这里，还要提一下google的约束扩展问题了。一般来说，当输入关键词后，google会把相关网页和信息的结果呈现在我们面前。然而，有一些单词在搜索引擎中是会被智能忽略的，导致我们得不到想要的结果。比如十分常用的“www”和“the”，基本上任何一个网页上都会找到的东西，就会被google自动忽略（不要觉得这样不好，还是那个道理，在实际引用当中这样做反而显得更加高效和智能）。如果我们不想忽略这些词进行查询，就得在这些关键词的前面加上符号“+”。如下图5所示：</p>
 <p>看上去两者好像没有什么大的区别，其实仔细比较一下搜索结果就可以看得出，加上加号的搜索结果有一万多个，而不加加号的结果却有着55亿多！而因为google和www的关联度比较高，所以在前面的结果表现的差别不大。</p>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C15.PNG" alt="15"></p>
+<p><img src="/2023/012220963/15.PNG" alt="15"></p>
 <p><strong>“?”和“*” ：占位通配符</strong></p>
 <p>除了上述字符之外，一些搜索引擎支持一种叫做“stemming”（填充）的技术。Stemming是指在查询的关键词中添加一些通配符，通常是“<em>”，有时候也可能是“？”，这些通配符的作用是要求搜索引擎进行查询是可以返回多个不同的结果。其中通配符代表占位，可以匹配其他任意字母和单词，而其他的字或词组与用户输入的相同。如我们想要搜索“Lionel Messi”的内容，却忘记了第一个单词的一些拼写，就可以输入“”l</em>Messi””进行查询，注意：此处整个字符串是要用一个英文半角双引号括住的！结果如下图所示。　</p>
 <p>可以看到，google自动匹配出Lionel Messi的内容并且进行了搜索。这样的方式有利于我们只能记住单词或短语的一部分的内容时使用。</p>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C16.PNG" alt="16"></p>
+<p><img src="/2023/012220963/16.PNG" alt="16"></p>
 <p><strong>特殊语法</strong></p>
 <pre class="line-numbers language-none"><code class="language-none">site：可以限制你搜索范围的域名；
 inurl：用于搜索网页上包含的URL，这个语法对寻找网页上的搜索，帮助之类的很有用；
@@ -781,13 +781,13 @@ ip: 查找特点ip的网站<span aria-hidden="true" class="line-numbers-rows"><s
 
 <h2 id="CDN识别-amp-amp-绕过"><a href="#CDN识别-amp-amp-绕过" class="headerlink" title="CDN识别&amp;&amp;绕过"></a>CDN识别&amp;&amp;绕过</h2><p>CDN 的全称是 Content Delivery Network，即内容分发网络。CDN 是构建在现有网络基础之上的智能虚拟网络，依靠部署在各地的边缘服务器，通过中心平台的负载均衡、内容分发、调度等功能模块，使用户就近获取所需内容，降低网络拥塞，提高用户访问响应速度和命中率。CDN系统能够实时地根据网络流量和各节点的连接、负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近的服务节点上，但在安全测试过程中，若目标存在 CDN 服务，将会影响到后续的安全测试过程。</p>
 <h3 id="CDN识别-1"><a href="#CDN识别-1" class="headerlink" title="CDN识别"></a>CDN识别</h3><h4 id="GET请求"><a href="#GET请求" class="headerlink" title="GET请求"></a>GET请求</h4><p>GET 请求页面/文件地址，查看 HTTP 响应头中是否存在 “cache xxx” 的值，若存在，则表示有走 CDN。</p>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C17.PNG" alt="17"></p>
+<p><img src="/2023/012220963/17.PNG" alt="17"></p>
 <h4 id="ping域名"><a href="#ping域名" class="headerlink" title="ping域名"></a>ping域名</h4><p>ping 域名，查看 ping 的实际地址，若实际地址为 CDN 节点地址，则表示有走 CDN。</p>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C18.PNG" alt="18"></p>
+<p><img src="/2023/012220963/18.PNG" alt="18"></p>
 <h4 id="nslookup解析"><a href="#nslookup解析" class="headerlink" title="nslookup解析"></a>nslookup解析</h4><p>nslookup 域名，若解析结果有多个，很有可能存在CDN，相反，若解析结果只有一个，可能不存在CDN(不能肯定)。</p>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C19.PNG" alt="19"></p>
+<p><img src="/2023/012220963/19.PNG" alt="19"></p>
 <h4 id="多地ping"><a href="#多地ping" class="headerlink" title="多地ping"></a>多地ping</h4><p>利用多地区的ping服务器操作，然后对比每个地区ping出的IP结果，查看这些IP是否一致， 如果都是一样的，极有可能不存在CDN。如果IP大多不太一样或者规律性很强，可以尝试查询这些IP的归属地，判断是否存在CDN。</p>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C20.PNG" alt="20"></p>
+<p><img src="/2023/012220963/20.PNG" alt="20"></p>
 <h3 id="CDN厂商"><a href="#CDN厂商" class="headerlink" title="CDN厂商"></a>CDN厂商</h3><h4 id="CDN厂商识别"><a href="#CDN厂商识别" class="headerlink" title="CDN厂商识别"></a>CDN厂商识别</h4><p><a target="_blank" rel="noopener" href="https://www.cdnplanet.com/tools/cdnfinder/#">https://www.cdnplanet.com/tools/cdnfinder/#</a></p>
 <p><a target="_blank" rel="noopener" href="http://tools.bugscaner.com/whichcdn/">http://tools.bugscaner.com/whichcdn/</a></p>
 <p>国外厂商：CloudFlare、StackPath、Fastly、CDNetworks、CacheFly、CloudFront</p>
@@ -821,7 +821,7 @@ print(&#39;http.favicon.hash:&#39;+str(hash))<span aria-hidden="true" class="lin
 <p>安装指定依赖包: pip install mmh3-3.0.0-cp39-cp39-win_amd64.whl </p>
 <p><strong>第二种</strong>（不推荐，vs2019非常大）：</p>
 <p>安装vs2019 下载组件 C++ ATL v141 </p>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C21.PNG" alt="21"></p>
+<p><img src="/2023/012220963/21.PNG" alt="21"></p>
 <p>然后 pip install mmh3 即可成功安装</p>
 <h4 id="工具扫描全网"><a href="#工具扫描全网" class="headerlink" title="工具扫描全网"></a>工具扫描全网</h4><p>扫描全网开放特定端口的IP，然后获取他们的特定页面的HTM源代码，用这些源代码和目标网站的特定页面的HTM源代码做对比，如果匹配上来了，就很可能是目标网站的真实P，工具匹配会匹配出来很多，最后还是要人工筛选。</p>
 <p><strong>zmap扫描全网</strong></p>
@@ -886,33 +886,33 @@ if($username &#x3D;&#x3D; &#39;admin&#39; &amp;&amp; $password &#x3D;&#x3D; &#39
 <p>3.服务器端程序返回一个带签名的token 给客户端。</p>
 <p>4.客户端储存token,并且每次访问API都携带Token到服务器端的。</p>
 <p>5.服务端验证token，校验成功则返回请求数据，校验失败则返回错误码。</p>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C22.PNG" alt="22"></p>
+<p><img src="/2023/012220963/22.PNG" alt="22"></p>
 <p><strong>简单示例：</strong></p>
 <ol>
 <li>burp抓包发送到intruder,爆破模式选择Pitchfork</li>
 </ol>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C25.PNG" alt="25"></p>
+<p><img src="/2023/012220963/25.PNG" alt="25"></p>
 <ol start="2">
 <li>payloads中第二个数据选择Recursive grep</li>
 </ol>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C26.PNG" alt="26"></p>
+<p><img src="/2023/012220963/26.PNG" alt="26"></p>
 <ol start="3">
 <li>在Resourse Pool模块下的线程要调为1，因为一个token只能一时间产生一个</li>
 </ol>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C27.PNG" alt="27"></p>
+<p><img src="/2023/012220963/27.PNG" alt="27"></p>
 <ol start="4">
 <li>Options模块的Grep-Extract模式里添加token，有的token重复刷新会界面302获取不了，记得更换新的token</li>
 </ol>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C28.PNG" alt="28"></p>
+<p><img src="/2023/012220963/28.PNG" alt="28"></p>
 <ol start="5">
 <li>回到payloads模块加一新的token</li>
 </ol>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C28.PNG" alt="28"></p>
+<p><img src="/2023/012220963/28.PNG" alt="28"></p>
 <ol start="6">
 <li>爆破，找出正确密码</li>
 </ol>
 <h3 id="Basic认证爆破"><a href="#Basic认证爆破" class="headerlink" title="Basic认证爆破"></a>Basic认证爆破</h3><p>basic认证（基本认证）是从http/1.0就定义的认证方式。即使是如今仍有一部分的网站会使用这种认证方式。</p>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C23.PNG" alt="23"></p>
+<p><img src="/2023/012220963/23.PNG" alt="23"></p>
 <h4 id="Basic认证过程"><a href="#Basic认证过程" class="headerlink" title="Basic认证过程"></a>Basic认证过程</h4><p><strong>步骤1</strong> ：当请求的资源须要BASIC认证时，服务器会随状态码401Authorization Requireed，返回带WWW-Authenticate首部字段的响应。该字段内包含认证的方式（BASIC）及 Request-URI安全域字符串（realm）安全</p>
 <p><strong>步骤2</strong> ：接收到状态码401的客户端为了经过BASIC认证，须要将用户ID及密码发送给服务器。发送的字符串内容是由用户ID和密码构成，二者中间以(:)链接后，在通过Base64编码处理。服务器假设用户ID为guest，密码是guest，链接起来就会造成guest：guest这样的字符串。而后通过base64编</p>
 <p>码，最后结果是 Z3VLc3Q6Z3Vlc3Q=。把这串字符串写入首部字段Authrization以后发送请求。网站当用户代理为浏览器时，用户仅输入用户ID和密码便可，以后，浏览器会自动完成到base64编码的转换工作</p>
@@ -1040,7 +1040,7 @@ print(&quot;运行结束~！&quot;)<span aria-hidden="true" class="line-numbers-
 <h2 id="暴力破解2"><a href="#暴力破解2" class="headerlink" title="暴力破解2"></a>暴力破解2</h2><h3 id="CS架构破解"><a href="#CS架构破解" class="headerlink" title="CS架构破解"></a>CS架构破解</h3><p>B/S架构即 Brouser/Server ，是一种浏览器和服务器架构模式；CS架构是指服务器-客户机。服务器-客户机，即Client/Server(C/S)结构。</p>
 <h4 id="hydra爆破工具"><a href="#hydra爆破工具" class="headerlink" title="hydra爆破工具"></a>hydra爆破工具</h4><p>hydra 可以爆破 ftp / ssh / telnet / mysql / rdp 等各种服务。</p>
 <p>常用参数</p>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C24.PNG" alt="24"></p>
+<p><img src="/2023/012220963/24.PNG" alt="24"></p>
 <h5 id="学习平台实操"><a href="#学习平台实操" class="headerlink" title="学习平台实操"></a>学习平台实操</h5><p>登陆vpn访问学习平台：<a target="_blank" rel="noopener" href="https://edu.work.ltsec.com/index">https://edu.work.ltsec.com/index</a> 访问暴力穷举破解进行练习</p>
 <h5 id="mysql开启远程登录"><a href="#mysql开启远程登录" class="headerlink" title="mysql开启远程登录"></a>mysql开启远程登录</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">登陆mysql
 use &#96;mysql&#96;;
@@ -1101,9 +1101,9 @@ fDenyTSConnections &#x2F;t REG_DWORD &#x2F;d 0 &#x2F;f<span aria-hidden="true" c
 <h4 id="验证码可穷举"><a href="#验证码可穷举" class="headerlink" title="验证码可穷举"></a>验证码可穷举</h4><p>有的验证码不是使用算法随机生成的，而是一些固定的图片，多刷新几次验证码我们可能会发现系统中的存在就那么一些验证码，这种情况这种情况下只要将验证码全部下载下来，生成一个md5库，然后将前端生成的验证码与本地文件进行对比即可。</p>
 <p>思路：建立图片md5库 与 对应验证码值库后，用 resquest.Session() 建立一个可保持状态的request对象，下载验证码图片后与md5库对比得出验证码值，进行登陆爆破即可。</p>
 <h2 id="暴力破解与加密"><a href="#暴力破解与加密" class="headerlink" title="暴力破解与加密"></a>暴力破解与加密</h2><h3 id="Debug代码调试"><a href="#Debug代码调试" class="headerlink" title="Debug代码调试"></a>Debug代码调试</h3><p>Debug的意义在于发现程序错误的存在以隔离、消除等方式对错误，进行定位确定错误产生的原因，提出纠正错误的解决办法，对程序错误予以改正</p>
-<h4 id="vscode-debug-python"><a href="#vscode-debug-python" class="headerlink" title="vscode debug python"></a>vscode debug python</h4><h5 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h5><h6 id="1-安装插件python"><a href="#1-安装插件python" class="headerlink" title="1.安装插件python"></a>1.安装插件python</h6><p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C30.PNG" alt="30"></p>
+<h4 id="vscode-debug-python"><a href="#vscode-debug-python" class="headerlink" title="vscode debug python"></a>vscode debug python</h4><h5 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h5><h6 id="1-安装插件python"><a href="#1-安装插件python" class="headerlink" title="1.安装插件python"></a>1.安装插件python</h6><p><img src="/2023/012220963/30.PNG" alt="30"></p>
 <h6 id="2-配置文件"><a href="#2-配置文件" class="headerlink" title="2.配置文件"></a>2.配置文件</h6><p>vscdoe会在每个文件夹下创建一个 .vscode 的配置文件目录 ， 在其中创建 <strong>launch.json 、tasks.json</strong></p>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C31.PNG" alt="31"></p>
+<p><img src="/2023/012220963/31.PNG" alt="31"></p>
 <p><strong>lanuch.json</strong></p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&#123;
     &#x2F;&#x2F; 使用 IntelliSense 了解相关属性。
@@ -1149,9 +1149,9 @@ fDenyTSConnections &#x2F;t REG_DWORD &#x2F;d 0 &#x2F;f<span aria-hidden="true" c
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h6 id="修改python解释器"><a href="#修改python解释器" class="headerlink" title="修改python解释器"></a>修改python解释器</h6><p>vscode中Ctrl+shirt+p调出查询窗口，输入python:select选择python解释器</p>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C32.PNG" alt="32"></p>
+<p><img src="/2023/012220963/32.PNG" alt="32"></p>
 <h5 id="Debug-Start"><a href="#Debug-Start" class="headerlink" title="Debug Start"></a>Debug Start</h5><p>使用debug模式启动程序代码</p>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C33.PNG" alt="33"></p>
+<p><img src="/2023/012220963/33.PNG" alt="33"></p>
 <h6 id="1-下断点debug"><a href="#1-下断点debug" class="headerlink" title="1.下断点debug"></a>1.下断点debug</h6><p>在想要调试的代码处下断点，程序debug运行后会停在此行代码执行前，等待用户调试。</p>
 <h6 id="2-调试选项"><a href="#2-调试选项" class="headerlink" title="2.调试选项"></a>2.调试选项</h6><p><strong>继续</strong>：继续执行程序，直到遇到下一个断点为止</p>
 <p><strong>单步跳过</strong>：在普通代码行运行时，会逐行运行程序。若遇到调用自定义函数命令，且在该定义的函数里没有断点，则直接运行完该函数，不会进入该函数并逐行运行该函数内的代码</p>
@@ -1160,7 +1160,7 @@ fDenyTSConnections &#x2F;t REG_DWORD &#x2F;d 0 &#x2F;f<span aria-hidden="true" c
 <p><strong>重启</strong>：重新启动debug程序</p>
 <p><strong>停止</strong>：结束程序</p>
 <h6 id="3-变量监视"><a href="#3-变量监视" class="headerlink" title="3.变量监视"></a>3.变量监视</h6><p>一般在不进行 debug 时会使用print打印某个变量的值，debug可以很轻松的监视每个变量的值。</p>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C34.png" alt="34"></p>
+<p><img src="/2023/012220963/34.png" alt="34"></p>
 <h3 id="前端加密爆破"><a href="#前端加密爆破" class="headerlink" title="前端加密爆破"></a>前端加密爆破</h3><p>在我们渗透过程在，经常会发现没有验证码，也没有登录次数限制，但是用户名密码都是加密的，如果只是md5加密或者hash，burp的Intruder模块自带加密爆破功能，但是如果是自定义的加密方式，或者多层md5此时就没法直接爆破了。这种情况都是前端调用 javascript代码对提交内容进行了加密，通过代码调试可以找到加密函数，使用与其相同的加密函数处理数据提交即可。</p>
 <h4 id="常见前端加密"><a href="#常见前端加密" class="headerlink" title="常见前端加密"></a>常见前端加密</h4><h5 id="base64加密与解密"><a href="#base64加密与解密" class="headerlink" title="base64加密与解密"></a>base64加密与解密</h5><p>window.atob() 与window.btoa()可以实现对base64格式的数据进行解码和编码，其兼容性是主流浏览器，IE10及以上。</p>
 <p>window.atob(encodedStr)只可以解码用btoa方法编码的字符串。</p>
@@ -1251,9 +1251,9 @@ $.ajax(&#123;
 <p>统读写文件等。PhantomJS的用处可谓非常广泛，诸如网络监测、网页截</p>
 <p>屏、无需浏览器的 Web 测试、页面访问自动化等</p>
 <p><strong>配置：</strong>下载 <a target="_blank" rel="noopener" href="https://phantomjs.org/download.html">phantomjs</a>将 bin 目录<strong>添加至环境变量</strong>即可</p>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C36.PNG" alt="36"></p>
+<p><img src="/2023/012220963/36.PNG" alt="36"></p>
 <h6 id="2-安装jsEncrypter"><a href="#2-安装jsEncrypter" class="headerlink" title="2.安装jsEncrypter"></a>2.安装jsEncrypter</h6><p> <a target="_blank" rel="noopener" href="https://github.com/c0ny1/jsEncrypter/releases">下载jsEncrypter</a></p>
-<h6 id="3-burp导入插件jsEncrypter"><a href="#3-burp导入插件jsEncrypter" class="headerlink" title="3.burp导入插件jsEncrypter"></a>3.burp导入插件jsEncrypter</h6><p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C37.png" alt="37"></p>
+<h6 id="3-burp导入插件jsEncrypter"><a href="#3-burp导入插件jsEncrypter" class="headerlink" title="3.burp导入插件jsEncrypter"></a>3.burp导入插件jsEncrypter</h6><p><img src="/2023/012220963/37.png" alt="37"></p>
 <h6 id="4-安装靶场webapp"><a href="#4-安装靶场webapp" class="headerlink" title="4.安装靶场webapp"></a>4.安装靶场webapp</h6><p>将靶场文件放在 WWW 目录下即可</p>
 <h5 id="burp调用js加密函数"><a href="#burp调用js加密函数" class="headerlink" title="burp调用js加密函数"></a>burp调用js加密函数</h5><p><strong>1.修改 phantomjs_server.js文件，导入js加密函数</strong></p>
 <p><strong>2.加入自定义js函数改写后</strong></p>
@@ -1291,7 +1291,7 @@ function js_encrypt(payload) &#123;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h5 id="SHA家族名称"><a href="#SHA家族名称" class="headerlink" title="SHA家族名称"></a>SHA家族名称</h5><p>计算机名词发音网站：<a target="_blank" rel="noopener" href="http://www.howtopronounce.cc/sha1">http://www.howtopronounce.cc/sha1</a></p>
-<p><img src="/2023/012220963/.%5CWeb%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%5C35.png" alt="35"></p>
+<p><img src="/2023/012220963/35.png" alt="35"></p>
 <h5 id="SHA1"><a href="#SHA1" class="headerlink" title="SHA1"></a>SHA1</h5><p>SHA-1 是最广泛使用和设置的加密哈希函数之一，SSL 证书颁发机构经常使用它来签署证书。SHA-1 是一个 160 位散列，它接受一个输入并生成一个 160 位（20 字节）的散列值，称为消息摘要。它通常由一个 <strong>40</strong> <strong>位长的十六进制字符</strong>串描述。</p>
 <h5 id="SHA256"><a href="#SHA256" class="headerlink" title="SHA256"></a>SHA256</h5><p>SHA256算法使用的哈希值长度是256位。这是一个抽象类，此类的唯一实现是<em>SHA256</em>Managed。对于任意长度的消息，SHA256都会产生一个256bit长度的散列值，称为消息摘要，可以用一个<strong>长度为64</strong>的十六进制字符串**表示</p>
 <h5 id="SHA384"><a href="#SHA384" class="headerlink" title="SHA384"></a>SHA384</h5><p>SHA384是其中比较常见的一种摘要算法，可以用一个<strong>长度为<strong><strong>96</strong></strong>的十六进制</strong>字符串表示</p>
