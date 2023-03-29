@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="网安学习小知识, wwqstudy">
+    <meta name="keywords" content="question-solve, wwqstudy">
     <meta name="description" content="mysql命令行查看mysql账号密码mysql -u root -p
 show databases;
 use 数据库名;
@@ -23,7 +23,7 @@ mysql远程连接mysql -u root">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>网安学习小知识 | wwqstudy</title>
+    <title>question-solve | wwqstudy</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -315,12 +315,12 @@ mysql远程连接mysql -u root">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">网安学习小知识</h1>
+                    <h1 class="description center-align post-title">question-solve</h1>
                 </div>
             </div>
         </div>
@@ -457,14 +457,14 @@ mysql远程连接mysql -u root">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    542
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    5 分
                 </div>
                 
 
@@ -559,6 +559,72 @@ win+R
 compmgmt.msc
 &#x2F;&#x2F;打开管理员命令行
 win+X<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="MobaXterm连接服务器：Network-error-Connection-refused"><a href="#MobaXterm连接服务器：Network-error-Connection-refused" class="headerlink" title="MobaXterm连接服务器：Network error:Connection refused"></a>MobaXterm连接服务器：Network error:Connection refused</h2><h3 id="1-使用apt安装时报错：-可能在排查错误时出现"><a href="#1-使用apt安装时报错：-可能在排查错误时出现" class="headerlink" title="1.使用apt安装时报错：(可能在排查错误时出现)"></a>1.使用apt安装时报错：(可能在排查错误时出现)</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">E: Could not get lock &#x2F;var&#x2F;lib&#x2F;dpkg&#x2F;lock-frontend - open (11: Resource temporarily unavailable)
+E: Unable to acquire the dpkg frontend lock (&#x2F;var&#x2F;lib&#x2F;dpkg&#x2F;lock-frontend), is another process using it?<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p><strong>解决方案</strong></p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo killall apt apt-get<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>如果提示没有apt进程：</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">apt: no process found
+apt-get: no process found<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>依次执行：</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo rm &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;lock
+sudo rm &#x2F;var&#x2F;cache&#x2F;apt&#x2F;archives&#x2F;lock
+sudo rm &#x2F;var&#x2F;lib&#x2F;dpkg&#x2F;lock*
+sudo dpkg --configure -a
+sudo apt update<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>apt安装报错解决！</p>
+<h3 id="2-排查MobaXterm出错路径"><a href="#2-排查MobaXterm出错路径" class="headerlink" title="2.排查MobaXterm出错路径"></a>2.排查MobaXterm出错路径</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">1. 查看sshd相关服务是否存在
+apt-get install openssh-server
+systemctl restart ssh
+
+2. 查看22端口是否存在
+ss -ntl
+
+3.将密码拒绝远程访问改一下配置
+命令：gedit &#x2F;etc&#x2F;ssh&#x2F;sshd_config
+将#PermitRootLogin prohibit password
+改为
+PermitRootLogin yes
+命令重启服务：systemctl restart ssh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>MobaXterm连接服务器：Network error:Connection refused问题解决！</p>
+<h2 id="ubuntu开启FTP服务"><a href="#ubuntu开启FTP服务" class="headerlink" title="ubuntu开启FTP服务"></a>ubuntu开启FTP服务</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo apt-get install vsftpd
+sudo vi &#x2F;etc&#x2F;vsftpd.conf
+
+local_enable&#x3D;YES
+write_enable&#x3D;YES&#x2F;&#x2F;修改这两行为上述所示
+
+sudo &#x2F;etc&#x2F;init.d&#x2F;vsftpd restart&#x2F;&#x2F;重启FTP服务
+
+&#x2F;&#x2F;注：如果还无法连接,使用以下操作
+&#x2F;&#x2F;将pam_service_name&#x3D;vsftpd 修改为：pam_service_name&#x3D;ftp
+&#x2F;&#x2F;之后重启：sudo service vsftpd restart<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="ubuntu防火墙、端口"><a href="#ubuntu防火墙、端口" class="headerlink" title="ubuntu防火墙、端口"></a>ubuntu防火墙、端口</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo ufw status&#x2F;&#x2F;查看防火墙的状态
+apt-get install ufw&#x2F;&#x2F;安装防火墙
+sudo ufw enable &#x2F;&#x2F;开启防火墙
+sudo ufw allow 端口号&#x2F;&#x2F;开放某端口
+sudo ufw reload &#x2F;&#x2F;重启防火墙生效
+sudo netstat -tunlp | grep 端口号&#x2F;&#x2F;查看某端口监听状态
+sudo ufw delete allow 端口号&#x2F;&#x2F;防火墙关闭普通端口
+sudo ufw allow 8001&#x2F;tcp&#x2F;&#x2F;防火墙开放规定协议的端口
+sudo ufw delete allow 8001&#x2F;tcp&#x2F;&#x2F;防火墙关闭规定协议的端口
+sudo ufw allow from ip&#x2F;&#x2F;开放指定ip所有操作
+sudo ufw delete allow from ip&#x2F;&#x2F;关闭指定ip所有操作
+sudo ufw allow from ip to any port 端口号&#x2F;&#x2F;开放指定ip对应端口操作
+sudo ufw delete allow from ip to any port 端口号&#x2F;&#x2F;关闭指定ip对应端口操作
+sudo ufw disable&#x2F;&#x2F;关闭防火墙<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="ubuntu查看端口是否开放"><a href="#ubuntu查看端口是否开放" class="headerlink" title="ubuntu查看端口是否开放"></a>ubuntu查看端口是否开放</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">losf -i:80
+telnet ip 端口号&#x2F;&#x2F;查看端口是否开放
+
+netstat -aptn
+iptables -nl&#x2F;&#x2F;查看已开放端口<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
                 

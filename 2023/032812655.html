@@ -4,8 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="VM questions, wwqstudy">
-    <meta name="description" content="MobaXterm连接服务器：Network error:Connection refused1.使用apt安装时报错：(可能在排查错误时出现)E: Could not get lock &amp;#x2F;var&amp;#x2F;lib&amp;#x2F;dp">
+    <meta name="keywords" content="逆向分析技术, wwqstudy">
+    <meta name="description" content="反汇编技术“E8”机器码
+首先来到main函数位置，之后往下看，该处0040100c处代码进行分析：
+
+
+
+在①处：如果xor之后的结果满足，则进行跳转，又因为是xor eax,eax，结果一定满足跳转，这就是对抗反汇编的方法之一：固定条件">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +22,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>VM questions | wwqstudy</title>
+    <title>逆向分析技术 | wwqstudy</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -314,7 +319,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">VM questions</h1>
+                    <h1 class="description center-align post-title">逆向分析技术</h1>
                 </div>
             </div>
         </div>
@@ -442,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-03-01
+                    2023-03-28
                 </div>
                 
 
@@ -451,14 +456,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    242
+                    859
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -481,39 +486,132 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="MobaXterm连接服务器：Network-error-Connection-refused"><a href="#MobaXterm连接服务器：Network-error-Connection-refused" class="headerlink" title="MobaXterm连接服务器：Network error:Connection refused"></a>MobaXterm连接服务器：Network error:Connection refused</h2><h3 id="1-使用apt安装时报错：-可能在排查错误时出现"><a href="#1-使用apt安装时报错：-可能在排查错误时出现" class="headerlink" title="1.使用apt安装时报错：(可能在排查错误时出现)"></a>1.使用apt安装时报错：(可能在排查错误时出现)</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">E: Could not get lock &#x2F;var&#x2F;lib&#x2F;dpkg&#x2F;lock-frontend - open (11: Resource temporarily unavailable)
-E: Unable to acquire the dpkg frontend lock (&#x2F;var&#x2F;lib&#x2F;dpkg&#x2F;lock-frontend), is another process using it?<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+                <h2 id="反汇编技术"><a href="#反汇编技术" class="headerlink" title="反汇编技术"></a>反汇编技术</h2><h3 id="“E8”机器码"><a href="#“E8”机器码" class="headerlink" title="“E8”机器码"></a>“E8”机器码</h3><ol>
+<li>首先来到main函数位置，之后往下看，该处0040100c处代码进行分析：</li>
+</ol>
+<p><img src="/2023/032812655/1.png" alt="1"></p>
+<ul>
+<li>在①处：如果xor之后的结果满足，则进行跳转，又因为是xor eax,eax，结果一定满足跳转，<strong>这就是对抗反汇编的方法之一：固定条件跳转</strong>，继续向下看；</li>
+<li>在②处：上方跳转之后会跳转到401011地址，该地址在call near ptr 8B4C55A0H代码中间部位，从而导致无法进行反汇编。</li>
+</ul>
+<ol start="2">
+<li>将光标放在call左边的401010地址位置(同一行),按D快捷键，对代码进行数据转换</li>
+</ol>
+<p><img src="/2023/032812655/2.png" alt="2"></p>
+<ol start="3">
+<li>在unk_401011地址处按快捷键c将数据转换成代码</li>
+</ol>
+<p><img src="/2023/032812655/3.png" alt="3"></p>
+<p>可以看出，在401010地址多出了E8机器码，该机器码会将E8当作call指令，之后的四个字节当作地址，同时可以看到还有db 8BH的数据，在<strong>db 8BH的地址处按c</strong>进行转换，若下面还有则继续该操作，直到没有为止。</p>
+<ol start="4">
+<li>如图，<strong>固定条件对抗反汇编技术破解完成</strong></li>
+</ol>
+<p><img src="/2023/032812655/4.png" alt="4"></p>
+<p><strong>小技巧：</strong></p>
+<p>光标放在call地址处，选择Options–&gt;找到Number of opcode bytes在方框中写入5，可以调出程序的机器码</p>
+<p><img src="/2023/032812655/5.png" alt="5"></p>
+<p><img src="/2023/032812655/6.png" alt="6"></p>
+<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a><strong>总结：</strong></h4><ul>
+<li>这个二进制程序中使用了<strong>固定条件跳转方法</strong>对抗反汇编技术</li>
+<li>这个二进制程序使用了**E8(程序错认为call指令)**这个流氓机器码来欺骗反汇编过程</li>
+<li>该程序中这种对抗反汇编技术被使用了<strong>5</strong>次</li>
+<li>什么命令行参数会让程序输出“Good Job”(具体分析如下)</li>
+</ul>
+<ol>
+<li>对抗反汇编已全部破解，之后选中代码起始位置至retn位置，按P快捷键，将其转换成函数</li>
+</ol>
+<p><img src="/2023/032812655/7.png" alt="7"></p>
+<p><img src="/2023/032812655/8.png" alt="8"></p>
+<ol start="2">
+<li>直接对其f5反汇编分析，或者空格转换成流程图分析就可知**输入pdq时，程序输出“Good Job”</li>
+</ol>
+<p><img src="/2023/032812655/9.png" alt="9"></p>
+<h3 id="idc脚本能够灵活化解对抗反汇编技术"><a href="#idc脚本能够灵活化解对抗反汇编技术" class="headerlink" title="idc脚本能够灵活化解对抗反汇编技术"></a>idc脚本能够灵活化解对抗反汇编技术</h3><h4 id="对抗反汇编技术破解"><a href="#对抗反汇编技术破解" class="headerlink" title="对抗反汇编技术破解"></a>对抗反汇编技术破解</h4><ol>
+<li><strong>固定条件跳转(破解方式如“E8机器码”)：</strong></li>
+</ol>
+<ul>
+<li>第一处</li>
+</ul>
+<p><img src="/2023/032812655/10.png" alt="10"></p>
+<p><img src="/2023/032812655/11.png" alt="11"></p>
+<ul>
+<li>第二处</li>
+</ul>
+<p><img src="/2023/032812655/12.png" alt="12"></p>
+<p><img src="/2023/032812655/13.png" alt="13"></p>
+<ul>
+<li><strong>第三处(有点特殊):该处jmp跳转到jmp指令第二个字节位置</strong></li>
+</ul>
+<p>在jmp地址按D快捷键：</p>
+<p><img src="/2023/032812655/14.png" alt="14"></p>
+<p>E8机器码下一行按C快捷键</p>
+<p><img src="/2023/032812655/15.png" alt="15"></p>
+<ul>
+<li><strong>第四处(双跳同一地址)</strong></li>
+</ul>
+<p><img src="/2023/032812655/16.png" alt="16"></p>
+<ul>
+<li><strong>向上跳转</strong></li>
+</ul>
+<p><img src="/2023/032812655/18.png" alt="18"></p>
+<p>在4012E6处按D快捷键</p>
+<p><img src="/2023/032812655/19.png" alt="19"></p>
+<p>在4012E8处按C快捷键</p>
+<p><img src="/2023/032812655/20.png" alt="20"></p>
+<p><img src="/2023/032812655/21.png" alt="21"></p>
+<p><strong>对于多出来的机器码可以使用90H即nop进行填充</strong></p>
+<h4 id="idc脚本对抗反汇编"><a href="#idc脚本对抗反汇编" class="headerlink" title="idc脚本对抗反汇编"></a>idc脚本对抗反汇编</h4><ol>
+<li>使用脚本将多余机器码转换成0x90H,之后将main转换成函数</li>
+</ol>
+<p><img src="/2023/032812655/22.png" alt="22"></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
+<li>程序初始化请求的URL是什么？(一个网站链接)</li>
+</ul>
+<p><img src="/2023/032812655/23.png" alt="23"></p>
+<ul>
+<li>User-Agent域是如何产生的？</li>
+</ul>
+<p><img src="/2023/032812655/24.png" alt="24"></p>
+<p><img src="/2023/032812655/25.png" alt="25"></p>
+<p><img src="/2023/032812655/26.png" alt="26"></p>
+<ul>
+<li>初始化请求时，程序在内存页中查找什么？</li>
+</ul>
+<p>由internetOpenUrlA向下查：</p>
+<p><img src="/2023/032812655/27.png" alt="27"></p>
+<ul>
+<li>程序如何处理它从页中提取的信息？</li>
+</ul>
+<p><img src="/2023/032812655/29.png" alt="29"></p>
+<p><img src="/2023/032812655/30.png" alt="30"></p>
+<h3 id="恶意程序会给自己加上重重陷阱"><a href="#恶意程序会给自己加上重重陷阱" class="headerlink" title="恶意程序会给自己加上重重陷阱"></a>恶意程序会给自己加上重重陷阱</h3><p><strong>对抗反汇编技术和上面相同的不再详写</strong></p>
+<h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a><strong>总结</strong></h4><ul>
+<li>恶意代码怎样被初始化调用？</li>
+</ul>
+<p><img src="/2023/032812655/31.png" alt="31"></p>
+<p><img src="/2023/032812655/32.png" alt="32"></p>
+<ul>
+<li>恶意代码都做了什么？使用了什么URL？使用了什么文件名？</li>
+</ul>
+<p><img src="/2023/032812655/33.png" alt="33"></p>
+<p><img src="/2023/032812655/34.png" alt="34"></p>
+<p>4014F8地址处的函数调用403040和403010处的东西是为了解密，对4014F8处函数反汇编即为：</p>
+<p><img src="/2023/032812655/35.png" alt="35"></p>
+<p>从而编写idc脚本，解密</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;idc.idc></span></span>
+<span class="token keyword">static</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">auto</span> ea <span class="token operator">=</span> <span class="token function">ScreenEA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>b<span class="token punctuation">,</span>i<span class="token punctuation">,</span>decoded_byte<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0x0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;=</span><span class="token number">0x50</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        b <span class="token operator">=</span> <span class="token function">Byte</span><span class="token punctuation">(</span>ea<span class="token operator">+</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        decoded_byte <span class="token operator">=</span> b<span class="token operator">^</span><span class="token number">0x55</span><span class="token punctuation">;</span>
+        <span class="token function">PatchByte</span><span class="token punctuation">(</span>ea<span class="token operator">+</span>i<span class="token punctuation">,</span> decoded_byte<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><strong>解决方案</strong></p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo killall apt apt-get<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>如果提示没有apt进程：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">apt: no process found
-apt-get: no process found<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<p>依次执行：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo rm &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;lock
-sudo rm &#x2F;var&#x2F;cache&#x2F;apt&#x2F;archives&#x2F;lock
-sudo rm &#x2F;var&#x2F;lib&#x2F;dpkg&#x2F;lock*
-sudo dpkg --configure -a
-sudo apt update<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>apt安装报错解决！</p>
-<h3 id="2-排查MobaXterm出错路径"><a href="#2-排查MobaXterm出错路径" class="headerlink" title="2.排查MobaXterm出错路径"></a>2.排查MobaXterm出错路径</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">1. 查看sshd相关服务是否存在
-apt-get install openssh-server
-systemctl restart ssh
-
-2. 查看22端口是否存在
-ss -ntl
-
-3.将密码拒绝远程访问改一下配置
-命令：gedit &#x2F;etc&#x2F;ssh&#x2F;sshd_config
-将#PermitRootLogin prohibit password
-改为
-PermitRootLogin yes
-命令重启服务：systemctl restart ssh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>MobaXterm连接服务器：Network error:Connection refused问题解决！</p>
+<p>恶意程序后续处理</p>
+<p><img src="/2023/032812655/36.png" alt="36"></p>
 
                 
             </div>
@@ -540,7 +638,7 @@ PermitRootLogin yes
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://wwqstudy.github.io/2023/030136038.html">http://wwqstudy.github.io/2023/030136038.html</a>
+                    <a href="http://wwqstudy.github.io/2023/032812655.html">http://wwqstudy.github.io/2023/032812655.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -621,18 +719,17 @@ PermitRootLogin yes
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/030136038.html">
+                <a href="/2023/032851872.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="VM questions">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="python">
                         
-                        <span class="card-title">VM questions</span>
+                        <span class="card-title">python</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -642,9 +739,9 @@ PermitRootLogin yes
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-01
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-28
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -653,7 +750,6 @@ PermitRootLogin yes
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
@@ -664,13 +760,13 @@ PermitRootLogin yes
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/01220.html">
+                <a href="/2023/032462972.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="网络攻击与防范">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">网络攻击与防范</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -681,7 +777,7 @@ PermitRootLogin yes
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-22
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-24
                             </span>
                         <span class="publish-author">
                             
