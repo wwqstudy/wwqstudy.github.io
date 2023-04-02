@@ -6,9 +6,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="网络攻击与防范, wwqstudy">
     <meta name="description" content="缓冲区溢出分析原理
-因为我们输入了过长的字符，而缓冲区本身又没有有效的验证机制，导致过长的字符将返回地址覆盖掉了，当我们的函数需要返回的时候，由于此时的返回地址是一个无效地址，因此导致程序出错。
-利用：
-将返回值改为一个有效地址，去执行我们">
+栈溢出就是不顾栈中分配的局部数据块大小，向该数据块写入了过多的数据，导致数据越界，结果覆盖了老的栈数据。 或者解释为 在长字符串中嵌入一段代码，并将过程的返回地址覆盖为这段代码的地址，这样当过程返回时，程序就转而开始执行">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -454,7 +452,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    286
+                    314
                 </div>
                 
 
@@ -485,7 +483,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="缓冲区溢出分析"><a href="#缓冲区溢出分析" class="headerlink" title="缓冲区溢出分析"></a>缓冲区溢出分析</h2><p><strong>原理</strong></p>
-<p>因为我们输入了过长的字符，而缓冲区本身又没有有效的验证机制，导致过长的字符将返回地址覆盖掉了，当我们的函数需要返回的时候，由于此时的返回地址是一个无效地址，因此导致程序出错。</p>
+<p>栈溢出就是不顾栈中分配的局部数据块大小，向该数据块写入了过多的数据，导致数据越界，结果覆盖了老的栈数据。 或者解释为 在长字符串中嵌入一段代码，并将过程的返回地址覆盖为这段代码的地址，这样当过程返回时，程序就转而开始执行这段自编的代码了.</p>
 <p><strong>利用：</strong></p>
 <p>将返回值改为一个有效地址，去执行我们想执行的，即为缓冲区漏洞利用。</p>
 <p><strong>修复：</strong></p>
