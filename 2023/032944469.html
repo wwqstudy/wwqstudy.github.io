@@ -451,14 +451,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    273
+                    880
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -539,6 +539,107 @@
 <li>等待结果(也可以在映射的z盘中手动启动)</li>
 </ol>
 <p><img src="/2023/032944469/11.PNG" alt="11"></p>
+<h2 id="文件上传漏洞"><a href="#文件上传漏洞" class="headerlink" title="文件上传漏洞"></a>文件上传漏洞</h2><h3 id="IIS6-0解析漏洞检测绕过上传漏洞"><a href="#IIS6-0解析漏洞检测绕过上传漏洞" class="headerlink" title="IIS6.0解析漏洞检测绕过上传漏洞"></a>IIS6.0解析漏洞检测绕过上传漏洞</h3><ol>
+<li>首先上传一个正常的照片</li>
+</ol>
+<p><img src="/2023/032944469/12.png" alt="12"></p>
+<ol start="2">
+<li>上传一个shell.php，发现会被拦截</li>
+</ol>
+<p><img src="/2023/032944469/13.png" alt="13"></p>
+<ol start="3">
+<li>burp抓包进行绕过</li>
+</ol>
+<p><img src="/2023/032944469/14.png" alt="14"></p>
+<ol start="4">
+<li>查看上传结果(文件在uploadimg下，文件名是1.php;1980687817.jpg)</li>
+</ol>
+<p><img src="/2023/032944469/15.png" alt="15"></p>
+<ol start="5">
+<li>验证绕过结果</li>
+</ol>
+<p><img src="/2023/032944469/16.png" alt="16"></p>
+<p>success!!!</p>
+<h3 id="IIS6-0目录路径检测解析绕过上传漏洞"><a href="#IIS6-0目录路径检测解析绕过上传漏洞" class="headerlink" title="IIS6.0目录路径检测解析绕过上传漏洞"></a>IIS6.0目录路径检测解析绕过上传漏洞</h3><ol>
+<li>上传正常文件</li>
+</ol>
+<p><img src="/2023/032944469/17.png" alt="17"></p>
+<ol start="2">
+<li>上传asp文件</li>
+</ol>
+<p><img src="/2023/032944469/18.png" alt="18"></p>
+<ol start="3">
+<li>burp抓包绕过</li>
+</ol>
+<p><img src="/2023/032944469/19.png" alt="19"></p>
+<ol start="4">
+<li>上传结果</li>
+</ol>
+<p><img src="/2023/032944469/20.png" alt="20"></p>
+<ol start="5">
+<li>环境存在问题，测试链接失败</li>
+</ol>
+<h3 id="FCK编辑器漏洞"><a href="#FCK编辑器漏洞" class="headerlink" title="FCK编辑器漏洞"></a>FCK编辑器漏洞</h3><p>FCK版本 2.4.2</p>
+<ol>
+<li>在网址后面输入：/_samples/default.html 打开编辑器页面，点 击？可以查看编辑器的版本，版本为 2.4.2</li>
+</ol>
+<p><img src="/2023/032944469/21.png" alt="21"></p>
+<ol start="2">
+<li>在地址后面将/_samples/default.html 改为/whatsnew.html 访问这 个地址可以查看fck的历史版本，最上面的就是当前使用的版本 2.4.2</li>
+</ol>
+<p><img src="/2023/032944469/22.png" alt="22"></p>
+<ol start="3">
+<li>FCK2.4.2 的上传地址：/_samples/default.html 打开编辑器，点 击上传图片，可以进行上传</li>
+</ol>
+<p><img src="/2023/032944469/23.png" alt="23"></p>
+<ol start="4">
+<li>上传正常图片成功，上传 webshell，返回错误信息，提示 类型不正确.上传地址为:/editor/filemanager/browser/defa ult/connectors/test.html</li>
+</ol>
+<p><img src="/2023/032944469/24.png" alt="24"></p>
+<p><img src="/2023/032944469/25.png" alt="25"></p>
+<ol start="5">
+<li>点击 Create Folder 进行新建，输入名字 2.php “确定”</li>
+</ol>
+<p><img src="/2023/032944469/26.png" alt="26"></p>
+<ol start="6">
+<li>在 Current Folder 里输入 2.php，设置好文件保存路径，保存到 2.php 文件夹里,同时修改上传文件扩展名为jpg</li>
+</ol>
+<p><img src="/2023/032944469/27.png" alt="27"></p>
+<ol start="7">
+<li>上传成功，点击 Get Folders and Files 查 看 上 传 路 径 地 址 为 ： /userfiles/file/2.php/shell.jpg</li>
+</ol>
+<p><img src="/2023/032944469/28.png" alt="28"></p>
+<ol start="8">
+<li>验证链接地址为<a target="_blank" rel="noopener" href="http://www.test.com/userfiles/file/2.php/shell.jpg">www.test.com/userfiles/file/2.php/shell.jpg</a></li>
+</ol>
+<p><img src="/2023/032944469/29.png" alt="29"></p>
+<p>success!!!</p>
+<p><strong>FCK2.6.6与之类似，但是2.6.6上传地址是：</strong>/editor/filemanager/connectors/test.html</p>
+<h2 id="文件包含漏洞"><a href="#文件包含漏洞" class="headerlink" title="文件包含漏洞"></a>文件包含漏洞</h2><h3 id="PHP本地文件包含"><a href="#PHP本地文件包含" class="headerlink" title="PHP本地文件包含"></a>PHP本地文件包含</h3><ol>
+<li><p>已知存在文件包含漏洞，包含漏洞产生原因是index.php中的page参数产生，传参方式是get形</p>
+</li>
+<li><p>首先注册账号登录–&gt;控制面板进入个人主页–&gt;头像管理</p>
+</li>
+</ol>
+<p><img src="/2023/032944469/30.png" alt="30"></p>
+<ol start="3">
+<li>构建php一句话木马，因为在被包含文件中，如果包含成功，无论什么格式的文件，都会被当做PHP文件执行(<strong>index.php中可以分析得到</strong>)，以扩展名为jpg上传</li>
+</ol>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> @<span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'1'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">phpinfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/032944469/31.png" alt="31"></p>
+<ol start="4">
+<li>上传完毕之后，头像会更换为上传这个，之后点击头像，查看头像链接</li>
+</ol>
+<p><img src="/2023/032944469/32.png" alt="32"></p>
+<ol start="5">
+<li>进行文件包含，验证</li>
+</ol>
+<p>构建的文件包含链接</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">http<span class="token punctuation">:</span><span class="token comment">//172.16.12.2/index.php?page=./images/avatars/03/3.jpg//3.jpg是图像上传之后被改的名</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/032944469/33.png" alt="33"></p>
+<p>sucess!!!</p>
 
                 
             </div>
