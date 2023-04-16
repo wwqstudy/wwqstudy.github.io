@@ -636,21 +636,21 @@
 <li><p><strong>BMP文件头结构体定义</strong>：</p>
 </li>
 </ol>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">typedef struct tagBITMAPFILEHEADER
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">tagBITMAPFILEHEADER</span>
 
-&#123; 
+<span class="token punctuation">&#123;</span> 
 
-UINT16 bfType;        &#x2F;&#x2F;2Bytes，必须为&quot;BM&quot;，即0x424D 才是Windows位图文件
+UINT16 bfType<span class="token punctuation">;</span>        <span class="token comment">//2Bytes，必须为"BM"，即0x424D 才是Windows位图文件</span>
 
-DWORD bfSize;         &#x2F;&#x2F;4Bytes，整个BMP文件的大小
+DWORD bfSize<span class="token punctuation">;</span>         <span class="token comment">//4Bytes，整个BMP文件的大小</span>
 
-UINT16 bfReserved1;  &#x2F;&#x2F;2Bytes，保留，为0
+UINT16 bfReserved1<span class="token punctuation">;</span>  <span class="token comment">//2Bytes，保留，为0</span>
 
-UINT16 bfReserved2;  &#x2F;&#x2F;2Bytes，保留，为0
+UINT16 bfReserved2<span class="token punctuation">;</span>  <span class="token comment">//2Bytes，保留，为0</span>
 
-DWORD bfOffBits;     &#x2F;&#x2F;4Bytes，文件起始位置到图像像素数据的字节偏移量
+DWORD bfOffBits<span class="token punctuation">;</span>     <span class="token comment">//4Bytes，文件起始位置到图像像素数据的字节偏移量</span>
 
-&#125; BITMAPFILEHEADER;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span> BITMAPFILEHEADER<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>​        <strong>BMP文件头数据表如下</strong>：</p>
 <p>​        <img src="/2022/09062913/BLOG/hexoblog\source_posts\大三上课程\4.png" alt="4"></p>
@@ -660,46 +660,46 @@ DWORD bfOffBits;     &#x2F;&#x2F;4Bytes，文件起始位置到图像像素数�
 <ol start="4">
 <li><strong>BMP信息头结构体定义如下</strong>：</li>
 </ol>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">typedef struct _tagBMP_INFOHEADER
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">_tagBMP_INFOHEADER</span>
  
-&#123;
+<span class="token punctuation">&#123;</span>
  
-DWORD  biSize;    &#x2F;&#x2F;4Bytes，INFOHEADER结构体大小，存在其他版本I NFOHEADER，用作区分
+DWORD  biSize<span class="token punctuation">;</span>    <span class="token comment">//4Bytes，INFOHEADER结构体大小，存在其他版本I NFOHEADER，用作区分</span>
  
-LONG   biWidth;    &#x2F;&#x2F;4Bytes，图像宽度（以像素为单位）
+LONG   biWidth<span class="token punctuation">;</span>    <span class="token comment">//4Bytes，图像宽度（以像素为单位）</span>
  
-LONG   biHeight;    &#x2F;&#x2F;4Bytes，图像高度，+：图像存储顺序为Bottom2Top，-：Top2Bottom
+LONG   biHeight<span class="token punctuation">;</span>    <span class="token comment">//4Bytes，图像高度，+：图像存储顺序为Bottom2Top，-：Top2Bottom</span>
  
-WORD   biPlanes;    &#x2F;&#x2F;2Bytes，图像数据平面，BMP存储RGB数据，因此总为1
+WORD   biPlanes<span class="token punctuation">;</span>    <span class="token comment">//2Bytes，图像数据平面，BMP存储RGB数据，因此总为1</span>
  
-WORD   biBitCount;         &#x2F;&#x2F;2Bytes，图像像素位数
+WORD   biBitCount<span class="token punctuation">;</span>         <span class="token comment">//2Bytes，图像像素位数</span>
  
-DWORD  biCompression;     &#x2F;&#x2F;4Bytes，0：不压缩，1：RLE8，2：RLE4
+DWORD  biCompression<span class="token punctuation">;</span>     <span class="token comment">//4Bytes，0：不压缩，1：RLE8，2：RLE4</span>
  
-DWORD  biSizeImage;       &#x2F;&#x2F;4Bytes，4字节对齐的图像数据大小
+DWORD  biSizeImage<span class="token punctuation">;</span>       <span class="token comment">//4Bytes，4字节对齐的图像数据大小</span>
  
-LONG   biXPelsPerMeter;   &#x2F;&#x2F;4 Bytes，用象素&#x2F;米表示的水平分辨率
+LONG   biXPelsPerMeter<span class="token punctuation">;</span>   <span class="token comment">//4 Bytes，用象素/米表示的水平分辨率</span>
  
-LONG   biYPelsPerMeter;   &#x2F;&#x2F;4 Bytes，用象素&#x2F;米表示的垂直分辨率
+LONG   biYPelsPerMeter<span class="token punctuation">;</span>   <span class="token comment">//4 Bytes，用象素/米表示的垂直分辨率</span>
  
-DWORD  biClrUsed;          &#x2F;&#x2F;4 Bytes，实际使用的调色板索引数，0：使用所有的调色板索引
+DWORD  biClrUsed<span class="token punctuation">;</span>          <span class="token comment">//4 Bytes，实际使用的调色板索引数，0：使用所有的调色板索引</span>
  
-DWORD biClrImportant;     &#x2F;&#x2F;4 Bytes，重要的调色板索引数，0：所有的调色板索引都重要
+DWORD biClrImportant<span class="token punctuation">;</span>     <span class="token comment">//4 Bytes，重要的调色板索引数，0：所有的调色板索引都重要</span>
  
-&#125;BMP_INFOHEADER;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span>BMP_INFOHEADER<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><strong>BMP信息头数据表如下</strong>：</p>
 <p><img src="/2022/09062913/BLOG/hexoblog\source_posts\大三上课程\8.png" alt="8"></p>
 <ol start="5">
 <li><strong>BMP调色板结构体定义如下</strong>：</li>
 </ol>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">typedef struct _tagRGBQUAD
-&#123;
-    BYTE  rgbBlue;       &#x2F;&#x2F;指定蓝色强度
-    BYTE  rgbGreen;      &#x2F;&#x2F;指定绿色强度
-    BYTE  rgbRed;        &#x2F;&#x2F;指定红色强度
-    BYTE  rgbReserved;  &#x2F;&#x2F;保留，设置为0
-&#125; RGBQUAD;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">_tagRGBQUAD</span>
+<span class="token punctuation">&#123;</span>
+    BYTE  rgbBlue<span class="token punctuation">;</span>       <span class="token comment">//指定蓝色强度</span>
+    BYTE  rgbGreen<span class="token punctuation">;</span>      <span class="token comment">//指定绿色强度</span>
+    BYTE  rgbRed<span class="token punctuation">;</span>        <span class="token comment">//指定红色强度</span>
+    BYTE  rgbReserved<span class="token punctuation">;</span>  <span class="token comment">//保留，设置为0</span>
+<span class="token punctuation">&#125;</span> RGBQUAD<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>​        1，4，8位图像才会使用调色板数据，16,24,32位图像不需要调色板数据，即调色板最多只需要256项（索引0 - 255）。</p>
 <p>​        颜色表的大小根据所使用的颜色模式而定：2色图像为8字节；16色图像位64字节；256色图像为1024字节。其中，每4字节表示一种颜色，并以B（蓝色）、G（绿色）、R（红色）、alpha（32位位图的透明度值，一般不需要）。即首先4字节表示颜色号1的颜色，接下来表示颜色号2的颜色，依此类推。</p>

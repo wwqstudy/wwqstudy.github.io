@@ -453,14 +453,14 @@ rc4加密算法
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    9.9k
+                    9.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    44 分
+                    43 分
                 </div>
                 
 
@@ -499,38 +499,38 @@ rc4加密算法
 </ul>
 </li>
 </ol>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">def encrypt(tmp, message):  
-    tmp &#x3D; list(map(lambda x: ord(x), tmp))  
-    message &#x3D; list(map(lambda x: ord(x), message))   
-    S &#x3D; list(range(0, 256))  
-    key &#x3D; []  # 存储秘钥流  
-    T &#x3D; []  # 临时向量T   
-    while len(T) &lt; 256:  
-        T.extend(tmp)  
-    while len(T) !&#x3D; 256:  
-        T.pop()   
-    j &#x3D; 0  
-    for i in range(0, 256):  
-        j &#x3D; (j + S[i] + T[i]) % 256  
-        S[i], S[j] &#x3D; S[j], S[i]   
-    i, j &#x3D; 0, 0  
-    for i in range(len(message)):  
-        i &#x3D; (i + 1) % 256  
-        j &#x3D; (j + S[i]) % 256  
-        S[i], S[j] &#x3D; S[j], S[i]  
-        t &#x3D; (S[i] + S[j]) % 256  
-        key.append(S[t])   
-    secretary &#x3D; list(map(lambda x, y: chr(x ^ y), message, key))  
-    return secretary, key  
-def decrypt(secretary, key):  
-    message &#x3D; list(map(lambda x, y: chr((ord(x)) ^ y), secretary, key))  
-    return &#39;&#39;.join(message)  
-if __name__ &#x3D;&#x3D; &#39;__main__&#39;:  
-    t &#x3D; list(input(&quot;请输入初始秘钥：&quot;))  
-    m &#x3D; list(input(&quot;请输入需要加密的明文：&quot;))  
-    s, k &#x3D; encrypt(t, m)  
-    print(encrypt(t, m)) # t即为所求 
-    print(&#39;经过加密解密后得到的明文：&#39;, decrypt(s, k))  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">encrypt</span><span class="token punctuation">(</span>tmp<span class="token punctuation">,</span> message<span class="token punctuation">)</span><span class="token punctuation">:</span>  
+    tmp <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">map</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">,</span> tmp<span class="token punctuation">)</span><span class="token punctuation">)</span>  
+    message <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">map</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">,</span> message<span class="token punctuation">)</span><span class="token punctuation">)</span>   
+    S <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">256</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  
+    key <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>  <span class="token comment"># 存储秘钥流  </span>
+    T <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>  <span class="token comment"># 临时向量T   </span>
+    <span class="token keyword">while</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">256</span><span class="token punctuation">:</span>  
+        T<span class="token punctuation">.</span>extend<span class="token punctuation">(</span>tmp<span class="token punctuation">)</span>  
+    <span class="token keyword">while</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">256</span><span class="token punctuation">:</span>  
+        T<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>   
+    j <span class="token operator">=</span> <span class="token number">0</span>  
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">256</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  
+        j <span class="token operator">=</span> <span class="token punctuation">(</span>j <span class="token operator">+</span> S<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">256</span>  
+        S<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> S<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> S<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> S<span class="token punctuation">[</span>i<span class="token punctuation">]</span>   
+    i<span class="token punctuation">,</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span>  
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  
+        i <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">256</span>  
+        j <span class="token operator">=</span> <span class="token punctuation">(</span>j <span class="token operator">+</span> S<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">256</span>  
+        S<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> S<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> S<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> S<span class="token punctuation">[</span>i<span class="token punctuation">]</span>  
+        t <span class="token operator">=</span> <span class="token punctuation">(</span>S<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> S<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">256</span>  
+        key<span class="token punctuation">.</span>append<span class="token punctuation">(</span>S<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token punctuation">)</span>   
+    secretary <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">map</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token builtin">chr</span><span class="token punctuation">(</span>x <span class="token operator">^</span> y<span class="token punctuation">)</span><span class="token punctuation">,</span> message<span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">)</span>  
+    <span class="token keyword">return</span> secretary<span class="token punctuation">,</span> key  
+<span class="token keyword">def</span> <span class="token function">decrypt</span><span class="token punctuation">(</span>secretary<span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">:</span>  
+    message <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">map</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token builtin">chr</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token builtin">ord</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">^</span> y<span class="token punctuation">)</span><span class="token punctuation">,</span> secretary<span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">)</span>  
+    <span class="token keyword">return</span> <span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>message<span class="token punctuation">)</span>  
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>  
+    t <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"请输入初始秘钥："</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  
+    m <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"请输入需要加密的明文："</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  
+    s<span class="token punctuation">,</span> k <span class="token operator">=</span> encrypt<span class="token punctuation">(</span>t<span class="token punctuation">,</span> m<span class="token punctuation">)</span>  
+    <span class="token keyword">print</span><span class="token punctuation">(</span>encrypt<span class="token punctuation">(</span>t<span class="token punctuation">,</span> m<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># t即为所求 </span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'经过加密解密后得到的明文：'</span><span class="token punctuation">,</span> decrypt<span class="token punctuation">(</span>s<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="AES加密算法"><a href="#AES加密算法" class="headerlink" title="AES加密算法"></a>AES加密算法</h4><ol>
 <li>AES为分组密码，分组密码也就是把明文分成一组一组的，每组长度相等，每次加密一组数据，直到加密完整个明文。在AES标准规范中，分组长度只能是128位，也就是说，每个分组为16个字节（每个字节8位）。密钥的长度可以使用128位、192位或256位。密钥的长度不同，推荐加密轮数也不同，如下表所示：<br><img src="/2021/120547052/1.png" alt=" "><br>轮数在下面介绍，这里实现的是AES-128，也就是密钥的长度为128位，加密轮数为10轮。上面说到，AES的加密公式为C = E(K,P)，在加密函数E中，会执行一个轮函数，并且执行10次这个轮函数，这个轮函数的前9次执行的操作是一样的，只有第10次有所不同。也就是说，一个明文分组会被加密10轮。AES的核心就是实现一轮中的所有操作。   AES的处理单位是字节，128位的输入明文分组P和输入密钥K都被分成16个字节，分别记为P = P0 P1 … P15 和 K = K0 K1 … K15。如，明文分组为P = abcdefghijklmnop,其中的字符a对应P0，p对应P15。一般地，明文分组用字节为单位的正方形矩阵描述，称为状态矩阵。在算法的每一轮中，状态矩阵的内容不断发生变化，最后的结果作为密文输出。该矩阵中字节的排列顺序为从上到下、从左至右依次排列，如下图所示：<br> <img src="/2021/120547052/2.png" alt=" "><br> 其主要加密如下(10次加密图)：<br> <img src="/2021/120547052/3.png" alt=" "><br> 其中:  <ul>
@@ -580,184 +580,184 @@ W[7] &#x3D; W[3] ⨁ W[6] &#x3D; AC C1 07 BD ⨁ 82 BA 7B 26 &#x3D; 2E 7B 7C 9B
 <li>原理<br>TEA（Tiny Encryption Algorithm）是一种分组加密算法，它的实现非常简单，通常只需要很精短的几行代码。TEA算法使用64位的明文分组和128位的密钥，它使用Feistel分组加密框架，需要进行 64 轮迭代，尽管作者认为 32 轮已经足够了。该算法使用了一个神秘常数δ作为倍数，它来源于黄金比率，以保证每一轮加密都不相同。但δ的精确值似乎并不重要，这里 TEA 把它定义为 δ=「(√5 - 1)231」（也就是程序中的 0×9E3779B9）  </li>
 <li>代码实现  </li>
 </ol>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;Windows.h&gt;
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;Windows.h></span></span>
 
-void Encrypt(long* EntryData, long* Key)
-&#123;
-    &#x2F;&#x2F;分别加密数组中的前四个字节与后4个字节,4个字节为一组每次加密两组
-    unsigned long x &#x3D; EntryData[0];
-    unsigned long y &#x3D; EntryData[1];
+<span class="token keyword">void</span> <span class="token function">Encrypt</span><span class="token punctuation">(</span><span class="token keyword">long</span><span class="token operator">*</span> EntryData<span class="token punctuation">,</span> <span class="token keyword">long</span><span class="token operator">*</span> Key<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token comment">//分别加密数组中的前四个字节与后4个字节,4个字节为一组每次加密两组</span>
+    <span class="token keyword">unsigned</span> <span class="token keyword">long</span> x <span class="token operator">=</span> EntryData<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">unsigned</span> <span class="token keyword">long</span> y <span class="token operator">=</span> EntryData<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-    unsigned long sum &#x3D; 0;
-    unsigned long delta &#x3D; 0x9E3779B9;
-    &#x2F;&#x2F;总共加密32轮
-    for (int i &#x3D; 0; i &lt; 32; i++)
-    &#123;
-        sum +&#x3D; delta;
-        x +&#x3D; ((y &lt;&lt; 4) + Key[0]) ^ (y + sum) ^ ((y &gt;&gt; 5) + Key[1]);
-        y +&#x3D; ((x &lt;&lt; 4) + Key[2]) ^ (x + sum) ^ ((x &gt;&gt; 5) + Key[3]);
-    &#125;
-    &#x2F;&#x2F;最后加密的结果重新写入到数组中
-    EntryData[0] &#x3D; x;
-    EntryData[1] &#x3D; y;
-&#125;
+    <span class="token keyword">unsigned</span> <span class="token keyword">long</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">unsigned</span> <span class="token keyword">long</span> delta <span class="token operator">=</span> <span class="token number">0x9E3779B9</span><span class="token punctuation">;</span>
+    <span class="token comment">//总共加密32轮</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">32</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        sum <span class="token operator">+=</span> delta<span class="token punctuation">;</span>
+        x <span class="token operator">+=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>y <span class="token operator">&lt;&lt;</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">+</span> Key<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token punctuation">(</span>y <span class="token operator">+</span> sum<span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>y <span class="token operator">>></span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">+</span> Key<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        y <span class="token operator">+=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>x <span class="token operator">&lt;&lt;</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">+</span> Key<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token punctuation">(</span>x <span class="token operator">+</span> sum<span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>x <span class="token operator">>></span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">+</span> Key<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">//最后加密的结果重新写入到数组中</span>
+    EntryData<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">;</span>
+    EntryData<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> y<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-void Decrypt(long* EntryData, long* Key)
-&#123;
-    &#x2F;&#x2F;分别加密数组中的前四个字节与后4个字节,4个字节为一组每次加密两组
-    unsigned long x &#x3D; EntryData[0];
-    unsigned long y &#x3D; EntryData[1];
+<span class="token keyword">void</span> <span class="token function">Decrypt</span><span class="token punctuation">(</span><span class="token keyword">long</span><span class="token operator">*</span> EntryData<span class="token punctuation">,</span> <span class="token keyword">long</span><span class="token operator">*</span> Key<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token comment">//分别加密数组中的前四个字节与后4个字节,4个字节为一组每次加密两组</span>
+    <span class="token keyword">unsigned</span> <span class="token keyword">long</span> x <span class="token operator">=</span> EntryData<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">unsigned</span> <span class="token keyword">long</span> y <span class="token operator">=</span> EntryData<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-    unsigned long sum &#x3D; 0;
-    unsigned long delta &#x3D; 0x9E3779B9;
-    sum &#x3D; delta &lt;&lt; 5;   &#x2F;&#x2F;注意这里,sum &#x3D; 32轮之后的黄金分割值. 因为我们要反序解密.
-    &#x2F;&#x2F;总共加密32轮 那么反序也解密32轮
-    for (int i &#x3D; 0; i &lt; 32; i++)
-    &#123;
+    <span class="token keyword">unsigned</span> <span class="token keyword">long</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">unsigned</span> <span class="token keyword">long</span> delta <span class="token operator">=</span> <span class="token number">0x9E3779B9</span><span class="token punctuation">;</span>
+    sum <span class="token operator">=</span> delta <span class="token operator">&lt;&lt;</span> <span class="token number">5</span><span class="token punctuation">;</span>   <span class="token comment">//注意这里,sum = 32轮之后的黄金分割值. 因为我们要反序解密.</span>
+    <span class="token comment">//总共加密32轮 那么反序也解密32轮</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">32</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
 
-        &#x2F;&#x2F; 先将y解开 然后参与运算在解x
-        y -&#x3D; ((x &lt;&lt; 4) + Key[2]) ^ (x + sum) ^ ((x &gt;&gt; 5) + Key[3]);
-        x -&#x3D; ((y &lt;&lt; 4) + Key[0]) ^ (y + sum) ^ ((y &gt;&gt; 5) + Key[1]);
-        sum -&#x3D; delta;
-    &#125;
-    &#x2F;&#x2F;最后加密的结果重新写入到数组中
-    EntryData[0] &#x3D; x;
-    EntryData[1] &#x3D; y;
-&#125;
+        <span class="token comment">// 先将y解开 然后参与运算在解x</span>
+        y <span class="token operator">-=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>x <span class="token operator">&lt;&lt;</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">+</span> Key<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token punctuation">(</span>x <span class="token operator">+</span> sum<span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>x <span class="token operator">>></span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">+</span> Key<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        x <span class="token operator">-=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>y <span class="token operator">&lt;&lt;</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">+</span> Key<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token punctuation">(</span>y <span class="token operator">+</span> sum<span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>y <span class="token operator">>></span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">+</span> Key<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sum <span class="token operator">-=</span> delta<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">//最后加密的结果重新写入到数组中</span>
+    EntryData<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">;</span>
+    EntryData<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> y<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-int main()
-&#123;
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
 
 
 
-    long Data[3] &#x3D; &#123; 0x44434241,0x48474645,0x0 &#125;;
-    printf(&quot;待加密的数值 &#x3D; %s\r\n&quot;, (char*)Data);
+    <span class="token keyword">long</span> Data<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token number">0x44434241</span><span class="token punctuation">,</span><span class="token number">0x48474645</span><span class="token punctuation">,</span><span class="token number">0x0</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"待加密的数值 = %s\r\n"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">char</span><span class="token operator">*</span><span class="token punctuation">)</span>Data<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    long key[4] &#x3D; &#123; 0x11223344,0x55667788,0x99AABBCC,0xDDEEFF11 &#125;;
+    <span class="token keyword">long</span> key<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token number">0x11223344</span><span class="token punctuation">,</span><span class="token number">0x55667788</span><span class="token punctuation">,</span><span class="token number">0x99AABBCC</span><span class="token punctuation">,</span><span class="token number">0xDDEEFF11</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
 
-    &#x2F;&#x2F;Encrypt每次只是加密4字节数组中的两组(也就是每次加密8个字节) 如果你数据多.可以来个for循环来循环加密,但是Entrypt内部还有32次循环,所以速度上还是会有点影响.
-    Encrypt(Data, key);
-    printf(&quot;加密后的数值 &#x3D; %s\r\n&quot;, (char*)Data);
-    Decrypt(Data, key);
-    printf(&quot;解密后的数值 &#x3D; %s\r\n&quot;, (char*)Data);
-    system(&quot;pause&quot;);
-&#125;  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token comment">//Encrypt每次只是加密4字节数组中的两组(也就是每次加密8个字节) 如果你数据多.可以来个for循环来循环加密,但是Entrypt内部还有32次循环,所以速度上还是会有点影响.</span>
+    <span class="token function">Encrypt</span><span class="token punctuation">(</span>Data<span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"加密后的数值 = %s\r\n"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">char</span><span class="token operator">*</span><span class="token punctuation">)</span>Data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">Decrypt</span><span class="token punctuation">(</span>Data<span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"解密后的数值 = %s\r\n"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">char</span><span class="token operator">*</span><span class="token punctuation">)</span>Data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">system</span><span class="token punctuation">(</span><span class="token string">"pause"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="XTEA机密算法"><a href="#XTEA机密算法" class="headerlink" title="XTEA机密算法"></a>XTEA机密算法</h4><ol>
 <li>原理<br>与TEA加密算法类似，只是增加了更多的密钥表，移位和异或操作等等。  </li>
 <li>代码实现  </li>
 </ol>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">#include &lt;stdio.h&gt;  
-#include &lt;stdint.h&gt;  
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span>  </span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdint.h></span>  </span>
 
-void encipher(unsigned int num_rounds, uint32_t v[2], uint32_t const key[4]) &#123;  
-    unsigned int i;  
-    uint32_t v0&#x3D;v[0], v1&#x3D;v[1], sum&#x3D;0, delta&#x3D;0x9E3779B9;  
-    for (i&#x3D;0; i &lt; num_rounds; i++) &#123;  
-        v0 +&#x3D; (((v1 &lt;&lt; 4) ^ (v1 &gt;&gt; 5)) + v1) ^ (sum + key[sum &amp; 3]);  
-        sum +&#x3D; delta;  
-        v1 +&#x3D; (((v0 &lt;&lt; 4) ^ (v0 &gt;&gt; 5)) + v0) ^ (sum + key[(sum&gt;&gt;11) &amp; 3]);  
-    &#125;  
-    v[0]&#x3D;v0; v[1]&#x3D;v1;  
-&#125;  
+<span class="token keyword">void</span> <span class="token function">encipher</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> num_rounds<span class="token punctuation">,</span> <span class="token class-name">uint32_t</span> v<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token class-name">uint32_t</span> <span class="token keyword">const</span> key<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>  
+    <span class="token keyword">unsigned</span> <span class="token keyword">int</span> i<span class="token punctuation">;</span>  
+    <span class="token class-name">uint32_t</span> v0<span class="token operator">=</span>v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> v1<span class="token operator">=</span>v<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> sum<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> delta<span class="token operator">=</span><span class="token number">0x9E3779B9</span><span class="token punctuation">;</span>  
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> num_rounds<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>  
+        v0 <span class="token operator">+=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>v1 <span class="token operator">&lt;&lt;</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token punctuation">(</span>v1 <span class="token operator">>></span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> v1<span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token punctuation">(</span>sum <span class="token operator">+</span> key<span class="token punctuation">[</span>sum <span class="token operator">&amp;</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+        sum <span class="token operator">+=</span> delta<span class="token punctuation">;</span>  
+        v1 <span class="token operator">+=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>v0 <span class="token operator">&lt;&lt;</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token punctuation">(</span>v0 <span class="token operator">>></span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> v0<span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token punctuation">(</span>sum <span class="token operator">+</span> key<span class="token punctuation">[</span><span class="token punctuation">(</span>sum<span class="token operator">>></span><span class="token number">11</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token punctuation">&#125;</span>  
+    v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span>v0<span class="token punctuation">;</span> v<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>v1<span class="token punctuation">;</span>  
+<span class="token punctuation">&#125;</span>  
 
-void decipher(unsigned int num_rounds, uint32_t v[2], uint32_t const key[4]) &#123;  
-    unsigned int i;  
-    uint32_t v0&#x3D;v[0], v1&#x3D;v[1], delta&#x3D;0x9E3779B9, sum&#x3D;delta*num_rounds;  
-    for (i&#x3D;0; i &lt; num_rounds; i++) &#123;  
-        v1 -&#x3D; (((v0 &lt;&lt; 4) ^ (v0 &gt;&gt; 5)) + v0) ^ (sum + key[(sum&gt;&gt;11) &amp; 3]);  
-        sum -&#x3D; delta;  
-        v0 -&#x3D; (((v1 &lt;&lt; 4) ^ (v1 &gt;&gt; 5)) + v1) ^ (sum + key[sum &amp; 3]);  
-    &#125;  
-    v[0]&#x3D;v0; v[1]&#x3D;v1;  
-&#125;  
+<span class="token keyword">void</span> <span class="token function">decipher</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> num_rounds<span class="token punctuation">,</span> <span class="token class-name">uint32_t</span> v<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token class-name">uint32_t</span> <span class="token keyword">const</span> key<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>  
+    <span class="token keyword">unsigned</span> <span class="token keyword">int</span> i<span class="token punctuation">;</span>  
+    <span class="token class-name">uint32_t</span> v0<span class="token operator">=</span>v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> v1<span class="token operator">=</span>v<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> delta<span class="token operator">=</span><span class="token number">0x9E3779B9</span><span class="token punctuation">,</span> sum<span class="token operator">=</span>delta<span class="token operator">*</span>num_rounds<span class="token punctuation">;</span>  
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> num_rounds<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>  
+        v1 <span class="token operator">-=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>v0 <span class="token operator">&lt;&lt;</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token punctuation">(</span>v0 <span class="token operator">>></span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> v0<span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token punctuation">(</span>sum <span class="token operator">+</span> key<span class="token punctuation">[</span><span class="token punctuation">(</span>sum<span class="token operator">>></span><span class="token number">11</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+        sum <span class="token operator">-=</span> delta<span class="token punctuation">;</span>  
+        v0 <span class="token operator">-=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>v1 <span class="token operator">&lt;&lt;</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token punctuation">(</span>v1 <span class="token operator">>></span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> v1<span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token punctuation">(</span>sum <span class="token operator">+</span> key<span class="token punctuation">[</span>sum <span class="token operator">&amp;</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token punctuation">&#125;</span>  
+    v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span>v0<span class="token punctuation">;</span> v<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>v1<span class="token punctuation">;</span>  
+<span class="token punctuation">&#125;</span>  
 
-int main()  
-&#123;  
-    uint32_t v[2]&#x3D;&#123;1,2&#125;;  
-    uint32_t const k[4]&#x3D;&#123;2,2,3,4&#125;;  
-    unsigned int r&#x3D;32;&#x2F;&#x2F;num_rounds建议取值为32  
-    &#x2F;&#x2F; v为要加密的数据是两个32位无符号整数  
-    &#x2F;&#x2F; k为加密解密密钥，为4个32位无符号整数，即密钥长度为128位  
-    printf(&quot;加密前原始数据：%u %u\n&quot;,v[0],v[1]);  
-    encipher(r, v, k);  
-    printf(&quot;加密后的数据：%u %u\n&quot;,v[0],v[1]);  
-    decipher(r, v, k);  
-    printf(&quot;解密后的数据：%u %u\n&quot;,v[0],v[1]);  
-    return 0;  
-&#125;  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  
+<span class="token punctuation">&#123;</span>  
+    <span class="token class-name">uint32_t</span> v<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>  
+    <span class="token class-name">uint32_t</span> <span class="token keyword">const</span> k<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>  
+    <span class="token keyword">unsigned</span> <span class="token keyword">int</span> r<span class="token operator">=</span><span class="token number">32</span><span class="token punctuation">;</span><span class="token comment">//num_rounds建议取值为32  </span>
+    <span class="token comment">// v为要加密的数据是两个32位无符号整数  </span>
+    <span class="token comment">// k为加密解密密钥，为4个32位无符号整数，即密钥长度为128位  </span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"加密前原始数据：%u %u\n"</span><span class="token punctuation">,</span>v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>v<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token function">encipher</span><span class="token punctuation">(</span>r<span class="token punctuation">,</span> v<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"加密后的数据：%u %u\n"</span><span class="token punctuation">,</span>v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>v<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token function">decipher</span><span class="token punctuation">(</span>r<span class="token punctuation">,</span> v<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"解密后的数据：%u %u\n"</span><span class="token punctuation">,</span>v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>v<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>  
+<span class="token punctuation">&#125;</span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="XXTEA加密算法"><a href="#XXTEA加密算法" class="headerlink" title="XXTEA加密算法"></a>XXTEA加密算法</h4><ol>
 <li>原理<br><img src="/2021/120547052/13.png" alt=" ">  </li>
 <li>代码实现  </li>
 </ol>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">#include &lt;stdio.h&gt;  
-#include &lt;stdint.h&gt;  
-#define DELTA 0x9e3779b9  
-#define MX (((z&gt;&gt;5^y&lt;&lt;2) + (y&gt;&gt;3^z&lt;&lt;4)) ^ ((sum^y) + (key[(p&amp;3)^e] ^ z)))  
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span>  </span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdint.h></span>  </span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">DELTA</span> <span class="token expression"><span class="token number">0x9e3779b9</span>  </span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MX</span> <span class="token expression"><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>z<span class="token operator">>></span><span class="token number">5</span><span class="token operator">^</span>y<span class="token operator">&lt;&lt;</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">(</span>y<span class="token operator">>></span><span class="token number">3</span><span class="token operator">^</span>z<span class="token operator">&lt;&lt;</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>sum<span class="token operator">^</span>y<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">(</span>key<span class="token punctuation">[</span><span class="token punctuation">(</span>p<span class="token operator">&amp;</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token operator">^</span>e<span class="token punctuation">]</span> <span class="token operator">^</span> z<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  </span></span>
 
-void btea(uint32_t *v, int n, uint32_t const key[4])  
-&#123;  
-    uint32_t y, z, sum;  
-    unsigned p, rounds, e;  
-    if (n &gt; 1)            &#x2F;* Coding Part *&#x2F;  
-    &#123;  
-        rounds &#x3D; 6 + 52&#x2F;n;  
-        sum &#x3D; 0;  
-        z &#x3D; v[n-1];  
-        do  
-        &#123;  
-            sum +&#x3D; DELTA;  
-            e &#x3D; (sum &gt;&gt; 2) &amp; 3;  
-            for (p&#x3D;0; p&lt;n-1; p++)  
-            &#123;  
-                y &#x3D; v[p+1];  
-                z &#x3D; v[p] +&#x3D; MX;  
-            &#125;  
-            y &#x3D; v[0];  
-            z &#x3D; v[n-1] +&#x3D; MX;  
-        &#125;  
-        while (--rounds);  
-    &#125;  
-    else if (n &lt; -1)      &#x2F;* Decoding Part *&#x2F;  
-    &#123;  
-        n &#x3D; -n;  
-        rounds &#x3D; 6 + 52&#x2F;n;  
-        sum &#x3D; rounds*DELTA;  
-        y &#x3D; v[0];  
-        do  
-        &#123;  
-            e &#x3D; (sum &gt;&gt; 2) &amp; 3;  
-            for (p&#x3D;n-1; p&gt;0; p--)  
-            &#123;  
-                z &#x3D; v[p-1];  
-                y &#x3D; v[p] -&#x3D; MX;  
-            &#125;  
-            z &#x3D; v[n-1];  
-            y &#x3D; v[0] -&#x3D; MX;  
-            sum -&#x3D; DELTA;  
-        &#125;  
-        while (--rounds);  
-    &#125;  
-&#125;  
+<span class="token keyword">void</span> <span class="token function">btea</span><span class="token punctuation">(</span><span class="token class-name">uint32_t</span> <span class="token operator">*</span>v<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token class-name">uint32_t</span> <span class="token keyword">const</span> key<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  
+<span class="token punctuation">&#123;</span>  
+    <span class="token class-name">uint32_t</span> y<span class="token punctuation">,</span> z<span class="token punctuation">,</span> sum<span class="token punctuation">;</span>  
+    <span class="token keyword">unsigned</span> p<span class="token punctuation">,</span> rounds<span class="token punctuation">,</span> e<span class="token punctuation">;</span>  
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">)</span>            <span class="token comment">/* Coding Part */</span>  
+    <span class="token punctuation">&#123;</span>  
+        rounds <span class="token operator">=</span> <span class="token number">6</span> <span class="token operator">+</span> <span class="token number">52</span><span class="token operator">/</span>n<span class="token punctuation">;</span>  
+        sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>  
+        z <span class="token operator">=</span> v<span class="token punctuation">[</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  
+        <span class="token keyword">do</span>  
+        <span class="token punctuation">&#123;</span>  
+            sum <span class="token operator">+=</span> DELTA<span class="token punctuation">;</span>  
+            e <span class="token operator">=</span> <span class="token punctuation">(</span>sum <span class="token operator">>></span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">3</span><span class="token punctuation">;</span>  
+            <span class="token keyword">for</span> <span class="token punctuation">(</span>p<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> p<span class="token operator">&lt;</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> p<span class="token operator">++</span><span class="token punctuation">)</span>  
+            <span class="token punctuation">&#123;</span>  
+                y <span class="token operator">=</span> v<span class="token punctuation">[</span>p<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  
+                z <span class="token operator">=</span> v<span class="token punctuation">[</span>p<span class="token punctuation">]</span> <span class="token operator">+=</span> MX<span class="token punctuation">;</span>  
+            <span class="token punctuation">&#125;</span>  
+            y <span class="token operator">=</span> v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  
+            z <span class="token operator">=</span> v<span class="token punctuation">[</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+=</span> MX<span class="token punctuation">;</span>  
+        <span class="token punctuation">&#125;</span>  
+        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">--</span>rounds<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token punctuation">&#125;</span>  
+    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">&lt;</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>      <span class="token comment">/* Decoding Part */</span>  
+    <span class="token punctuation">&#123;</span>  
+        n <span class="token operator">=</span> <span class="token operator">-</span>n<span class="token punctuation">;</span>  
+        rounds <span class="token operator">=</span> <span class="token number">6</span> <span class="token operator">+</span> <span class="token number">52</span><span class="token operator">/</span>n<span class="token punctuation">;</span>  
+        sum <span class="token operator">=</span> rounds<span class="token operator">*</span>DELTA<span class="token punctuation">;</span>  
+        y <span class="token operator">=</span> v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  
+        <span class="token keyword">do</span>  
+        <span class="token punctuation">&#123;</span>  
+            e <span class="token operator">=</span> <span class="token punctuation">(</span>sum <span class="token operator">>></span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">3</span><span class="token punctuation">;</span>  
+            <span class="token keyword">for</span> <span class="token punctuation">(</span>p<span class="token operator">=</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> p<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">;</span> p<span class="token operator">--</span><span class="token punctuation">)</span>  
+            <span class="token punctuation">&#123;</span>  
+                z <span class="token operator">=</span> v<span class="token punctuation">[</span>p<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  
+                y <span class="token operator">=</span> v<span class="token punctuation">[</span>p<span class="token punctuation">]</span> <span class="token operator">-=</span> MX<span class="token punctuation">;</span>  
+            <span class="token punctuation">&#125;</span>  
+            z <span class="token operator">=</span> v<span class="token punctuation">[</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  
+            y <span class="token operator">=</span> v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">-=</span> MX<span class="token punctuation">;</span>  
+            sum <span class="token operator">-=</span> DELTA<span class="token punctuation">;</span>  
+        <span class="token punctuation">&#125;</span>  
+        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">--</span>rounds<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token punctuation">&#125;</span>  
+<span class="token punctuation">&#125;</span>  
 
 
-int main()  
-&#123;  
-    uint32_t v[2]&#x3D; &#123;1,2&#125;;  
-    uint32_t const k[4]&#x3D; &#123;2,2,3,4&#125;;  
-    int n&#x3D; 2; &#x2F;&#x2F;n的绝对值表示v的长度，取正表示加密，取负表示解密  
-    &#x2F;&#x2F; v为要加密的数据是两个32位无符号整数  
-    &#x2F;&#x2F; k为加密解密密钥，为4个32位无符号整数，即密钥长度为128位  
-    printf(&quot;加密前原始数据：%u %u\n&quot;,v[0],v[1]);  
-    btea(v, n, k);  
-    printf(&quot;加密后的数据：%u %u\n&quot;,v[0],v[1]);  
-    btea(v, -n, k);  
-    printf(&quot;解密后的数据：%u %u\n&quot;,v[0],v[1]);  
-    return 0;  
-&#125;  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  
+<span class="token punctuation">&#123;</span>  
+    <span class="token class-name">uint32_t</span> v<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>  
+    <span class="token class-name">uint32_t</span> <span class="token keyword">const</span> k<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>  
+    <span class="token keyword">int</span> n<span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">//n的绝对值表示v的长度，取正表示加密，取负表示解密  </span>
+    <span class="token comment">// v为要加密的数据是两个32位无符号整数  </span>
+    <span class="token comment">// k为加密解密密钥，为4个32位无符号整数，即密钥长度为128位  </span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"加密前原始数据：%u %u\n"</span><span class="token punctuation">,</span>v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>v<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token function">btea</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> n<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"加密后的数据：%u %u\n"</span><span class="token punctuation">,</span>v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>v<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token function">btea</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> <span class="token operator">-</span>n<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"解密后的数据：%u %u\n"</span><span class="token punctuation">,</span>v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>v<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>  
+<span class="token punctuation">&#125;</span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="DES加密算法"><a href="#DES加密算法" class="headerlink" title="DES加密算法"></a>DES加密算法</h4><ol>
 <li>原理<br>利用一些简单的密码变换，如：代换、置换、加减等设计出一个圈函数f，并通过将他多次迭代的方法，产生的一个分组密码算法  </li>
