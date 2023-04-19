@@ -462,14 +462,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5k
+                    6.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    24 分
+                    29 分
                 </div>
                 
 
@@ -529,37 +529,37 @@
 <h3 id="二、环境"><a href="#二、环境" class="headerlink" title="二、环境"></a>二、环境</h3><h3 id="2-1-部署软件环境版本"><a href="#2-1-部署软件环境版本" class="headerlink" title="2.1 部署软件环境版本"></a>2.1 部署软件环境版本</h3><p>操作系统: <code>Ubuntu 18.04</code>（自行下载安装即可，我们采用在VMware中安装，语言最好选择英文，在对虚拟机命名时最好直接命名为master、node1,…）</p>
 <p>Docker： <code>docker-ce 18.06</code></p>
 <p>Kubernetes: <code>k8s 1.13.1</code></p>
-<h3 id="2-2-修改root密码并设置开机root自动登录"><a href="#2-2-修改root密码并设置开机root自动登录" class="headerlink" title="2.2 修改root密码并设置开机root自动登录"></a>2.2 修改root密码并设置开机root自动登录</h3><h4 id="2-2-1-为root设置密码"><a href="#2-2-1-为root设置密码" class="headerlink" title="2.2.1 为root设置密码"></a>2.2.1 为root设置密码</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">passwd</span> root<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="2-2-修改root密码并设置开机root自动登录"><a href="#2-2-修改root密码并设置开机root自动登录" class="headerlink" title="2.2 修改root密码并设置开机root自动登录"></a>2.2 修改root密码并设置开机root自动登录</h3><h4 id="2-2-1-为root设置密码"><a href="#2-2-1-为root设置密码" class="headerlink" title="2.2.1 为root设置密码"></a>2.2.1 为root设置密码</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo passwd root<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h4 id="2-2-2-修改50-ubuntu-conf配置文件内容"><a href="#2-2-2-修改50-ubuntu-conf配置文件内容" class="headerlink" title="2.2.2 修改50-ubuntu.conf配置文件内容"></a>2.2.2 修改50-ubuntu.conf配置文件内容</h4><p>​        文件位置/usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf（如果没有此文件，就到这个目录找类似文件）</p>
 <ol>
 <li>找到文件后使用终端修改文件权限（默认为只读）</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">sudo</span>  <span class="token function">chmod</span>  <span class="token number">777</span>  /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo  chmod  777  &#x2F;usr&#x2F;share&#x2F;lightdm&#x2F;lightdm.conf.d&#x2F;50-ubuntu.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ol start="2">
 <li>打开文件，修改配置文件内容(个人推荐使用gedit命令)</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">gedit  /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">gedit  &#x2F;usr&#x2F;share&#x2F;lightdm&#x2F;lightdm.conf.d&#x2F;50-ubuntu.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>在文件末尾加入两行代码</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">greeter-show-manual-login<span class="token operator">=</span>true
-all-guest<span class="token operator">=</span>false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">greeter-show-manual-login&#x3D;true
+all-guest&#x3D;false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>此配置文件就设置完成了。</p>
 <h4 id="2-2-3-修改gdm-autologin和gdm-passwd文件"><a href="#2-2-3-修改gdm-autologin和gdm-passwd文件" class="headerlink" title="2.2.3 修改gdm-autologin和gdm-passwd文件"></a>2.2.3 修改gdm-autologin和gdm-passwd文件</h4><p>​        进入/etc/pam.d文件夹下，找到gdm-autologin和gdm-passwd文件（没有的话找类似文件）</p>
 <p>​        找到文件后参照之前的操作给予文件权限</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">sudo</span>  <span class="token function">chmod</span>  <span class="token number">777</span> /etc/pam.d/gdm-autologin
-<span class="token function">sudo</span>  <span class="token function">chmod</span>  <span class="token number">777</span> /etc/pam.d/gdm-password<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo  chmod  777 &#x2F;etc&#x2F;pam.d&#x2F;gdm-autologin
+sudo  chmod  777 &#x2F;etc&#x2F;pam.d&#x2F;gdm-password<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>​        两个文件都注释掉auth required pam_success_if.so user!=root quiet_success这一行(我的是正着数第三行)</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">gedit /etc/pam.d/gdm-autologin
-gedit /etc/pam.d/gdm-password <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">gedit &#x2F;etc&#x2F;pam.d&#x2F;gdm-autologin
+gedit &#x2F;etc&#x2F;pam.d&#x2F;gdm-password <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>修改完这两个文件就可以进行下一步了。</p>
 <h4 id="2-2-3-修改-root-profile文件"><a href="#2-2-3-修改-root-profile文件" class="headerlink" title="2.2.3 修改/root/.profile文件"></a>2.2.3 修改/root/.profile文件</h4><p>​        找到要修改的.profile文件，此文件为隐藏文件，建议直接命令行查找</p>
 <p>​        开启root权限，打开文件，注释掉最后一行，然后加上<br>​        tty -s&amp;&amp;mesg n || true</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">gedit /root/.profile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">gedit &#x2F;root&#x2F;.profile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="/2022/10208472/1.png" alt=" "></p>
 <p>至此root用户登录权限设置完成，重新启动后选择其他用户(这个在左下角)输入用户名：root，以及root密码即可登录。（仍需手动输入用户名和密码）</p>
@@ -569,9 +569,9 @@ gedit /etc/pam.d/gdm-password <span aria-hidden="true" class="line-numbers-rows"
 
 <p>修改文件</p>
 <p><img src="/2022/10208472/2.png" alt=" "></p>
-<h3 id="三、Docker-CE安装及配置（我们全程在root下）"><a href="#三、Docker-CE安装及配置（我们全程在root下）" class="headerlink" title="三、Docker-CE安装及配置（我们全程在root下）"></a>三、Docker-CE安装及配置（我们全程在root下）</h3><h4 id="3-1-给虚拟机切换阿里源-清华源都行"><a href="#3-1-给虚拟机切换阿里源-清华源都行" class="headerlink" title="3.1 给虚拟机切换阿里源(清华源都行)"></a>3.1 给虚拟机切换阿里源(清华源都行)</h4><h5 id="3-1-1-备份原来的系统默认源"><a href="#3-1-1-备份原来的系统默认源" class="headerlink" title="3.1.1 备份原来的系统默认源"></a>3.1.1 备份原来的系统默认源</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">cp</span> /etc/apt/sources.list /etc/apt/sources_init.list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="三、Docker-CE安装及配置（我们全程在root下）"><a href="#三、Docker-CE安装及配置（我们全程在root下）" class="headerlink" title="三、Docker-CE安装及配置（我们全程在root下）"></a>三、Docker-CE安装及配置（我们全程在root下）</h3><h4 id="3-1-给虚拟机切换阿里源-清华源都行"><a href="#3-1-给虚拟机切换阿里源-清华源都行" class="headerlink" title="3.1 给虚拟机切换阿里源(清华源都行)"></a>3.1 给虚拟机切换阿里源(清华源都行)</h4><h5 id="3-1-1-备份原来的系统默认源"><a href="#3-1-1-备份原来的系统默认源" class="headerlink" title="3.1.1 备份原来的系统默认源"></a>3.1.1 备份原来的系统默认源</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo cp &#x2F;etc&#x2F;apt&#x2F;sources.list &#x2F;etc&#x2F;apt&#x2F;sources_init.list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h5 id="3-1-2-更换源"><a href="#3-1-2-更换源" class="headerlink" title="3.1.2 更换源"></a>3.1.2 更换源</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">sudo</span> gedit /etc/apt/sources.list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h5 id="3-1-2-更换源"><a href="#3-1-2-更换源" class="headerlink" title="3.1.2 更换源"></a>3.1.2 更换源</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo gedit &#x2F;etc&#x2F;apt&#x2F;sources.list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>使用gedit文本编辑器，将下边的阿里源复制进去(粘贴之前里面东西可清空)，然后点击保存关闭。</p>
 <pre class="line-numbers language-none"><code class="language-none">deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; bionic main restricted universe multiverse
@@ -589,31 +589,44 @@ deb-src http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; bionic-proposed ma
 deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; bionic-backports main restricted universe multiverse
 deb-src http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; bionic-backports main restricted universe multiverse<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h5 id="3-1-3-更新源"><a href="#3-1-3-更新源" class="headerlink" title="3.1.3 更新源"></a>3.1.3 更新源</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">apt-get</span> update<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h5 id="3-1-3-更新源"><a href="#3-1-3-更新源" class="headerlink" title="3.1.3 更新源"></a>3.1.3 更新源</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo apt-get update<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p><strong>如果出现类似下面报错：</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">appstreamcli<span class="token punctuation">:</span> symbol lookup error<span class="token punctuation">:</span> <span class="token operator">/</span>usr<span class="token operator">/</span>lib<span class="token operator">/</span>x86_64<span class="token operator">-</span>linux<span class="token operator">-</span>gnu<span class="token operator">/</span>libgobject<span class="token operator">-</span><span class="token number">2.0</span><span class="token punctuation">.</span>so<span class="token punctuation">.</span><span class="token number">0</span><span class="token punctuation">:</span> undefined symbol<span class="token punctuation">:</span> g_date_copy
+Reading package lists<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> Done
+E<span class="token punctuation">:</span> Problem executing scripts APT<span class="token punctuation">:</span><span class="token punctuation">:</span>Update<span class="token punctuation">:</span><span class="token punctuation">:</span>Post<span class="token operator">-</span>Invoke<span class="token operator">-</span>Success <span class="token string">'if /usr/bin/test -w /var/cache/app-info -a -e /usr/bin/appstreamcli; then appstreamcli refresh > /dev/null; fi'</span>
+E<span class="token punctuation">:</span> Sub<span class="token operator">-</span>process returned an error code<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>解决方法：</strong></p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo apt-get purge libappstream4<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>之后再进行</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo apt-get update<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>即可！！！</p>
 <h4 id="3-2-1-基础准备"><a href="#3-2-1-基础准备" class="headerlink" title="3.2.1 基础准备"></a>3.2.1 基础准备</h4><ol>
 <li>Docker 要求 Ubuntu 系统的内核版本高于 3.10 ，查看本页面的前提条件来验证你的 Ubuntu 版本是否支持 Docker。</li>
 </ol>
-  <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">uname</span> -r <span class="token punctuation">(</span>主版本必须保持一致<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+  <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">uname -r (主版本必须保持一致)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>   2.安装<code>curl </code></p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">apt-get</span> update <span class="token operator">&amp;&amp;</span> <span class="token function">apt-get</span> <span class="token function">install</span> -y <span class="token function">curl</span> telnet <span class="token function">wget</span> <span class="token function">man</span> <span class="token punctuation">\</span>
-apt-transport-https <span class="token punctuation">\</span>
-ca-certificates <span class="token punctuation">\</span>
-software-properties-common <span class="token function">vim</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">apt-get update &amp;&amp; apt-get install -y curl telnet wget man \
+apt-transport-https \
+ca-certificates \
+software-properties-common vim<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="3-2-2-在线安装Docker-ce-本教程不推荐"><a href="#3-2-2-在线安装Docker-ce-本教程不推荐" class="headerlink" title="3.2.2 在线安装Docker-ce(本教程不推荐)"></a>3.2.2 在线安装Docker-ce(本教程不推荐)</h4><p>(建议下面的手动安装方式，因为在线可能会出现版本不一致)</p>
 <p>注意： <strong>该国内源目前提供 <code>18.09</code>版本，与k8s不符。k8s推荐安装<code>Docker ce 18.06</code></strong></p>
 <ol>
 <li>安装GPG秘钥和添加国内镜像</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ <span class="token function">curl</span> -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/gpg <span class="token operator">|</span> <span class="token function">sudo</span> apt-key <span class="token function">add</span> -<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ curl -fsSL https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;docker-ce&#x2F;linux&#x2F;ubuntu&#x2F;gpg | sudo apt-key add -<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>添加国内源头</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ add-apt-repository <span class="token punctuation">\</span>
-    <span class="token string">"deb https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu \
-    <span class="token variable"><span class="token variable">$(</span>lsb_release -cs<span class="token variable">)</span></span> \
-    stable"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ add-apt-repository \
+    &quot;deb https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;docker-ce&#x2F;linux&#x2F;ubuntu \
+    $(lsb_release -cs) \
+    stable&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ol start="2">
 <li>更新国内源路径</li>
@@ -723,6 +736,10 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 <span class="token comment"># 重启Docker服务</span>
 <span class="token function">sudo</span> systemctl restart docker<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p><strong>每个人的镜像加速器都不一样，但是也可以用别人的，下面是我的：</strong></p>
+<p><img src="/2022/10208472/k8s12.png" alt="docker12"></p>
+<p><img src="/2022/10208472/k8s13.png" alt="docker13"></p>
+<p><img src="/2022/10208472/k8s14.png" alt="docker14"></p>
 <h3 id="四、Kubernetes-安装及部署"><a href="#四、Kubernetes-安装及部署" class="headerlink" title="四、Kubernetes 安装及部署"></a>四、Kubernetes 安装及部署</h3><h4 id="4-1-k8s安装环境准备"><a href="#4-1-k8s安装环境准备" class="headerlink" title="4.1 k8s安装环境准备"></a>4.1 k8s安装环境准备</h4><h5 id="4-1-1-配置并安装k8s国内源"><a href="#4-1-1-配置并安装k8s国内源" class="headerlink" title="4.1.1 配置并安装k8s国内源"></a>4.1.1 配置并安装k8s国内源</h5><ol>
 <li><p>创建配置文件<code>sudo touch /etc/apt/sources.list.d/kubernetes.list</code> </p>
 </li>
@@ -734,7 +751,7 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 <li><p>执行<code>sudo apt update</code> 更新操作系统源，开始会遇见如下错误</p>
 </li>
 </ol>
-<pre class="line-numbers language-none"><code class="language-none">tcast@master:~$ sudo apt update
+<pre class="line-numbers language-none"><code class="language-none">itcast@master:~$ sudo apt update
 Get:1 http:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;kubernetes&#x2F;apt kubernetes-xenial InRelease [8,993 B]
 Err:1 http:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;kubernetes&#x2F;apt kubernetes-xenial InRelease    
   The following signatures couldn&#39;t be verified because the public key is not available: NO_PUBKEY 6A030B21BA07F4FB
@@ -751,7 +768,7 @@ N: Updating from such a repository can&#39;t be done securely, and is therefore 
 N: See apt-secure(8) manpage for repository creation and user configuration details.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>其中：</p>
-<pre class="line-numbers language-none"><code class="language-none">The following signatures couldn&#39;t be verified because the public key is not available: NO_PUBKEY 6A030B21BA07F4FB<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 6A030B21BA07F4FB<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>签名认证失败，需要重新生成。记住上面的<em>NO_PUBKEY</em> <code>6A030B21BA07F4FB</code></p>
 <ol start="4">
@@ -928,8 +945,8 @@ $ <span class="token function">shutdown</span> -r now<span aria-hidden="true" cl
 <li><p>重启机器<code>shutdown -r now</code></p>
 </li>
 </ol>
-<h4 id="5-3-配置Master节点"><a href="#5-3-配置Master节点" class="headerlink" title="5.3 配置Master节点"></a>5.3 配置Master节点</h4><h5 id="5-3-1-创建工作目录"><a href="#5-3-1-创建工作目录" class="headerlink" title="5.3.1 创建工作目录"></a>5.3.1 创建工作目录</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ <span class="token function">mkdir</span> /home/itcast/working
-$ <span class="token builtin class-name">cd</span> /home/itcast/working/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="5-3-配置Master节点"><a href="#5-3-配置Master节点" class="headerlink" title="5.3 配置Master节点"></a>5.3 配置Master节点</h4><h5 id="5-3-1-创建工作目录"><a href="#5-3-1-创建工作目录" class="headerlink" title="5.3.1 创建工作目录"></a>5.3.1 创建工作目录</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ <span class="token function">mkdir</span> /home/用户名/working <span class="token comment">#root目录下创建working也可以</span>
+$ <span class="token builtin class-name">cd</span> /home/用户名/working/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <h5 id="5-3-2-创建kubeadm-conf配置文件"><a href="#5-3-2-创建kubeadm-conf配置文件" class="headerlink" title="5.3.2 创建kubeadm.conf配置文件"></a>5.3.2 创建kubeadm.conf配置文件</h5><ol>
 <li>创建k8s的管理工具<code>kubeadm</code>对应的配置文件，候选操作在<code>home/itcast/working/</code>目录下</li>
@@ -960,11 +977,11 @@ kubernetesVersion: v1.13.1<span aria-hidden="true" class="line-numbers-rows"><sp
 <li>localAPIEndpoint:</li>
 </ul>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">localAPIEndpoint:
-  advertiseAddress: <span class="token number">192.168</span>.236.177
+  advertiseAddress: <span class="token number">192.168</span>.111.134
   bindPort: <span class="token number">6443</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <blockquote>
-<p>注意: <code>192.168.236.177</code>是master主机的ip地址</p>
+<p>注意: <code>192.168.111.134</code>是master主机的ip地址</p>
 </blockquote>
 <ol start="4">
 <li>配置子网网络</li>
@@ -1018,7 +1035,7 @@ Run <span class="token string">"kubectl apply -f [podnetwork].yaml"</span> with 
 You can now <span class="token function">join</span> any number of machines by running the following on each node
 as root:
 
-  kubeadm <span class="token function">join</span> <span class="token number">192.168</span>.236.177:6443 --token abcdef.0123456789abcdef --discovery-token-ca-cert-hash sha256:e778d3665e52f5a680a87b00c6d54df726c2eda601c0db3bfa4bb198af2262a8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  kubeadm <span class="token function">join</span> <span class="token number">192.168</span>.111.134:6443 --token abcdef.0123456789abcdef --discovery-token-ca-cert-hash sha256:e778d3665e52f5a680a87b00c6d54df726c2eda601c0db3bfa4bb198af2262a8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>按照官方提示，执行以下操作。</p>
 <ol>
@@ -1052,6 +1069,8 @@ etcd-0               Healthy   <span class="token punctuation">&#123;</span><spa
 <h5 id="5-3-6-部署集群内部通信flannel网络"><a href="#5-3-6-部署集群内部通信flannel网络" class="headerlink" title="5.3.6 部署集群内部通信flannel网络"></a>5.3.6 部署集群内部通信flannel网络</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token variable">$cd</span> <span class="token environment constant">$HOME</span>/working
 <span class="token variable">$wget</span> https://raw.githubusercontent.com/coreos/flannel/a70459be0084506e4ec919aa1c114638878db11b/Documentation/kube-flannel.yml<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
+<p><strong>如果被墙了，请参考：</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/flycc/p/14305926.html">flannel下载被墙了</a></p>
 <p>编辑这个文件，确保flannel网络是对的,找到<code> net-conf.json</code>标记的内容是否正确。</p>
 <pre class="line-numbers language-ini" data-language="ini"><code class="language-ini">net-conf.json: |
    &#123;
@@ -1111,9 +1130,9 @@ $ <span class="token function">sudo</span> systemctl start kubelet<span aria-hid
 <li><p>将master机器的<code>/etc/kubernetes/admin.conf</code>传到到node1和node2</p>
 <p>登录<code>master</code>终端（我的没办法用scp命令，是找到之后从master复制到node1,node2）</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment">#将admin.conf传递给node1</span>
-<span class="token function">sudo</span> <span class="token function">scp</span> /etc/kubernetes/admin.conf itcast@192.168.236.178:/home/itcast/
+<span class="token function">sudo</span> <span class="token function">scp</span> /etc/kubernetes/admin.conf itcast@192.168.111.135:/home/itcast/
 <span class="token comment">#将admin.conf传递给node2</span>
-<span class="token function">sudo</span> <span class="token function">scp</span> /etc/kubernetes/admin.conf itcast@192.168.236.179:/home/itcast/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+<span class="token function">sudo</span> <span class="token function">scp</span> /etc/kubernetes/admin.conf itcast@192.168.1.136:/home/itcast/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
 <li><p>登录<code>node1</code>终端，创建基础kube配置文件环境</p>
 </li>
 </ol>
@@ -1131,9 +1150,19 @@ $ <span class="token function">sudo</span> <span class="token function">chown</s
 <ol start="5">
 <li><code>node1</code>和<code>node2</code>分别连接<code>master</code>加入master集群。这里用的是<code>kubeadm join</code>指令(**master生成的，node1,node2运行加入)</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ <span class="token function">sudo</span> kubeadm <span class="token function">join</span> <span class="token number">192.168</span>.236.177:6443 --token abcdef.0123456789abcdef --discovery-token-ca-cert-hash sha256:e778d3665e52f5a680a87b00c6d54df726c2eda601c0db3bfa4bb198af2262a8<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ <span class="token function">sudo</span> kubeadm <span class="token function">join</span> <span class="token number">192.168</span>.111.134:6443 --token abcdef.0123456789abcdef --discovery-token-ca-cert-hash sha256:e778d3665e52f5a680a87b00c6d54df726c2eda601c0db3bfa4bb198af2262a8<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>这里要注意，使用的hash应该是<code>master</code>主机 <code>kubeadm init</code>成功之后生成的hash码。</p>
+<p><strong>如果token过期了，使用下面操作从新生成token进行节点加入：</strong></p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># 查看token是否有效</span>
+kubeadm token list <span class="token comment">#如果获取到的值不为空，则该token有效</span>
+<span class="token comment"># 获取ca证书sha256编码hash值</span>
+openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt <span class="token operator">|</span> openssl rsa -pubin -outform der <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null <span class="token operator">|</span> openssl dgst -sha256 -hex <span class="token operator">|</span> <span class="token function">sed</span> ‘s/^.* //’
+<span class="token comment"># 生成新的token</span>
+kubeadm token create --print-join-command<span class="token comment">#默认有效期24小时,若想久一些可以结合–ttl参数,设为0则用不过期</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <ol start="6">
 <li>应用两个node主机分别应用flannel网络（我的加入master之后就有网了）</li>
 </ol>
@@ -1159,6 +1188,109 @@ master   Ready    master   35m     v1.13.1
 node1    Ready    <span class="token operator">&lt;</span>none<span class="token operator">></span>   2m23s   v1.13.1
 node2    Ready    <span class="token operator">&lt;</span>none<span class="token operator">></span>   40s     v1.13.1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+
+
+<h2 id="Docker学习"><a href="#Docker学习" class="headerlink" title="Docker学习"></a>Docker学习</h2><h3 id="初识Docker"><a href="#初识Docker" class="headerlink" title="初识Docker"></a>初识Docker</h3><h4 id="docker概念"><a href="#docker概念" class="headerlink" title="docker概念"></a>docker概念</h4><ul>
+<li>Docker是一个开源的应用容器引擎</li>
+<li>Docker可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何可流行的Linux机器上</li>
+<li>容器是完全使用沙箱机制，相互隔离</li>
+<li>容器性能开销极低</li>
+</ul>
+<h4 id="另一种安装docker方法-centos7版未测试"><a href="#另一种安装docker方法-centos7版未测试" class="headerlink" title="另一种安装docker方法(centos7版未测试)"></a>另一种安装docker方法(centos7版未测试)</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment">#1.yum包更新到最新</span>
+yum update
+<span class="token comment">#2.安装需要的软件包，yum-util提供yum-config-manager功能，另外两个是devicemapper驱动依赖的</span>
+yum <span class="token function">install</span> -y yum-utils device-mapper-persistent-data lvm2
+<span class="token comment">#3.设置yum源</span>
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+<span class="token comment">#4.安装docker,出现输入的界面都按y</span>
+yum <span class="token function">install</span> -y docker-ce
+<span class="token comment">#5.查看docker版本，验证是否验证成功</span>
+docker -v<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h4 id="docker架构"><a href="#docker架构" class="headerlink" title="docker架构"></a>docker架构</h4><p><img src="/2022/10208472/15.PNG" alt="15"></p>
+<ul>
+<li>镜像（Image）：Docker镜像（Image），，就相当于是一个root文件系统。比如官方镜像ubuntu16.04就包含了完整的一套ubuntu16.04最小系统的root文件系统。</li>
+<li>容器（Container）：镜像（Image）和容器（Container）的关系，就像是面向对象程序设计中的类和对象一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。</li>
+<li>仓库（Repository）：仓库可堪称一个代码控制中心，用来保存镜像。</li>
+<li>daemon：守护进程</li>
+</ul>
+<h4 id="配置国内镜像源"><a href="#配置国内镜像源" class="headerlink" title="配置国内镜像源"></a>配置国内镜像源</h4><p><strong>最上面离线安装docker中有</strong></p>
+<h3 id="Docker命令"><a href="#Docker命令" class="headerlink" title="Docker命令"></a>Docker命令</h3><h4 id="Docker服务相关命令"><a href="#Docker服务相关命令" class="headerlink" title="Docker服务相关命令"></a>Docker服务相关命令</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># 启动docker服务</span>
+systemctl start docker
+<span class="token comment"># 停止docker服务</span>
+systemctl stop docker
+<span class="token comment">#重启docker服务</span>
+systemctl restart docker
+<span class="token comment">#查看docker服务状态</span>
+systemctl status docker
+<span class="token comment">#设置开机启动docker服务</span>
+systemctl <span class="token builtin class-name">enable</span> docker<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h4 id="Docker镜像相关命令"><a href="#Docker镜像相关命令" class="headerlink" title="Docker镜像相关命令"></a>Docker镜像相关命令</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># 查看镜像：查看本地所有的镜像</span>
+docker images
+docker images -q <span class="token comment"># 查看所用镜像的id</span>
+<span class="token comment">#搜索镜像：从网络中查找需要的镜像</span>
+docker search 镜像名称
+<span class="token comment"># 拉取镜像：从Docker仓库下载镜像到本地，镜像名称格式为 **名称:版本号**，如果版本号不指定则是最新版的；如果不知道镜像版本，可以去https://hub.docker.com搜索对应镜像查看</span>
+docker pull 镜像名称
+<span class="token comment"># 删除镜像：删除本地镜像</span>
+docker rmi 镜像id <span class="token comment">#删除指定本地镜像</span>
+docker rmi <span class="token variable"><span class="token variable">`</span>docker images -q<span class="token variable">`</span></span> <span class="token comment"># 删除所有本地镜像</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h4 id="Docker容器相关命令"><a href="#Docker容器相关命令" class="headerlink" title="Docker容器相关命令"></a>Docker容器相关命令</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># 查看容器</span>
+docker <span class="token function">ps</span> <span class="token comment">#查看正在运行的容器</span>
+docker <span class="token function">ps</span> -a <span class="token comment">#查看所有容器</span>
+<span class="token comment"># 创建并启动容器</span>
+docker run 参数
+<span class="token comment"># 进入容器</span>
+docker <span class="token builtin class-name">exec</span> 参数 <span class="token comment">#退出容器，容器不会关闭</span>
+<span class="token comment"># 停止容器</span>
+docker stop 容器名称
+<span class="token comment"># 启动容器</span>
+docker start 容器名称
+<span class="token comment"># 删除容器：如果容器是运行状态则删除失败，需要停止容器才能删除</span>
+docker <span class="token function">rm</span> 容器名称（ID）
+docker <span class="token function">rm</span> <span class="token variable"><span class="token variable">`</span>docker <span class="token function">ps</span> -qa<span class="token variable">`</span></span>
+<span class="token comment"># 查看容器信息</span>
+docker inspect 容器名称
+
+
+**参数说明：**
+-i 保持容器运行。通常与-t同时使用。加入it两个参数之后，容器创建后自动进入容器中，退出容器后，容器自动关闭
+-t 为容器重新分配一个伪输入终端，通常与-i同时使用
+-d 以守护（后台）模式运行容器。创建一个容器在后台运行，需要使用docker <span class="token builtin class-name">exec</span> -it 容器ID /bin/bash 进入容器。推出后，容器不会关闭
+-it 创建的容器一般称为交互式容器，-id创建的容器一般称为守护式容器
+--name 为创建的容器命名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="Docker容器的数据卷"><a href="#Docker容器的数据卷" class="headerlink" title="Docker容器的数据卷"></a>Docker容器的数据卷</h3><h4 id="数据卷的概念"><a href="#数据卷的概念" class="headerlink" title="数据卷的概念"></a>数据卷的概念</h4><p><strong>数据卷：</strong></p>
+<ul>
+<li>数据卷是宿主机的一个目录或文件</li>
+<li>当容器目录与数据卷目录绑定之后，对方的修改会立即同步</li>
+<li>一个数据卷可以被多个容器同时挂载</li>
+<li>一个容器也可以被挂载多个数据卷</li>
+</ul>
+<p><strong>数据卷的作用：</strong></p>
+<ul>
+<li>容器数据的持久化</li>
+<li>外部容器和容器间接通信</li>
+<li>容器之间数据交换</li>
+</ul>
+<h4 id="配置数据卷"><a href="#配置数据卷" class="headerlink" title="配置数据卷"></a>配置数据卷</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker run <span class="token punctuation">..</span>. -v 宿主机目录<span class="token punctuation">(</span>文件<span class="token punctuation">)</span>:容器目录<span class="token punctuation">(</span>文件<span class="token punctuation">)</span> <span class="token punctuation">..</span>. <span class="token comment">#挂载多个输入多个 -v 宿主机目录(文件):容器目录(文件)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>目录必须是绝对路径</li>
+<li>如果目录不存在，会自动创建</li>
+<li>可以挂载多个数据卷</li>
+</ul>
 
                 
             </div>

@@ -465,14 +465,14 @@ divmod(x,y)//返回(x//y,x%y)
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    87
+                    888
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -502,6 +502,140 @@ divmod(x,y)//返回(x//y,x%y)
 <span class="token operator">//</span>random<span class="token punctuation">.</span>getstate<span class="token punctuation">(</span><span class="token punctuation">)</span>方法random模块返回具有随机数生成器当前内部状态的对象。该对象可以传递给random<span class="token punctuation">.</span>setstate<span class="token punctuation">(</span><span class="token punctuation">)</span>恢复状态的方法。此方法没有传递任何参数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/157227878">Python decimal模块使用方法详解</a></p>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="字符串Ⅰ"><a href="#字符串Ⅰ" class="headerlink" title="字符串Ⅰ"></a>字符串Ⅰ</h3><p><strong>简单回文数判断：</strong></p>
+<p><strong>初级：</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">num<span class="token operator">=</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"请输入一个正整数："</span><span class="token punctuation">)</span>
+length<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span>
+number<span class="token operator">=</span><span class="token builtin">int</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span>
+flag<span class="token operator">=</span><span class="token boolean">True</span>
+<span class="token keyword">if</span> number<span class="token operator">&lt;</span><span class="token number">0</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"不是回文数。"</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>length<span class="token operator">//</span><span class="token number">2</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> num<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span>num<span class="token punctuation">[</span>length<span class="token operator">-</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">continue</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            flag<span class="token operator">=</span><span class="token boolean">False</span>
+    <span class="token keyword">if</span> flag<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"是回文数。"</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"不是回文数。"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>进阶：</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">num<span class="token operator">=</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"请输入一个正整数："</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> num<span class="token operator">==</span>num<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"是回文数"</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"不是回文数"</span><span class="token punctuation">)</span>
+或者
+num<span class="token operator">=</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"请输入一个正整数："</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"是回文数"</span><span class="token punctuation">)</span> <span class="token keyword">if</span> num<span class="token operator">==</span>num<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token keyword">else</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"不是回文数"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p><strong>字符串方法调用：</strong></p>
+<p><strong>大小写字母：</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">capitalize<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">//</span>将字符串首字母改为大写
+casefold<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">//</span>将字符串字母全改为小写，不局限于英文
+title<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">//</span>将字符串的首字母都改为大写
+swapcase<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">//</span>将字符串的所有字母进行反转
+upper<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">//</span>将字符串的字母都改为大写
+lower<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">//</span>将字符串字母全改为小写，局限于英文<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p><strong>左中右对齐：</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">center<span class="token punctuation">(</span>width<span class="token punctuation">,</span>fillchar<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span>
+ljust<span class="token punctuation">(</span>width<span class="token punctuation">,</span>fillchar<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span>
+rjust<span class="token punctuation">(</span>width<span class="token punctuation">,</span>fillchar<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span>
+zfill<span class="token punctuation">(</span>width<span class="token punctuation">)</span><span class="token operator">//</span>以<span class="token number">0</span>在前面填充<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="字符串Ⅱ"><a href="#字符串Ⅱ" class="headerlink" title="字符串Ⅱ"></a>字符串Ⅱ</h3><p><strong>查找：</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">count<span class="token punctuation">(</span>sub<span class="token punctuation">,</span>star<span class="token punctuation">,</span>end<span class="token punctuation">)</span>
+find<span class="token punctuation">(</span>sub<span class="token punctuation">,</span>star<span class="token punctuation">,</span>end<span class="token punctuation">)</span><span class="token punctuation">,</span>index<span class="token punctuation">(</span>sub<span class="token punctuation">,</span>star<span class="token punctuation">,</span>end<span class="token punctuation">)</span><span class="token operator">//</span>从左边查找返回下标值
+rfind<span class="token punctuation">(</span>sub<span class="token punctuation">,</span>star<span class="token punctuation">,</span>end<span class="token punctuation">)</span><span class="token punctuation">,</span>rindex<span class="token punctuation">(</span>sub<span class="token punctuation">,</span>star<span class="token punctuation">,</span>end<span class="token punctuation">)</span><span class="token operator">//</span>从右边查找返回下标值
+
+find、rindex区别：未找到时返回结果不同<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p><strong>替换</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">expandtabs<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">//</span>缩进
+replace<span class="token punctuation">(</span>old<span class="token punctuation">,</span>new<span class="token punctuation">,</span>count<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+translate<span class="token punctuation">(</span>table<span class="token punctuation">)</span>
+
+eg<span class="token punctuation">:</span>
+<span class="token string">"I love Fishc"</span><span class="token punctuation">.</span>translate<span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">.</span>maketrans<span class="token punctuation">(</span><span class="token string">"ABCDEF"</span><span class="token punctuation">,</span><span class="token string">"123456"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+结果：<span class="token string">'I love 6ishc'</span>
+<span class="token string">"I love Fishc"</span><span class="token punctuation">.</span>translate<span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">.</span>maketrans<span class="token punctuation">(</span><span class="token string">"ABCDEF"</span><span class="token punctuation">,</span><span class="token string">"123456"</span><span class="token punctuation">,</span><span class="token string">"love"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+结果：<span class="token string">'I  6ishc'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="字符串Ⅲ"><a href="#字符串Ⅲ" class="headerlink" title="字符串Ⅲ"></a>字符串Ⅲ</h3><p><strong>判断：</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">startswith<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">//</span>从左向右匹配字符
+endswith<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">//</span>从右向左匹配字符
+istitle<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">//</span>判断每个字符串首字母是否为大写
+isupper<span class="token punctuation">(</span><span class="token punctuation">)</span>
+islower
+isalpha<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">//</span>判断每一个字符串是否都是字符
+isspace<span class="token punctuation">(</span><span class="token punctuation">)</span>
+isprintable<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">//</span>判断每一个字符是否都是可打印字符，转移字符不是
+isdecimal<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">//</span>只判断字符串中的数字是否为整数
+isdight<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">//</span>次方形式的整数也可以测试
+isnumeric<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">//</span>整数形式都可以测试
+keyword模块<span class="token operator">//</span>判断字符串是不是保留字符
+
+返回值均为<span class="token boolean">True</span>或<span class="token boolean">False</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="字符串Ⅳ"><a href="#字符串Ⅳ" class="headerlink" title="字符串Ⅳ"></a>字符串Ⅳ</h3><p><strong>截取：</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">lstrip<span class="token punctuation">(</span>chars<span class="token operator">=</span>none<span class="token punctuation">)</span>
+rstrip<span class="token punctuation">(</span>chars<span class="token operator">=</span>none<span class="token punctuation">)</span>
+strip<span class="token punctuation">(</span>chars<span class="token operator">=</span>none<span class="token punctuation">)</span>截取左右两边的空格
+removeprefix<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">//</span>截取前面指定字符串
+removesuffix<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">//</span>截取后面指定字符串<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p><strong>拆分&amp;拼接：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">partition(sep)&#x2F;&#x2F;从左以分隔符切开，返回三元组
+rpartition(sep)
+split()
+rsplit()
+splitlines()
+join()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="字符串Ⅴ，Ⅵ"><a href="#字符串Ⅴ，Ⅵ" class="headerlink" title="字符串Ⅴ，Ⅵ"></a>字符串Ⅴ，Ⅵ</h3><p><strong>格式化字符串：</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">占位
+<span class="token string">"现在是&#123;&#125;年"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>year<span class="token punctuation">)</span>
+<span class="token string">"现在是&#123;&#125;年&#123;&#125;月&#123;&#125;日"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>year<span class="token punctuation">,</span>month<span class="token punctuation">,</span>day<span class="token punctuation">)</span>
+
+位置索引
+<span class="token string">"现在是&#123;0&#125;年&#123;2&#125;月&#123;1&#125;日"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>year<span class="token punctuation">,</span>day<span class="token punctuation">,</span>month<span class="token punctuation">)</span>
+
+关键字
+<span class="token string">"现在是&#123;year&#125;年&#123;month&#125;月&#123;day&#125;日"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>year<span class="token operator">=</span><span class="token number">2023</span><span class="token punctuation">,</span>month<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span>day<span class="token operator">=</span><span class="token number">18</span><span class="token punctuation">)</span>
+
+注释
+<span class="token string">"现在是&#123;year&#125;年&#123;month&#125;月&#123;&#123;&#125;&#125;日"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>year<span class="token operator">=</span><span class="token number">2023</span><span class="token punctuation">,</span>month<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>格式方法：</strong></p>
+<p><img src="/2023/032851872/1.PNG" alt="1"></p>
+<p><strong>^</strong>, <strong>&lt;**, **&gt;</strong> 分别是居中、左对齐、右对齐，后面带宽度， <strong>:</strong> 号后面带填充的字符，只能是一个字符，不指定则默认是用空格填充。</p>
+<p><strong>+</strong> 表示在正数前显示 **+**，负数前显示 **-**； （空格）表示在正数前加空格</p>
+<p>b、d、o、x 分别是二进制、十进制、八进制、十六进制。</p>
+<p><strong>F(f)-string方法：</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">year<span class="token punctuation">,</span>month<span class="token punctuation">,</span>day<span class="token operator">=</span><span class="token number">2023</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">18</span>
+<span class="token string-interpolation"><span class="token string">F"现在是</span><span class="token interpolation"><span class="token punctuation">&#123;</span>year<span class="token punctuation">&#125;</span></span><span class="token string">年</span><span class="token interpolation"><span class="token punctuation">&#123;</span>month<span class="token punctuation">&#125;</span></span><span class="token string">月</span><span class="token interpolation"><span class="token punctuation">&#123;</span>day<span class="token punctuation">&#125;</span></span><span class="token string">日"</span></span>
+结果：<span class="token string">'现在是2023年4月18日'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>
