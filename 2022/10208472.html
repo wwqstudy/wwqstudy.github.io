@@ -462,14 +462,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.4k
+                    9.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    29 分
+                    42 分
                 </div>
                 
 
@@ -1217,6 +1217,7 @@ docker -v<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
 <li>daemon：守护进程</li>
 </ul>
 <h4 id="配置国内镜像源"><a href="#配置国内镜像源" class="headerlink" title="配置国内镜像源"></a>配置国内镜像源</h4><p><strong>最上面离线安装docker中有</strong></p>
+<p><a target="_blank" rel="noopener" href="https://hub.docker.com/_/mysql">查询镜像版本</a></p>
 <h3 id="Docker命令"><a href="#Docker命令" class="headerlink" title="Docker命令"></a>Docker命令</h3><h4 id="Docker服务相关命令"><a href="#Docker服务相关命令" class="headerlink" title="Docker服务相关命令"></a>Docker服务相关命令</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># 启动docker服务</span>
 systemctl start docker
 <span class="token comment"># 停止docker服务</span>
@@ -1291,6 +1292,543 @@ docker inspect 容器名称
 <li>如果目录不存在，会自动创建</li>
 <li>可以挂载多个数据卷</li>
 </ul>
+<h4 id="数据卷容器"><a href="#数据卷容器" class="headerlink" title="数据卷容器"></a>数据卷容器</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># 创建并启动c3数据卷容器，使用-v参数设置数据卷</span>
+docker run -it --name<span class="token operator">=</span>c3 -v /volume unbuntu:18.04 /bin/bash
+<span class="token comment">#创建并启动c1，c2容器，使用--volume-from参数设置数据卷</span>
+docker run -it --name<span class="token operator">=</span>c1 --volume-from c3 ubuntu:18.04 /bin/bash
+docker run -it --name<span class="token operator">=</span>c2 --volume-from c3 ubuntu:18.04 /bin/bash<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="Docker-应用部署"><a href="#Docker-应用部署" class="headerlink" title="Docker 应用部署"></a>Docker 应用部署</h3><h4 id="Mysql部署"><a href="#Mysql部署" class="headerlink" title="Mysql部署"></a>Mysql部署</h4><ol>
+<li>搜索mysql镜像</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker search mysql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="2">
+<li>拉取mysql镜像</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker pull mysql:5.6<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="3">
+<li>创建容器，设置端口映射、目录映射</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># 在/root目录下创建mysql目录用于存储mysql数据信息</span>
+<span class="token function">mkdir</span> ~/mysql
+<span class="token builtin class-name">cd</span> ~/mysql<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker run -id <span class="token punctuation">\</span>
+-p <span class="token number">3307</span>:3306 <span class="token punctuation">\</span>
+--name<span class="token operator">=</span>c_mysql <span class="token punctuation">\</span>
+-v <span class="token environment constant">$PWD</span>/conf:/etc/mysql/conf.d <span class="token punctuation">\</span>
+-v <span class="token environment constant">$PWD</span>/logs:/logs <span class="token punctuation">\</span>
+-v <span class="token environment constant">$PWD</span>/data:/var/lib/mysql <span class="token punctuation">\</span>
+-e <span class="token assign-left variable">MYSQL_ROOT_PASSWORD</span><span class="token operator">=</span><span class="token number">123456</span> <span class="token punctuation">\</span>
+mysql:5.6<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>参数说明：<ul>
+<li><strong>-p 3307:3306</strong>：将容器的 3306 端口映射到宿主机的 3307 端口。</li>
+<li><strong>-v $PWD/conf:/etc/mysql/conf.d</strong>：将主机当前目录下的 conf/my.cnf 挂载到容器的 /etc/mysql/my.cnf。配置目录</li>
+<li><strong>-v $PWD/logs:/logs</strong>：将主机当前目录下的 logs 目录挂载到容器的 /logs。日志目录</li>
+<li><strong>-v $PWD/data:/var/lib/mysql</strong> ：将主机当前目录下的data目录挂载到容器的 /var/lib/mysql 。数据目录</li>
+<li><strong>-e MYSQL_ROOT_PASSWORD=123456：</strong>初始化 root 用户的密码。</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li>进入容器，操作mysql</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker <span class="token builtin class-name">exec</span> –it c_mysql /bin/bash<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="5">
+<li>使用外部机器连接容器中的mysql</li>
+</ol>
+<h4 id="Tomcat部署"><a href="#Tomcat部署" class="headerlink" title="Tomcat部署"></a>Tomcat部署</h4><ol>
+<li>搜索tomcat镜像</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker search tomcat<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="2">
+<li>拉取tomcat镜像</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker pull tomcat<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="3">
+<li>创建容器，设置端口映射、目录映射</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># 在/root目录下创建tomcat目录用于存储tomcat数据信息</span>
+<span class="token function">mkdir</span> ~/tomcat
+<span class="token builtin class-name">cd</span> ~/tomcat<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker run -id --name<span class="token operator">=</span>c_tomcat <span class="token punctuation">\</span>
+-p <span class="token number">8080</span>:8080 <span class="token punctuation">\</span>
+-v <span class="token environment constant">$PWD</span>:/usr/local/tomcat/webapps <span class="token punctuation">\</span>
+tomcat <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><p>参数说明：</p>
+<ul>
+<li><p><strong>-p 8080:8080：</strong>将容器的8080端口映射到主机的8080端口</p>
+<p><strong>-v $PWD:/usr/local/tomcat/webapps：</strong>将主机中当前目录挂载到容器的webapps</p>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li>使用外部机器访问tomcat</li>
+</ol>
+<h4 id="Nginx部署"><a href="#Nginx部署" class="headerlink" title="Nginx部署"></a>Nginx部署</h4><ol>
+<li>搜索nginx镜像</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker search nginx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="2">
+<li>拉取nginx镜像</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker pull nginx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="3">
+<li>创建容器，设置端口映射、目录映射</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># 在/root目录下创建nginx目录用于存储nginx数据信息</span>
+<span class="token function">mkdir</span> ~/nginx
+<span class="token builtin class-name">cd</span> ~/nginx
+<span class="token function">mkdir</span> conf
+<span class="token builtin class-name">cd</span> conf
+<span class="token comment"># 在~/nginx/conf/下创建nginx.conf文件,粘贴下面内容</span>
+<span class="token function">vim</span> nginx.conf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">user  nginx<span class="token punctuation">;</span>
+worker_processes  <span class="token number">1</span><span class="token punctuation">;</span>
+
+error_log  /var/log/nginx/error.log warn<span class="token punctuation">;</span>
+pid        /var/run/nginx.pid<span class="token punctuation">;</span>
+
+
+events <span class="token punctuation">&#123;</span>
+    worker_connections  <span class="token number">1024</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+
+http <span class="token punctuation">&#123;</span>
+    include       /etc/nginx/mime.types<span class="token punctuation">;</span>
+    default_type  application/octet-stream<span class="token punctuation">;</span>
+
+    log_format  main  <span class="token string">'$remote_addr - $remote_user [$time_local] "$request" '</span>
+                      <span class="token string">'$status $body_bytes_sent "$http_referer" '</span>
+                      <span class="token string">'"$http_user_agent" "$http_x_forwarded_for"'</span><span class="token punctuation">;</span>
+
+    access_log  /var/log/nginx/access.log  main<span class="token punctuation">;</span>
+
+    sendfile        on<span class="token punctuation">;</span>
+    <span class="token comment">#tcp_nopush     on;</span>
+
+    keepalive_timeout  <span class="token number">65</span><span class="token punctuation">;</span>
+
+    <span class="token comment">#gzip  on;</span>
+
+    include /etc/nginx/conf.d/*.conf<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker run -id --name<span class="token operator">=</span>c_nginx <span class="token punctuation">\</span>
+-p <span class="token number">80</span>:80 <span class="token punctuation">\</span>
+-v <span class="token environment constant">$PWD</span>/conf/nginx.conf:/etc/nginx/nginx.conf <span class="token punctuation">\</span>
+-v <span class="token environment constant">$PWD</span>/logs:/var/log/nginx <span class="token punctuation">\</span>
+-v <span class="token environment constant">$PWD</span>/html:/usr/share/nginx/html <span class="token punctuation">\</span> <span class="token comment"># html是自己创建的f</span>
+nginx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>参数说明：<ul>
+<li><strong>-p 80:80</strong>：将容器的 80端口映射到宿主机的 80 端口。</li>
+<li><strong>-v $PWD/conf/nginx.conf:/etc/nginx/nginx.conf</strong>：将主机当前目录下的 /conf/nginx.conf 挂载到容器的 :/etc/nginx/nginx.conf。配置目录</li>
+<li><strong>-v $PWD/logs:/var/log/nginx</strong>：将主机当前目录下的 logs 目录挂载到容器的/var/log/nginx。日志目录</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li>使用外部机器访问nginx</li>
+</ol>
+<h4 id="Redis部署"><a href="#Redis部署" class="headerlink" title="Redis部署"></a>Redis部署</h4><ol>
+<li>搜索redis镜像</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker search redis<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="2">
+<li>拉取redis镜像</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker pull redis:5.0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="3">
+<li>创建容器，设置端口映射</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker run -id --name<span class="token operator">=</span>c_redis -p <span class="token number">6379</span>:6379 redis:5.0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="4">
+<li>使用外部机器连接redis</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">./redis-cli.exe -h <span class="token number">192.168</span>.149.135 -p <span class="token number">6379</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h3 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h3><h4 id="镜像原理"><a href="#镜像原理" class="headerlink" title="镜像原理"></a>镜像原理</h4><ol>
+<li>Linux文件系统由<strong>bootfs</strong>和<strong>rootfs</strong>两部分组成</li>
+</ol>
+<ul>
+<li><ul>
+<li>bootfs：包含bootloader(引导加载程序)和kernel(内核)</li>
+<li>rootfs：root文件系统，包含的就是典型Linux系统中的/dev,/proc,/bin,/etc等标准目录和文件</li>
+<li>不同的linux发行版，bootfs基本一样，而rootfs不同，如ubuntu，centos等</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>docker镜像原理</li>
+</ol>
+<ul>
+<li><ul>
+<li>docker镜像是由特殊的文件系统叠加而成</li>
+<li>最底层的是bootfs，并使用宿主机的bootfs</li>
+<li>第二层是root文件系统rootfs,称为 base image</li>
+<li>然后往上可以叠加其他的镜像文件</li>
+<li>统一文件系统技术能够将不同的层整合成一个文件系统，为这些层提供一个统一的视角，这样就隐藏了多层的存在，在用户的角度看来，只存在一个文件系统</li>
+<li>一个镜像可以放在另一个镜像的上面，位于下面的镜像称为父镜像，最底层的镜像成为基础镜像</li>
+<li>当从一个镜像启动容器时，Docker会在最顶层加载一个读写文件系统作为容器</li>
+</ul>
+</li>
+</ul>
+<h4 id="容器转为镜像-制作镜像"><a href="#容器转为镜像-制作镜像" class="headerlink" title="容器转为镜像(制作镜像)"></a>容器转为镜像(制作镜像)</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># 生成新的镜像</span>
+docker commit 容器id 镜像名称:版本号
+<span class="token comment"># 将镜像打成压缩文件</span>
+docker save -o 压缩文件名字 镜像名称:版本号
+<span class="token comment"># 将压缩文件解压为新的镜像</span>
+docker load -i 压缩文件名称
+
+**注意：**
+<span class="token comment"># 通过数据卷的文件无法包含在新的镜像中</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/2022/10208472/16.PNG" alt=" "></p>
+<h4 id="Dockerfile概念及关键字"><a href="#Dockerfile概念及关键字" class="headerlink" title="Dockerfile概念及关键字"></a>Dockerfile概念及关键字</h4><ol>
+<li>Dockerfile概念</li>
+</ol>
+<ul>
+<li><ul>
+<li>dockerfile是一个文本文件</li>
+<li>文本文件中含有一条条指令</li>
+<li>每一条指令构建一层，基于基础镜像，最终构建出一个新的镜像</li>
+<li>对于开发人员：可以为开发团队提供一个完全一样的开发环境</li>
+<li>对于测试人员：可以直接拿开发时构建的镜像或者通过Dockerfile文件构建一个新的镜像开始工作</li>
+<li>对于运维人员：在部署时，可以实现应用的无缝移植</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>关键字</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>作用</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FROM</td>
+<td>指定父镜像</td>
+<td>指定dockerfile基于那个image构建</td>
+</tr>
+<tr>
+<td>MAINTAINER</td>
+<td>作者信息</td>
+<td>用来标明这个dockerfile谁写的</td>
+</tr>
+<tr>
+<td>LABEL</td>
+<td>标签</td>
+<td>用来标明dockerfile的标签 可以使用Label代替Maintainer 最终都是在docker image基本信息中可以查看</td>
+</tr>
+<tr>
+<td>RUN</td>
+<td>执行命令</td>
+<td>执行一段命令 默认是/bin/sh 格式: RUN command 或者 RUN [“command” , “param1”,”param2”]</td>
+</tr>
+<tr>
+<td>CMD</td>
+<td>容器启动命令</td>
+<td>提供启动容器时候的默认命令 和ENTRYPOINT配合使用.格式 CMD command param1 param2 或者 CMD [“command” , “param1”,”param2”]</td>
+</tr>
+<tr>
+<td>ENTRYPOINT</td>
+<td>入口</td>
+<td>一般在制作一些执行就关闭的容器中会使用</td>
+</tr>
+<tr>
+<td>COPY</td>
+<td>复制文件</td>
+<td>build的时候复制文件到image中</td>
+</tr>
+<tr>
+<td>ADD</td>
+<td>添加文件</td>
+<td>build的时候添加文件到image中 不仅仅局限于当前build上下文 可以来源于远程服务</td>
+</tr>
+<tr>
+<td>ENV</td>
+<td>环境变量</td>
+<td>指定build时候的环境变量 可以在启动的容器的时候 通过-e覆盖 格式ENV name=value</td>
+</tr>
+<tr>
+<td>ARG</td>
+<td>构建参数</td>
+<td>构建参数 只在构建的时候使用的参数 如果有ENV 那么ENV的相同名字的值始终覆盖arg的参数</td>
+</tr>
+<tr>
+<td>VOLUME</td>
+<td>定义外部可以挂载的数据卷</td>
+<td>指定build的image那些目录可以启动的时候挂载到文件系统中 启动容器的时候使用 -v 绑定 格式 VOLUME [“目录”]</td>
+</tr>
+<tr>
+<td>EXPOSE</td>
+<td>暴露端口</td>
+<td>定义容器运行的时候监听的端口 启动容器的使用-p来绑定暴露端口 格式: EXPOSE 8080 或者 EXPOSE 8080/udp</td>
+</tr>
+<tr>
+<td>WORKDIR</td>
+<td>工作目录</td>
+<td>指定容器内部的工作目录 如果没有创建则自动创建 如果指定/ 使用的是绝对地址 如果不是/开头那么是在上一条workdir的路径的相对路径</td>
+</tr>
+<tr>
+<td>USER</td>
+<td>指定执行用户</td>
+<td>指定build或者启动的时候 用户 在RUN CMD ENTRYPONT执行的时候的用户</td>
+</tr>
+<tr>
+<td>HEALTHCHECK</td>
+<td>健康检查</td>
+<td>指定监测当前容器的健康监测的命令 基本上没用 因为很多时候 应用本身有健康监测机制</td>
+</tr>
+<tr>
+<td>ONBUILD</td>
+<td>触发器</td>
+<td>当存在ONBUILD关键字的镜像作为基础镜像的时候 当执行FROM完成之后 会执行 ONBUILD的命令 但是不影响当前镜像 用处也不怎么大</td>
+</tr>
+<tr>
+<td>STOPSIGNAL</td>
+<td>发送信号量到宿主机</td>
+<td>该STOPSIGNAL指令设置将发送到容器的系统调用信号以退出。</td>
+</tr>
+<tr>
+<td>SHELL</td>
+<td>指定执行脚本的shell</td>
+<td>指定RUN CMD ENTRYPOINT 执行命令的时候 使用的shell</td>
+</tr>
+</tbody></table>
+<h4 id="Dockerfile案例"><a href="#Dockerfile案例" class="headerlink" title="Dockerfile案例"></a>Dockerfile案例</h4><p><strong>部署springboot项目</strong></p>
+<pre class="line-numbers language-dockerfile" data-language="dockerfile"><code class="language-dockerfile"># 定义父镜像
+FROM java:8
+# 定义作者名字
+MAINTAINER wwq &lt;邮件地址&gt;
+# 将jar包添加到容器
+ADD jar包名称 自定义包名
+# 定义容器启动执行的命令
+CMD java -jar 自定义包名
+# 通过dockerfile构建镜像
+docker build -f dockerfile文件路径 -t 镜像名称:版本号 . #(&quot;.&quot;代表路径)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>自定义centos</strong></p>
+<pre class="line-numbers language-dockerfile" data-language="dockerfile"><code class="language-dockerfile"># 定义父镜像
+FROM centos:7
+# 定义作者名字
+MAINTAINER wwq &lt;邮件地址&gt;
+# 执行安装vim命令
+RUN yum intsall -y vim
+# 定义默认工作路径
+WORKDIR &#x2F;usr
+# 通过dockerfile构建镜像
+docker build -f dockerfile文件路径 -t 镜像名称:版本号 . #(&quot;.&quot;代表路径)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Docker-Compose"><a href="#Docker-Compose" class="headerlink" title="Docker-Compose"></a>Docker-Compose</h3><h4 id="docker-compose概念"><a href="#docker-compose概念" class="headerlink" title="docker-compose概念"></a>docker-compose概念</h4><p>Docker-Compose是一个编排多容器分布式部署的工具，提供命令集管理容器化应用的完整开发周期，包括服务构建、启动和停止。</p>
+<p>使用步骤：</p>
+<ul>
+<li>利用Dockerfile定义运行镜像</li>
+<li>使用docker-compose.yml定义组成应用的各服务</li>
+<li>运行docker-compose  up 启动应用</li>
+</ul>
+<h4 id="docker-compose安装使用"><a href="#docker-compose安装使用" class="headerlink" title="docker-compose安装使用"></a>docker-compose安装使用</h4><h5 id="一、安装Docker-Compose"><a href="#一、安装Docker-Compose" class="headerlink" title="一、安装Docker Compose"></a>一、安装Docker Compose</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># Compose目前已经完全支持Linux、Mac OS和Windows，在我们安装Compose之前，需要先安装Docker。下面我 们以编译好的二进制包方式安装在Linux系统中。 </span>
+<span class="token function">curl</span> -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-<span class="token variable"><span class="token variable">`</span><span class="token function">uname</span> -s<span class="token variable">`</span></span>-<span class="token variable"><span class="token variable">`</span><span class="token function">uname</span> -m<span class="token variable">`</span></span> -o /usr/local/bin/docker-compose
+<span class="token comment"># 设置文件可执行权限 </span>
+<span class="token function">chmod</span> +x /usr/local/bin/docker-compose
+<span class="token comment"># 查看版本信息 </span>
+docker-compose -version<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="二、卸载Docker-Compose"><a href="#二、卸载Docker-Compose" class="headerlink" title="二、卸载Docker Compose"></a>二、卸载Docker Compose</h5><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># 二进制包方式安装的，删除二进制文件即可</span>
+<span class="token function">rm</span> /usr/local/bin/docker-compose<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+
+<h5 id="三、-使用docker-compose编排nginx-springboot项目"><a href="#三、-使用docker-compose编排nginx-springboot项目" class="headerlink" title="三、 使用docker compose编排nginx+springboot项目"></a>三、 使用docker compose编排nginx+springboot项目</h5><ol>
+<li>创建docker-compose目录</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">mkdir</span> ~/docker-compose
+<span class="token builtin class-name">cd</span> ~/docker-compose<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ol start="2">
+<li>编写 docker-compose.yml 文件</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">version: <span class="token string">'3'</span>
+services:
+  nginx:
+   image: nginx
+   ports:
+    - <span class="token number">80</span>:80
+   links:
+    - app
+   volumes:
+    - ./nginx/conf.d:/etc/nginx/conf.d
+  app:
+    image: app
+    expose:
+      - <span class="token string">"8080"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="3">
+<li>创建./nginx/conf.d目录</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">mkdir</span> -p ./nginx/conf.d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<ol start="4">
+<li>在./nginx/conf.d目录下 编写itheima.conf文件</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">server <span class="token punctuation">&#123;</span>
+    listen <span class="token number">80</span><span class="token punctuation">;</span>
+    access_log off<span class="token punctuation">;</span>
+
+    location / <span class="token punctuation">&#123;</span>
+        proxy_pass http://app:8080<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+   
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="5">
+<li>在~/docker-compose 目录下 使用docker-compose 启动容器</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker-compose up<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="6">
+<li>测试访问</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">http://192.168.149.135/hello<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h3 id="Docker-私有仓库"><a href="#Docker-私有仓库" class="headerlink" title="Docker 私有仓库"></a>Docker 私有仓库</h3><h4 id="一、私有仓库搭建"><a href="#一、私有仓库搭建" class="headerlink" title="一、私有仓库搭建"></a>一、私有仓库搭建</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># 1、拉取私有仓库镜像 </span>
+docker pull registry
+<span class="token comment"># 2、启动私有仓库容器 </span>
+docker run -id --name<span class="token operator">=</span>registry -p <span class="token number">5000</span>:5000 registry
+<span class="token comment"># 3、打开浏览器 输入地址http://私有仓库服务器ip:5000/v2/_catalog，看到&#123;"repositories":[]&#125; 表示私有仓库 搭建成功</span>
+<span class="token comment"># 4、修改daemon.json   </span>
+<span class="token function">vim</span> /etc/docker/daemon.json    
+<span class="token comment"># 在上述文件中添加一个key，保存退出。此步用于让 docker 信任私有仓库地址；注意将私有仓库服务器ip修改为自己私有仓库服务器真实ip </span>
+<span class="token punctuation">&#123;</span><span class="token string">"insecure-registries"</span>:<span class="token punctuation">[</span><span class="token string">"私有仓库服务器ip:5000"</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span> 
+<span class="token comment"># 5、重启docker 服务 </span>
+systemctl restart docker
+docker start registry
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="二、将镜像上传至私有仓库"><a href="#二、将镜像上传至私有仓库" class="headerlink" title="二、将镜像上传至私有仓库"></a>二、将镜像上传至私有仓库</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># 1、标记镜像为私有仓库的镜像     </span>
+docker tag centos:7 私有仓库服务器IP:5000/centos:7
+ 
+<span class="token comment"># 2、上传标记的镜像     </span>
+docker push 私有仓库服务器IP:5000/centos:7
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h4 id="三、-从私有仓库拉取镜像"><a href="#三、-从私有仓库拉取镜像" class="headerlink" title="三、 从私有仓库拉取镜像"></a>三、 从私有仓库拉取镜像</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment">#拉取镜像 </span>
+docker pull 私有仓库服务器ip:5000/centos:7<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="k8s部署suricata安全应用"><a href="#k8s部署suricata安全应用" class="headerlink" title="k8s部署suricata安全应用"></a>k8s部署suricata安全应用</h2><ol>
+<li>拉取jasonish/suricata:latest镜像到您的本地或者私有仓库</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker pull jasonish/suricata:latest<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="2">
+<li>创建一个k8s部署配置文件，指定suricata镜像、副本数量、标签、选择器、环境变量、端口等信息</li>
+</ol>
+<p>eg: 创建一个suricata.yaml文件：</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: suricata-deployment
+  labels:
+    app: suricata
+spec:
+  replicas: <span class="token number">3</span>
+  selector:
+    matchLabels:
+      app: suricata
+  template:
+    metadata:
+      labels:
+        app: suricata
+    spec:
+      containers:
+      - name: suricata
+        image: jasonish/suricata:latest
+        env:
+        - name: SURICATA_CAPTURE_FILTER
+          value: <span class="token string">"not port 22"</span>
+        - name: SURICATA_OPTIONS
+          value: <span class="token string">"-vvv --af-packet"</span>
+        ports:
+        - containerPort: <span class="token number">80</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="3">
+<li>使用kubectl apply命令来应用配置文件，创建suricata部署</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl apply -f suricata.yaml<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="4">
+<li>检查suricata的状态和日志，确认是否正常运行</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl get pods -l <span class="token assign-left variable">app</span><span class="token operator">=</span>suricata <span class="token comment"># 查看suricata容器是否运行</span>
+kubectl logs <span class="token operator">&lt;</span>pod-name<span class="token operator">></span> <span class="token comment"># 查看suricata容器的日志</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ol start="5">
+<li>查看suricata容器是否运行时出现的情况</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">suricata-deployment-6b975fb856-5fx8l <span class="token number">0</span>/1 ContainerCreating <span class="token number">0</span> 24s <span class="token comment">#还在创建当中</span>
+suricata-deployment-6b975fb856-5fx8l <span class="token number">0</span>/1 ImagePullBackOff <span class="token number">0</span> 78s  <span class="token comment">#suricata容器创建失败</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ol start="6">
+<li>其他命令</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl describe pod suricata-deployment-6b975fb856-5fx8l <span class="token comment"># 查看容器的详细信息，包括事件和错误。</span>
+kubectl delete deployment suricata-deployment <span class="token comment"># 删除suricata部署，释放资源。</span>
+kubectl drain <span class="token operator">&lt;</span>node-name<span class="token operator">></span> --ignore-daemonsets <span class="token comment"># 从指定的节点上驱逐所有的pod，包括suricata容器，让它们在其他节点上重新调度。</span>
+kubectl cordon <span class="token operator">&lt;</span>node-name<span class="token operator">></span> <span class="token comment"># 标记指定的节点为不可调度，防止suricata容器在该节点上重新创建。</span>
+kubectl scale deployment suricata-deployment --replicas<span class="token operator">=</span><span class="token number">0</span> <span class="token comment"># 将suricata部署的副本数量设置为0，暂停所有的suricata容器。</span>
+kubectl scale deployment suricata-deployment --replicas<span class="token operator">=</span><span class="token number">3</span> <span class="token comment"># 将suricata部署的副本数量设置为3，恢复所有的suricata容器</span>
+kubectl get pods -l <span class="token assign-left variable">app</span><span class="token operator">=</span>suricata -o wide <span class="token comment"># 查看suricata容器的名称、状态、重启次数和所在节点。</span>
+kubectl get deployments <span class="token comment"># 查看集群中的所有部署的名称、副本数量</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+
+
+
+
 
                 
             </div>
