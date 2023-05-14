@@ -462,14 +462,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    9.6k
+                    10.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    42 分
+                    46 分
                 </div>
                 
 
@@ -1823,7 +1823,172 @@ kubectl get deployments <span class="token comment"># 查看集群中的所有�
 
 
 
+<h2 id="Docker部署openwaf"><a href="#Docker部署openwaf" class="headerlink" title="Docker部署openwaf"></a>Docker部署openwaf</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>OpenWAF是一个全方位开源的Web应用防护系统（WAF），提供全面的防护功能和多样的防护策略。</p>
+<p>他基于nginx_lua API分析HTTP请求信息。OpenWAF由行为分析引擎和规则引擎两大功能引擎构成。其中规则引擎主要对单个请求进行分析，行为分析引擎主要负责跨请求信息追踪。</p>
+<h3 id="部署步骤"><a href="#部署步骤" class="headerlink" title="部署步骤"></a>部署步骤</h3><ol>
+<li>拉取镜像</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker pull titansec/openwaf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<ol start="2">
+<li>运行容器复制出配置文件</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker run -d --name openwaf <span class="token punctuation">\</span>
+-p <span class="token number">80</span>:80 -p <span class="token number">443</span>:443 <span class="token punctuation">\</span>
+titansec/openwaf 
+
+<span class="token function">mkdir</span> -p /root/openwaf/conf
+<span class="token function">mkdir</span> -p /root/openwaf/log
+
+docker <span class="token function">cp</span> openwaf:/etc/ngx_openwaf.conf /root/openwaf/conf/
+docker <span class="token function">cp</span> openwaf:/opt/OpenWAF/conf/twaf_access_rule.json /root/openwaf/conf/
+docker <span class="token function">cp</span> openwaf:/var/log/openwaf_error.log /root/openwaf/log/
+
+
+ docker <span class="token function">rm</span> -f openwaf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="3">
+<li>配置文件ngx_openwaf.conf</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">user root<span class="token punctuation">;</span>
+worker_processes auto<span class="token punctuation">;</span>
+worker_cpu_affinity auto<span class="token punctuation">;</span>
+pid /var/run/openwaf.pid<span class="token punctuation">;</span>
+pcre_jit on<span class="token punctuation">;</span>
+error_log /var/log/openwaf_error.log<span class="token punctuation">;</span>
+
+events <span class="token punctuation">&#123;</span>
+    worker_connections  <span class="token number">10000</span><span class="token punctuation">;</span>
+    multi_accept on<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+
+http <span class="token punctuation">&#123;</span>
+    include            /usr/local/openresty/nginx/conf/mime.types<span class="token punctuation">;</span>
+    include            /opt/OpenWAF/conf/twaf_main.conf<span class="token punctuation">;</span>
+    include            /opt/OpenWAF/conf/twaf_api.conf<span class="token punctuation">;</span>
+    
+    default_type       text/html<span class="token punctuation">;</span>
+    tcp_nopush         on<span class="token punctuation">;</span>
+    sendfile           on<span class="token punctuation">;</span>
+    keepalive_requests <span class="token number">100</span><span class="token punctuation">;</span>
+    keepalive_timeout  <span class="token number">60</span> <span class="token number">60</span><span class="token punctuation">;</span>
+    
+    client_body_buffer_size 100m<span class="token punctuation">;</span>
+    lua_regex_match_limit   <span class="token number">1500</span><span class="token punctuation">;</span>
+    
+    proxy_redirect     http://<span class="token variable">$http_host</span>/ /<span class="token punctuation">;</span>
+    proxy_pass_header  Server<span class="token punctuation">;</span>
+    
+    upstream <span class="token builtin class-name">test</span> <span class="token punctuation">&#123;</span>
+       server <span class="token number">0.0</span>.0.1<span class="token punctuation">;</span> <span class="token comment">#just an invalid address as a place holder</span>
+       balancer_by_lua_file /opt/OpenWAF/app/twaf_balancer.lua<span class="token punctuation">;</span>
+       keepalive <span class="token number">16</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    
+    server <span class="token punctuation">&#123;</span>
+        listen  <span class="token number">80</span><span class="token punctuation">;</span>
+        listen <span class="token punctuation">[</span>::<span class="token punctuation">]</span>:80 <span class="token assign-left variable">ipv6only</span><span class="token operator">=</span>on<span class="token punctuation">;</span>
+	
+        listen <span class="token number">443</span> ssl<span class="token punctuation">;</span>
+        listen <span class="token punctuation">[</span>::<span class="token punctuation">]</span>:443 ssl <span class="token assign-left variable">ipv6only</span><span class="token operator">=</span>on<span class="token punctuation">;</span>
+	
+        server_name _<span class="token punctuation">;</span>
+        
+        ssl_certificate /opt/OpenWAF/conf/ssl/nginx.crt<span class="token punctuation">;</span>
+        ssl_certificate_key /opt/OpenWAF/conf/ssl/nginx.key<span class="token punctuation">;</span>
+        ssl_protocols TLSv1.1 TLSv1.2<span class="token punctuation">;</span>
+        
+        include                     /opt/OpenWAF/conf/twaf_server.conf<span class="token punctuation">;</span>
+        ssl_certificate_by_lua_file /opt/OpenWAF/app/twaf_ssl_cert.lua<span class="token punctuation">;</span>
+        
+        location / <span class="token punctuation">&#123;</span>
+            proxy_set_header Accept-Encoding identity<span class="token punctuation">;</span>
+            proxy_set_header Host <span class="token variable">$http_host</span><span class="token punctuation">;</span>
+            proxy_set_header X-Server-IP <span class="token variable">$server_addr</span><span class="token punctuation">;</span>
+            proxy_set_header X-Server-PORT <span class="token variable">$server_port</span><span class="token punctuation">;</span>
+            proxy_set_header X-Real-IP <span class="token variable">$remote_addr</span><span class="token punctuation">;</span>
+            proxy_set_header X-Real-PORT <span class="token variable">$remote_port</span><span class="token punctuation">;</span>
+            proxy_set_header X-Forwarded-For <span class="token variable">$http_x_forwarded_for</span><span class="token punctuation">;</span>
+            proxy_set_header Connection <span class="token variable">$connection_upgrade</span><span class="token punctuation">;</span>
+            proxy_set_header Upgrade <span class="token variable">$http_upgrade</span><span class="token punctuation">;</span>
+            
+            proxy_http_version <span class="token number">1.1</span><span class="token punctuation">;</span>
+            proxy_pass <span class="token variable">$twaf_upstream_server</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="4">
+<li>规则文件twaf_access_rule.json</li>
+</ol>
+<p><strong>说明：</strong></p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">&#123;</span>
+    <span class="token string">"twaf_access_rule"</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+        <span class="token string">"rules"</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span>                                 -- 数组，注意先后顺序
+            <span class="token punctuation">&#123;</span>                                      
+                <span class="token string">"ngx_ssl"</span><span class="token builtin class-name">:</span> false,                  -- nginx认证的开关
+                <span class="token string">"ngx_ssl_cert"</span><span class="token builtin class-name">:</span> <span class="token string">"path"</span>,            -- nginx认证所需PEM证书地址
+                <span class="token string">"ngx_ssl_key"</span><span class="token builtin class-name">:</span> <span class="token string">"path"</span>,             -- nginx认证所需PEM私钥地址
+                <span class="token string">"host"</span><span class="token builtin class-name">:</span> <span class="token string">"www.baidu.com"</span>,           -- 域名，正则匹配
+                <span class="token string">"port"</span><span class="token builtin class-name">:</span> <span class="token number">80</span>,                        -- 端口号（缺省80）
+                <span class="token string">"path"</span><span class="token builtin class-name">:</span> <span class="token string">"\/"</span>,                      -- 路径，正则匹配
+                <span class="token string">"server_ssl"</span><span class="token builtin class-name">:</span> false,               -- 后端服务器ssl开关
+                <span class="token string">"forward"</span><span class="token builtin class-name">:</span> <span class="token string">"server_5"</span>,             -- 后端服务器upstream名称
+                <span class="token string">"forward_addr"</span><span class="token builtin class-name">:</span> <span class="token string">"192.168.8.100"</span>,         -- 后端服务器ip地址
+                <span class="token string">"forward_port"</span><span class="token builtin class-name">:</span> <span class="token string">"8080"</span>,            -- 后端服务器端口号（缺省80）
+                <span class="token string">"policy"</span><span class="token builtin class-name">:</span> <span class="token string">"policy_uuid"</span>            -- 安全策略ID
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>twaf_access_rule.json文件配置示例</strong></p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">&#123;</span>
+    <span class="token string">"twaf_access_rule"</span><span class="token builtin class-name">:</span> <span class="token punctuation">&#123;</span>
+        <span class="token string">"state"</span><span class="token builtin class-name">:</span> true,
+        <span class="token string">"log_state"</span>:true,
+        <span class="token string">"rules"</span>:<span class="token punctuation">[</span>
+            <span class="token punctuation">&#123;</span>
+                <span class="token string">"host"</span><span class="token builtin class-name">:</span><span class="token string">"^.*$"</span>,
+                <span class="token string">"forward"</span><span class="token builtin class-name">:</span><span class="token string">"test1"</span>,
+                <span class="token string">"forward_addr"</span><span class="token builtin class-name">:</span><span class="token string">"192.168.8.100"</span>,
+                <span class="token string">"uuid"</span><span class="token builtin class-name">:</span><span class="token string">"test_uuid1"</span>,
+                <span class="token string">"policy"</span><span class="token builtin class-name">:</span> <span class="token string">"twaf_policy_conf"</span>
+            <span class="token punctuation">&#125;</span>,
+            <span class="token punctuation">&#123;</span>
+                <span class="token string">"host"</span><span class="token builtin class-name">:</span><span class="token string">"localhost"</span>,
+                <span class="token string">"port"</span>:81,
+                <span class="token string">"path"</span><span class="token builtin class-name">:</span><span class="token string">"/admin/"</span>,
+                <span class="token string">"forward"</span><span class="token builtin class-name">:</span><span class="token string">"test2"</span>,
+                <span class="token string">"forward_addr"</span><span class="token builtin class-name">:</span><span class="token string">"192.168.8.100"</span>,
+                <span class="token string">"forward_port"</span><span class="token builtin class-name">:</span> <span class="token number">82</span>,
+                <span class="token string">"uuid"</span><span class="token builtin class-name">:</span><span class="token string">"test_uuid2"</span>,
+                <span class="token string">"policy"</span><span class="token builtin class-name">:</span> <span class="token string">"twaf_policy_conf"</span>
+            <span class="token punctuation">&#125;</span>,
+            <span class="token punctuation">&#123;</span>
+                <span class="token string">"host"</span><span class="token builtin class-name">:</span><span class="token string">"localhost"</span>,
+                <span class="token string">"ngx_ssl"</span><span class="token builtin class-name">:</span> true,
+                <span class="token string">"ngx_ssl_cert"</span><span class="token builtin class-name">:</span> <span class="token string">"/opt/OpenWAF/conf/ssl/nginx.crt"</span>,
+                <span class="token string">"ngx_ssl_key"</span><span class="token builtin class-name">:</span> <span class="token string">"/opt/OpenWAF/conf/ssl/nginx.key"</span>,
+                <span class="token string">"forward"</span><span class="token builtin class-name">:</span><span class="token string">"test3"</span>,
+                <span class="token string">"forward_addr"</span><span class="token builtin class-name">:</span> <span class="token string">"1.1.1.3"</span>,
+                <span class="token string">"uuid"</span><span class="token builtin class-name">:</span><span class="token string">"test_uuid3"</span>,
+                <span class="token string">"policy"</span><span class="token builtin class-name">:</span> <span class="token string">"twaf_policy_conf"</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="5">
+<li>运行容器</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker run -d --name openwaf <span class="token punctuation">\</span>
+-p <span class="token number">80</span>:80 -p <span class="token number">443</span>:443 <span class="token punctuation">\</span>
+-v /root/openwaf/conf/ngx_openwaf.conf:/etc/ngx_openwaf.conf <span class="token punctuation">\</span>
+-v /root/openwaf/conf/twaf_access_rule.json:/opt/OpenWAF/conf/twaf_access_rule.json <span class="token punctuation">\</span>
+-v /root/openwaf/log/openwaf_error.log:/var/log/openwaf_error.log <span class="token punctuation">\</span>
+titansec/openwaf <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
