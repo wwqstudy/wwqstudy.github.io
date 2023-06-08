@@ -5,7 +5,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="复制粘贴使用, wwqstudy">
-    <meta name="description" content="">
+    <meta name="description" content="K8S管理dockerkubernetes在集群启动之后，集群中的各个组件也都是以Pod方式运行的
+kubectl get pod -n kube-system # 查看命令
+
+
+一、podkubernetes没有提供单独运行Pod的命令，">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -461,14 +465,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    754
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -491,7 +495,185 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="K8S管理docker"><a href="#K8S管理docker" class="headerlink" title="K8S管理docker"></a>K8S管理docker</h2><p>kubernetes在集群启动之后，集群中的各个组件也都是以Pod方式运行的</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl get pod -n kube-system <span class="token comment"># 查看命令</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\1.PNG" alt="1"></p>
+<h3 id="一、pod"><a href="#一、pod" class="headerlink" title="一、pod"></a>一、pod</h3><p>kubernetes没有提供单独运行Pod的命令，都是通过Pod控制器来实现的</p>
+<h4 id="1-1-创建并运行pod"><a href="#1-1-创建并运行pod" class="headerlink" title="1.1 创建并运行pod"></a>1.1 创建并运行pod</h4><ol>
+<li>创建命令空间</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl create namespace dev <span class="token comment">#创建名字为dev的命名空间</span>
+kubectl delete namespace dev <span class="token comment">#删除名字为dev的命名空间</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\2.PNG" alt="2"></p>
+<ol start="2">
+<li>创建pod并自动运行</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl run nginx --image<span class="token operator">=</span>nginx:latest --port<span class="token operator">=</span><span class="token number">80</span> --namespace dev 
+<span class="token comment"># 命令格式： kubectl run (pod控制器名称) [参数] </span>
+<span class="token comment"># --image  指定Pod的镜像</span>
+<span class="token comment"># --port   指定端口</span>
+<span class="token comment"># --namespace  指定namespace</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\3.PNG" alt="3"></p>
+<h4 id="1-2-查看信息"><a href="#1-2-查看信息" class="headerlink" title="1.2 查看信息"></a>1.2 查看信息</h4><ol>
+<li>查看pod基本信息</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl get pods -n dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\4.PNG" alt="4"></p>
+<ol start="2">
+<li>查看pod详细信息</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl describe pod nginx -n dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\5.PNG" alt="5"></p>
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\6.PNG" alt="6"></p>
+<h4 id="1-3-访问pod"><a href="#1-3-访问pod" class="headerlink" title="1.3 访问pod"></a>1.3 访问pod</h4><ol>
+<li>获取podID</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl get pods -n dev -o wide<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\7.PNG" alt="7"></p>
+<ol start="2">
+<li>访问pod</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> <span class="token number">10.244</span>.2.3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\8.PNG" alt="8"></p>
+<h4 id="1-4-删除指定pod"><a href="#1-4-删除指定pod" class="headerlink" title="1.4 删除指定pod"></a>1.4 删除指定pod</h4><ol>
+<li>删除指定pod</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl delete pod nginx -n dev <span class="token comment"># nginx为pod名字</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\9.PNG" alt="9"></p>
+<p><strong>此时，显示删除Pod成功，但是再查询，发现又新产生了一个</strong></p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl get pods -n dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\10.PNG" alt="10"></p>
+<p><strong>原因：</strong>这是因为当前Pod是由Pod控制器创建的，控制器会监控Pod状况，一旦发现Pod死亡，会立即重建，此时要想删除Pod，必须删除Pod控制器</p>
+<ol start="2">
+<li>查看当前namespace下的Pod控制器</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl get deploy -n  dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\11.PNG" alt="11"></p>
+<ol start="3">
+<li>删除此Pod控制器</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl delete deploy nginx -n dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\12.PNG" alt="12"></p>
+<ol start="4">
+<li>稍等片刻，再查询Pod，发现Pod被删除了</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl get pods -n dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\13.PNG" alt="13"></p>
+<h3 id="二、Label"><a href="#二、Label" class="headerlink" title="二、Label"></a>二、Label</h3><ol>
+<li>为pod资源打上标签</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl label pod nginx-pod <span class="token assign-left variable">version</span><span class="token operator">=</span><span class="token number">1.0</span> -n dev <span class="token comment"># nginx-pod为pod名</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\14.PNG" alt="14"></p>
+<ol start="2">
+<li>为pod资源更新标签</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl label pod nginx-pod <span class="token assign-left variable">version</span><span class="token operator">=</span><span class="token number">2.0</span> -n dev --overwrite<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\15.PNG" alt="15"></p>
+<ol start="3">
+<li>查看标签</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl get pod nginx-pod  -n dev --show-labels<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\16.PNG" alt="16"></p>
+<ol start="4">
+<li>筛选标签</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl get pod -n dev -l <span class="token assign-left variable">version</span><span class="token operator">=</span><span class="token number">2.0</span>  --show-labels
+kubectl get pod -n dev -l version<span class="token operator">!=</span><span class="token number">2.0</span> --show-labels<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\17.PNG" alt="17"></p>
+<ol start="5">
+<li>删除标签</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl label pod nginx-pod version- -n dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\18.PNG" alt="18"></p>
+<h3 id="三、Deployment"><a href="#三、Deployment" class="headerlink" title="三、Deployment"></a>三、Deployment</h3><ol>
+<li>创建并运行pod–指定pod数量</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl run nginx --image<span class="token operator">=</span>nginx:latest --port<span class="token operator">=</span><span class="token number">80</span> --replicas<span class="token operator">=</span><span class="token number">3</span> -n dev
+
+<span class="token comment"># 命令格式: kubectl create deployment 名称  [参数] </span>
+<span class="token comment"># --image  指定pod的镜像</span>
+<span class="token comment"># --port   指定端口</span>
+<span class="token comment"># --replicas  指定创建pod数量</span>
+<span class="token comment"># --namespace  指定namespace</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\19.PNG" alt="19"></p>
+<ol start="2">
+<li>查看创建的pod</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl get pods -n dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\20.PNG" alt="20"></p>
+<ol start="3">
+<li>查看deployment的信息</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl get deploy -n dev
+<span class="token comment"># UP-TO-DATE：成功升级的副本数量</span>
+<span class="token comment"># AVAILABLE：可用副本的数量</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\21.PNG" alt="21"></p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl get deploy -n dev -o wide<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\22.PNG" alt="22"></p>
+<ol start="4">
+<li>查看deployment的详细信息</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl describe deploy nginx -n dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\23.PNG" alt="23"></p>
+<ol start="5">
+<li>删除</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl delete deploy nginx -n dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\24.PNG" alt="24"></p>
+<h3 id="四、Service"><a href="#四、Service" class="headerlink" title="四、Service"></a>四、Service</h3><h4 id="1-创建集群内部可访问的Service"><a href="#1-创建集群内部可访问的Service" class="headerlink" title="1. 创建集群内部可访问的Service"></a>1. 创建集群内部可访问的Service</h4><p>1.1 暴露Service</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl expose deploy nginx --name<span class="token operator">=</span>svc-nginx1 --type<span class="token operator">=</span>ClusterIP --port<span class="token operator">=</span><span class="token number">80</span> --target-port<span class="token operator">=</span><span class="token number">80</span> -n dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\25.PNG" alt="25"></p>
+<p>1.2 查看service</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl get svc svc-nginx1 -n dev -o wide
+
+<span class="token comment"># 这里产生了一个CLUSTER-IP，这就是service的IP，在Service的生命周期中，这个地址是不会变动的</span>
+<span class="token comment"># 可以通过这个IP访问当前service对应的POD</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\26.PNG" alt="26"></p>
+<p>1.3 访问</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> <span class="token number">10.100</span>.237.57<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\27.PNG" alt="27"></p>
+<h4 id="2-创建集群外部可访问的Service"><a href="#2-创建集群外部可访问的Service" class="headerlink" title="2. 创建集群外部可访问的Service"></a>2. 创建集群外部可访问的Service</h4><p>2.1 暴露Service</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl expose deploy nginx --name<span class="token operator">=</span>svc-nginx2 --type<span class="token operator">=</span>NodePort --port<span class="token operator">=</span><span class="token number">80</span> --target-port<span class="token operator">=</span><span class="token number">80</span> -n dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\28.PNG" alt="28"></p>
+<p>2.2 查看service</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl get svc  svc-nginx2  -n dev -o wide<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\29.PNG" alt="29"></p>
+<p>2.3 访问</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">http://192.168.111.134:31126<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\30.PNG" alt="30"></p>
+<h4 id="3-删除Service"><a href="#3-删除Service" class="headerlink" title="3. 删除Service"></a>3. 删除Service</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">kubectl delete svc svc-nginx-1 -n dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2023/050960382/BLOG/hexoblog\source_posts\复制粘贴使用\31.PNG" alt="31"></p>
+
                 
             </div>
             <hr/>
@@ -598,18 +780,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/050960382.html">
+                <a href="/2023/060717823.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="复制粘贴使用">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="k8s学习--基础版">
                         
-                        <span class="card-title">复制粘贴使用</span>
+                        <span class="card-title">k8s学习--基础版</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -619,9 +800,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-09
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-07
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -630,7 +811,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
